@@ -33,16 +33,16 @@
             padding: 28px 40px;
         }
 
-        /* 🔒 Full-Screen Passcode Lock Overlay (Always active on load) */
+        /* 🔒 Ultra-Minimal Glassmorphism Passcode Overlay */
         .passcode-overlay {
             position: fixed;
             top: 0;
             left: 0;
             width: 100vw;
             height: 100vh;
-            background: rgba(15, 17, 21, 0.98);
-            backdrop-filter: blur(24px);
-            -webkit-backdrop-filter: blur(24px);
+            background: rgba(15, 17, 21, 0.70);
+            backdrop-filter: blur(30px);
+            -webkit-backdrop-filter: blur(30px);
             z-index: 99999;
             display: flex;
             align-items: center;
@@ -51,43 +51,33 @@
         }
 
         .passcode-card {
-            background: #161922;
-            border: 1px solid #282c38;
+            background: rgba(22, 25, 34, 0.85);
+            border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 28px;
-            padding: 40px 36px;
+            padding: 36px 32px;
             width: 100%;
-            max-width: 420px;
+            max-width: 360px;
             text-align: center;
-            box-shadow: 0 24px 60px rgba(0, 0, 0, 0.8), 0 0 40px rgba(149, 240, 41, 0.1);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6), 0 0 30px rgba(149, 240, 41, 0.1);
         }
 
-        .lock-icon-box {
-            width: 64px;
-            height: 64px;
-            border-radius: 50%;
-            background: rgba(149, 240, 41, 0.15);
-            border: 1px solid var(--accent-lime);
-            color: var(--accent-lime);
-            display: flex;
+        .passcode-logo {
+            display: inline-flex;
             align-items: center;
-            justify-content: center;
-            font-size: 28px;
-            margin: 0 auto 20px auto;
+            gap: 10px;
+            margin-bottom: 24px;
         }
 
-        .passcode-title {
+        .passcode-logo img {
+            height: 32px;
+            width: auto;
+        }
+
+        .passcode-logo span {
             font-size: 22px;
             font-weight: 800;
-            color: var(--text-white);
-            margin-bottom: 8px;
-        }
-
-        .passcode-sub {
-            font-size: 13px;
-            color: var(--text-muted);
-            font-weight: 500;
-            margin-bottom: 24px;
-            line-height: 1.5;
+            color: #ffffff;
+            letter-spacing: -0.3px;
         }
 
         .passcode-input {
@@ -97,12 +87,12 @@
             color: var(--text-white);
             padding: 14px 20px;
             border-radius: 16px;
-            font-size: 16px;
+            font-size: 15px;
             font-weight: 700;
             text-align: center;
             letter-spacing: 2px;
             outline: none;
-            margin-bottom: 16px;
+            margin-bottom: 14px;
             transition: all 0.2s;
         }
 
@@ -118,7 +108,7 @@
             border: none;
             padding: 14px 20px;
             border-radius: 16px;
-            font-size: 14px;
+            font-size: 13px;
             font-weight: 800;
             cursor: pointer;
             transition: all 0.2s;
@@ -137,14 +127,20 @@
             display: none;
         }
 
-        /* Main dashboard hidden by default */
+        /* Dashboard content visible blurred in background */
         .dashboard-content {
-            display: none;
+            display: flex;
+            flex-direction: column;
+            filter: blur(12px);
+            pointer-events: none;
+            user-select: none;
+            transition: filter 0.3s ease;
         }
 
         .dashboard-content.authorized {
-            display: flex;
-            flex-direction: column;
+            filter: none;
+            pointer-events: auto;
+            user-select: auto;
         }
 
         header {
@@ -865,19 +861,20 @@
 </head>
 <body>
 
-    <!-- 🔒 Passcode Security Gate Modal Overlay (Always active on initial page load) -->
+    <!-- 🔒 Minimalist Glassmorphism Passcode Overlay -->
     <div class="passcode-overlay" id="passcodeOverlay">
         <div class="passcode-card">
-            <div class="lock-icon-box">🔒</div>
-            <div class="passcode-title">a3sixty CRM Security</div>
-            <div class="passcode-sub">Please enter your authorized passcode to unlock the executive dashboard.</div>
-            <input type="password" class="passcode-input" id="passcodeInput" placeholder="Enter Passcode..." onkeyup="handlePasscodeKey(event)">
-            <button class="passcode-btn" onclick="checkPasscode()">Unlock Dashboard</button>
-            <div class="passcode-error" id="passcodeError">Incorrect passcode. Please try again.</div>
+            <div class="passcode-logo">
+                <img src="https://a3sixty.com/img/a360w.png" alt="a3sixty logo">
+                <span>CRM</span>
+            </div>
+            <input type="password" class="passcode-input" id="passcodeInput" placeholder="Enter passcode..." onkeyup="handlePasscodeKey(event)">
+            <button class="passcode-btn" onclick="checkPasscode()">Unlock</button>
+            <div class="passcode-error" id="passcodeError">Incorrect passcode. Try again.</div>
         </div>
     </div>
 
-    <!-- Main Dashboard Body (Revealed ONLY upon entering "sada") -->
+    <!-- Main Dashboard Body (Visible blurred in background until passcode unlock) -->
     <div class="dashboard-content" id="dashboardMainContent">
 
         <!-- Header Navbar -->
@@ -1175,7 +1172,7 @@
 
     </div>
 
-    <!-- Script Engine with Mandatory Passcode Check -->
+    <!-- Script Engine with Glassmorphism Lock & Live Sync -->
     <script>
         const REQUIRED_PASSCODE = "sada";
 
@@ -1204,7 +1201,6 @@
             fetchLiveGoogleSheetData();
         }
 
-        // Focus passcode input on load
         window.addEventListener('DOMContentLoaded', () => {
             const input = document.getElementById('passcodeInput');
             if (input) input.focus();
