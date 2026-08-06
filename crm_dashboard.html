@@ -128,6 +128,7 @@
             justify-content: space-between;
             gap: 16px;
             flex-wrap: wrap;
+            position: relative;
         }
 
         .period-label {
@@ -166,24 +167,125 @@
             border-color: var(--accent-lime);
         }
 
-        .custom-range-inputs {
+        /* Interactive Calendar Popover View */
+        .calendar-popover {
             display: none;
-            align-items: center;
-            gap: 8px;
+            position: absolute;
+            top: 54px;
+            right: 20px;
+            background: #161922;
+            border: 1px solid #282c38;
+            border-radius: 24px;
+            padding: 20px;
+            width: 340px;
+            z-index: 100;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.6);
         }
 
-        .custom-range-inputs.show {
+        .calendar-popover.show {
+            display: block;
+        }
+
+        .cal-header {
             display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 16px;
         }
 
-        .date-input {
-            background: #131519;
-            border: 1px solid var(--border-card);
+        .cal-title {
+            font-size: 14px;
+            font-weight: 800;
             color: var(--text-white);
-            padding: 6px 12px;
-            border-radius: 12px;
+        }
+
+        .cal-nav-btn {
+            background: #222634;
+            border: none;
+            color: var(--text-white);
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-weight: 800;
+        }
+
+        .cal-weekdays {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            text-align: center;
+            font-size: 11px;
+            font-weight: 700;
+            color: var(--text-muted);
+            margin-bottom: 8px;
+        }
+
+        .cal-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 4px;
+            margin-bottom: 16px;
+        }
+
+        .cal-day {
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             font-size: 12px;
-            outline: none;
+            font-weight: 600;
+            color: var(--text-white);
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.15s;
+        }
+
+        .cal-day:hover {
+            background: rgba(149, 240, 41, 0.2);
+            color: var(--accent-lime);
+        }
+
+        .cal-day.disabled {
+            color: #404452;
+            cursor: default;
+        }
+
+        .cal-day.selected-start, .cal-day.selected-end {
+            background: var(--accent-lime) !important;
+            color: #000000 !important;
+            font-weight: 800;
+            border-radius: 50%;
+        }
+
+        .cal-day.in-range {
+            background: rgba(149, 240, 41, 0.2) !important;
+            color: var(--accent-lime) !important;
+            border-radius: 4px;
+        }
+
+        .cal-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 12px;
+            border-top: 1px solid #282c38;
+        }
+
+        .cal-selection-text {
+            font-size: 11px;
+            color: var(--text-muted);
+            font-weight: 600;
+        }
+
+        .cal-apply-btn {
+            background: var(--accent-lime);
+            color: #000000;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 16px;
+            font-size: 12px;
+            font-weight: 800;
+            cursor: pointer;
         }
 
         /* Top 4 Scorecards Grid */
@@ -625,7 +727,6 @@
             justify-content: space-between;
         }
 
-        /* Responsive Media Queries */
         @media (max-width: 1024px) {
             body { padding: 20px 24px; }
             .top-cards-grid { grid-template-columns: repeat(2, 1fr); }
@@ -651,13 +752,7 @@
             .detail-panel { padding: 20px; }
             .period-bar { flex-direction: column; align-items: flex-start; }
             .period-pills { width: 100%; overflow-x: auto; }
-        }
-
-        @media (max-width: 480px) {
-            .score-val { font-size: 26px; }
-            .trend-chart-head { font-size: 15px; }
-            .legend-grid { grid-template-columns: 1fr; text-align: left; }
-            .mini-card { height: auto; padding: 16px; }
+            .calendar-popover { right: 0; width: 100%; max-width: 320px; }
         }
     </style>
 </head>
@@ -690,12 +785,28 @@
             <button class="period-btn" onclick="setPeriod('1D', this)">Last 1 Day</button>
             <button class="period-btn" onclick="setPeriod('7D', this)">Last 7 Days</button>
             <button class="period-btn" onclick="setPeriod('30D', this)">Last 30 Days</button>
-            <button class="period-btn" onclick="toggleCustomRange(this)">Custom Range 📅</button>
+            <button class="period-btn" id="customRangeBtn" onclick="toggleCalendarPopover(this)">Calendar View 📅</button>
+        </div>
 
-            <div class="custom-range-inputs" id="customRangeBox">
-                <input type="date" class="date-input" id="startDatePicker" onchange="applyCustomRange()">
-                <span style="color: var(--text-muted); font-size: 12px;">to</span>
-                <input type="date" class="date-input" id="endDatePicker" onchange="applyCustomRange()">
+        <!-- Interactive Visual Calendar Popover -->
+        <div class="calendar-popover" id="calPopover">
+            <div class="cal-header">
+                <button class="cal-nav-btn" onclick="prevCalMonth()">‹</button>
+                <span class="cal-title" id="calMonthTitle">July 2026</span>
+                <button class="cal-nav-btn" onclick="nextCalMonth()">›</button>
+            </div>
+
+            <div class="cal-weekdays">
+                <span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span><span>Sun</span>
+            </div>
+
+            <div class="cal-grid" id="calGridDays">
+                <!-- Days dynamically generated by JS -->
+            </div>
+
+            <div class="cal-footer">
+                <div class="cal-selection-text" id="calSelectionText">Select FROM and TO dates</div>
+                <button class="cal-apply-btn" onclick="applyCalendarRange()">Apply Range</button>
             </div>
         </div>
     </div>
@@ -761,8 +872,6 @@
 
     <!-- Main Dashboard Middle Row -->
     <div class="mid-grid">
-        
-        <!-- Left Large Overview Card with Dynamic SVG Donut & 2-Col Legend -->
         <div class="overview-card">
             <div class="overview-head">
                 <div class="overview-title">Leads Overview & Status Share</div>
@@ -825,7 +934,6 @@
             </div>
         </div>
 
-        <!-- Right Column -->
         <div class="right-col">
             <div class="mini-card">
                 <div class="green-circle-icon">💼</div>
@@ -843,10 +951,9 @@
                 </div>
             </div>
         </div>
-
     </div>
 
-    <!-- Sales Agent Performance Table in SAR -->
+    <!-- Sales Agent Performance Table -->
     <div class="agent-card">
         <div style="font-size: 16px; font-weight: 700; margin-bottom: 16px;">👤 Sales Agent Performance Summary</div>
         <div class="table-responsive">
@@ -945,7 +1052,7 @@
         </div>
     </div>
 
-    <!-- Script Engine with Time Period Filter & Date Range Picker -->
+    <!-- Script Engine with Visual Calendar Range Picker -->
     <script>
         let currentTabStatus = 'ALL';
         let rawLeads = [];
@@ -954,7 +1061,12 @@
         let trendChartInstance = null;
         const GOOGLE_SHEET_CSV_URL = "https://docs.google.com/spreadsheets/d/15n6wstZajaR98ZzD5ZnV5tH6B8quAoCYTRD5CiH7h-M/export?format=csv&gid=0";
 
-        // Date Parsing Helper (dd/mm/yyyy)
+        // Calendar State
+        let calYear = 2026;
+        let calMonth = 6; // 0-indexed (6 = July)
+        let calStartDate = null;
+        let calEndDate = null;
+
         function parseLeadDate(dateStr) {
             if (!dateStr) return null;
             const parts = dateStr.split('/');
@@ -968,12 +1080,11 @@
             return null;
         }
 
-        // Time Period Filter Switcher
         function setPeriod(periodCode, btnElement) {
             selectedPeriod = periodCode;
             document.querySelectorAll('.period-btn').forEach(b => b.classList.remove('active'));
             if (btnElement) btnElement.classList.add('active');
-            document.getElementById('customRangeBox').classList.remove('show');
+            document.getElementById('calPopover').classList.remove('show');
 
             const labelMap = {
                 'ALL': 'All Time',
@@ -986,12 +1097,124 @@
             applyPeriodFilter();
         }
 
-        function toggleCustomRange(btnElement) {
-            selectedPeriod = 'CUSTOM';
+        function toggleCalendarPopover(btnElement) {
+            const popover = document.getElementById('calPopover');
+            const isShown = popover.classList.contains('show');
+
             document.querySelectorAll('.period-btn').forEach(b => b.classList.remove('active'));
             btnElement.classList.add('active');
-            document.getElementById('customRangeBox').classList.add('show');
-            document.getElementById('activePeriodLabel').innerText = 'Custom Date Range';
+
+            if (!isShown) {
+                popover.classList.add('show');
+                renderCalendarGrid();
+            } else {
+                popover.classList.remove('show');
+            }
+        }
+
+        function renderCalendarGrid() {
+            const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+            document.getElementById('calMonthTitle').innerText = `${monthNames[calMonth]} ${calYear}`;
+
+            const grid = document.getElementById('calGridDays');
+            grid.innerHTML = '';
+
+            const firstDay = new Date(calYear, calMonth, 1).getDay();
+            const daysInMonth = new Date(calYear, calMonth + 1, 0).getDate();
+            const paddingDays = (firstDay + 6) % 7; // Align to Mon start
+
+            for (let i = 0; i < paddingDays; i++) {
+                const emptyCell = document.createElement('div');
+                emptyCell.className = 'cal-day disabled';
+                grid.appendChild(emptyCell);
+            }
+
+            for (let day = 1; day <= daysInMonth; day++) {
+                const cell = document.createElement('div');
+                cell.className = 'cal-day';
+                cell.innerText = day;
+                const cellDate = new Date(calYear, calMonth, day);
+
+                if (calStartDate && cellDate.getTime() === calStartDate.getTime()) {
+                    cell.classList.add('selected-start');
+                } else if (calEndDate && cellDate.getTime() === calEndDate.getTime()) {
+                    cell.classList.add('selected-end');
+                } else if (calStartDate && calEndDate && cellDate > calStartDate && cellDate < calEndDate) {
+                    cell.classList.add('in-range');
+                }
+
+                cell.onclick = () => selectCalendarDate(cellDate);
+                grid.appendChild(cell);
+            }
+
+            updateCalSelectionText();
+        }
+
+        function selectCalendarDate(dt) {
+            if (!calStartDate || (calStartDate && calEndDate)) {
+                calStartDate = dt;
+                calEndDate = null;
+            } else if (calStartDate && !calEndDate) {
+                if (dt >= calStartDate) {
+                    calEndDate = dt;
+                } else {
+                    calEndDate = calStartDate;
+                    calStartDate = dt;
+                }
+            }
+            renderCalendarGrid();
+        }
+
+        function prevCalMonth() {
+            calMonth--;
+            if (calMonth < 0) { calMonth = 11; calYear--; }
+            renderCalendarGrid();
+        }
+
+        function nextCalMonth() {
+            calMonth++;
+            if (calMonth > 11) { calMonth = 0; calYear++; }
+            renderCalendarGrid();
+        }
+
+        function updateCalSelectionText() {
+            const txt = document.getElementById('calSelectionText');
+            if (calStartDate && calEndDate) {
+                txt.innerText = `${formatDateShort(calStartDate)} → ${formatDateShort(calEndDate)}`;
+            } else if (calStartDate) {
+                txt.innerText = `FROM: ${formatDateShort(calStartDate)} (Select TO date)`;
+            } else {
+                txt.innerText = "Select FROM and TO dates";
+            }
+        }
+
+        function formatDateShort(d) {
+            return `${d.getDate()}/${d.getMonth()+1}/${d.getFullYear()}`;
+        }
+
+        function applyCalendarRange() {
+            if (!calStartDate) return;
+
+            selectedPeriod = 'CALENDAR';
+            const endDt = calEndDate ? new Date(calEndDate) : new Date(calStartDate);
+            endDt.setHours(23, 59, 59);
+
+            currentLeads = rawLeads.filter(l => {
+                const dt = parseLeadDate(l.date);
+                return dt && dt >= calStartDate && dt <= endDt;
+            });
+
+            document.getElementById('activePeriodLabel').innerText = calEndDate ? 
+                `${formatDateShort(calStartDate)} to ${formatDateShort(calEndDate)}` : 
+                `From ${formatDateShort(calStartDate)}`;
+
+            document.getElementById('calPopover').classList.remove('show');
+
+            recalculateDashboardMetrics();
+            renderLeads(currentLeads);
+            updateDynamicAgentTable();
+            updateDynamicFilters();
+            updateTrendChartData();
         }
 
         function applyPeriodFilter() {
@@ -1028,30 +1251,6 @@
                     return dt && dt >= cutoff;
                 });
             }
-
-            recalculateDashboardMetrics();
-            renderLeads(currentLeads);
-            updateDynamicAgentTable();
-            updateDynamicFilters();
-            updateTrendChartData();
-        }
-
-        function applyCustomRange() {
-            const startVal = document.getElementById('startDatePicker').value;
-            const endVal = document.getElementById('endDatePicker').value;
-
-            if (!startVal || !endVal) return;
-
-            const startDt = new Date(startVal);
-            const endDt = new Date(endVal);
-            endDt.setHours(23, 59, 59);
-
-            currentLeads = rawLeads.filter(l => {
-                const dt = parseLeadDate(l.date);
-                return dt && dt >= startDt && dt <= endDt;
-            });
-
-            document.getElementById('activePeriodLabel').innerText = `${startVal} to ${endVal}`;
 
             recalculateDashboardMetrics();
             renderLeads(currentLeads);
