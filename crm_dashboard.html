@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>a3sixty CRM Executive Dashboard</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -39,6 +39,7 @@
             justify-content: space-between;
             align-items: center;
             margin-bottom: 28px;
+            gap: 16px;
         }
 
         .brand {
@@ -158,7 +159,6 @@
             gap: 4px;
         }
 
-        /* Speedometer Gauge Container for Card 3 */
         .gauge-box {
             position: absolute;
             right: 20px;
@@ -200,7 +200,6 @@
             margin-bottom: 24px;
         }
 
-        /* Left Overview Card with Large Donut & 2-Col Legend */
         .overview-card {
             background: var(--bg-card);
             border: 1px solid var(--border-card);
@@ -380,11 +379,18 @@
             margin-bottom: 24px;
         }
 
+        .table-responsive {
+            width: 100%;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+
         table {
             width: 100%;
             border-collapse: collapse;
             text-align: left;
             font-size: 13px;
+            min-width: 600px;
         }
 
         th {
@@ -424,6 +430,7 @@
             align-items: center;
             gap: 12px;
             margin-bottom: 20px;
+            flex-wrap: wrap;
         }
 
         .pill-select {
@@ -484,6 +491,9 @@
             display: flex;
             gap: 4px;
             z-index: 10;
+            max-width: 90%;
+            overflow-x: auto;
+            white-space: nowrap;
         }
 
         .tab-btn {
@@ -544,6 +554,43 @@
             flex-direction: column;
             justify-content: space-between;
         }
+
+        /* 📱 RESPONSIVE MEDIA QUERIES FOR MOBILE & TABLETS */
+
+        /* Tablets & Mid-size screens (max-width: 1024px) */
+        @media (max-width: 1024px) {
+            body { padding: 20px 24px; }
+            .top-cards-grid { grid-template-columns: repeat(2, 1fr); }
+            .mid-grid { grid-template-columns: 1fr; }
+            .master-detail-card { grid-template-columns: 1fr; row-gap: 20px; }
+            .list-panel { max-height: 380px; }
+            .tabs-header { position: relative; top: 0; left: 0; transform: none; margin: 12px auto 16px auto; justify-content: center; }
+        }
+
+        /* Mobile Devices (max-width: 768px) */
+        @media (max-width: 768px) {
+            body { padding: 16px 16px; }
+            header { flex-direction: column; align-items: flex-start; gap: 12px; }
+            .header-right-info { width: 100%; justify-content: space-between; }
+            .top-cards-grid { grid-template-columns: 1fr; }
+            .overview-body { grid-template-columns: 1fr; justify-items: center; text-align: center; }
+            .overview-right-content { width: 100%; }
+            .sales-num-box { justify-content: center; }
+            .chart-container-box { height: 260px; }
+            .search-pill { width: 100%; margin-left: 0; }
+            .filters-row { flex-direction: column; align-items: stretch; }
+            .pill-select { width: 100%; }
+            .tabs-header { width: 100%; justify-content: flex-start; }
+            .detail-panel { padding: 20px; }
+        }
+
+        /* Small Mobile Devices (max-width: 480px) */
+        @media (max-width: 480px) {
+            .score-val { font-size: 26px; }
+            .trend-chart-head { font-size: 15px; }
+            .legend-grid { grid-template-columns: 1fr; text-align: left; }
+            .mini-card { height: auto; padding: 16px; }
+        }
     </style>
 </head>
 <body>
@@ -563,7 +610,7 @@
         </div>
     </header>
 
-    <!-- Top 4 Scorecards Grid (Dynamic - Zero Predefined Values) -->
+    <!-- Top 4 Scorecards Grid -->
     <div class="top-cards-grid">
         
         <!-- Card 1: Total Leads -->
@@ -722,25 +769,27 @@
 
     </div>
 
-    <!-- Sales Agent Performance Table in SAR -->
+    <!-- Sales Agent Performance Table in SAR (Responsive Wrapper) -->
     <div class="agent-card">
         <div style="font-size: 16px; font-weight: 700; margin-bottom: 16px;">👤 Sales Agent Performance Summary</div>
-        <table>
-            <thead>
-                <tr>
-                    <th>Sales Agent</th>
-                    <th>Total Leads</th>
-                    <th>Est. Open Follow-ups (SAR)</th>
-                    <th>Converted</th>
-                    <th>Not Interested</th>
-                    <th>Follow-up</th>
-                    <th>Conversion Rate %</th>
-                </tr>
-            </thead>
-            <tbody id="agentTableBody">
-                <!-- Dynamically Rendered -->
-            </tbody>
-        </table>
+        <div class="table-responsive">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Sales Agent</th>
+                        <th>Total Leads</th>
+                        <th>Est. Open Follow-ups (SAR)</th>
+                        <th>Converted</th>
+                        <th>Not Interested</th>
+                        <th>Follow-up</th>
+                        <th>Conversion Rate %</th>
+                    </tr>
+                </thead>
+                <tbody id="agentTableBody">
+                    <!-- Dynamically Rendered -->
+                </tbody>
+            </table>
+        </div>
     </div>
 
     <!-- Active Filters Row -->
@@ -756,7 +805,7 @@
         </div>
     </div>
 
-    <!-- Split Master-Detail Card -->
+    <!-- Split Master-Detail Card (Responsive Stack on Mobile) -->
     <div class="master-detail-card">
         
         <div class="tabs-header">
@@ -774,7 +823,7 @@
         <!-- Right Detail View Panel -->
         <div class="detail-panel">
             <div>
-                <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 24px;">
+                <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 24px; flex-wrap: wrap; gap: 12px;">
                     <div>
                         <div style="font-size: 12px; color: var(--text-muted); font-weight: 600; margin-bottom: 4px;">Lead details & notes</div>
                         <div style="font-size: 28px; font-weight: 800; display: flex; align-items: center; gap: 12px;">
@@ -783,7 +832,7 @@
                         </div>
                     </div>
 
-                    <div style="display: flex; gap: 32px; align-items: center;">
+                    <div style="display: flex; gap: 24px; align-items: center; flex-wrap: wrap;">
                         <div>
                             <div style="font-size: 11px; color: var(--text-muted); font-weight: 600; margin-bottom: 4px;">Sales Agent</div>
                             <div style="font-size: 16px; font-weight: 800; display: flex; align-items: center; gap: 8px;">
@@ -806,7 +855,7 @@
                 </div>
             </div>
 
-            <div style="background: #111317; border-radius: 20px; padding: 16px 24px; display: flex; align-items: center; justify-content: space-between; border: 1px solid var(--border-card);">
+            <div style="background: #111317; border-radius: 20px; padding: 16px 24px; display: flex; align-items: center; justify-content: space-between; border: 1px solid var(--border-card); flex-wrap: wrap; gap: 12px;">
                 <div>
                     <div style="font-size: 11px; color: var(--text-muted); font-weight: 600;">Date Logged</div>
                     <div style="font-size: 16px; font-weight: 800;" id="detailDate">-</div>
