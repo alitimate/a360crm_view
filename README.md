@@ -32,3 +32,4 @@ Open `http://localhost:8000/crm_dashboard.html` in your browser.
 ```bash
 python3 sync_sheet.py --watch
 ```
+# a360crm_view
