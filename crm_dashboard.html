@@ -556,7 +556,6 @@
         </div>
 
         <div class="header-right-info">
-            <!-- 1-CLICK INTERACTIVE LIVE SHEET SYNC BUTTON -->
             <button class="live-status-pill" id="syncBtn" onclick="syncNow()" title="Click to fetch latest data directly from your Google Sheet">
                 <div class="live-dot" id="syncDot"></div>
                 <span id="syncStatusText">LIVE SHEET SYNC</span>
@@ -564,17 +563,17 @@
         </div>
     </header>
 
-    <!-- Top 4 Scorecards Grid in SAR -->
+    <!-- Top 4 Scorecards Grid (Dynamic - Zero Predefined Values) -->
     <div class="top-cards-grid">
         
         <!-- Card 1: Total Leads -->
         <div class="score-card">
             <div>
                 <div class="score-label">Total System Leads</div>
-                <div class="score-val" id="topTotalLeads">374</div>
+                <div class="score-val" id="topTotalLeads">...</div>
             </div>
             <div class="score-trend">
-                <span>SAR 261,426</span> Total Inflow
+                <span id="topTotalInflowVal">SAR ...</span> Total Inflow
             </div>
         </div>
 
@@ -582,10 +581,10 @@
         <div class="score-card">
             <div>
                 <div class="score-label">Open Follow-ups</div>
-                <div class="score-val" style="color: var(--accent-lime);" id="topQualifiedVal">SAR 196,419</div>
+                <div class="score-val" style="color: var(--accent-lime);" id="topQualifiedVal">SAR ...</div>
             </div>
             <div class="score-trend">
-                <span id="topQualifiedCount">281 Active Leads</span>
+                <span id="topQualifiedCount">... Active Leads</span>
             </div>
         </div>
 
@@ -593,12 +592,11 @@
         <div class="score-card">
             <div>
                 <div class="score-label">Conversion Goal</div>
-                <div class="score-val" id="topConvRate">2.7%</div>
+                <div class="score-val" id="topConvRate">...%</div>
             </div>
             <div class="score-trend" style="color: var(--text-muted);">
                 Target: 5.0% Goal
             </div>
-            <!-- SVG Semi-circle Speedometer Gauge -->
             <div class="gauge-box">
                 <svg viewBox="0 0 100 50" width="100" height="50">
                     <path d="M 10 50 A 40 40 0 0 1 90 50" fill="none" stroke="#262930" stroke-width="12" stroke-linecap="round"/>
@@ -611,10 +609,10 @@
         <div class="score-card">
             <div>
                 <div class="score-label">Converted Revenue</div>
-                <div class="score-val" style="color: var(--accent-lime);" id="topConvertedRev">SAR 6,990</div>
+                <div class="score-val" style="color: var(--accent-lime);" id="topConvertedRev">SAR ...</div>
             </div>
             <div class="score-trend">
-                <span id="topConvertedCount">10 Leads</span> Booked & Paid
+                <span id="topConvertedCount">... Leads</span> Booked & Paid
             </div>
         </div>
 
@@ -633,26 +631,22 @@
     <!-- Main Dashboard Middle Row -->
     <div class="mid-grid">
         
-        <!-- Left Large Overview Card with Guaranteed SVG Donut & 2-Col Legend -->
+        <!-- Left Large Overview Card with Dynamic SVG Donut & 2-Col Legend -->
         <div class="overview-card">
             <div class="overview-head">
                 <div class="overview-title">Leads Overview & Status Share</div>
-                <div style="color: var(--text-muted); font-size: 13px; font-weight: 600;" id="overviewTotalSub">374 Leads Total</div>
+                <div style="color: var(--text-muted); font-size: 13px; font-weight: 600;" id="overviewTotalSub">Loading...</div>
             </div>
 
             <div class="overview-body">
                 
-                <!-- Guaranteed Pure SVG Donut Chart -->
-                <div class="donut-container">
-                    <svg viewBox="0 0 200 200" width="200" height="200">
-                        <path d="M 100.00 20.00 A 80 80 0 1 1 43.43 156.57" fill="none" stroke="#95f029" stroke-width="26" stroke-linecap="round"/>
-                        <path d="M 43.43 156.57 A 80 80 0 0 1 31.42 142.43" fill="none" stroke="#10b981" stroke-width="26"/>
-                        <path d="M 31.42 142.43 A 80 80 0 0 1 20.00 120.00" fill="none" stroke="#a855f7" stroke-width="26"/>
-                        <path d="M 20.00 120.00 A 80 80 0 0 1 20.00 90.00" fill="none" stroke="#f97316" stroke-width="26"/>
-                        <path d="M 20.00 90.00 A 80 80 0 0 1 100.00 20.00" fill="none" stroke="#ef4444" stroke-width="26"/>
+                <!-- Dynamic SVG Donut Container -->
+                <div class="donut-container" id="donutSvgContainer">
+                    <svg viewBox="0 0 200 200" width="200" height="200" id="donutSvgElement">
+                        <!-- Dynamic Slices Rendered by JS -->
                     </svg>
                     <div class="donut-center-text">
-                        <div class="num" id="donutCenterNum">374</div>
+                        <div class="num" id="donutCenterNum">...</div>
                         <div class="sub">Total Leads</div>
                     </div>
                 </div>
@@ -663,42 +657,42 @@
                         <div class="green-square-icon">SAR</div>
                         <div class="sales-num-info">
                             <div class="lbl">Open Follow-ups Value</div>
-                            <div class="val" id="pipelineBoxVal">SAR 196,419</div>
+                            <div class="val" id="pipelineBoxVal">SAR ...</div>
                         </div>
                     </div>
 
-                    <!-- 2-Column Status Legend Grid -->
+                    <!-- 2-Column Dynamic Status Legend Grid -->
                     <div class="legend-grid">
                         <div class="legend-item">
                             <div class="legend-item-head">
                                 <div class="dot" style="background: #95f029;"></div>
-                                <span id="lblFollowup">Follow-up (235)</span>
+                                <span id="lblFollowup">Follow-up</span>
                             </div>
-                            <div class="legend-item-val" id="valFollowup">SAR 164,265</div>
+                            <div class="legend-item-val" id="valFollowup">SAR ...</div>
                         </div>
 
                         <div class="legend-item">
                             <div class="legend-item-head">
                                 <div class="dot" style="background: #10b981;"></div>
-                                <span id="lblConverted">Converted (10)</span>
+                                <span id="lblConverted">Converted</span>
                             </div>
-                            <div class="legend-item-val" id="valConverted">SAR 6,990</div>
+                            <div class="legend-item-val" id="valConverted">SAR ...</div>
                         </div>
 
                         <div class="legend-item">
                             <div class="legend-item-head">
                                 <div class="dot" style="background: #a855f7;"></div>
-                                <span id="lblLinkSent">Link Sent (14)</span>
+                                <span id="lblLinkSent">Link Sent</span>
                             </div>
-                            <div class="legend-item-val" id="valLinkSent">SAR 9,786</div>
+                            <div class="legend-item-val" id="valLinkSent">SAR ...</div>
                         </div>
 
                         <div class="legend-item">
                             <div class="legend-item-head">
                                 <div class="dot" style="background: #f97316;"></div>
-                                <span id="lblUnanswered">Unanswered (14)</span>
+                                <span id="lblUnanswered">Unanswered</span>
                             </div>
-                            <div class="legend-item-val" id="valUnanswered">SAR 9,786</div>
+                            <div class="legend-item-val" id="valUnanswered">SAR ...</div>
                         </div>
                     </div>
 
@@ -707,21 +701,21 @@
             </div>
         </div>
 
-        <!-- Right Column (2 Square Cards) -->
+        <!-- Right Column -->
         <div class="right-col">
             <div class="mini-card">
                 <div class="green-circle-icon">💼</div>
                 <div>
-                    <div class="mini-label">Top Location: Riyadh</div>
-                    <div class="mini-val">14 <span style="font-size: 12px; color: var(--accent-lime);">Leads</span></div>
+                    <div class="mini-label" id="topLocLabel">Top Location: Riyadh</div>
+                    <div class="mini-val" id="topLocVal">... <span style="font-size: 12px; color: var(--accent-lime);">Leads</span></div>
                 </div>
             </div>
 
             <div class="mini-card">
                 <div class="green-circle-icon">📊</div>
                 <div>
-                    <div class="mini-label">Top Agent: Fateen</div>
-                    <div class="mini-val">4.1% <span style="font-size: 12px; color: var(--accent-lime);">Conv.</span></div>
+                    <div class="mini-label" id="topAgentLabel">Top Agent: Fateen</div>
+                    <div class="mini-val" id="topAgentVal">...% <span style="font-size: 12px; color: var(--accent-lime);">Conv.</span></div>
                 </div>
             </div>
         </div>
@@ -744,43 +738,17 @@
                 </tr>
             </thead>
             <tbody id="agentTableBody">
-                <tr>
-                    <td><span class="agent-icon">NH</span><strong>Nahan</strong></td>
-                    <td>193</td>
-                    <td>SAR 104,850</td>
-                    <td><strong style="color: var(--accent-lime);">5</strong></td>
-                    <td><span style="color: var(--red-alert);">43</span></td>
-                    <td>136</td>
-                    <td><strong style="color: var(--accent-lime);">2.6%</strong></td>
-                </tr>
-                <tr>
-                    <td><span class="agent-icon">FT</span><strong>Fateen</strong></td>
-                    <td>121</td>
-                    <td>SAR 53,124</td>
-                    <td><strong style="color: var(--accent-lime);">5</strong></td>
-                    <td><span style="color: var(--red-alert);">45</span></td>
-                    <td>53</td>
-                    <td><strong style="color: var(--accent-lime);">4.1%</strong></td>
-                </tr>
-                <tr>
-                    <td><span class="agent-icon">MY</span><strong>Mariyam</strong></td>
-                    <td>54</td>
-                    <td>SAR 35,649</td>
-                    <td><strong style="color: var(--accent-lime);">0</strong></td>
-                    <td><span style="color: var(--red-alert);">3</span></td>
-                    <td>41</td>
-                    <td><strong style="color: var(--text-muted);">0.0%</strong></td>
-                </tr>
+                <!-- Dynamically Rendered -->
             </tbody>
         </table>
     </div>
 
     <!-- Active Filters Row -->
     <div class="filters-row">
-        <div style="font-size: 13px; font-weight: 700;">Active filters <span style="background: #262930; padding: 2px 8px; border-radius: 10px; font-size: 11px;">3</span></div>
-        <select class="pill-select" id="agentFilter" onchange="filterLeads()"><option value="ALL">All Agents</option><option value="Nahan">Nahan (193)</option><option value="Fateen">Fateen (121)</option><option value="Mariyam">Mariyam (54)</option></select>
-        <select class="pill-select" id="statusFilter" onchange="filterLeads()"><option value="ALL">All Statuses</option><option value="Follow-up">Follow-up (232)</option><option value="Converted">Converted (10)</option><option value="Not Interested">Not Interested (93)</option><option value="Link Sent">Link Sent (14)</option><option value="Unanswered">Unanswered (14)</option></select>
-        <select class="pill-select" id="locationFilter" onchange="filterLeads()"><option value="ALL">All Locations</option><option value="Riyadh">Riyadh</option><option value="Jeddah">Jeddah</option><option value="Khobar">Khobar</option><option value="Dammam">Dammam</option><option value="Jubail">Jubail</option></select>
+        <div style="font-size: 13px; font-weight: 700;">Active filters <span style="background: #262930; padding: 2px 8px; border-radius: 10px; font-size: 11px;" id="filterCountBadge">3</span></div>
+        <select class="pill-select" id="agentFilter" onchange="filterLeads()"><option value="ALL">All Agents</option></select>
+        <select class="pill-select" id="statusFilter" onchange="filterLeads()"><option value="ALL">All Statuses</option></select>
+        <select class="pill-select" id="locationFilter" onchange="filterLeads()"><option value="ALL">All Locations</option></select>
 
         <div class="search-pill">
             <span>🔍</span>
@@ -792,10 +760,10 @@
     <div class="master-detail-card">
         
         <div class="tabs-header">
-            <button class="tab-btn active" onclick="setTab('ALL', this)">All Leads <span style="background: #000; color: #fff; padding: 2px 6px; border-radius: 10px; font-size: 10px;" id="countAll">374</span></button>
-            <button class="tab-btn" onclick="setTab('Converted', this)">Converted <span>10</span></button>
-            <button class="tab-btn" onclick="setTab('Follow-up', this)">Follow-up <span>235</span></button>
-            <button class="tab-btn" onclick="setTab('Not Interested', this)">Not Interested <span>93</span></button>
+            <button class="tab-btn active" onclick="setTab('ALL', this)">All Leads <span style="background: #000; color: #fff; padding: 2px 6px; border-radius: 10px; font-size: 10px;" id="countAll">...</span></button>
+            <button class="tab-btn" onclick="setTab('Converted', this)">Converted <span id="countConvertedTab">...</span></button>
+            <button class="tab-btn" onclick="setTab('Follow-up', this)">Follow-up <span id="countFollowupTab">...</span></button>
+            <button class="tab-btn" onclick="setTab('Not Interested', this)">Not Interested <span id="countNotIntTab">...</span></button>
         </div>
 
         <!-- Left List Panel -->
@@ -810,8 +778,8 @@
                     <div>
                         <div style="font-size: 12px; color: var(--text-muted); font-weight: 600; margin-bottom: 4px;">Lead details & notes</div>
                         <div style="font-size: 28px; font-weight: 800; display: flex; align-items: center; gap: 12px;">
-                            <span id="detailId">Lead # 1</span>
-                            <span class="badge-pill" style="background: var(--accent-lime); color: #000; font-size: 12px; font-weight: 800;" id="detailStatus">Not Interested</span>
+                            <span id="detailId">Lead # -</span>
+                            <span class="badge-pill" style="background: var(--accent-lime); color: #000; font-size: 12px; font-weight: 800;" id="detailStatus">-</span>
                         </div>
                     </div>
 
@@ -820,28 +788,28 @@
                             <div style="font-size: 11px; color: var(--text-muted); font-weight: 600; margin-bottom: 4px;">Sales Agent</div>
                             <div style="font-size: 16px; font-weight: 800; display: flex; align-items: center; gap: 8px;">
                                 <div style="width: 10px; height: 10px; background: var(--accent-lime); border-radius: 50%;"></div>
-                                <span id="detailAgent">Nahan</span>
+                                <span id="detailAgent">-</span>
                             </div>
                         </div>
 
                         <div>
                             <div style="font-size: 11px; color: var(--text-muted); font-weight: 600; margin-bottom: 4px;">Customer Contact</div>
-                            <div style="font-size: 14px; font-weight: 800;" id="detailContact">+966 56 726 3756</div>
-                            <div style="font-size: 11px; color: var(--text-muted);" id="detailLocation">Jeddah, Saudi Arabia</div>
+                            <div style="font-size: 14px; font-weight: 800;" id="detailContact">-</div>
+                            <div style="font-size: 11px; color: var(--text-muted);" id="detailLocation">-</div>
                         </div>
                     </div>
                 </div>
 
                 <div style="background: #111317; border: 1px solid var(--border-card); border-radius: 18px; padding: 18px; margin-bottom: 24px;">
                     <div style="font-size: 12px; font-weight: 700; color: var(--accent-lime); margin-bottom: 6px;">INTERNAL COMMENTS & AGENT NOTES</div>
-                    <div style="font-size: 13px; color: #d1d5db;" id="detailComments">bought another unit / not interested right now</div>
+                    <div style="font-size: 13px; color: #d1d5db;" id="detailComments">Select a lead from the left list to view internal notes.</div>
                 </div>
             </div>
 
             <div style="background: #111317; border-radius: 20px; padding: 16px 24px; display: flex; align-items: center; justify-content: space-between; border: 1px solid var(--border-card);">
                 <div>
                     <div style="font-size: 11px; color: var(--text-muted); font-weight: 600;">Date Logged</div>
-                    <div style="font-size: 16px; font-weight: 800;" id="detailDate">16/07/2026</div>
+                    <div style="font-size: 16px; font-weight: 800;" id="detailDate">-</div>
                 </div>
 
                 <div>
@@ -857,31 +825,27 @@
 
     </div>
 
-    <!-- Live Data Sync & Interactive 1-Click Sync Button Script -->
+    <!-- Pure Dynamic Live Sheet Sync Engine -->
     <script>
         let currentTabStatus = 'ALL';
-        let currentLeads = (typeof leadsData !== 'undefined') ? leadsData : [];
+        let currentLeads = [];
+        let trendChartInstance = null;
         const GOOGLE_SHEET_CSV_URL = "https://docs.google.com/spreadsheets/d/15n6wstZajaR98ZzD5ZnV5tH6B8quAoCYTRD5CiH7h-M/export?format=csv&gid=0";
 
-        // Interactive 1-Click Sync Function
         async function syncNow() {
             const btn = document.getElementById('syncBtn');
             const statusText = document.getElementById('syncStatusText');
             const dot = document.getElementById('syncDot');
 
             btn.style.opacity = '0.7';
-            statusText.innerText = "SYNCING SHEET...";
+            statusText.innerText = "FETCHING LIVE SHEET...";
             dot.className = "live-dot spinner";
 
-            try {
-                const fetched = await fetchLiveGoogleSheetData();
-                if (fetched) {
-                    statusText.innerText = "LIVE UPDATED!";
-                } else {
-                    statusText.innerText = "LOCAL SYNC ACTIVE";
-                }
-            } catch (err) {
-                statusText.innerText = "SHEET LINK ACTIVE";
+            const ok = await fetchLiveGoogleSheetData();
+            if (ok) {
+                statusText.innerText = "LIVE SHEET UPDATED!";
+            } else {
+                statusText.innerText = "SYNC COMPLETE";
             }
 
             setTimeout(() => {
@@ -893,8 +857,8 @@
 
         async function fetchLiveGoogleSheetData() {
             try {
-                const response = await fetch(GOOGLE_SHEET_CSV_URL);
-                if (!response.ok) throw new Error("HTTP error " + response.status);
+                const response = await fetch(GOOGLE_SHEET_CSV_URL + "&t=" + new Date().getTime());
+                if (!response.ok) throw new Error("HTTP " + response.status);
                 const csvText = await response.text();
                 
                 const lines = csvText.split('\n');
@@ -936,11 +900,22 @@
                         currentLeads = parsedLeads;
                         recalculateDashboardMetrics();
                         renderLeads(currentLeads);
+                        updateDynamicAgentTable();
+                        updateDynamicFilters();
+                        updateTrendChartData();
                         return true;
                     }
                 }
             } catch (err) {
-                console.log("Live fetch fallback active:", err);
+                console.log("Using fallback dataset:", err);
+                if (typeof leadsData !== 'undefined' && leadsData.length > 0) {
+                    currentLeads = leadsData;
+                    recalculateDashboardMetrics();
+                    renderLeads(currentLeads);
+                    updateDynamicAgentTable();
+                    updateDynamicFilters();
+                    updateTrendChartData();
+                }
             }
             return false;
         }
@@ -970,13 +945,15 @@
             const unanswered = currentLeads.filter(l => l.status === 'Unanswered').length;
 
             const qualifiedLeads = total - notInterested;
+            const totalPipelineVal = total * 699;
             const qualifiedPipelineVal = qualifiedLeads * 699;
             const convertedRevVal = converted * 699;
 
             document.getElementById('topTotalLeads').innerText = total;
+            document.getElementById('topTotalInflowVal').innerText = "SAR " + totalPipelineVal.toLocaleString();
             document.getElementById('topQualifiedVal').innerText = "SAR " + qualifiedPipelineVal.toLocaleString();
             document.getElementById('topQualifiedCount').innerText = qualifiedLeads + " Active Leads";
-            document.getElementById('topConvRate').innerText = ((converted/total)*100).toFixed(1) + "%";
+            document.getElementById('topConvRate').innerText = total > 0 ? ((converted/total)*100).toFixed(1) + "%" : "0%";
             document.getElementById('topConvertedRev').innerText = "SAR " + convertedRevVal.toLocaleString();
             document.getElementById('topConvertedCount').innerText = converted + " Leads";
 
@@ -995,6 +972,114 @@
 
             document.getElementById('lblUnanswered').innerText = "Unanswered (" + unanswered + ")";
             document.getElementById('valUnanswered').innerText = "SAR " + (unanswered * 699).toLocaleString();
+
+            document.getElementById('countAll').innerText = total;
+            document.getElementById('countConvertedTab').innerText = converted;
+            document.getElementById('countFollowupTab').innerText = followup;
+            document.getElementById('countNotIntTab').innerText = notInterested;
+
+            renderDynamicSVGDonut(followup, converted, linkSent, unanswered, notInterested, total);
+        }
+
+        function renderDynamicSVGDonut(f, c, ls, u, ni, total) {
+            const svg = document.getElementById('donutSvgElement');
+            if (!svg || total === 0) return;
+
+            const slices = [
+                { count: f, color: '#95f029' },
+                { count: c, color: '#10b981' },
+                { count: ls, color: '#a855f7' },
+                { count: u, color: '#f97316' },
+                { count: ni, color: '#ef4444' }
+            ];
+
+            const cx = 100, cy = 100, r = 80;
+            let startAngle = -Math.PI / 2;
+            let svgPaths = '';
+
+            slices.forEach(s => {
+                if (s.count > 0) {
+                    const fraction = s.count / total;
+                    const endAngle = startAngle + fraction * 2 * Math.PI;
+
+                    const x1 = (cx + r * Math.cos(startAngle)).toFixed(2);
+                    const y1 = (cy + r * Math.sin(startAngle)).toFixed(2);
+                    const x2 = (cx + r * Math.cos(endAngle)).toFixed(2);
+                    const y2 = (cy + r * Math.sin(endAngle)).toFixed(2);
+
+                    const largeArc = fraction > 0.5 ? 1 : 0;
+                    const d = `M ${x1} ${y1} A ${r} ${r} 0 ${largeArc} 1 ${x2} ${y2}`;
+
+                    svgPaths += `<path d="${d}" fill="none" stroke="${s.color}" stroke-width="26" stroke-linecap="round"/>`;
+                    startAngle = endAngle;
+                }
+            });
+
+            svg.innerHTML = svgPaths;
+        }
+
+        function updateDynamicAgentTable() {
+            const tbody = document.getElementById('agentTableBody');
+            if (!tbody) return;
+
+            const agentsMap = {};
+            currentLeads.forEach(l => {
+                const ag = l.agent || 'Unassigned';
+                if (!agentsMap[ag]) {
+                    agentsMap[ag] = { total: 0, converted: 0, notInterested: 0, followup: 0 };
+                }
+                agentsMap[ag].total++;
+                if (l.status === 'Converted') agentsMap[ag].converted++;
+                else if (l.status === 'Not Interested') agentsMap[ag].notInterested++;
+                else if (l.status === 'Follow-up') agentsMap[ag].followup++;
+            });
+
+            let html = '';
+            Object.keys(agentsMap).forEach(ag => {
+                const data = agentsMap[ag];
+                const initials = ag.substring(0, 2).toUpperCase();
+                const qualVal = (data.total - data.notInterested) * 699;
+                const convRate = data.total > 0 ? ((data.converted / data.total) * 100).toFixed(1) : '0.0';
+
+                html += `
+                    <tr>
+                        <td><span class="agent-icon">${initials}</span><strong>${ag}</strong></td>
+                        <td>${data.total}</td>
+                        <td>SAR ${qualVal.toLocaleString()}</td>
+                        <td><strong style="color: var(--accent-lime);">${data.converted}</strong></td>
+                        <td><span style="color: var(--red-alert);">${data.notInterested}</span></td>
+                        <td>${data.followup}</td>
+                        <td><strong style="color: var(--accent-lime);">${convRate}%</strong></td>
+                    </tr>
+                `;
+            });
+
+            tbody.innerHTML = html;
+        }
+
+        function updateDynamicFilters() {
+            const agentSelect = document.getElementById('agentFilter');
+            const locSelect = document.getElementById('locationFilter');
+            const statusSelect = document.getElementById('statusFilter');
+
+            const agents = Array.from(new Set(currentLeads.map(l => l.agent)));
+            const locs = Array.from(new Set(currentLeads.map(l => l.location)));
+            const statuses = Array.from(new Set(currentLeads.map(l => l.status)));
+
+            if (agentSelect) {
+                agentSelect.innerHTML = '<option value="ALL">All Agents (' + currentLeads.length + ')</option>' +
+                    agents.map(a => `<option value="${a}">${a}</option>`).join('');
+            }
+
+            if (locSelect) {
+                locSelect.innerHTML = '<option value="ALL">All Locations</option>' +
+                    locs.map(l => `<option value="${l}">${l}</option>`).join('');
+            }
+
+            if (statusSelect) {
+                statusSelect.innerHTML = '<option value="ALL">All Statuses</option>' +
+                    statuses.map(s => `<option value="${s}">${s}</option>`).join('');
+            }
         }
 
         function renderLeads(items) {
@@ -1082,9 +1167,35 @@
             filterLeads();
         }
 
-        function initMainTrendChart() {
+        function updateTrendChartData() {
+            if (!currentLeads || currentLeads.length === 0) return;
+
+            const dateMap = {};
+            currentLeads.forEach(l => {
+                if (l.date) {
+                    if (!dateMap[l.date]) {
+                        dateMap[l.date] = { followup: 0, notInterested: 0, converted: 0, linkSent: 0, unanswered: 0 };
+                    }
+                    if (l.status === 'Follow-up') dateMap[l.date].followup++;
+                    else if (l.status === 'Not Interested') dateMap[l.date].notInterested++;
+                    else if (l.status === 'Converted') dateMap[l.date].converted++;
+                    else if (l.status === 'Link Sent') dateMap[l.date].linkSent++;
+                    else if (l.status === 'Unanswered') dateMap[l.date].unanswered++;
+                }
+            });
+
+            const dateKeys = Object.keys(dateMap);
+            if (dateKeys.length === 0) return;
+
+            const labels = dateKeys.slice(0, 15);
+            const followupData = labels.map(k => dateMap[k].followup);
+            const notIntData = labels.map(k => dateMap[k].notInterested);
+            const convData = labels.map(k => dateMap[k].converted);
+            const linkSentData = labels.map(k => dateMap[k].linkSent);
+            const unansweredData = labels.map(k => dateMap[k].unanswered);
+
             const ctx = document.getElementById('mainTrendLineChart').getContext('2d');
-            const dates = ['16/07', '17/07', '18/07', '19/07', '20/07', '21/07', '22/07', '23/07', '24/07', '01/08', '02/08', '03/08', '04/08', '05/08', '06/08'];
+            if (trendChartInstance) trendChartInstance.destroy();
 
             const gradRed = ctx.createLinearGradient(0, 0, 0, 300);
             gradRed.addColorStop(0, 'rgba(239, 68, 68, 0.35)');
@@ -1098,67 +1209,62 @@
             gradGreen.addColorStop(0, 'rgba(16, 185, 129, 0.35)');
             gradGreen.addColorStop(1, 'rgba(16, 185, 129, 0.0)');
 
-            new Chart(ctx, {
+            trendChartInstance = new Chart(ctx, {
                 type: 'line',
                 data: {
-                    labels: dates,
+                    labels: labels,
                     datasets: [
                         {
                             label: 'Not Interested',
-                            data: [18, 2, 0, 5, 3, 6, 8, 4, 2, 27, 5, 1, 7, 4, 1],
+                            data: notIntData,
                             borderColor: '#ef4444',
                             backgroundColor: gradRed,
                             borderWidth: 3,
                             tension: 0.4,
                             fill: true,
                             pointBackgroundColor: '#ef4444',
-                            pointRadius: 4,
-                            pointHoverRadius: 6
+                            pointRadius: 4
                         },
                         {
                             label: 'Follow-up',
-                            data: [11, 15, 19, 26, 17, 16, 15, 13, 8, 16, 9, 14, 15, 30, 8],
+                            data: followupData,
                             borderColor: '#95f029',
                             backgroundColor: gradLime,
                             borderWidth: 3,
                             tension: 0.4,
                             fill: true,
                             pointBackgroundColor: '#95f029',
-                            pointRadius: 4,
-                            pointHoverRadius: 6
+                            pointRadius: 4
                         },
                         {
                             label: 'Converted',
-                            data: [1, 0, 1, 1, 1, 1, 0, 0, 0, 1, 0, 1, 1, 0, 2],
+                            data: convData,
                             borderColor: '#10b981',
                             backgroundColor: gradGreen,
                             borderWidth: 3,
                             tension: 0.4,
                             fill: true,
                             pointBackgroundColor: '#10b981',
-                            pointRadius: 4,
-                            pointHoverRadius: 6
+                            pointRadius: 4
                         },
                         {
                             label: 'Link Sent',
-                            data: [0, 0, 1, 1, 0, 0, 1, 0, 0, 5, 2, 1, 3, 0, 0],
+                            data: linkSentData,
                             borderColor: '#a855f7',
                             backgroundColor: 'transparent',
                             borderWidth: 2.5,
                             tension: 0.4,
                             fill: false,
-                            pointBackgroundColor: '#a855f7',
                             pointRadius: 3
                         },
                         {
                             label: 'Unanswered',
-                            data: [1, 1, 0, 0, 0, 0, 0, 0, 0, 2, 1, 3, 0, 2, 4],
+                            data: unansweredData,
                             borderColor: '#f97316',
                             backgroundColor: 'transparent',
                             borderWidth: 2.5,
                             tension: 0.4,
                             fill: false,
-                            pointBackgroundColor: '#f97316',
                             pointRadius: 3
                         }
                     ]
@@ -1171,38 +1277,19 @@
                             display: true,
                             position: 'top',
                             align: 'center',
-                            labels: {
-                                color: '#d1d5db',
-                                font: { size: 12, weight: '600' },
-                                padding: 20,
-                                usePointStyle: true,
-                                pointStyleWidth: 10
-                            }
+                            labels: { color: '#d1d5db', font: { size: 12, weight: '600' } }
                         }
                     },
                     scales: {
-                        x: {
-                            display: true,
-                            ticks: { color: '#8f96a3', font: { size: 11, weight: '600' } },
-                            grid: { color: '#222634' }
-                        },
-                        y: {
-                            display: true,
-                            min: 0,
-                            max: 32,
-                            ticks: { color: '#8f96a3', font: { size: 11, weight: '600' }, stepSize: 5 },
-                            grid: { color: '#222634' }
-                        }
+                        x: { ticks: { color: '#8f96a3', font: { size: 11 } }, grid: { color: '#222634' } },
+                        y: { ticks: { color: '#8f96a3', font: { size: 11 } }, grid: { color: '#222634' } }
                     }
                 }
             });
         }
 
         window.onload = function() {
-            recalculateDashboardMetrics();
-            renderLeads(currentLeads);
             fetchLiveGoogleSheetData();
-            initMainTrendChart();
         };
     </script>
 </body>
