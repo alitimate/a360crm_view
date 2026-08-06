@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pinterest Visual Search & CRM Dashboard</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark: #090d16;
+            --panel-bg: rgba(22, 30, 46, 0.7);
+            --border-color: rgba(255, 255, 255, 0.08);
+            --accent-pink: #ec4899;
+            --accent-cyan: #06b6d4;
+            --accent-purple: #8b5cf6;
+            --accent-green: #10b981;
+            --accent-orange: #f97316;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Plus Jakarta Sans', sans-serif; }
+        
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(236, 72, 153, 0.15) 0%, transparent 40%),
+                radial-gradient(circle at 90% 80%, rgba(6, 182, 212, 0.15) 0%, transparent 40%);
+            overflow-x: hidden;
+        }
+
+        /* Top Navigation Header */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 18px 36px;
+            background: rgba(15, 23, 42, 0.8);
+            backdrop-filter: blur(16px);
+            border-bottom: 1px solid var(--border-color);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .brand-logo {
+            width: 40px;
+            height: 40px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, var(--accent-pink), var(--accent-purple));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            font-weight: 800;
+            box-shadow: 0 0 20px rgba(236, 72, 153, 0.4);
+        }
+
+        .brand-name {
+            font-size: 20px;
+            font-weight: 800;
+            background: linear-gradient(to right, #ffffff, #94a3b8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: -0.5px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 28px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 600;
+            transition: color 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .nav-links a.active, .nav-links a:hover {
+            color: var(--text-main);
+        }
+
+        .nav-links a.active::after {
+            content: '';
+            display: block;
+            width: 100%;
+            height: 2px;
+            background: var(--accent-pink);
+            position: absolute;
+            bottom: -20px;
+        }
+
+        .user-profile {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .avatar {
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple));
+            border: 2px solid var(--accent-pink);
+        }
+
+        /* Main Container */
+        .container {
+            display: grid;
+            grid-template-columns: 380px 1fr;
+            gap: 28px;
+            padding: 28px 36px;
+            flex: 1;
+        }
+
+        /* Left Side: Pinterest Visual Search Studio */
+        .visual-studio {
+            background: var(--panel-bg);
+            backdrop-filter: blur(16px);
+            border-radius: 24px;
+            border: 1px solid var(--border-color);
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .studio-title {
+            font-size: 16px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .badge-live {
+            background: rgba(16, 185, 129, 0.15);
+            color: var(--accent-green);
+            border: 1px solid var(--accent-green);
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 700;
+        }
+
+        /* Cutout Canvas Box */
+        .cutout-viewport {
+            position: relative;
+            width: 100%;
+            height: 280px;
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            background: #0f172a;
+        }
+
+        .cutout-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: brightness(0.7);
+        }
+
+        /* Pinterest Visual Search Crop Box */
+        .crop-box {
+            position: absolute;
+            top: 40px;
+            left: 50px;
+            width: 220px;
+            height: 160px;
+            border: 2px solid var(--accent-pink);
+            box-shadow: 0 0 0 9999px rgba(0, 0, 0, 0.55), 0 0 25px rgba(236, 72, 153, 0.6);
+            border-radius: 12px;
+            cursor: move;
+            transition: border-color 0.2s;
+        }
+
+        .crop-handle {
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            background: #ffffff;
+            border: 2px solid var(--accent-pink);
+            border-radius: 50%;
+        }
+
+        .crop-handle.tl { top: -6px; left: -6px; }
+        .crop-handle.tr { top: -6px; right: -6px; }
+        .crop-handle.bl { bottom: -6px; left: -6px; }
+        .crop-handle.br { bottom: -6px; right: -6px; }
+
+        .crop-tag {
+            position: absolute;
+            bottom: -32px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--accent-pink);
+            color: #ffffff;
+            font-size: 11px;
+            font-weight: 700;
+            padding: 4px 12px;
+            border-radius: 20px;
+            white-space: nowrap;
+            box-shadow: 0 4px 12px rgba(236, 72, 153, 0.4);
+        }
+
+        .detected-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .tag-pill {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border-color);
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 12px;
+            color: var(--text-muted);
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .tag-pill.active, .tag-pill:hover {
+            background: linear-gradient(135deg, var(--accent-pink), var(--accent-purple));
+            color: #ffffff;
+            border-color: transparent;
+        }
+
+        /* Right Side: CRM Dashboard Analytics & Grid */
+        .dashboard-main {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        /* Top KPI Bar */
+        .kpi-row {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .kpi-card {
+            background: var(--panel-bg);
+            backdrop-filter: blur(16px);
+            border-radius: 20px;
+            border: 1px solid var(--border-color);
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .kpi-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+        }
+
+        .kpi-card.pink::before { background: var(--accent-pink); }
+        .kpi-card.cyan::before { background: var(--accent-cyan); }
+        .kpi-card.purple::before { background: var(--accent-purple); }
+        .kpi-card.green::before { background: var(--accent-green); }
+
+        .kpi-label {
+            font-size: 12px;
+            font-weight: 700;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .kpi-num {
+            font-size: 32px;
+            font-weight: 800;
+            margin: 8px 0;
+        }
+
+        .kpi-sub {
+            font-size: 12px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        /* Charts & Visual Grid */
+        .grid-two {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 24px;
+        }
+
+        .card-box {
+            background: var(--panel-bg);
+            backdrop-filter: blur(16px);
+            border-radius: 20px;
+            border: 1px solid var(--border-color);
+            padding: 24px;
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .card-title {
+            font-size: 16px;
+            font-weight: 700;
+        }
+
+        /* Visual Leads Cards Grid */
+        .leads-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            gap: 18px;
+        }
+
+        .lead-card {
+            background: rgba(15, 23, 42, 0.6);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 16px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            transition: transform 0.2s, border-color 0.2s;
+        }
+
+        .lead-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--accent-pink);
+        }
+
+        .lead-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .lead-name {
+            font-size: 15px;
+            font-weight: 700;
+        }
+
+        .lead-status {
+            font-size: 11px;
+            font-weight: 700;
+            padding: 3px 10px;
+            border-radius: 12px;
+        }
+
+        .status-converted { background: rgba(16, 185, 129, 0.15); color: var(--accent-green); border: 1px solid var(--accent-green); }
+        .status-followup { background: rgba(6, 182, 212, 0.15); color: var(--accent-cyan); border: 1px solid var(--accent-cyan); }
+        .status-notinterested { background: rgba(239, 68, 68, 0.15); color: #f87171; border: 1px solid #ef4444; }
+
+        .lead-info {
+            font-size: 13px;
+            color: var(--text-muted);
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .match-bar-bg {
+            width: 100%;
+            height: 6px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
+            margin-top: 6px;
+        }
+
+        .match-bar-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--accent-pink), var(--accent-cyan));
+            border-radius: 10px;
+        }
+
+        .btn-action {
+            background: linear-gradient(135deg, var(--accent-pink), var(--accent-purple));
+            color: #ffffff;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 10px;
+            font-weight: 700;
+            font-size: 12px;
+            cursor: pointer;
+            text-align: center;
+            transition: opacity 0.2s;
+        }
+
+        .btn-action:hover { opacity: 0.9; }
+    </style>
+</head>
+<body>
+
+    <!-- Header Navigation -->
+    <header>
+        <div class="brand">
+            <div class="brand-logo">N</div>
+            <div class="brand-name">NEXUS VISUAL CRM</div>
+        </div>
+
+        <ul class="nav-links">
+            <li><a href="#" class="active">Visual Search</a></li>
+            <li><a href="#">Pipeline</a></li>
+            <li><a href="#">Leads (371)</a></li>
+            <li><a href="#">Analytics</a></li>
+            <li><a href="#">Settings</a></li>
+        </ul>
+
+        <div class="user-profile">
+            <div style="text-align: right;">
+                <div style="font-size: 14px; font-weight: 700;">Alex Rivera</div>
+                <div style="font-size: 11px; color: var(--text-muted);">Lead Administrator</div>
+            </div>
+            <div class="avatar"></div>
+        </div>
+    </header>
+
+    <!-- Main Workspace Container -->
+    <div class="container">
+        
+        <!-- Left Side: Pinterest Visual Search Studio Cutout -->
+        <div class="visual-studio">
+            <div class="studio-title">
+                <span>🔍 Pinterest Visual Search Cutout</span>
+                <span class="badge-live">98.4% Match</span>
+            </div>
+
+            <!-- Image Cutout Canvas Box -->
+            <div class="cutout-viewport">
+                <img src="crm_visual_search_hero_1786042202747.jpg" alt="CRM Visual Search Hero" class="cutout-image">
+                
+                <!-- Pinterest Draggable Crop Cutout Box -->
+                <div class="crop-box" id="cropBox">
+                    <div class="crop-handle tl"></div>
+                    <div class="crop-handle tr"></div>
+                    <div class="crop-handle bl"></div>
+                    <div class="crop-handle br"></div>
+                    <div class="crop-tag">Water Purifier Unit (Crop Cutout)</div>
+                </div>
+            </div>
+
+            <div>
+                <div style="font-size: 13px; font-weight: 700; margin-bottom: 10px; color: var(--text-muted);">
+                    DETECTED VISUAL FEATURES
+                </div>
+                <div class="detected-tags">
+                    <div class="tag-pill active">RO Filter System</div>
+                    <div class="tag-pill active">UV Sterilizer</div>
+                    <div class="tag-pill">Industrial Tank</div>
+                    <div class="tag-pill">Jeddah Water TDS</div>
+                    <div class="tag-pill">Tabby / Tamara</div>
+                </div>
+            </div>
+
+            <div style="background: rgba(15, 23, 42, 0.6); padding: 16px; border-radius: 16px; border: 1px solid var(--border-color);">
+                <div style="font-size: 12px; font-weight: 700; color: var(--accent-pink); margin-bottom: 4px;">
+                    CROP BOUNDING BOX COORDINATES
+                </div>
+                <div style="font-size: 12px; font-family: monospace; color: var(--text-muted);">
+                    x: 25 | y: 83 | w: 475 | h: 350
+                </div>
+            </div>
+
+            <button class="btn-action" style="padding: 12px; font-size: 13px;">
+                RE-RUN VISUAL SEARCH MATCH
+            </button>
+        </div>
+
+        <!-- Right Side: Dashboard Analytics & Visual Leads Grid -->
+        <div class="dashboard-main">
+            
+            <!-- Top KPI Scorecards -->
+            <div class="kpi-row">
+                <div class="kpi-card pink">
+                    <div class="kpi-label">Total Leads</div>
+                    <div class="kpi-num">371</div>
+                    <div class="kpi-sub" style="color: var(--accent-pink);">
+                        <span>▲ 12.5%</span> from last week
+                    </div>
+                </div>
+
+                <div class="kpi-card green">
+                    <div class="kpi-label">Converted</div>
+                    <div class="kpi-num" style="color: var(--accent-green);">10</div>
+                    <div class="kpi-sub" style="color: var(--accent-green);">
+                        <span>2.7%</span> total conversion rate
+                    </div>
+                </div>
+
+                <div class="kpi-card cyan">
+                    <div class="kpi-label">Active Follow-ups</div>
+                    <div class="kpi-num" style="color: var(--accent-cyan);">232</div>
+                    <div class="kpi-sub" style="color: var(--accent-cyan);">
+                        <span>62.5%</span> active pipeline
+                    </div>
+                </div>
+
+                <div class="kpi-card purple">
+                    <div class="kpi-label">Visual Matches</div>
+                    <div class="kpi-num" style="color: var(--accent-purple);">148</div>
+                    <div class="kpi-sub" style="color: var(--accent-purple);">
+                        High confidence scores
+                    </div>
+                </div>
+            </div>
+
+            <!-- Charts & Timeline Grid -->
+            <div class="grid-two">
+                <div class="card-box">
+                    <div class="card-header">
+                        <div class="card-title">📈 Daily Lead Performance & Conversion Trend</div>
+                        <div style="font-size: 12px; color: var(--text-muted);">16/07/2026 - 06/08/2026</div>
+                    </div>
+                    <canvas id="mainChart" height="110"></canvas>
+                </div>
+
+                <div class="card-box">
+                    <div class="card-header">
+                        <div class="card-title">🎯 Status Breakdown</div>
+                    </div>
+                    <canvas id="donutChart" height="210"></canvas>
+                </div>
+            </div>
+
+            <!-- Visual Leads Card Grid -->
+            <div class="card-box">
+                <div class="card-header">
+                    <div class="card-title">✨ Top Visual Matched Leads</div>
+                    <div style="font-size: 13px; color: var(--accent-pink); font-weight: 700;">View All (371) →</div>
+                </div>
+
+                <div class="leads-grid">
+                    <div class="lead-card">
+                        <div class="lead-top">
+                            <div class="lead-name">Dilip Kumar</div>
+                            <div class="lead-status status-converted">Converted</div>
+                        </div>
+                        <div class="lead-info">
+                            <div>📍 Riyadh, KSA</div>
+                            <div>👤 Agent: Fateen</div>
+                            <div>📞 +966 54 634 8235</div>
+                            <div class="match-bar-bg"><div class="match-bar-fill" style="width: 98%;"></div></div>
+                            <div style="font-size: 11px; color: var(--accent-cyan); margin-top: 2px;">98% Visual Match</div>
+                        </div>
+                        <button class="btn-action">View Lead Details</button>
+                    </div>
+
+                    <div class="lead-card">
+                        <div class="lead-top">
+                            <div class="lead-name">Ali Rahman</div>
+                            <div class="lead-status status-followup">Follow-up</div>
+                        </div>
+                        <div class="lead-info">
+                            <div>📍 Jeddah, KSA</div>
+                            <div>👤 Agent: Nahan</div>
+                            <div>📞 +966 56 726 3756</div>
+                            <div class="match-bar-bg"><div class="match-bar-fill" style="width: 88%;"></div></div>
+                            <div style="font-size: 11px; color: var(--accent-cyan); margin-top: 2px;">88% Visual Match</div>
+                        </div>
+                        <button class="btn-action">Schedule Follow-up</button>
+                    </div>
+
+                    <div class="lead-card">
+                        <div class="lead-top">
+                            <div class="lead-name">Shuhaib Al-Ghamdi</div>
+                            <div class="lead-status status-converted">Converted</div>
+                        </div>
+                        <div class="lead-info">
+                            <div>📍 Khobar, KSA</div>
+                            <div>👤 Agent: Fateen</div>
+                            <div>📞 +966 53 155 4037</div>
+                            <div class="match-bar-bg"><div class="match-bar-fill" style="width: 94%;"></div></div>
+                            <div style="font-size: 11px; color: var(--accent-cyan); margin-top: 2px;">94% Visual Match</div>
+                        </div>
+                        <button class="btn-action">View Lead Details</button>
+                    </div>
+
+                    <div class="lead-card">
+                        <div class="lead-top">
+                            <div class="lead-name">Mariyam Lead #211</div>
+                            <div class="lead-status status-followup">Follow-up</div>
+                        </div>
+                        <div class="lead-info">
+                            <div>📍 Dammam, KSA</div>
+                            <div>👤 Agent: Mariyam</div>
+                            <div>📞 +966 50 344 3684</div>
+                            <div class="match-bar-bg"><div class="match-bar-fill" style="width: 82%;"></div></div>
+                            <div style="font-size: 11px; color: var(--accent-cyan); margin-top: 2px;">82% Visual Match</div>
+                        </div>
+                        <button class="btn-action">Send Booking Link</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Chart Logic -->
+    <script>
+        window.onload = function() {
+            // Main Trend Chart
+            const ctxMain = document.getElementById('mainChart').getContext('2d');
+            new Chart(ctxMain, {
+                type: 'line',
+                data: {
+                    labels: ['16/07', '18/07', '20/07', '22/07', '24/07', '01/08', '03/08', '05/08', '06/08'],
+                    datasets: [
+                        {
+                            label: 'Converted',
+                            data: [1, 1, 1, 0, 0, 1, 1, 0, 2],
+                            borderColor: '#10b981',
+                            backgroundColor: 'rgba(16, 185, 129, 0.15)',
+                            borderWidth: 3,
+                            tension: 0.4,
+                            fill: true
+                        },
+                        {
+                            label: 'Not Interested',
+                            data: [18, 0, 3, 8, 2, 27, 1, 4, 1],
+                            borderColor: '#ef4444',
+                            backgroundColor: 'rgba(239, 68, 68, 0.15)',
+                            borderWidth: 2,
+                            tension: 0.4,
+                            fill: true
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    plugins: { legend: { labels: { color: '#94a3b8' } } },
+                    scales: {
+                        x: { ticks: { color: '#64748b' }, grid: { color: 'rgba(255, 255, 255, 0.05)' } },
+                        y: { ticks: { color: '#64748b' }, grid: { color: 'rgba(255, 255, 255, 0.05)' } }
+                    }
+                }
+            });
+
+            // Donut Chart
+            const ctxDonut = document.getElementById('donutChart').getContext('2d');
+            new Chart(ctxDonut, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Follow-up', 'Not Interested', 'Link Sent', 'Unanswered', 'Converted'],
+                    datasets: [{
+                        data: [232, 93, 14, 14, 10],
+                        backgroundColor: ['#06b6d4', '#ef4444', '#8b5cf6', '#f97316', '#10b981'],
+                        borderWidth: 0
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: { legend: { position: 'bottom', labels: { color: '#94a3b8' } } }
+                }
+            });
+        };
+    </script>
+</body>
+</html>

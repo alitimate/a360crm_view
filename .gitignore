@@ -1,0 +1,14 @@
+# Ignore everything by default
+*
+
+# Whitelist CRM Dashboard files
+!crm_dashboard.html
+!sync_sheet.py
+!leads_data.js
+!leads_data.json
+!GoogleAppsScript_CreateDashboard.gs
+!CRM_Dashboard.xls
+!salesforce_crm_ui.html
+!visual_search_ui.html
+!README.md
+!.gitignore
