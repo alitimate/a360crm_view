@@ -20,6 +20,13 @@
             --text-muted: #8f96a3;
             --border-card: #262930;
             --red-alert: #ef4444;
+
+            /* Standard Soft Status Palette */
+            --color-converted: #10b981;
+            --color-followup: #f59e0b;
+            --color-not-interested: #ef4444;
+            --color-link-sent: #8b5cf6;
+            --color-unanswered: #64748b;
         }
 
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Plus Jakarta Sans', sans-serif; }
@@ -519,6 +526,7 @@
             transform: translate(-50%, -50%);
             text-align: center;
             pointer-events: none;
+            transition: all 0.2s ease;
         }
 
         .donut-center-text .num {
@@ -538,7 +546,7 @@
         .overview-right-content {
             display: flex;
             flex-direction: column;
-            gap: 24px;
+            gap: 20px;
         }
 
         .sales-num-box {
@@ -571,10 +579,11 @@
             color: var(--text-white);
         }
 
+        /* 📊 5-Item Responsive Legend Grid (With Not Interested) */
         .legend-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 16px 28px;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 14px 20px;
         }
 
         .legend-item {
@@ -587,7 +596,7 @@
             display: flex;
             align-items: center;
             gap: 8px;
-            font-size: 13px;
+            font-size: 12px;
             color: var(--text-muted);
             font-weight: 600;
         }
@@ -596,10 +605,11 @@
             width: 10px;
             height: 10px;
             border-radius: 50%;
+            flex-shrink: 0;
         }
 
         .legend-item-val {
-            font-size: 18px;
+            font-size: 16px;
             font-weight: 800;
             padding-left: 18px;
         }
@@ -744,7 +754,7 @@
             font-size: 12px;
         }
 
-        /* 🛠️ Fixed Master-Detail & Tab Bar (No Overlapping) */
+        /* 🛠️ Master-Detail & Tab Bar */
         .tabs-header-container {
             display: flex;
             justify-content: center;
@@ -853,12 +863,23 @@
             flex-wrap: wrap;
         }
 
+        /* SVG Slice Hover Glow Styling */
+        .donut-slice {
+            cursor: pointer;
+            transition: stroke-width 0.2s ease, opacity 0.2s ease;
+        }
+        .donut-slice:hover {
+            stroke-width: 32;
+            opacity: 0.95;
+        }
+
         @media (max-width: 1024px) {
             body { padding: 20px 24px; }
             .top-cards-grid { grid-template-columns: repeat(2, 1fr); }
             .mid-grid { grid-template-columns: 1fr; }
             .master-detail-card { grid-template-columns: 1fr; }
             .list-panel { max-height: 340px; }
+            .legend-grid { grid-template-columns: 1fr 1fr; }
         }
 
         @media (max-width: 768px) {
@@ -877,6 +898,7 @@
             .period-bar { flex-direction: column; align-items: flex-start; }
             .period-pills { width: 100%; overflow-x: auto; }
             .calendar-popover { right: 0; width: 100%; max-width: 320px; }
+            .legend-grid { grid-template-columns: 1fr 1fr; }
         }
     </style>
 </head>
@@ -999,7 +1021,7 @@
             </div>
         </div>
 
-        <!-- 🚀 1. Moved ABOVE Graph: Leads Overview & Status Share -->
+        <!-- 🚀 Leads Overview & Status Share -->
         <div class="mid-grid">
             <div class="overview-card">
                 <div class="overview-head">
@@ -1008,12 +1030,13 @@
                 </div>
 
                 <div class="overview-body">
+                    <!-- Interactive Hoverable Donut Chart -->
                     <div class="donut-container" id="donutSvgContainer">
                         <svg viewBox="0 0 200 200" width="200" height="200" id="donutSvgElement">
                         </svg>
-                        <div class="donut-center-text">
+                        <div class="donut-center-text" id="donutCenterBox">
                             <div class="num" id="donutCenterNum">...</div>
-                            <div class="sub">Total Leads</div>
+                            <div class="sub" id="donutCenterSub">Total Leads</div>
                         </div>
                     </div>
 
@@ -1026,18 +1049,11 @@
                             </div>
                         </div>
 
+                        <!-- 📊 Complete 5-Status Legend Grid (Including Not Interested) -->
                         <div class="legend-grid">
                             <div class="legend-item">
                                 <div class="legend-item-head">
-                                    <div class="dot" style="background: #95f029;"></div>
-                                    <span id="lblFollowup">Follow-up</span>
-                                </div>
-                                <div class="legend-item-val" id="valFollowup">SAR ...</div>
-                            </div>
-
-                            <div class="legend-item">
-                                <div class="legend-item-head">
-                                    <div class="dot" style="background: #10b981;"></div>
+                                    <div class="dot" style="background: var(--color-converted);"></div>
                                     <span id="lblConverted">Converted</span>
                                 </div>
                                 <div class="legend-item-val" id="valConverted">SAR ...</div>
@@ -1045,7 +1061,23 @@
 
                             <div class="legend-item">
                                 <div class="legend-item-head">
-                                    <div class="dot" style="background: #a855f7;"></div>
+                                    <div class="dot" style="background: var(--color-followup);"></div>
+                                    <span id="lblFollowup">Follow-up</span>
+                                </div>
+                                <div class="legend-item-val" id="valFollowup">SAR ...</div>
+                            </div>
+
+                            <div class="legend-item">
+                                <div class="legend-item-head">
+                                    <div class="dot" style="background: var(--color-not-interested);"></div>
+                                    <span id="lblNotInterested">Not Interested</span>
+                                </div>
+                                <div class="legend-item-val" id="valNotInterested">SAR ...</div>
+                            </div>
+
+                            <div class="legend-item">
+                                <div class="legend-item-head">
+                                    <div class="dot" style="background: var(--color-link-sent);"></div>
                                     <span id="lblLinkSent">Link Sent</span>
                                 </div>
                                 <div class="legend-item-val" id="valLinkSent">SAR ...</div>
@@ -1053,7 +1085,7 @@
 
                             <div class="legend-item">
                                 <div class="legend-item-head">
-                                    <div class="dot" style="background: #f97316;"></div>
+                                    <div class="dot" style="background: var(--color-unanswered);"></div>
                                     <span id="lblUnanswered">Unanswered</span>
                                 </div>
                                 <div class="legend-item-val" id="valUnanswered">SAR ...</div>
@@ -1083,10 +1115,10 @@
             </div>
         </div>
 
-        <!-- Dedicated Full-Width Trend Chart Card -->
+        <!-- Dedicated Full-Width Trend Chart Card (With Subtle Harmonious Status Colors) -->
         <div class="trend-chart-card">
             <div class="trend-chart-head">
-                <span>📈 Daily Trend: Converted, Follow-ups, Not Interested & Link Sent</span>
+                <span>📈 Daily Trend: Converted, Follow-ups, Not Interested, Link Sent & Unanswered</span>
             </div>
             <div class="chart-container-box">
                 <canvas id="mainTrendLineChart"></canvas>
@@ -1128,7 +1160,7 @@
             </div>
         </div>
 
-        <!-- 🛠️ Split Master-Detail Card (With Clean Non-Overlapping Tabs Bar) -->
+        <!-- Split Master-Detail Card -->
         <div class="tabs-header-container">
             <div class="tabs-header">
                 <button class="tab-btn active" onclick="setTab('ALL', this)">All Leads <span style="background: #000; color: #fff; padding: 2px 6px; border-radius: 10px; font-size: 10px;" id="countAll">...</span></button>
@@ -1235,6 +1267,7 @@
         let currentLeads = [];
         let selectedPeriod = 'ALL';
         let trendChartInstance = null;
+        let defaultTotalLeadsCount = 0;
         const GOOGLE_SHEET_CSV_URL = "https://docs.google.com/spreadsheets/d/15n6wstZajaR98ZzD5ZnV5tH6B8quAoCYTRD5CiH7h-M/export?format=csv&gid=0";
 
         // Calendar State
@@ -1533,6 +1566,8 @@
 
         function recalculateDashboardMetrics() {
             const total = currentLeads.length;
+            defaultTotalLeadsCount = total;
+
             const converted = currentLeads.filter(l => l.status === 'Converted').length;
             const followup = currentLeads.filter(l => l.status === 'Follow-up').length;
             const notInterested = currentLeads.filter(l => l.status === 'Not Interested').length;
@@ -1554,13 +1589,19 @@
 
             document.getElementById('overviewTotalSub').innerText = total + " Leads Total";
             document.getElementById('donutCenterNum').innerText = total;
+            document.getElementById('donutCenterNum').style.color = '#ffffff';
+            document.getElementById('donutCenterSub').innerText = "Total Leads";
             document.getElementById('pipelineBoxVal').innerText = "SAR " + qualifiedPipelineVal.toLocaleString();
+
+            // Legend Updates
+            document.getElementById('lblConverted').innerText = "Converted (" + converted + ")";
+            document.getElementById('valConverted').innerText = "SAR " + (converted * 699).toLocaleString();
 
             document.getElementById('lblFollowup').innerText = "Follow-up (" + followup + ")";
             document.getElementById('valFollowup').innerText = "SAR " + (followup * 699).toLocaleString();
 
-            document.getElementById('lblConverted').innerText = "Converted (" + converted + ")";
-            document.getElementById('valConverted').innerText = "SAR " + (converted * 699).toLocaleString();
+            document.getElementById('lblNotInterested').innerText = "Not Interested (" + notInterested + ")";
+            document.getElementById('valNotInterested').innerText = "SAR " + (notInterested * 699).toLocaleString();
 
             document.getElementById('lblLinkSent').innerText = "Link Sent (" + linkSent + ")";
             document.getElementById('valLinkSent').innerText = "SAR " + (linkSent * 699).toLocaleString();
@@ -1573,7 +1614,7 @@
             document.getElementById('countFollowupTab').innerText = followup;
             document.getElementById('countNotIntTab').innerText = notInterested;
 
-            // 📍 Dynamic Top Location Calculation
+            // Dynamic Top Location
             const locCounts = {};
             currentLeads.forEach(l => {
                 const loc = l.location || 'Riyadh';
@@ -1589,7 +1630,7 @@
             document.getElementById('topLocLabel').innerText = `Top Location: ${topLoc}`;
             document.getElementById('topLocVal').innerHTML = `${topLocCount} <span style="font-size: 12px; color: var(--accent-lime);">Leads</span>`;
 
-            // 📊 Dynamic Top Agent Conversion Calculation
+            // Dynamic Top Agent
             const agStats = {};
             currentLeads.forEach(l => {
                 const ag = l.agent || 'Unassigned';
@@ -1608,10 +1649,11 @@
             document.getElementById('topAgentLabel').innerText = `Top Agent: ${topAgent}`;
             document.getElementById('topAgentVal').innerHTML = `${topAgentRate.toFixed(1)}% <span style="font-size: 12px; color: var(--accent-lime);">Conv.</span>`;
 
-            renderDynamicSVGDonut(followup, converted, linkSent, unanswered, notInterested, total);
+            renderDynamicSVGDonut(converted, followup, notInterested, linkSent, unanswered, total);
         }
 
-        function renderDynamicSVGDonut(f, c, ls, u, ni, total) {
+        // 📊 Interactive SVG Donut Renderer with Hover Value & Tooltips
+        function renderDynamicSVGDonut(c, f, ni, ls, u, total) {
             const svg = document.getElementById('donutSvgElement');
             if (!svg || total === 0) {
                 if (svg) svg.innerHTML = '';
@@ -1619,11 +1661,11 @@
             }
 
             const slices = [
-                { count: f, color: '#95f029' },
-                { count: c, color: '#10b981' },
-                { count: ls, color: '#a855f7' },
-                { count: u, color: '#f97316' },
-                { count: ni, color: '#ef4444' }
+                { label: 'Converted', count: c, color: '#10b981' },
+                { label: 'Follow-up', count: f, color: '#f59e0b' },
+                { label: 'Not Interested', count: ni, color: '#ef4444' },
+                { label: 'Link Sent', count: ls, color: '#8b5cf6' },
+                { label: 'Unanswered', count: u, color: '#64748b' }
             ];
 
             const cx = 100, cy = 100, r = 80;
@@ -1634,6 +1676,8 @@
                 if (s.count > 0) {
                     const fraction = s.count / total;
                     const endAngle = startAngle + fraction * 2 * Math.PI;
+                    const pct = (fraction * 100).toFixed(1);
+                    const valSAR = (s.count * 699).toLocaleString();
 
                     const x1 = (cx + r * Math.cos(startAngle)).toFixed(2);
                     const y1 = (cy + r * Math.sin(startAngle)).toFixed(2);
@@ -1643,12 +1687,40 @@
                     const largeArc = fraction > 0.5 ? 1 : 0;
                     const d = `M ${x1} ${y1} A ${r} ${r} 0 ${largeArc} 1 ${x2} ${y2}`;
 
-                    svgPaths += `<path d="${d}" fill="none" stroke="${s.color}" stroke-width="26" stroke-linecap="round"/>`;
+                    svgPaths += `
+                        <path d="${d}" class="donut-slice" fill="none" stroke="${s.color}" stroke-width="26" stroke-linecap="round"
+                            onmouseover="handleDonutSliceHover('${s.label}', ${s.count}, '${pct}', '${valSAR}', '${s.color}')"
+                            onmouseleave="handleDonutSliceLeave()">
+                            <title>${s.label}: ${s.count} Leads (${pct}%) - SAR ${valSAR}</title>
+                        </path>
+                    `;
                     startAngle = endAngle;
                 }
             });
 
             svg.innerHTML = svgPaths;
+        }
+
+        function handleDonutSliceHover(label, count, pct, valSAR, color) {
+            const numEl = document.getElementById('donutCenterNum');
+            const subEl = document.getElementById('donutCenterSub');
+            if (numEl && subEl) {
+                numEl.innerText = `${count} (${pct}%)`;
+                numEl.style.color = color;
+                numEl.style.fontSize = '22px';
+                subEl.innerText = `${label} • SAR ${valSAR}`;
+            }
+        }
+
+        function handleDonutSliceLeave() {
+            const numEl = document.getElementById('donutCenterNum');
+            const subEl = document.getElementById('donutCenterSub');
+            if (numEl && subEl) {
+                numEl.innerText = defaultTotalLeadsCount;
+                numEl.style.color = '#ffffff';
+                numEl.style.fontSize = '28px';
+                subEl.innerText = 'Total Leads';
+            }
         }
 
         function updateDynamicAgentTable() {
@@ -1679,10 +1751,10 @@
                         <td><span class="agent-icon">${initials}</span><strong>${ag}</strong></td>
                         <td>${data.total}</td>
                         <td>SAR ${qualVal.toLocaleString()}</td>
-                        <td><strong style="color: var(--accent-lime);">${data.converted}</strong></td>
-                        <td><span style="color: var(--red-alert);">${data.notInterested}</span></td>
+                        <td><strong style="color: var(--color-converted);">${data.converted}</strong></td>
+                        <td><span style="color: var(--color-not-interested);">${data.notInterested}</span></td>
                         <td>${data.followup}</td>
-                        <td><strong style="color: var(--accent-lime);">${convRate}%</strong></td>
+                        <td><strong style="color: var(--color-converted);">${convRate}%</strong></td>
                     </tr>
                 `;
             });
@@ -1800,6 +1872,7 @@
             filterLeads();
         }
 
+        // 📈 Trend Chart with Subtle Google Sheet Status Dropdown Palette
         function updateTrendChartData() {
             if (!currentLeads) return;
 
@@ -1819,26 +1892,22 @@
 
             const dateKeys = Object.keys(dateMap);
             const labels = dateKeys.length > 0 ? dateKeys.slice(0, 20) : ['No Data'];
+            const convData = labels.map(k => dateMap[k] ? dateMap[k].converted : 0);
             const followupData = labels.map(k => dateMap[k] ? dateMap[k].followup : 0);
             const notIntData = labels.map(k => dateMap[k] ? dateMap[k].notInterested : 0);
-            const convData = labels.map(k => dateMap[k] ? dateMap[k].converted : 0);
             const linkSentData = labels.map(k => dateMap[k] ? dateMap[k].linkSent : 0);
             const unansweredData = labels.map(k => dateMap[k] ? dateMap[k].unanswered : 0);
 
             const ctx = document.getElementById('mainTrendLineChart').getContext('2d');
             if (trendChartInstance) trendChartInstance.destroy();
 
-            const gradRed = ctx.createLinearGradient(0, 0, 0, 300);
-            gradRed.addColorStop(0, 'rgba(239, 68, 68, 0.35)');
-            gradRed.addColorStop(1, 'rgba(239, 68, 68, 0.0)');
-
-            const gradLime = ctx.createLinearGradient(0, 0, 0, 300);
-            gradLime.addColorStop(0, 'rgba(149, 240, 41, 0.35)');
-            gradLime.addColorStop(1, 'rgba(149, 240, 41, 0.0)');
-
-            const gradGreen = ctx.createLinearGradient(0, 0, 0, 300);
-            gradGreen.addColorStop(0, 'rgba(16, 185, 129, 0.35)');
-            gradGreen.addColorStop(1, 'rgba(16, 185, 129, 0.0)');
+            // Subtle gradients
+            const createGrad = (cHex) => {
+                const g = ctx.createLinearGradient(0, 0, 0, 300);
+                g.addColorStop(0, cHex + '33');
+                g.addColorStop(1, cHex + '00');
+                return g;
+            };
 
             trendChartInstance = new Chart(ctx, {
                 type: 'line',
@@ -1846,44 +1915,44 @@
                     labels: labels,
                     datasets: [
                         {
-                            label: 'Not Interested',
-                            data: notIntData,
-                            borderColor: '#ef4444',
-                            backgroundColor: gradRed,
-                            borderWidth: 3,
+                            label: 'Converted',
+                            data: convData,
+                            borderColor: '#10b981',
+                            backgroundColor: createGrad('#10b981'),
+                            borderWidth: 2.5,
                             tension: 0.4,
                             fill: true,
-                            pointBackgroundColor: '#ef4444',
-                            pointRadius: 4
+                            pointBackgroundColor: '#10b981',
+                            pointRadius: 3
                         },
                         {
                             label: 'Follow-up',
                             data: followupData,
-                            borderColor: '#95f029',
-                            backgroundColor: gradLime,
-                            borderWidth: 3,
+                            borderColor: '#f59e0b',
+                            backgroundColor: createGrad('#f59e0b'),
+                            borderWidth: 2.5,
                             tension: 0.4,
                             fill: true,
-                            pointBackgroundColor: '#95f029',
-                            pointRadius: 4
+                            pointBackgroundColor: '#f59e0b',
+                            pointRadius: 3
                         },
                         {
-                            label: 'Converted',
-                            data: convData,
-                            borderColor: '#10b981',
-                            backgroundColor: gradGreen,
-                            borderWidth: 3,
+                            label: 'Not Interested',
+                            data: notIntData,
+                            borderColor: '#ef4444',
+                            backgroundColor: createGrad('#ef4444'),
+                            borderWidth: 2.5,
                             tension: 0.4,
                             fill: true,
-                            pointBackgroundColor: '#10b981',
-                            pointRadius: 4
+                            pointBackgroundColor: '#ef4444',
+                            pointRadius: 3
                         },
                         {
                             label: 'Link Sent',
                             data: linkSentData,
-                            borderColor: '#a855f7',
+                            borderColor: '#8b5cf6',
                             backgroundColor: 'transparent',
-                            borderWidth: 2.5,
+                            borderWidth: 2,
                             tension: 0.4,
                             fill: false,
                             pointRadius: 3
@@ -1891,9 +1960,9 @@
                         {
                             label: 'Unanswered',
                             data: unansweredData,
-                            borderColor: '#f97316',
+                            borderColor: '#64748b',
                             backgroundColor: 'transparent',
-                            borderWidth: 2.5,
+                            borderWidth: 2,
                             tension: 0.4,
                             fill: false,
                             pointRadius: 3
@@ -1908,7 +1977,7 @@
                             display: true,
                             position: 'top',
                             align: 'center',
-                            labels: { color: '#d1d5db', font: { size: 12, weight: '600' } }
+                            labels: { color: '#8f96a3', font: { size: 12, weight: '600' } }
                         }
                     },
                     scales: {
