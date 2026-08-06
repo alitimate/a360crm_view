@@ -38,7 +38,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 28px;
+            margin-bottom: 24px;
             gap: 16px;
         }
 
@@ -114,6 +114,76 @@
         .spinner {
             display: inline-block;
             animation: spin 1s linear infinite;
+        }
+
+        /* Period Selector Control Bar */
+        .period-bar {
+            background: var(--bg-card);
+            border: 1px solid var(--border-card);
+            border-radius: 20px;
+            padding: 12px 20px;
+            margin-bottom: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .period-label {
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--text-white);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .period-pills {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .period-btn {
+            background: #131519;
+            border: 1px solid var(--border-card);
+            color: var(--text-muted);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .period-btn:hover { color: var(--text-white); border-color: #3b3f4d; }
+
+        .period-btn.active {
+            background: var(--accent-lime);
+            color: #000000;
+            border-color: var(--accent-lime);
+        }
+
+        .custom-range-inputs {
+            display: none;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .custom-range-inputs.show {
+            display: flex;
+        }
+
+        .date-input {
+            background: #131519;
+            border: 1px solid var(--border-card);
+            color: var(--text-white);
+            padding: 6px 12px;
+            border-radius: 12px;
+            font-size: 12px;
+            outline: none;
         }
 
         /* Top 4 Scorecards Grid */
@@ -555,9 +625,7 @@
             justify-content: space-between;
         }
 
-        /* 📱 RESPONSIVE MEDIA QUERIES FOR MOBILE & TABLETS */
-
-        /* Tablets & Mid-size screens (max-width: 1024px) */
+        /* Responsive Media Queries */
         @media (max-width: 1024px) {
             body { padding: 20px 24px; }
             .top-cards-grid { grid-template-columns: repeat(2, 1fr); }
@@ -567,7 +635,6 @@
             .tabs-header { position: relative; top: 0; left: 0; transform: none; margin: 12px auto 16px auto; justify-content: center; }
         }
 
-        /* Mobile Devices (max-width: 768px) */
         @media (max-width: 768px) {
             body { padding: 16px 16px; }
             header { flex-direction: column; align-items: flex-start; gap: 12px; }
@@ -582,9 +649,10 @@
             .pill-select { width: 100%; }
             .tabs-header { width: 100%; justify-content: flex-start; }
             .detail-panel { padding: 20px; }
+            .period-bar { flex-direction: column; align-items: flex-start; }
+            .period-pills { width: 100%; overflow-x: auto; }
         }
 
-        /* Small Mobile Devices (max-width: 480px) */
         @media (max-width: 480px) {
             .score-val { font-size: 26px; }
             .trend-chart-head { font-size: 15px; }
@@ -610,10 +678,30 @@
         </div>
     </header>
 
+    <!-- Period Selector Control Bar -->
+    <div class="period-bar">
+        <div class="period-label">
+            <span>📅 Time Period Filter:</span>
+            <span id="activePeriodLabel" style="color: var(--accent-lime);">All Time</span>
+        </div>
+
+        <div class="period-pills">
+            <button class="period-btn active" onclick="setPeriod('ALL', this)">All Time</button>
+            <button class="period-btn" onclick="setPeriod('1D', this)">Last 1 Day</button>
+            <button class="period-btn" onclick="setPeriod('7D', this)">Last 7 Days</button>
+            <button class="period-btn" onclick="setPeriod('30D', this)">Last 30 Days</button>
+            <button class="period-btn" onclick="toggleCustomRange(this)">Custom Range 📅</button>
+
+            <div class="custom-range-inputs" id="customRangeBox">
+                <input type="date" class="date-input" id="startDatePicker" onchange="applyCustomRange()">
+                <span style="color: var(--text-muted); font-size: 12px;">to</span>
+                <input type="date" class="date-input" id="endDatePicker" onchange="applyCustomRange()">
+            </div>
+        </div>
+    </div>
+
     <!-- Top 4 Scorecards Grid -->
     <div class="top-cards-grid">
-        
-        <!-- Card 1: Total Leads -->
         <div class="score-card">
             <div>
                 <div class="score-label">Total System Leads</div>
@@ -624,7 +712,6 @@
             </div>
         </div>
 
-        <!-- Card 2: Open Follow-ups -->
         <div class="score-card">
             <div>
                 <div class="score-label">Open Follow-ups</div>
@@ -635,7 +722,6 @@
             </div>
         </div>
 
-        <!-- Card 3: Conversion Goal Gauge -->
         <div class="score-card">
             <div>
                 <div class="score-label">Conversion Goal</div>
@@ -652,7 +738,6 @@
             </div>
         </div>
 
-        <!-- Card 4: Converted Deal Revenue -->
         <div class="score-card">
             <div>
                 <div class="score-label">Converted Revenue</div>
@@ -662,7 +747,6 @@
                 <span id="topConvertedCount">... Leads</span> Booked & Paid
             </div>
         </div>
-
     </div>
 
     <!-- Dedicated Full-Width Trend Chart Card -->
@@ -686,11 +770,8 @@
             </div>
 
             <div class="overview-body">
-                
-                <!-- Dynamic SVG Donut Container -->
                 <div class="donut-container" id="donutSvgContainer">
                     <svg viewBox="0 0 200 200" width="200" height="200" id="donutSvgElement">
-                        <!-- Dynamic Slices Rendered by JS -->
                     </svg>
                     <div class="donut-center-text">
                         <div class="num" id="donutCenterNum">...</div>
@@ -698,7 +779,6 @@
                     </div>
                 </div>
 
-                <!-- Right: Icon Box & 2-Column Status Legend Grid -->
                 <div class="overview-right-content">
                     <div class="sales-num-box">
                         <div class="green-square-icon">SAR</div>
@@ -708,7 +788,6 @@
                         </div>
                     </div>
 
-                    <!-- 2-Column Dynamic Status Legend Grid -->
                     <div class="legend-grid">
                         <div class="legend-item">
                             <div class="legend-item-head">
@@ -742,9 +821,7 @@
                             <div class="legend-item-val" id="valUnanswered">SAR ...</div>
                         </div>
                     </div>
-
                 </div>
-
             </div>
         </div>
 
@@ -769,7 +846,7 @@
 
     </div>
 
-    <!-- Sales Agent Performance Table in SAR (Responsive Wrapper) -->
+    <!-- Sales Agent Performance Table in SAR -->
     <div class="agent-card">
         <div style="font-size: 16px; font-weight: 700; margin-bottom: 16px;">👤 Sales Agent Performance Summary</div>
         <div class="table-responsive">
@@ -786,7 +863,6 @@
                     </tr>
                 </thead>
                 <tbody id="agentTableBody">
-                    <!-- Dynamically Rendered -->
                 </tbody>
             </table>
         </div>
@@ -805,9 +881,8 @@
         </div>
     </div>
 
-    <!-- Split Master-Detail Card (Responsive Stack on Mobile) -->
+    <!-- Split Master-Detail Card -->
     <div class="master-detail-card">
-        
         <div class="tabs-header">
             <button class="tab-btn active" onclick="setTab('ALL', this)">All Leads <span style="background: #000; color: #fff; padding: 2px 6px; border-radius: 10px; font-size: 10px;" id="countAll">...</span></button>
             <button class="tab-btn" onclick="setTab('Converted', this)">Converted <span id="countConvertedTab">...</span></button>
@@ -815,12 +890,9 @@
             <button class="tab-btn" onclick="setTab('Not Interested', this)">Not Interested <span id="countNotIntTab">...</span></button>
         </div>
 
-        <!-- Left List Panel -->
         <div class="list-panel" id="leadsList">
-            <!-- Dynamically rendered -->
         </div>
 
-        <!-- Right Detail View Panel -->
         <div class="detail-panel">
             <div>
                 <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 24px; flex-wrap: wrap; gap: 12px;">
@@ -871,15 +943,122 @@
                 </button>
             </div>
         </div>
-
     </div>
 
-    <!-- Pure Dynamic Live Sheet Sync Engine -->
+    <!-- Script Engine with Time Period Filter & Date Range Picker -->
     <script>
         let currentTabStatus = 'ALL';
+        let rawLeads = [];
         let currentLeads = [];
+        let selectedPeriod = 'ALL';
         let trendChartInstance = null;
         const GOOGLE_SHEET_CSV_URL = "https://docs.google.com/spreadsheets/d/15n6wstZajaR98ZzD5ZnV5tH6B8quAoCYTRD5CiH7h-M/export?format=csv&gid=0";
+
+        // Date Parsing Helper (dd/mm/yyyy)
+        function parseLeadDate(dateStr) {
+            if (!dateStr) return null;
+            const parts = dateStr.split('/');
+            if (parts.length === 3) {
+                let day = parseInt(parts[0], 10);
+                let month = parseInt(parts[1], 10) - 1;
+                let year = parseInt(parts[2], 10);
+                if (year < 100) year += 2000;
+                return new Date(year, month, day);
+            }
+            return null;
+        }
+
+        // Time Period Filter Switcher
+        function setPeriod(periodCode, btnElement) {
+            selectedPeriod = periodCode;
+            document.querySelectorAll('.period-btn').forEach(b => b.classList.remove('active'));
+            if (btnElement) btnElement.classList.add('active');
+            document.getElementById('customRangeBox').classList.remove('show');
+
+            const labelMap = {
+                'ALL': 'All Time',
+                '1D': 'Last 1 Day (Today)',
+                '7D': 'Last 7 Days (Last Week)',
+                '30D': 'Last 30 Days (Last Month)'
+            };
+            document.getElementById('activePeriodLabel').innerText = labelMap[periodCode] || 'All Time';
+
+            applyPeriodFilter();
+        }
+
+        function toggleCustomRange(btnElement) {
+            selectedPeriod = 'CUSTOM';
+            document.querySelectorAll('.period-btn').forEach(b => b.classList.remove('active'));
+            btnElement.classList.add('active');
+            document.getElementById('customRangeBox').classList.add('show');
+            document.getElementById('activePeriodLabel').innerText = 'Custom Date Range';
+        }
+
+        function applyPeriodFilter() {
+            if (!rawLeads || rawLeads.length === 0) return;
+
+            let maxDate = null;
+            rawLeads.forEach(l => {
+                const dt = parseLeadDate(l.date);
+                if (dt && (!maxDate || dt > maxDate)) maxDate = dt;
+            });
+            if (!maxDate) maxDate = new Date();
+
+            if (selectedPeriod === 'ALL') {
+                currentLeads = [...rawLeads];
+            } else if (selectedPeriod === '1D') {
+                const cutoff = new Date(maxDate);
+                cutoff.setDate(cutoff.getDate() - 1);
+                currentLeads = rawLeads.filter(l => {
+                    const dt = parseLeadDate(l.date);
+                    return dt && dt >= cutoff;
+                });
+            } else if (selectedPeriod === '7D') {
+                const cutoff = new Date(maxDate);
+                cutoff.setDate(cutoff.getDate() - 7);
+                currentLeads = rawLeads.filter(l => {
+                    const dt = parseLeadDate(l.date);
+                    return dt && dt >= cutoff;
+                });
+            } else if (selectedPeriod === '30D') {
+                const cutoff = new Date(maxDate);
+                cutoff.setDate(cutoff.getDate() - 30);
+                currentLeads = rawLeads.filter(l => {
+                    const dt = parseLeadDate(l.date);
+                    return dt && dt >= cutoff;
+                });
+            }
+
+            recalculateDashboardMetrics();
+            renderLeads(currentLeads);
+            updateDynamicAgentTable();
+            updateDynamicFilters();
+            updateTrendChartData();
+        }
+
+        function applyCustomRange() {
+            const startVal = document.getElementById('startDatePicker').value;
+            const endVal = document.getElementById('endDatePicker').value;
+
+            if (!startVal || !endVal) return;
+
+            const startDt = new Date(startVal);
+            const endDt = new Date(endVal);
+            endDt.setHours(23, 59, 59);
+
+            currentLeads = rawLeads.filter(l => {
+                const dt = parseLeadDate(l.date);
+                return dt && dt >= startDt && dt <= endDt;
+            });
+
+            document.getElementById('activePeriodLabel').innerText = `${startVal} to ${endVal}`;
+
+            recalculateDashboardMetrics();
+            renderLeads(currentLeads);
+            updateDynamicAgentTable();
+            updateDynamicFilters();
+            updateTrendChartData();
+        }
 
         async function syncNow() {
             const btn = document.getElementById('syncBtn');
@@ -946,24 +1125,16 @@
                     }
 
                     if (parsedLeads.length > 0) {
-                        currentLeads = parsedLeads;
-                        recalculateDashboardMetrics();
-                        renderLeads(currentLeads);
-                        updateDynamicAgentTable();
-                        updateDynamicFilters();
-                        updateTrendChartData();
+                        rawLeads = parsedLeads;
+                        applyPeriodFilter();
                         return true;
                     }
                 }
             } catch (err) {
                 console.log("Using fallback dataset:", err);
                 if (typeof leadsData !== 'undefined' && leadsData.length > 0) {
-                    currentLeads = leadsData;
-                    recalculateDashboardMetrics();
-                    renderLeads(currentLeads);
-                    updateDynamicAgentTable();
-                    updateDynamicFilters();
-                    updateTrendChartData();
+                    rawLeads = leadsData;
+                    applyPeriodFilter();
                 }
             }
             return false;
@@ -1032,7 +1203,10 @@
 
         function renderDynamicSVGDonut(f, c, ls, u, ni, total) {
             const svg = document.getElementById('donutSvgElement');
-            if (!svg || total === 0) return;
+            if (!svg || total === 0) {
+                if (svg) svg.innerHTML = '';
+                return;
+            }
 
             const slices = [
                 { count: f, color: '#95f029' },
@@ -1103,7 +1277,7 @@
                 `;
             });
 
-            tbody.innerHTML = html;
+            tbody.innerHTML = html || '<tr><td colspan="7" style="text-align:center; padding: 20px;">No agent data for selected period</td></tr>';
         }
 
         function updateDynamicFilters() {
@@ -1136,7 +1310,7 @@
             listContainer.innerHTML = '';
 
             if (!items || items.length === 0) {
-                listContainer.innerHTML = '<div style="padding: 24px; text-align: center; color: #6b7280; font-weight: 600;">No matching leads found</div>';
+                listContainer.innerHTML = '<div style="padding: 24px; text-align: center; color: #6b7280; font-weight: 600;">No matching leads found for selected period</div>';
                 return;
             }
 
@@ -1217,7 +1391,7 @@
         }
 
         function updateTrendChartData() {
-            if (!currentLeads || currentLeads.length === 0) return;
+            if (!currentLeads) return;
 
             const dateMap = {};
             currentLeads.forEach(l => {
@@ -1234,14 +1408,12 @@
             });
 
             const dateKeys = Object.keys(dateMap);
-            if (dateKeys.length === 0) return;
-
-            const labels = dateKeys.slice(0, 15);
-            const followupData = labels.map(k => dateMap[k].followup);
-            const notIntData = labels.map(k => dateMap[k].notInterested);
-            const convData = labels.map(k => dateMap[k].converted);
-            const linkSentData = labels.map(k => dateMap[k].linkSent);
-            const unansweredData = labels.map(k => dateMap[k].unanswered);
+            const labels = dateKeys.length > 0 ? dateKeys.slice(0, 20) : ['No Data'];
+            const followupData = labels.map(k => dateMap[k] ? dateMap[k].followup : 0);
+            const notIntData = labels.map(k => dateMap[k] ? dateMap[k].notInterested : 0);
+            const convData = labels.map(k => dateMap[k] ? dateMap[k].converted : 0);
+            const linkSentData = labels.map(k => dateMap[k] ? dateMap[k].linkSent : 0);
+            const unansweredData = labels.map(k => dateMap[k] ? dateMap[k].unanswered : 0);
 
             const ctx = document.getElementById('mainTrendLineChart').getContext('2d');
             if (trendChartInstance) trendChartInstance.destroy();
