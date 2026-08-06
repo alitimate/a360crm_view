@@ -33,6 +33,120 @@
             padding: 28px 40px;
         }
 
+        /* 🔒 Full-Screen Passcode Lock Overlay */
+        .passcode-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(15, 17, 21, 0.96);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            z-index: 99999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .passcode-card {
+            background: #161922;
+            border: 1px solid #282c38;
+            border-radius: 28px;
+            padding: 40px 36px;
+            width: 100%;
+            max-width: 420px;
+            text-align: center;
+            box-shadow: 0 24px 60px rgba(0, 0, 0, 0.8), 0 0 40px rgba(149, 240, 41, 0.1);
+        }
+
+        .lock-icon-box {
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            background: rgba(149, 240, 41, 0.15);
+            border: 1px solid var(--accent-lime);
+            color: var(--accent-lime);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            margin: 0 auto 20px auto;
+        }
+
+        .passcode-title {
+            font-size: 22px;
+            font-weight: 800;
+            color: var(--text-white);
+            margin-bottom: 8px;
+        }
+
+        .passcode-sub {
+            font-size: 13px;
+            color: var(--text-muted);
+            font-weight: 500;
+            margin-bottom: 24px;
+            line-height: 1.5;
+        }
+
+        .passcode-input {
+            width: 100%;
+            background: #111317;
+            border: 1px solid var(--border-card);
+            color: var(--text-white);
+            padding: 14px 20px;
+            border-radius: 16px;
+            font-size: 16px;
+            font-weight: 700;
+            text-align: center;
+            letter-spacing: 2px;
+            outline: none;
+            margin-bottom: 16px;
+            transition: all 0.2s;
+        }
+
+        .passcode-input:focus {
+            border-color: var(--accent-lime);
+            box-shadow: 0 0 16px rgba(149, 240, 41, 0.2);
+        }
+
+        .passcode-btn {
+            width: 100%;
+            background: var(--accent-lime);
+            color: #000000;
+            border: none;
+            padding: 14px 20px;
+            border-radius: 16px;
+            font-size: 14px;
+            font-weight: 800;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .passcode-btn:hover {
+            background: var(--accent-lime-light);
+            transform: translateY(-1px);
+        }
+
+        .passcode-error {
+            color: var(--red-alert);
+            font-size: 12px;
+            font-weight: 700;
+            margin-top: 12px;
+            display: none;
+        }
+
+        /* Hide main dashboard content until authorized */
+        .dashboard-content {
+            display: none;
+        }
+
+        .dashboard-content.authorized {
+            display: flex;
+            flex-direction: column;
+        }
+
         /* Top Header Navbar */
         header {
             display: flex;
@@ -70,7 +184,6 @@
             gap: 16px;
         }
 
-        /* Interactive Clickable Live Sync Button */
         .live-status-pill {
             background: rgba(149, 240, 41, 0.15);
             color: var(--accent-lime);
@@ -116,7 +229,6 @@
             animation: spin 1s linear infinite;
         }
 
-        /* Period Selector Control Bar */
         .period-bar {
             background: var(--bg-card);
             border: 1px solid var(--border-card);
@@ -167,7 +279,6 @@
             border-color: var(--accent-lime);
         }
 
-        /* Interactive Calendar Popover View */
         .calendar-popover {
             display: none;
             position: absolute;
@@ -288,7 +399,6 @@
             cursor: pointer;
         }
 
-        /* Top 4 Scorecards Grid */
         .top-cards-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
@@ -339,7 +449,6 @@
             height: 60px;
         }
 
-        /* Dedicated Full-Width Chart Card */
         .trend-chart-card {
             background: #13161f;
             border: 1px solid #222634;
@@ -364,7 +473,6 @@
             height: 320px;
         }
 
-        /* Main Dashboard Middle Row */
         .mid-grid {
             display: grid;
             grid-template-columns: 2fr 1fr;
@@ -758,302 +866,355 @@
 </head>
 <body>
 
-    <!-- Header Navbar -->
-    <header>
-        <div class="brand">
-            <img src="https://a3sixty.com/img/a360w.png" alt="a3sixty logo">
-            <span class="brand-text">CRM</span>
-        </div>
-
-        <div class="header-right-info">
-            <button class="live-status-pill" id="syncBtn" onclick="syncNow()" title="Click to fetch latest data directly from your Google Sheet">
-                <div class="live-dot" id="syncDot"></div>
-                <span id="syncStatusText">LIVE SHEET SYNC</span>
-            </button>
-        </div>
-    </header>
-
-    <!-- Period Selector Control Bar -->
-    <div class="period-bar">
-        <div class="period-label">
-            <span>📅 Time Period Filter:</span>
-            <span id="activePeriodLabel" style="color: var(--accent-lime);">All Time</span>
-        </div>
-
-        <div class="period-pills">
-            <button class="period-btn active" onclick="setPeriod('ALL', this)">All Time</button>
-            <button class="period-btn" onclick="setPeriod('1D', this)">Last 1 Day</button>
-            <button class="period-btn" onclick="setPeriod('7D', this)">Last 7 Days</button>
-            <button class="period-btn" onclick="setPeriod('30D', this)">Last 30 Days</button>
-            <button class="period-btn" id="customRangeBtn" onclick="toggleCalendarPopover(this)">Calendar View 📅</button>
-        </div>
-
-        <!-- Interactive Visual Calendar Popover -->
-        <div class="calendar-popover" id="calPopover">
-            <div class="cal-header">
-                <button class="cal-nav-btn" onclick="prevCalMonth()">‹</button>
-                <span class="cal-title" id="calMonthTitle">July 2026</span>
-                <button class="cal-nav-btn" onclick="nextCalMonth()">›</button>
-            </div>
-
-            <div class="cal-weekdays">
-                <span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span><span>Sun</span>
-            </div>
-
-            <div class="cal-grid" id="calGridDays">
-                <!-- Days dynamically generated by JS -->
-            </div>
-
-            <div class="cal-footer">
-                <div class="cal-selection-text" id="calSelectionText">Select FROM and TO dates</div>
-                <button class="cal-apply-btn" onclick="applyCalendarRange()">Apply Range</button>
-            </div>
+    <!-- 🔒 Passcode Security Gate Modal Overlay -->
+    <div class="passcode-overlay" id="passcodeOverlay">
+        <div class="passcode-card">
+            <div class="lock-icon-box">🔒</div>
+            <div class="passcode-title">a3sixty CRM Security</div>
+            <div class="passcode-sub">Please enter your authorized passcode to unlock the executive dashboard.</div>
+            <input type="password" class="passcode-input" id="passcodeInput" placeholder="Enter Passcode..." onkeyup="handlePasscodeKey(event)">
+            <button class="passcode-btn" onclick="checkPasscode()">Unlock Dashboard</button>
+            <div class="passcode-error" id="passcodeError">Incorrect passcode. Please try again.</div>
         </div>
     </div>
 
-    <!-- Top 4 Scorecards Grid -->
-    <div class="top-cards-grid">
-        <div class="score-card">
-            <div>
-                <div class="score-label">Total System Leads</div>
-                <div class="score-val" id="topTotalLeads">...</div>
-            </div>
-            <div class="score-trend">
-                <span id="topTotalInflowVal">SAR ...</span> Total Inflow
-            </div>
-        </div>
+    <!-- Main Dashboard Body (Revealed upon passcode authorization) -->
+    <div class="dashboard-content" id="dashboardMainContent">
 
-        <div class="score-card">
-            <div>
-                <div class="score-label">Open Follow-ups</div>
-                <div class="score-val" style="color: var(--accent-lime);" id="topQualifiedVal">SAR ...</div>
-            </div>
-            <div class="score-trend">
-                <span id="topQualifiedCount">... Active Leads</span>
-            </div>
-        </div>
-
-        <div class="score-card">
-            <div>
-                <div class="score-label">Conversion Goal</div>
-                <div class="score-val" id="topConvRate">...%</div>
-            </div>
-            <div class="score-trend" style="color: var(--text-muted);">
-                Target: 5.0% Goal
-            </div>
-            <div class="gauge-box">
-                <svg viewBox="0 0 100 50" width="100" height="50">
-                    <path d="M 10 50 A 40 40 0 0 1 90 50" fill="none" stroke="#262930" stroke-width="12" stroke-linecap="round"/>
-                    <path d="M 10 50 A 40 40 0 0 1 65 18" fill="none" stroke="#95f029" stroke-width="12" stroke-linecap="round"/>
-                </svg>
-            </div>
-        </div>
-
-        <div class="score-card">
-            <div>
-                <div class="score-label">Converted Revenue</div>
-                <div class="score-val" style="color: var(--accent-lime);" id="topConvertedRev">SAR ...</div>
-            </div>
-            <div class="score-trend">
-                <span id="topConvertedCount">... Leads</span> Booked & Paid
-            </div>
-        </div>
-    </div>
-
-    <!-- Dedicated Full-Width Trend Chart Card -->
-    <div class="trend-chart-card">
-        <div class="trend-chart-head">
-            <span>📈 Daily Trend: Converted, Follow-ups, Not Interested & Link Sent</span>
-        </div>
-        <div class="chart-container-box">
-            <canvas id="mainTrendLineChart"></canvas>
-        </div>
-    </div>
-
-    <!-- Main Dashboard Middle Row -->
-    <div class="mid-grid">
-        <div class="overview-card">
-            <div class="overview-head">
-                <div class="overview-title">Leads Overview & Status Share</div>
-                <div style="color: var(--text-muted); font-size: 13px; font-weight: 600;" id="overviewTotalSub">Loading...</div>
+        <!-- Header Navbar -->
+        <header>
+            <div class="brand">
+                <img src="https://a3sixty.com/img/a360w.png" alt="a3sixty logo">
+                <span class="brand-text">CRM</span>
             </div>
 
-            <div class="overview-body">
-                <div class="donut-container" id="donutSvgContainer">
-                    <svg viewBox="0 0 200 200" width="200" height="200" id="donutSvgElement">
-                    </svg>
-                    <div class="donut-center-text">
-                        <div class="num" id="donutCenterNum">...</div>
-                        <div class="sub">Total Leads</div>
-                    </div>
-                </div>
-
-                <div class="overview-right-content">
-                    <div class="sales-num-box">
-                        <div class="green-square-icon">SAR</div>
-                        <div class="sales-num-info">
-                            <div class="lbl">Open Follow-ups Value</div>
-                            <div class="val" id="pipelineBoxVal">SAR ...</div>
-                        </div>
-                    </div>
-
-                    <div class="legend-grid">
-                        <div class="legend-item">
-                            <div class="legend-item-head">
-                                <div class="dot" style="background: #95f029;"></div>
-                                <span id="lblFollowup">Follow-up</span>
-                            </div>
-                            <div class="legend-item-val" id="valFollowup">SAR ...</div>
-                        </div>
-
-                        <div class="legend-item">
-                            <div class="legend-item-head">
-                                <div class="dot" style="background: #10b981;"></div>
-                                <span id="lblConverted">Converted</span>
-                            </div>
-                            <div class="legend-item-val" id="valConverted">SAR ...</div>
-                        </div>
-
-                        <div class="legend-item">
-                            <div class="legend-item-head">
-                                <div class="dot" style="background: #a855f7;"></div>
-                                <span id="lblLinkSent">Link Sent</span>
-                            </div>
-                            <div class="legend-item-val" id="valLinkSent">SAR ...</div>
-                        </div>
-
-                        <div class="legend-item">
-                            <div class="legend-item-head">
-                                <div class="dot" style="background: #f97316;"></div>
-                                <span id="lblUnanswered">Unanswered</span>
-                            </div>
-                            <div class="legend-item-val" id="valUnanswered">SAR ...</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="right-col">
-            <div class="mini-card">
-                <div class="green-circle-icon">💼</div>
-                <div>
-                    <div class="mini-label" id="topLocLabel">Top Location: Riyadh</div>
-                    <div class="mini-val" id="topLocVal">... <span style="font-size: 12px; color: var(--accent-lime);">Leads</span></div>
-                </div>
-            </div>
-
-            <div class="mini-card">
-                <div class="green-circle-icon">📊</div>
-                <div>
-                    <div class="mini-label" id="topAgentLabel">Top Agent: Fateen</div>
-                    <div class="mini-val" id="topAgentVal">...% <span style="font-size: 12px; color: var(--accent-lime);">Conv.</span></div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Sales Agent Performance Table -->
-    <div class="agent-card">
-        <div style="font-size: 16px; font-weight: 700; margin-bottom: 16px;">👤 Sales Agent Performance Summary</div>
-        <div class="table-responsive">
-            <table>
-                <thead>
-                    <tr>
-                        <th>Sales Agent</th>
-                        <th>Total Leads</th>
-                        <th>Est. Open Follow-ups (SAR)</th>
-                        <th>Converted</th>
-                        <th>Not Interested</th>
-                        <th>Follow-up</th>
-                        <th>Conversion Rate %</th>
-                    </tr>
-                </thead>
-                <tbody id="agentTableBody">
-                </tbody>
-            </table>
-        </div>
-    </div>
-
-    <!-- Active Filters Row -->
-    <div class="filters-row">
-        <div style="font-size: 13px; font-weight: 700;">Active filters <span style="background: #262930; padding: 2px 8px; border-radius: 10px; font-size: 11px;" id="filterCountBadge">3</span></div>
-        <select class="pill-select" id="agentFilter" onchange="filterLeads()"><option value="ALL">All Agents</option></select>
-        <select class="pill-select" id="statusFilter" onchange="filterLeads()"><option value="ALL">All Statuses</option></select>
-        <select class="pill-select" id="locationFilter" onchange="filterLeads()"><option value="ALL">All Locations</option></select>
-
-        <div class="search-pill">
-            <span>🔍</span>
-            <input type="text" id="searchInput" onkeyup="filterLeads()" placeholder="Search phone, ID, or notes...">
-        </div>
-    </div>
-
-    <!-- Split Master-Detail Card -->
-    <div class="master-detail-card">
-        <div class="tabs-header">
-            <button class="tab-btn active" onclick="setTab('ALL', this)">All Leads <span style="background: #000; color: #fff; padding: 2px 6px; border-radius: 10px; font-size: 10px;" id="countAll">...</span></button>
-            <button class="tab-btn" onclick="setTab('Converted', this)">Converted <span id="countConvertedTab">...</span></button>
-            <button class="tab-btn" onclick="setTab('Follow-up', this)">Follow-up <span id="countFollowupTab">...</span></button>
-            <button class="tab-btn" onclick="setTab('Not Interested', this)">Not Interested <span id="countNotIntTab">...</span></button>
-        </div>
-
-        <div class="list-panel" id="leadsList">
-        </div>
-
-        <div class="detail-panel">
-            <div>
-                <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 24px; flex-wrap: wrap; gap: 12px;">
-                    <div>
-                        <div style="font-size: 12px; color: var(--text-muted); font-weight: 600; margin-bottom: 4px;">Lead details & notes</div>
-                        <div style="font-size: 28px; font-weight: 800; display: flex; align-items: center; gap: 12px;">
-                            <span id="detailId">Lead # -</span>
-                            <span class="badge-pill" style="background: var(--accent-lime); color: #000; font-size: 12px; font-weight: 800;" id="detailStatus">-</span>
-                        </div>
-                    </div>
-
-                    <div style="display: flex; gap: 24px; align-items: center; flex-wrap: wrap;">
-                        <div>
-                            <div style="font-size: 11px; color: var(--text-muted); font-weight: 600; margin-bottom: 4px;">Sales Agent</div>
-                            <div style="font-size: 16px; font-weight: 800; display: flex; align-items: center; gap: 8px;">
-                                <div style="width: 10px; height: 10px; background: var(--accent-lime); border-radius: 50%;"></div>
-                                <span id="detailAgent">-</span>
-                            </div>
-                        </div>
-
-                        <div>
-                            <div style="font-size: 11px; color: var(--text-muted); font-weight: 600; margin-bottom: 4px;">Customer Contact</div>
-                            <div style="font-size: 14px; font-weight: 800;" id="detailContact">-</div>
-                            <div style="font-size: 11px; color: var(--text-muted);" id="detailLocation">-</div>
-                        </div>
-                    </div>
-                </div>
-
-                <div style="background: #111317; border: 1px solid var(--border-card); border-radius: 18px; padding: 18px; margin-bottom: 24px;">
-                    <div style="font-size: 12px; font-weight: 700; color: var(--accent-lime); margin-bottom: 6px;">INTERNAL COMMENTS & AGENT NOTES</div>
-                    <div style="font-size: 13px; color: #d1d5db;" id="detailComments">Select a lead from the left list to view internal notes.</div>
-                </div>
-            </div>
-
-            <div style="background: #111317; border-radius: 20px; padding: 16px 24px; display: flex; align-items: center; justify-content: space-between; border: 1px solid var(--border-card); flex-wrap: wrap; gap: 12px;">
-                <div>
-                    <div style="font-size: 11px; color: var(--text-muted); font-weight: 600;">Date Logged</div>
-                    <div style="font-size: 16px; font-weight: 800;" id="detailDate">-</div>
-                </div>
-
-                <div>
-                    <div style="font-size: 11px; color: var(--text-muted); font-weight: 600;">Est. Lead Value</div>
-                    <div style="font-size: 16px; font-weight: 800; color: var(--accent-lime);">SAR 699</div>
-                </div>
-
-                <button style="background: var(--accent-lime); color: #000; border: none; padding: 10px 20px; border-radius: 20px; font-weight: 800; font-size: 13px; cursor: pointer;">
-                    Update Lead Status
+            <div class="header-right-info">
+                <button class="live-status-pill" id="syncBtn" onclick="syncNow()" title="Click to fetch latest data directly from your Google Sheet">
+                    <div class="live-dot" id="syncDot"></div>
+                    <span id="syncStatusText">LIVE SHEET SYNC</span>
                 </button>
             </div>
+        </header>
+
+        <!-- Period Selector Control Bar -->
+        <div class="period-bar">
+            <div class="period-label">
+                <span>📅 Time Period Filter:</span>
+                <span id="activePeriodLabel" style="color: var(--accent-lime);">All Time</span>
+            </div>
+
+            <div class="period-pills">
+                <button class="period-btn active" onclick="setPeriod('ALL', this)">All Time</button>
+                <button class="period-btn" onclick="setPeriod('1D', this)">Last 1 Day</button>
+                <button class="period-btn" onclick="setPeriod('7D', this)">Last 7 Days</button>
+                <button class="period-btn" onclick="setPeriod('30D', this)">Last 30 Days</button>
+                <button class="period-btn" id="customRangeBtn" onclick="toggleCalendarPopover(this)">Calendar View 📅</button>
+            </div>
+
+            <!-- Interactive Visual Calendar Popover -->
+            <div class="calendar-popover" id="calPopover">
+                <div class="cal-header">
+                    <button class="cal-nav-btn" onclick="prevCalMonth()">‹</button>
+                    <span class="cal-title" id="calMonthTitle">July 2026</span>
+                    <button class="cal-nav-btn" onclick="nextCalMonth()">›</button>
+                </div>
+
+                <div class="cal-weekdays">
+                    <span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span><span>Sun</span>
+                </div>
+
+                <div class="cal-grid" id="calGridDays">
+                </div>
+
+                <div class="cal-footer">
+                    <div class="cal-selection-text" id="calSelectionText">Select FROM and TO dates</div>
+                    <button class="cal-apply-btn" onclick="applyCalendarRange()">Apply Range</button>
+                </div>
+            </div>
         </div>
+
+        <!-- Top 4 Scorecards Grid -->
+        <div class="top-cards-grid">
+            <div class="score-card">
+                <div>
+                    <div class="score-label">Total System Leads</div>
+                    <div class="score-val" id="topTotalLeads">...</div>
+                </div>
+                <div class="score-trend">
+                    <span id="topTotalInflowVal">SAR ...</span> Total Inflow
+                </div>
+            </div>
+
+            <div class="score-card">
+                <div>
+                    <div class="score-label">Open Follow-ups</div>
+                    <div class="score-val" style="color: var(--accent-lime);" id="topQualifiedVal">SAR ...</div>
+                </div>
+                <div class="score-trend">
+                    <span id="topQualifiedCount">... Active Leads</span>
+                </div>
+            </div>
+
+            <div class="score-card">
+                <div>
+                    <div class="score-label">Conversion Goal</div>
+                    <div class="score-val" id="topConvRate">...%</div>
+                </div>
+                <div class="score-trend" style="color: var(--text-muted);">
+                    Target: 5.0% Goal
+                </div>
+                <div class="gauge-box">
+                    <svg viewBox="0 0 100 50" width="100" height="50">
+                        <path d="M 10 50 A 40 40 0 0 1 90 50" fill="none" stroke="#262930" stroke-width="12" stroke-linecap="round"/>
+                        <path d="M 10 50 A 40 40 0 0 1 65 18" fill="none" stroke="#95f029" stroke-width="12" stroke-linecap="round"/>
+                    </svg>
+                </div>
+            </div>
+
+            <div class="score-card">
+                <div>
+                    <div class="score-label">Converted Revenue</div>
+                    <div class="score-val" style="color: var(--accent-lime);" id="topConvertedRev">SAR ...</div>
+                </div>
+                <div class="score-trend">
+                    <span id="topConvertedCount">... Leads</span> Booked & Paid
+                </div>
+            </div>
+        </div>
+
+        <!-- Dedicated Full-Width Trend Chart Card -->
+        <div class="trend-chart-card">
+            <div class="trend-chart-head">
+                <span>📈 Daily Trend: Converted, Follow-ups, Not Interested & Link Sent</span>
+            </div>
+            <div class="chart-container-box">
+                <canvas id="mainTrendLineChart"></canvas>
+            </div>
+        </div>
+
+        <!-- Main Dashboard Middle Row -->
+        <div class="mid-grid">
+            <div class="overview-card">
+                <div class="overview-head">
+                    <div class="overview-title">Leads Overview & Status Share</div>
+                    <div style="color: var(--text-muted); font-size: 13px; font-weight: 600;" id="overviewTotalSub">Loading...</div>
+                </div>
+
+                <div class="overview-body">
+                    <div class="donut-container" id="donutSvgContainer">
+                        <svg viewBox="0 0 200 200" width="200" height="200" id="donutSvgElement">
+                        </svg>
+                        <div class="donut-center-text">
+                            <div class="num" id="donutCenterNum">...</div>
+                            <div class="sub">Total Leads</div>
+                        </div>
+                    </div>
+
+                    <div class="overview-right-content">
+                        <div class="sales-num-box">
+                            <div class="green-square-icon">SAR</div>
+                            <div class="sales-num-info">
+                                <div class="lbl">Open Follow-ups Value</div>
+                                <div class="val" id="pipelineBoxVal">SAR ...</div>
+                            </div>
+                        </div>
+
+                        <div class="legend-grid">
+                            <div class="legend-item">
+                                <div class="legend-item-head">
+                                    <div class="dot" style="background: #95f029;"></div>
+                                    <span id="lblFollowup">Follow-up</span>
+                                </div>
+                                <div class="legend-item-val" id="valFollowup">SAR ...</div>
+                            </div>
+
+                            <div class="legend-item">
+                                <div class="legend-item-head">
+                                    <div class="dot" style="background: #10b981;"></div>
+                                    <span id="lblConverted">Converted</span>
+                                </div>
+                                <div class="legend-item-val" id="valConverted">SAR ...</div>
+                            </div>
+
+                            <div class="legend-item">
+                                <div class="legend-item-head">
+                                    <div class="dot" style="background: #a855f7;"></div>
+                                    <span id="lblLinkSent">Link Sent</span>
+                                </div>
+                                <div class="legend-item-val" id="valLinkSent">SAR ...</div>
+                            </div>
+
+                            <div class="legend-item">
+                                <div class="legend-item-head">
+                                    <div class="dot" style="background: #f97316;"></div>
+                                    <span id="lblUnanswered">Unanswered</span>
+                                </div>
+                                <div class="legend-item-val" id="valUnanswered">SAR ...</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="right-col">
+                <div class="mini-card">
+                    <div class="green-circle-icon">💼</div>
+                    <div>
+                        <div class="mini-label" id="topLocLabel">Top Location: Riyadh</div>
+                        <div class="mini-val" id="topLocVal">... <span style="font-size: 12px; color: var(--accent-lime);">Leads</span></div>
+                    </div>
+                </div>
+
+                <div class="mini-card">
+                    <div class="green-circle-icon">📊</div>
+                    <div>
+                        <div class="mini-label" id="topAgentLabel">Top Agent: Fateen</div>
+                        <div class="mini-val" id="topAgentVal">...% <span style="font-size: 12px; color: var(--accent-lime);">Conv.</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sales Agent Performance Table -->
+        <div class="agent-card">
+            <div style="font-size: 16px; font-weight: 700; margin-bottom: 16px;">👤 Sales Agent Performance Summary</div>
+            <div class="table-responsive">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Sales Agent</th>
+                            <th>Total Leads</th>
+                            <th>Est. Open Follow-ups (SAR)</th>
+                            <th>Converted</th>
+                            <th>Not Interested</th>
+                            <th>Follow-up</th>
+                            <th>Conversion Rate %</th>
+                        </tr>
+                    </thead>
+                    <tbody id="agentTableBody">
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Active Filters Row -->
+        <div class="filters-row">
+            <div style="font-size: 13px; font-weight: 700;">Active filters <span style="background: #262930; padding: 2px 8px; border-radius: 10px; font-size: 11px;" id="filterCountBadge">3</span></div>
+            <select class="pill-select" id="agentFilter" onchange="filterLeads()"><option value="ALL">All Agents</option></select>
+            <select class="pill-select" id="statusFilter" onchange="filterLeads()"><option value="ALL">All Statuses</option></select>
+            <select class="pill-select" id="locationFilter" onchange="filterLeads()"><option value="ALL">All Locations</option></select>
+
+            <div class="search-pill">
+                <span>🔍</span>
+                <input type="text" id="searchInput" onkeyup="filterLeads()" placeholder="Search phone, ID, or notes...">
+            </div>
+        </div>
+
+        <!-- Split Master-Detail Card -->
+        <div class="master-detail-card">
+            <div class="tabs-header">
+                <button class="tab-btn active" onclick="setTab('ALL', this)">All Leads <span style="background: #000; color: #fff; padding: 2px 6px; border-radius: 10px; font-size: 10px;" id="countAll">...</span></button>
+                <button class="tab-btn" onclick="setTab('Converted', this)">Converted <span id="countConvertedTab">...</span></button>
+                <button class="tab-btn" onclick="setTab('Follow-up', this)">Follow-up <span id="countFollowupTab">...</span></button>
+                <button class="tab-btn" onclick="setTab('Not Interested', this)">Not Interested <span id="countNotIntTab">...</span></button>
+            </div>
+
+            <div class="list-panel" id="leadsList">
+            </div>
+
+            <div class="detail-panel">
+                <div>
+                    <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 24px; flex-wrap: wrap; gap: 12px;">
+                        <div>
+                            <div style="font-size: 12px; color: var(--text-muted); font-weight: 600; margin-bottom: 4px;">Lead details & notes</div>
+                            <div style="font-size: 28px; font-weight: 800; display: flex; align-items: center; gap: 12px;">
+                                <span id="detailId">Lead # -</span>
+                                <span class="badge-pill" style="background: var(--accent-lime); color: #000; font-size: 12px; font-weight: 800;" id="detailStatus">-</span>
+                            </div>
+                        </div>
+
+                        <div style="display: flex; gap: 24px; align-items: center; flex-wrap: wrap;">
+                            <div>
+                                <div style="font-size: 11px; color: var(--text-muted); font-weight: 600; margin-bottom: 4px;">Sales Agent</div>
+                                <div style="font-size: 16px; font-weight: 800; display: flex; align-items: center; gap: 8px;">
+                                    <div style="width: 10px; height: 10px; background: var(--accent-lime); border-radius: 50%;"></div>
+                                    <span id="detailAgent">-</span>
+                                </div>
+                            </div>
+
+                            <div>
+                                <div style="font-size: 11px; color: var(--text-muted); font-weight: 600; margin-bottom: 4px;">Customer Contact</div>
+                                <div style="font-size: 14px; font-weight: 800;" id="detailContact">-</div>
+                                <div style="font-size: 11px; color: var(--text-muted);" id="detailLocation">-</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div style="background: #111317; border: 1px solid var(--border-card); border-radius: 18px; padding: 18px; margin-bottom: 24px;">
+                        <div style="font-size: 12px; font-weight: 700; color: var(--accent-lime); margin-bottom: 6px;">INTERNAL COMMENTS & AGENT NOTES</div>
+                        <div style="font-size: 13px; color: #d1d5db;" id="detailComments">Select a lead from the left list to view internal notes.</div>
+                    </div>
+                </div>
+
+                <div style="background: #111317; border-radius: 20px; padding: 16px 24px; display: flex; align-items: center; justify-content: space-between; border: 1px solid var(--border-card); flex-wrap: wrap; gap: 12px;">
+                    <div>
+                        <div style="font-size: 11px; color: var(--text-muted); font-weight: 600;">Date Logged</div>
+                        <div style="font-size: 16px; font-weight: 800;" id="detailDate">-</div>
+                    </div>
+
+                    <div>
+                        <div style="font-size: 11px; color: var(--text-muted); font-weight: 600;">Est. Lead Value</div>
+                        <div style="font-size: 16px; font-weight: 800; color: var(--accent-lime);">SAR 699</div>
+                    </div>
+
+                    <button style="background: var(--accent-lime); color: #000; border: none; padding: 10px 20px; border-radius: 20px; font-weight: 800; font-size: 13px; cursor: pointer;">
+                        Update Lead Status
+                    </button>
+                </div>
+            </div>
+        </div>
+
     </div>
 
-    <!-- Script Engine with Visual Calendar Range Picker -->
+    <!-- Script Engine with Passcode Gate & Live Sync -->
     <script>
+        const REQUIRED_PASSCODE = "sada";
+
+        function checkPasscode() {
+            const inputVal = document.getElementById('passcodeInput').value.trim();
+            const errorEl = document.getElementById('passcodeError');
+            if (inputVal === REQUIRED_PASSCODE) {
+                sessionStorage.setItem('crm_auth', 'true');
+                unlockDashboard();
+            } else {
+                errorEl.style.display = 'block';
+                document.getElementById('passcodeInput').value = '';
+                document.getElementById('passcodeInput').focus();
+            }
+        }
+
+        function handlePasscodeKey(e) {
+            if (e.key === 'Enter') {
+                checkPasscode();
+            }
+        }
+
+        function unlockDashboard() {
+            document.getElementById('passcodeOverlay').style.display = 'none';
+            const mainContent = document.getElementById('dashboardMainContent');
+            mainContent.classList.add('authorized');
+            fetchLiveGoogleSheetData();
+        }
+
+        // Auto-check session on page load
+        window.addEventListener('DOMContentLoaded', () => {
+            if (sessionStorage.getItem('crm_auth') === 'true') {
+                unlockDashboard();
+            } else {
+                document.getElementById('passcodeInput').focus();
+            }
+        });
+
         let currentTabStatus = 'ALL';
         let rawLeads = [];
         let currentLeads = [];
@@ -1063,7 +1224,7 @@
 
         // Calendar State
         let calYear = 2026;
-        let calMonth = 6; // 0-indexed (6 = July)
+        let calMonth = 6;
         let calStartDate = null;
         let calEndDate = null;
 
@@ -1121,7 +1282,7 @@
 
             const firstDay = new Date(calYear, calMonth, 1).getDay();
             const daysInMonth = new Date(calYear, calMonth + 1, 0).getDate();
-            const paddingDays = (firstDay + 6) % 7; // Align to Mon start
+            const paddingDays = (firstDay + 6) % 7;
 
             for (let i = 0; i < paddingDays; i++) {
                 const emptyCell = document.createElement('div');
@@ -1707,10 +1868,6 @@
                 }
             });
         }
-
-        window.onload = function() {
-            fetchLiveGoogleSheetData();
-        };
     </script>
 </body>
 </html>
