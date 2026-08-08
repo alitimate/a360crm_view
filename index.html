@@ -1519,13 +1519,16 @@
                             else if (statusRaw.includes("Link Sent")) statusClean = "Link Sent";
                             else if (statusRaw.includes("Unanswered")) statusClean = "Unanswered";
 
+                            const locRaw = row[6] ? row[6].trim() : "";
+                            const locationClean = (locRaw && locRaw !== "-" && locRaw !== "N/A") ? locRaw : "Unspecified";
+
                             parsedLeads.push({
                                 id: row[0].trim(),
                                 date: row[1] ? row[1].trim() : "",
                                 contact: row[2] ? row[2].trim() : "",
                                 agent: row[4] && row[4].trim() ? row[4].trim() : "Unassigned",
                                 status: statusClean,
-                                location: row[6] && row[6].trim() ? row[6].trim() : "Riyadh",
+                                location: locationClean,
                                 comments: row[11] ? row[11].trim() : "",
                                 notes: row[12] ? row[12].trim() : ""
                             });
@@ -1615,13 +1618,15 @@
             document.getElementById('countFollowupTab').innerText = followup;
             document.getElementById('countNotIntTab').innerText = notInterested;
 
-            // Dynamic Top Location
+            // Dynamic Top Location (Excluding Unspecified / Blank)
             const locCounts = {};
             currentLeads.forEach(l => {
-                const loc = l.location || 'Riyadh';
-                locCounts[loc] = (locCounts[loc] || 0) + 1;
+                const loc = (l.location || '').trim();
+                if (loc && loc !== 'Unspecified' && loc !== 'Unknown' && loc !== '-' && loc !== 'N/A') {
+                    locCounts[loc] = (locCounts[loc] || 0) + 1;
+                }
             });
-            let topLoc = 'Riyadh', topLocCount = 0;
+            let topLoc = 'None', topLocCount = 0;
             Object.keys(locCounts).forEach(loc => {
                 if (locCounts[loc] > topLocCount) {
                     topLocCount = locCounts[loc];
