@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>a3sixty CRM Executive Dashboard</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <script src="leads_data.js"></script>
     <style>
@@ -900,9 +901,93 @@
             .calendar-popover { right: 0; width: 100%; max-width: 320px; }
             .legend-grid { grid-template-columns: 1fr 1fr; }
         }
+
+        /* 🎉 1 New Installation Celebration Banner */
+        .celebration-banner {
+            position: fixed;
+            top: 24px;
+            left: 50%;
+            transform: translateX(-50%) translateY(-180%);
+            z-index: 999999;
+            opacity: 0;
+            transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+            pointer-events: none;
+        }
+
+        .celebration-banner.active {
+            transform: translateX(-50%) translateY(0);
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .celebration-card {
+            background: rgba(22, 25, 34, 0.96);
+            border: 2px solid var(--accent-lime);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8), 0 0 30px rgba(149, 240, 41, 0.3);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            padding: 24px 36px;
+            border-radius: 24px;
+            text-align: center;
+            min-width: 320px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .celebration-badge {
+            background: var(--accent-lime);
+            color: #000000;
+            font-size: 11px;
+            font-weight: 800;
+            padding: 4px 14px;
+            border-radius: 20px;
+            letter-spacing: 0.5px;
+        }
+
+        .celebration-title {
+            font-size: 22px;
+            font-weight: 800;
+            color: #ffffff;
+            margin-top: 4px;
+        }
+
+        .celebration-sub {
+            font-size: 13px;
+            color: var(--text-muted);
+            font-weight: 600;
+        }
+
+        .celebration-close-btn {
+            margin-top: 10px;
+            background: var(--accent-lime);
+            color: #000000;
+            border: none;
+            padding: 8px 20px;
+            border-radius: 16px;
+            font-size: 12px;
+            font-weight: 800;
+            cursor: pointer;
+            transition: transform 0.15s ease;
+        }
+
+        .celebration-close-btn:hover {
+            transform: scale(1.05);
+        }
     </style>
 </head>
 <body>
+
+    <!-- 🎉 1 New Installation Celebration Banner -->
+    <div class="celebration-banner" id="celebrationBanner">
+        <div class="celebration-card">
+            <div class="celebration-badge">🎉 1 NEW INSTALLATION!</div>
+            <div class="celebration-title" id="celebrationAgentName">Congrats Fateen!</div>
+            <div class="celebration-sub">Lead successfully converted & booked</div>
+            <button class="celebration-close-btn" onclick="closeCelebrationBanner()">Awesome! 🚀</button>
+        </div>
+    </div>
 
     <!-- 🔒 Minimalist Glassmorphism Passcode Overlay -->
     <div class="passcode-overlay" id="passcodeOverlay">
@@ -1466,6 +1551,145 @@
             updateDynamicAgentTable();
             updateDynamicFilters();
             updateTrendChartData();
+
+            // 🎉 Trigger New Installation Celebration if uncelebrated converted leads exist
+            checkAndCelebrateNewConversions(rawLeads);
+        }
+
+        // 🔊 Synthesized Fanfare / Clapping Wow Audio + Fallback Audio
+        function playWowClapSound() {
+            try {
+                const AudioCtx = window.AudioContext || window.webkitAudioContext;
+                if (AudioCtx) {
+                    const ctx = new AudioCtx();
+                    const notes = [523.25, 659.25, 783.99, 1046.50];
+                    notes.forEach((freq, i) => {
+                        const osc = ctx.createOscillator();
+                        const gain = ctx.createGain();
+                        osc.type = 'triangle';
+                        osc.frequency.setValueAtTime(freq, ctx.currentTime + i * 0.1);
+                        gain.gain.setValueAtTime(0.3, ctx.currentTime + i * 0.1);
+                        gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + i * 0.1 + 0.4);
+                        osc.connect(gain);
+                        gain.connect(ctx.destination);
+                        osc.start(ctx.currentTime + i * 0.1);
+                        osc.stop(ctx.currentTime + i * 0.1 + 0.4);
+                    });
+
+                    const bufferSize = ctx.sampleRate * 1.5;
+                    const buffer = ctx.createBuffer(1, bufferSize, ctx.sampleRate);
+                    const data = buffer.getChannelData(0);
+                    for (let i = 0; i < bufferSize; i++) {
+                        data[i] = Math.random() * 2 - 1;
+                    }
+
+                    const noise = ctx.createBufferSource();
+                    noise.buffer = buffer;
+                    const filter = ctx.createBiquadFilter();
+                    filter.type = 'bandpass';
+                    filter.frequency.value = 1200;
+                    filter.Q.value = 1.0;
+
+                    const noiseGain = ctx.createGain();
+                    noiseGain.gain.setValueAtTime(0.01, ctx.currentTime);
+                    noiseGain.gain.linearRampToValueAtTime(0.25, ctx.currentTime + 0.2);
+                    noiseGain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 1.5);
+
+                    noise.connect(filter);
+                    filter.connect(noiseGain);
+                    noiseGain.connect(ctx.destination);
+                    noise.start(ctx.currentTime + 0.3);
+                    noise.stop(ctx.currentTime + 1.8);
+                }
+
+                const clapAudio = new Audio("https://assets.mixkit.co/active_storage/sfx/2013/2013-preview.mp3");
+                clapAudio.volume = 0.6;
+                clapAudio.play().catch(e => console.log("Audio autoplay notice:", e));
+            } catch(e) {
+                console.log("Audio playback error:", e);
+            }
+        }
+
+        // 🎉 Confetti Burst Engine
+        function launchConfettiCelebration() {
+            if (typeof confetti === 'function') {
+                confetti({
+                    particleCount: 90,
+                    spread: 80,
+                    origin: { y: 0.6 }
+                });
+
+                setTimeout(() => {
+                    confetti({ particleCount: 50, angle: 60, spread: 55, origin: { x: 0 } });
+                    confetti({ particleCount: 50, angle: 120, spread: 55, origin: { x: 1 } });
+                }, 250);
+            }
+        }
+
+        // 🎯 Show Celebration Banner
+        function triggerConversionCelebration(agentName) {
+            document.getElementById('celebrationAgentName').innerText = `Congrats ${agentName}!`;
+            const banner = document.getElementById('celebrationBanner');
+            banner.classList.add('active');
+
+            launchConfettiCelebration();
+            playWowClapSound();
+
+            setTimeout(() => {
+                closeCelebrationBanner();
+            }, 7000);
+        }
+
+        function closeCelebrationBanner() {
+            const banner = document.getElementById('celebrationBanner');
+            if (banner) banner.classList.remove('active');
+        }
+
+        // 🔒 Persistence Tracking Logic (Only shows once per lead ID)
+        function checkAndCelebrateNewConversions(leads) {
+            if (!leads || leads.length === 0) return;
+
+            let celebratedIds = [];
+            let isFirstRun = false;
+            try {
+                const stored = localStorage.getItem('a360_celebrated_leads');
+                if (stored === null) {
+                    isFirstRun = true;
+                    celebratedIds = [];
+                } else {
+                    celebratedIds = JSON.parse(stored);
+                }
+            } catch(e) {
+                celebratedIds = [];
+            }
+
+            const convertedLeads = leads.filter(l => l.status === 'Converted');
+
+            if (isFirstRun) {
+                if (convertedLeads.length > 0) {
+                    const latestConverted = convertedLeads[convertedLeads.length - 1];
+                    setTimeout(() => {
+                        triggerConversionCelebration(latestConverted.agent || 'Sales Rep');
+                    }, 800);
+
+                    const allConvertedIds = convertedLeads.map(l => l.id);
+                    localStorage.setItem('a360_celebrated_leads', JSON.stringify(allConvertedIds));
+                }
+                return;
+            }
+
+            const uncelebrated = convertedLeads.filter(l => !celebratedIds.includes(l.id));
+
+            if (uncelebrated.length > 0) {
+                uncelebrated.forEach((lead, idx) => {
+                    setTimeout(() => {
+                        triggerConversionCelebration(lead.agent || 'Sales Rep');
+                    }, idx * 3000 + 800);
+                    celebratedIds.push(lead.id);
+                });
+
+                localStorage.setItem('a360_celebrated_leads', JSON.stringify(celebratedIds));
+            }
         }
 
         async function syncNow() {
