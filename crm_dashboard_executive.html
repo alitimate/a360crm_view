@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>a3sixty CRM Handler Dashboard</title>
+    <title>a3sixty CRM Executive Dashboard</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <script src="leads_data.js"></script>
@@ -563,7 +563,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 16px;
+            font-size: 14px;
             font-weight: 800;
         }
 
@@ -579,7 +579,7 @@
             color: var(--text-white);
         }
 
-        /* 📊 5-Item Operational Legend Grid */
+        /* 📊 5-Item Responsive Legend Grid (With Not Interested) */
         .legend-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -901,8 +901,6 @@
             .legend-grid { grid-template-columns: 1fr 1fr; }
         }
     </style>
-
-    <script src="secure_passcode.js"></script>
 </head>
 <body>
 
@@ -974,7 +972,7 @@
             </div>
         </div>
 
-        <!-- Operational Lead Handler Top 4 Scorecards Grid (No Currency) -->
+        <!-- Top 4 Scorecards Grid -->
         <div class="top-cards-grid">
             <div class="score-card">
                 <div>
@@ -982,24 +980,24 @@
                     <div class="score-val" id="topTotalLeads">...</div>
                 </div>
                 <div class="score-trend">
-                    <span id="topTotalInflowVal">... Inflow</span> Total Received
+                    <span id="topTotalInflowVal">SAR ...</span> Total Inflow
                 </div>
             </div>
 
             <div class="score-card">
                 <div>
                     <div class="score-label">Open Follow-ups</div>
-                    <div class="score-val" style="color: var(--color-followup);" id="topQualifiedVal">... Leads</div>
+                    <div class="score-val" style="color: var(--accent-lime);" id="topQualifiedVal">SAR ...</div>
                 </div>
                 <div class="score-trend">
-                    <span id="topQualifiedCount">... Active Queue</span>
+                    <span id="topQualifiedCount">... Active Leads</span>
                 </div>
             </div>
 
             <div class="score-card">
                 <div>
-                    <div class="score-label">Conversion Rate</div>
-                    <div class="score-val" style="color: var(--accent-lime);" id="topConvRate">...%</div>
+                    <div class="score-label">Conversion Goal</div>
+                    <div class="score-val" id="topConvRate">...%</div>
                 </div>
                 <div class="score-trend" style="color: var(--text-muted);">
                     Target: 5.0% Goal
@@ -1014,11 +1012,11 @@
 
             <div class="score-card">
                 <div>
-                    <div class="score-label">Converted Leads</div>
-                    <div class="score-val" style="color: var(--color-converted);" id="topConvertedRev">... Leads</div>
+                    <div class="score-label">Converted Revenue</div>
+                    <div class="score-val" style="color: var(--accent-lime);" id="topConvertedRev">SAR ...</div>
                 </div>
                 <div class="score-trend">
-                    <span id="topConvertedCount">... Leads</span> Successfully Booked
+                    <span id="topConvertedCount">... Leads</span> Booked & Paid
                 </div>
             </div>
         </div>
@@ -1044,21 +1042,21 @@
 
                     <div class="overview-right-content">
                         <div class="sales-num-box">
-                            <div class="green-square-icon">🎯</div>
+                            <div class="green-square-icon">SAR</div>
                             <div class="sales-num-info">
-                                <div class="lbl">Active Follow-up Queue</div>
-                                <div class="val" id="pipelineBoxVal">... Follow-ups</div>
+                                <div class="lbl">Open Follow-ups Value</div>
+                                <div class="val" id="pipelineBoxVal">SAR ...</div>
                             </div>
                         </div>
 
-                        <!-- 📊 5-Status Operational Legend Grid (Count & Share %) -->
+                        <!-- 📊 Complete 5-Status Legend Grid (Including Not Interested) -->
                         <div class="legend-grid">
                             <div class="legend-item">
                                 <div class="legend-item-head">
                                     <div class="dot" style="background: var(--color-converted);"></div>
                                     <span id="lblConverted">Converted</span>
                                 </div>
-                                <div class="legend-item-val" id="valConverted">... Leads</div>
+                                <div class="legend-item-val" id="valConverted">SAR ...</div>
                             </div>
 
                             <div class="legend-item">
@@ -1066,7 +1064,7 @@
                                     <div class="dot" style="background: var(--color-followup);"></div>
                                     <span id="lblFollowup">Follow-up</span>
                                 </div>
-                                <div class="legend-item-val" id="valFollowup">... Leads</div>
+                                <div class="legend-item-val" id="valFollowup">SAR ...</div>
                             </div>
 
                             <div class="legend-item">
@@ -1074,7 +1072,7 @@
                                     <div class="dot" style="background: var(--color-not-interested);"></div>
                                     <span id="lblNotInterested">Not Interested</span>
                                 </div>
-                                <div class="legend-item-val" id="valNotInterested">... Leads</div>
+                                <div class="legend-item-val" id="valNotInterested">SAR ...</div>
                             </div>
 
                             <div class="legend-item">
@@ -1082,7 +1080,7 @@
                                     <div class="dot" style="background: var(--color-link-sent);"></div>
                                     <span id="lblLinkSent">Link Sent</span>
                                 </div>
-                                <div class="legend-item-val" id="valLinkSent">... Leads</div>
+                                <div class="legend-item-val" id="valLinkSent">SAR ...</div>
                             </div>
 
                             <div class="legend-item">
@@ -1090,7 +1088,7 @@
                                     <div class="dot" style="background: var(--color-unanswered);"></div>
                                     <span id="lblUnanswered">Unanswered</span>
                                 </div>
-                                <div class="legend-item-val" id="valUnanswered">... Leads</div>
+                                <div class="legend-item-val" id="valUnanswered">SAR ...</div>
                             </div>
                         </div>
                     </div>
@@ -1117,7 +1115,7 @@
             </div>
         </div>
 
-        <!-- Dedicated Full-Width Trend Chart Card -->
+        <!-- Dedicated Full-Width Trend Chart Card (With Subtle Harmonious Status Colors) -->
         <div class="trend-chart-card">
             <div class="trend-chart-head">
                 <span>📈 Daily Trend: Converted, Follow-ups, Not Interested, Link Sent & Unanswered</span>
@@ -1127,19 +1125,19 @@
             </div>
         </div>
 
-        <!-- Operational Sales Agent Performance Table (Focused on Conversion Rate) -->
+        <!-- Sales Agent Performance Table -->
         <div class="agent-card">
-            <div style="font-size: 16px; font-weight: 700; margin-bottom: 16px;">👤 Sales Agent Conversion Summary</div>
+            <div style="font-size: 16px; font-weight: 700; margin-bottom: 16px;">👤 Sales Agent Performance Summary</div>
             <div class="table-responsive">
                 <table>
                     <thead>
                         <tr>
                             <th>Sales Agent</th>
-                            <th>Total Assigned</th>
-                            <th>Follow-up Queue</th>
-                            <th>Link Sent</th>
+                            <th>Total Leads</th>
+                            <th>Est. Open Follow-ups (SAR)</th>
                             <th>Converted</th>
                             <th>Not Interested</th>
+                            <th>Follow-up</th>
                             <th>Conversion Rate %</th>
                         </tr>
                     </thead>
@@ -1217,8 +1215,8 @@
                     </div>
 
                     <div>
-                        <div style="font-size: 11px; color: var(--text-muted); font-weight: 600;">Lead Status</div>
-                        <div style="font-size: 15px; font-weight: 800; color: var(--accent-lime);" id="detailStatusSub">Active</div>
+                        <div style="font-size: 11px; color: var(--text-muted); font-weight: 600;">Est. Lead Value</div>
+                        <div style="font-size: 15px; font-weight: 800; color: var(--accent-lime);">SAR 699</div>
                     </div>
 
                     <button style="background: var(--accent-lime); color: #000; border: none; padding: 10px 20px; border-radius: 16px; font-weight: 800; font-size: 12px; cursor: pointer;">
@@ -1232,48 +1230,19 @@
 
     <!-- Script Engine with Glassmorphism Lock & Live Sync -->
     <script>
-        const REQUIRED_PASSCODE_HASH = "b25d0fd93fbf5e6149c36b620b6da0f9a17b90fabd27c215a56311deecd6d7aa";
+        const REQUIRED_PASSCODE = "sada";
 
-        const PASSCODE_STORAGE_KEY = "crm_dashboard_passcode_unlocked";
-
-        // Encrypted Google Sheet URL (AES-256-CBC) - Decrypts with passcode to fetch live data
-        let GOOGLE_SHEET_CSV_URL = "D8Vuw0Mj8TJnteoqAEWO4UireiBsWGSyNR2yR+SoMR7OGbnsJE2nHbSJCnQdAqSMhxlAmTRQWbVjKDJ8LFM8u9KMmerD6O60/MxlP/gj1IM5WD9wd5+o56i1YL+1bwzdtUu8s3vXt60NZmzO+6mJJ9+QlNcQPAg6VNH+25hD4eyPK4IIwSvr";
-
-        // Check if a passcode is already stored in localStorage and unlock the dashboard if valid
-        if (localStorage.getItem(PASSCODE_STORAGE_KEY)) {
-            const storedPasscode = localStorage.getItem(PASSCODE_STORAGE_KEY);
-            hashMessage(storedPasscode).then(hashed => {
-                if (hashed === REQUIRED_PASSCODE_HASH) {
-                    decrypt(GOOGLE_SHEET_CSV_URL, storedPasscode).then(decryptedUrl => {
-                        GOOGLE_SHEET_CSV_URL = decryptedUrl;
-                        unlockDashboard();
-                    }).catch(err => {
-                        console.error("Decryption failed:", err);
-                        localStorage.removeItem(PASSCODE_STORAGE_KEY);
-                    });
-                } else {
-                    localStorage.removeItem(PASSCODE_STORAGE_KEY);
-                }
-            });
-        }
-
-        async function checkPasscode() {
+        function checkPasscode() {
             const inputVal = document.getElementById('passcodeInput').value.trim();
             const errorEl = document.getElementById('passcodeError');
-            const hashedInput = await hashMessage(inputVal);
-            
-            if (hashedInput === REQUIRED_PASSCODE_HASH) {
-                localStorage.setItem(PASSCODE_STORAGE_KEY, inputVal);
-                
-                GOOGLE_SHEET_CSV_URL = await decrypt(GOOGLE_SHEET_CSV_URL, inputVal);
-
+            if (inputVal === REQUIRED_PASSCODE) {
                 unlockDashboard();
             } else {
                 errorEl.style.display = 'block';
                 document.getElementById('passcodeInput').value = '';
                 document.getElementById('passcodeInput').focus();
             }
-        }      
+        }
 
         function handlePasscodeKey(e) {
             if (e.key === 'Enter') {
@@ -1281,7 +1250,7 @@
             }
         }
 
-        async function unlockDashboard() {
+        function unlockDashboard() {
             document.getElementById('passcodeOverlay').style.display = 'none';
             const mainContent = document.getElementById('dashboardMainContent');
             mainContent.classList.add('authorized');
@@ -1299,6 +1268,7 @@
         let selectedPeriod = 'ALL';
         let trendChartInstance = null;
         let defaultTotalLeadsCount = 0;
+        const GOOGLE_SHEET_CSV_URL = "https://docs.google.com/spreadsheets/d/15n6wstZajaR98ZzD5ZnV5tH6B8quAoCYTRD5CiH7h-M/export?format=csv&gid=0";
 
         // Calendar State
         let calYear = 2026;
@@ -1604,41 +1574,40 @@
             const linkSent = currentLeads.filter(l => l.status === 'Link Sent').length;
             const unanswered = currentLeads.filter(l => l.status === 'Unanswered').length;
 
-            const convPct = total > 0 ? ((converted / total) * 100).toFixed(1) : "0.0";
-            const folPct = total > 0 ? ((followup / total) * 100).toFixed(1) : "0.0";
-            const niPct = total > 0 ? ((notInterested / total) * 100).toFixed(1) : "0.0";
-            const lsPct = total > 0 ? ((linkSent / total) * 100).toFixed(1) : "0.0";
-            const uPct = total > 0 ? ((unanswered / total) * 100).toFixed(1) : "0.0";
+            const qualifiedLeads = total - notInterested;
+            const totalPipelineVal = total * 699;
+            const qualifiedPipelineVal = qualifiedLeads * 699;
+            const convertedRevVal = converted * 699;
 
             document.getElementById('topTotalLeads').innerText = total;
-            document.getElementById('topTotalInflowVal').innerText = total + " Received";
-            document.getElementById('topQualifiedVal').innerText = followup + " Leads";
-            document.getElementById('topQualifiedCount').innerText = followup + " In Active Queue";
-            document.getElementById('topConvRate').innerText = convPct + "%";
-            document.getElementById('topConvertedRev').innerText = converted + " Leads";
-            document.getElementById('topConvertedCount').innerText = converted + " Leads Booked";
+            document.getElementById('topTotalInflowVal').innerText = "SAR " + totalPipelineVal.toLocaleString();
+            document.getElementById('topQualifiedVal').innerText = "SAR " + qualifiedPipelineVal.toLocaleString();
+            document.getElementById('topQualifiedCount').innerText = qualifiedLeads + " Active Leads";
+            document.getElementById('topConvRate').innerText = total > 0 ? ((converted/total)*100).toFixed(1) + "%" : "0%";
+            document.getElementById('topConvertedRev').innerText = "SAR " + convertedRevVal.toLocaleString();
+            document.getElementById('topConvertedCount').innerText = converted + " Leads";
 
             document.getElementById('overviewTotalSub').innerText = total + " Leads Total";
             document.getElementById('donutCenterNum').innerText = total;
             document.getElementById('donutCenterNum').style.color = '#ffffff';
             document.getElementById('donutCenterSub').innerText = "Total Leads";
-            document.getElementById('pipelineBoxVal').innerText = followup + " Follow-ups";
+            document.getElementById('pipelineBoxVal').innerText = "SAR " + qualifiedPipelineVal.toLocaleString();
 
-            // Operational Legend Updates (Counts & Share %)
+            // Legend Updates
             document.getElementById('lblConverted').innerText = "Converted (" + converted + ")";
-            document.getElementById('valConverted').innerText = convPct + "% Share";
+            document.getElementById('valConverted').innerText = "SAR " + (converted * 699).toLocaleString();
 
             document.getElementById('lblFollowup').innerText = "Follow-up (" + followup + ")";
-            document.getElementById('valFollowup').innerText = folPct + "% Share";
+            document.getElementById('valFollowup').innerText = "SAR " + (followup * 699).toLocaleString();
 
             document.getElementById('lblNotInterested').innerText = "Not Interested (" + notInterested + ")";
-            document.getElementById('valNotInterested').innerText = niPct + "% Share";
+            document.getElementById('valNotInterested').innerText = "SAR " + (notInterested * 699).toLocaleString();
 
             document.getElementById('lblLinkSent').innerText = "Link Sent (" + linkSent + ")";
-            document.getElementById('valLinkSent').innerText = lsPct + "% Share";
+            document.getElementById('valLinkSent').innerText = "SAR " + (linkSent * 699).toLocaleString();
 
             document.getElementById('lblUnanswered').innerText = "Unanswered (" + unanswered + ")";
-            document.getElementById('valUnanswered').innerText = uPct + "% Share";
+            document.getElementById('valUnanswered').innerText = "SAR " + (unanswered * 699).toLocaleString();
 
             document.getElementById('countAll').innerText = total;
             document.getElementById('countConvertedTab').innerText = converted;
@@ -1683,7 +1652,7 @@
             renderDynamicSVGDonut(converted, followup, notInterested, linkSent, unanswered, total);
         }
 
-        // 📊 Operational SVG Donut Renderer (No Currency Values)
+        // 📊 Interactive SVG Donut Renderer with Hover Value & Tooltips
         function renderDynamicSVGDonut(c, f, ni, ls, u, total) {
             const svg = document.getElementById('donutSvgElement');
             if (!svg || total === 0) {
@@ -1708,6 +1677,7 @@
                     const fraction = s.count / total;
                     const endAngle = startAngle + fraction * 2 * Math.PI;
                     const pct = (fraction * 100).toFixed(1);
+                    const valSAR = (s.count * 699).toLocaleString();
 
                     const x1 = (cx + r * Math.cos(startAngle)).toFixed(2);
                     const y1 = (cy + r * Math.sin(startAngle)).toFixed(2);
@@ -1719,9 +1689,9 @@
 
                     svgPaths += `
                         <path d="${d}" class="donut-slice" fill="none" stroke="${s.color}" stroke-width="26" stroke-linecap="round"
-                            onmouseover="handleDonutSliceHover('${s.label}', ${s.count}, '${pct}', '${s.color}')"
+                            onmouseover="handleDonutSliceHover('${s.label}', ${s.count}, '${pct}', '${valSAR}', '${s.color}')"
                             onmouseleave="handleDonutSliceLeave()">
-                            <title>${s.label}: ${s.count} Leads (${pct}%)</title>
+                            <title>${s.label}: ${s.count} Leads (${pct}%) - SAR ${valSAR}</title>
                         </path>
                     `;
                     startAngle = endAngle;
@@ -1731,14 +1701,14 @@
             svg.innerHTML = svgPaths;
         }
 
-        function handleDonutSliceHover(label, count, pct, color) {
+        function handleDonutSliceHover(label, count, pct, valSAR, color) {
             const numEl = document.getElementById('donutCenterNum');
             const subEl = document.getElementById('donutCenterSub');
             if (numEl && subEl) {
                 numEl.innerText = `${count} (${pct}%)`;
                 numEl.style.color = color;
                 numEl.style.fontSize = '22px';
-                subEl.innerText = `${label} Leads`;
+                subEl.innerText = `${label} • SAR ${valSAR}`;
             }
         }
 
@@ -1761,29 +1731,29 @@
             currentLeads.forEach(l => {
                 const ag = l.agent || 'Unassigned';
                 if (!agentsMap[ag]) {
-                    agentsMap[ag] = { total: 0, converted: 0, notInterested: 0, followup: 0, linkSent: 0 };
+                    agentsMap[ag] = { total: 0, converted: 0, notInterested: 0, followup: 0 };
                 }
                 agentsMap[ag].total++;
                 if (l.status === 'Converted') agentsMap[ag].converted++;
                 else if (l.status === 'Not Interested') agentsMap[ag].notInterested++;
                 else if (l.status === 'Follow-up') agentsMap[ag].followup++;
-                else if (l.status === 'Link Sent') agentsMap[ag].linkSent++;
             });
 
             let html = '';
             Object.keys(agentsMap).forEach(ag => {
                 const data = agentsMap[ag];
                 const initials = ag.substring(0, 2).toUpperCase();
+                const qualVal = (data.total - data.notInterested) * 699;
                 const convRate = data.total > 0 ? ((data.converted / data.total) * 100).toFixed(1) : '0.0';
 
                 html += `
                     <tr>
                         <td><span class="agent-icon">${initials}</span><strong>${ag}</strong></td>
                         <td>${data.total}</td>
-                        <td>${data.followup}</td>
-                        <td>${data.linkSent}</td>
+                        <td>SAR ${qualVal.toLocaleString()}</td>
                         <td><strong style="color: var(--color-converted);">${data.converted}</strong></td>
                         <td><span style="color: var(--color-not-interested);">${data.notInterested}</span></td>
+                        <td>${data.followup}</td>
                         <td><strong style="color: var(--color-converted);">${convRate}%</strong></td>
                     </tr>
                 `;
@@ -1842,6 +1812,7 @@
                     </div>
                     <div style="display: flex; align-items: center; gap: 12px;">
                         <span class="badge-pill">${item.status}</span>
+                        <div style="font-size: 13px; font-weight: 800;">SAR 699</div>
                     </div>
                 `;
 
@@ -1866,7 +1837,6 @@
             document.getElementById('detailContact').innerText = item.contact ? '+966 ' + item.contact : 'No Contact Provided';
             document.getElementById('detailLocation').innerText = item.location + ', Saudi Arabia';
             document.getElementById('detailDate').innerText = item.date || '16/07/2026';
-            document.getElementById('detailStatusSub').innerText = item.status;
             document.getElementById('detailComments').innerText = item.comments || item.notes || 'No specific internal notes logged for this lead.';
         }
 
@@ -1902,7 +1872,7 @@
             filterLeads();
         }
 
-        // 📈 Trend Chart (Pure Operational Counts)
+        // 📈 Trend Chart with Subtle Google Sheet Status Dropdown Palette
         function updateTrendChartData() {
             if (!currentLeads) return;
 
@@ -1931,6 +1901,7 @@
             const ctx = document.getElementById('mainTrendLineChart').getContext('2d');
             if (trendChartInstance) trendChartInstance.destroy();
 
+            // Subtle gradients
             const createGrad = (cHex) => {
                 const g = ctx.createLinearGradient(0, 0, 0, 300);
                 g.addColorStop(0, cHex + '33');

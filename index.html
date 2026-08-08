@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>a3sixty CRM Executive Dashboard</title>
+    <title>a3sixty CRM Handler Dashboard</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <script src="leads_data.js"></script>
@@ -563,7 +563,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 14px;
+            font-size: 16px;
             font-weight: 800;
         }
 
@@ -579,7 +579,7 @@
             color: var(--text-white);
         }
 
-        /* 📊 5-Item Responsive Legend Grid (With Not Interested) */
+        /* 📊 5-Item Operational Legend Grid */
         .legend-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -972,7 +972,7 @@
             </div>
         </div>
 
-        <!-- Top 4 Scorecards Grid -->
+        <!-- Operational Lead Handler Top 4 Scorecards Grid (No Currency) -->
         <div class="top-cards-grid">
             <div class="score-card">
                 <div>
@@ -980,24 +980,24 @@
                     <div class="score-val" id="topTotalLeads">...</div>
                 </div>
                 <div class="score-trend">
-                    <span id="topTotalInflowVal">SAR ...</span> Total Inflow
+                    <span id="topTotalInflowVal">... Inflow</span> Total Received
                 </div>
             </div>
 
             <div class="score-card">
                 <div>
                     <div class="score-label">Open Follow-ups</div>
-                    <div class="score-val" style="color: var(--accent-lime);" id="topQualifiedVal">SAR ...</div>
+                    <div class="score-val" style="color: var(--color-followup);" id="topQualifiedVal">... Leads</div>
                 </div>
                 <div class="score-trend">
-                    <span id="topQualifiedCount">... Active Leads</span>
+                    <span id="topQualifiedCount">... Active Queue</span>
                 </div>
             </div>
 
             <div class="score-card">
                 <div>
-                    <div class="score-label">Conversion Goal</div>
-                    <div class="score-val" id="topConvRate">...%</div>
+                    <div class="score-label">Conversion Rate</div>
+                    <div class="score-val" style="color: var(--accent-lime);" id="topConvRate">...%</div>
                 </div>
                 <div class="score-trend" style="color: var(--text-muted);">
                     Target: 5.0% Goal
@@ -1012,11 +1012,11 @@
 
             <div class="score-card">
                 <div>
-                    <div class="score-label">Converted Revenue</div>
-                    <div class="score-val" style="color: var(--accent-lime);" id="topConvertedRev">SAR ...</div>
+                    <div class="score-label">Converted Leads</div>
+                    <div class="score-val" style="color: var(--color-converted);" id="topConvertedRev">... Leads</div>
                 </div>
                 <div class="score-trend">
-                    <span id="topConvertedCount">... Leads</span> Booked & Paid
+                    <span id="topConvertedCount">... Leads</span> Successfully Booked
                 </div>
             </div>
         </div>
@@ -1042,21 +1042,21 @@
 
                     <div class="overview-right-content">
                         <div class="sales-num-box">
-                            <div class="green-square-icon">SAR</div>
+                            <div class="green-square-icon">🎯</div>
                             <div class="sales-num-info">
-                                <div class="lbl">Open Follow-ups Value</div>
-                                <div class="val" id="pipelineBoxVal">SAR ...</div>
+                                <div class="lbl">Active Follow-up Queue</div>
+                                <div class="val" id="pipelineBoxVal">... Follow-ups</div>
                             </div>
                         </div>
 
-                        <!-- 📊 Complete 5-Status Legend Grid (Including Not Interested) -->
+                        <!-- 📊 5-Status Operational Legend Grid (Count & Share %) -->
                         <div class="legend-grid">
                             <div class="legend-item">
                                 <div class="legend-item-head">
                                     <div class="dot" style="background: var(--color-converted);"></div>
                                     <span id="lblConverted">Converted</span>
                                 </div>
-                                <div class="legend-item-val" id="valConverted">SAR ...</div>
+                                <div class="legend-item-val" id="valConverted">... Leads</div>
                             </div>
 
                             <div class="legend-item">
@@ -1064,7 +1064,7 @@
                                     <div class="dot" style="background: var(--color-followup);"></div>
                                     <span id="lblFollowup">Follow-up</span>
                                 </div>
-                                <div class="legend-item-val" id="valFollowup">SAR ...</div>
+                                <div class="legend-item-val" id="valFollowup">... Leads</div>
                             </div>
 
                             <div class="legend-item">
@@ -1072,7 +1072,7 @@
                                     <div class="dot" style="background: var(--color-not-interested);"></div>
                                     <span id="lblNotInterested">Not Interested</span>
                                 </div>
-                                <div class="legend-item-val" id="valNotInterested">SAR ...</div>
+                                <div class="legend-item-val" id="valNotInterested">... Leads</div>
                             </div>
 
                             <div class="legend-item">
@@ -1080,7 +1080,7 @@
                                     <div class="dot" style="background: var(--color-link-sent);"></div>
                                     <span id="lblLinkSent">Link Sent</span>
                                 </div>
-                                <div class="legend-item-val" id="valLinkSent">SAR ...</div>
+                                <div class="legend-item-val" id="valLinkSent">... Leads</div>
                             </div>
 
                             <div class="legend-item">
@@ -1088,7 +1088,7 @@
                                     <div class="dot" style="background: var(--color-unanswered);"></div>
                                     <span id="lblUnanswered">Unanswered</span>
                                 </div>
-                                <div class="legend-item-val" id="valUnanswered">SAR ...</div>
+                                <div class="legend-item-val" id="valUnanswered">... Leads</div>
                             </div>
                         </div>
                     </div>
@@ -1115,7 +1115,7 @@
             </div>
         </div>
 
-        <!-- Dedicated Full-Width Trend Chart Card (With Subtle Harmonious Status Colors) -->
+        <!-- Dedicated Full-Width Trend Chart Card -->
         <div class="trend-chart-card">
             <div class="trend-chart-head">
                 <span>📈 Daily Trend: Converted, Follow-ups, Not Interested, Link Sent & Unanswered</span>
@@ -1125,19 +1125,19 @@
             </div>
         </div>
 
-        <!-- Sales Agent Performance Table -->
+        <!-- Operational Sales Agent Performance Table (Focused on Conversion Rate) -->
         <div class="agent-card">
-            <div style="font-size: 16px; font-weight: 700; margin-bottom: 16px;">👤 Sales Agent Performance Summary</div>
+            <div style="font-size: 16px; font-weight: 700; margin-bottom: 16px;">👤 Sales Agent Conversion Summary</div>
             <div class="table-responsive">
                 <table>
                     <thead>
                         <tr>
                             <th>Sales Agent</th>
-                            <th>Total Leads</th>
-                            <th>Est. Open Follow-ups (SAR)</th>
+                            <th>Total Assigned</th>
+                            <th>Follow-up Queue</th>
+                            <th>Link Sent</th>
                             <th>Converted</th>
                             <th>Not Interested</th>
-                            <th>Follow-up</th>
                             <th>Conversion Rate %</th>
                         </tr>
                     </thead>
@@ -1215,8 +1215,8 @@
                     </div>
 
                     <div>
-                        <div style="font-size: 11px; color: var(--text-muted); font-weight: 600;">Est. Lead Value</div>
-                        <div style="font-size: 15px; font-weight: 800; color: var(--accent-lime);">SAR 699</div>
+                        <div style="font-size: 11px; color: var(--text-muted); font-weight: 600;">Lead Status</div>
+                        <div style="font-size: 15px; font-weight: 800; color: var(--accent-lime);" id="detailStatusSub">Active</div>
                     </div>
 
                     <button style="background: var(--accent-lime); color: #000; border: none; padding: 10px 20px; border-radius: 16px; font-weight: 800; font-size: 12px; cursor: pointer;">
@@ -1574,40 +1574,41 @@
             const linkSent = currentLeads.filter(l => l.status === 'Link Sent').length;
             const unanswered = currentLeads.filter(l => l.status === 'Unanswered').length;
 
-            const qualifiedLeads = total - notInterested;
-            const totalPipelineVal = total * 699;
-            const qualifiedPipelineVal = qualifiedLeads * 699;
-            const convertedRevVal = converted * 699;
+            const convPct = total > 0 ? ((converted / total) * 100).toFixed(1) : "0.0";
+            const folPct = total > 0 ? ((followup / total) * 100).toFixed(1) : "0.0";
+            const niPct = total > 0 ? ((notInterested / total) * 100).toFixed(1) : "0.0";
+            const lsPct = total > 0 ? ((linkSent / total) * 100).toFixed(1) : "0.0";
+            const uPct = total > 0 ? ((unanswered / total) * 100).toFixed(1) : "0.0";
 
             document.getElementById('topTotalLeads').innerText = total;
-            document.getElementById('topTotalInflowVal').innerText = "SAR " + totalPipelineVal.toLocaleString();
-            document.getElementById('topQualifiedVal').innerText = "SAR " + qualifiedPipelineVal.toLocaleString();
-            document.getElementById('topQualifiedCount').innerText = qualifiedLeads + " Active Leads";
-            document.getElementById('topConvRate').innerText = total > 0 ? ((converted/total)*100).toFixed(1) + "%" : "0%";
-            document.getElementById('topConvertedRev').innerText = "SAR " + convertedRevVal.toLocaleString();
-            document.getElementById('topConvertedCount').innerText = converted + " Leads";
+            document.getElementById('topTotalInflowVal').innerText = total + " Received";
+            document.getElementById('topQualifiedVal').innerText = followup + " Leads";
+            document.getElementById('topQualifiedCount').innerText = followup + " In Active Queue";
+            document.getElementById('topConvRate').innerText = convPct + "%";
+            document.getElementById('topConvertedRev').innerText = converted + " Leads";
+            document.getElementById('topConvertedCount').innerText = converted + " Leads Booked";
 
             document.getElementById('overviewTotalSub').innerText = total + " Leads Total";
             document.getElementById('donutCenterNum').innerText = total;
             document.getElementById('donutCenterNum').style.color = '#ffffff';
             document.getElementById('donutCenterSub').innerText = "Total Leads";
-            document.getElementById('pipelineBoxVal').innerText = "SAR " + qualifiedPipelineVal.toLocaleString();
+            document.getElementById('pipelineBoxVal').innerText = followup + " Follow-ups";
 
-            // Legend Updates
+            // Operational Legend Updates (Counts & Share %)
             document.getElementById('lblConverted').innerText = "Converted (" + converted + ")";
-            document.getElementById('valConverted').innerText = "SAR " + (converted * 699).toLocaleString();
+            document.getElementById('valConverted').innerText = convPct + "% Share";
 
             document.getElementById('lblFollowup').innerText = "Follow-up (" + followup + ")";
-            document.getElementById('valFollowup').innerText = "SAR " + (followup * 699).toLocaleString();
+            document.getElementById('valFollowup').innerText = folPct + "% Share";
 
             document.getElementById('lblNotInterested').innerText = "Not Interested (" + notInterested + ")";
-            document.getElementById('valNotInterested').innerText = "SAR " + (notInterested * 699).toLocaleString();
+            document.getElementById('valNotInterested').innerText = niPct + "% Share";
 
             document.getElementById('lblLinkSent').innerText = "Link Sent (" + linkSent + ")";
-            document.getElementById('valLinkSent').innerText = "SAR " + (linkSent * 699).toLocaleString();
+            document.getElementById('valLinkSent').innerText = lsPct + "% Share";
 
             document.getElementById('lblUnanswered').innerText = "Unanswered (" + unanswered + ")";
-            document.getElementById('valUnanswered').innerText = "SAR " + (unanswered * 699).toLocaleString();
+            document.getElementById('valUnanswered').innerText = uPct + "% Share";
 
             document.getElementById('countAll').innerText = total;
             document.getElementById('countConvertedTab').innerText = converted;
@@ -1652,7 +1653,7 @@
             renderDynamicSVGDonut(converted, followup, notInterested, linkSent, unanswered, total);
         }
 
-        // 📊 Interactive SVG Donut Renderer with Hover Value & Tooltips
+        // 📊 Operational SVG Donut Renderer (No Currency Values)
         function renderDynamicSVGDonut(c, f, ni, ls, u, total) {
             const svg = document.getElementById('donutSvgElement');
             if (!svg || total === 0) {
@@ -1677,7 +1678,6 @@
                     const fraction = s.count / total;
                     const endAngle = startAngle + fraction * 2 * Math.PI;
                     const pct = (fraction * 100).toFixed(1);
-                    const valSAR = (s.count * 699).toLocaleString();
 
                     const x1 = (cx + r * Math.cos(startAngle)).toFixed(2);
                     const y1 = (cy + r * Math.sin(startAngle)).toFixed(2);
@@ -1689,9 +1689,9 @@
 
                     svgPaths += `
                         <path d="${d}" class="donut-slice" fill="none" stroke="${s.color}" stroke-width="26" stroke-linecap="round"
-                            onmouseover="handleDonutSliceHover('${s.label}', ${s.count}, '${pct}', '${valSAR}', '${s.color}')"
+                            onmouseover="handleDonutSliceHover('${s.label}', ${s.count}, '${pct}', '${s.color}')"
                             onmouseleave="handleDonutSliceLeave()">
-                            <title>${s.label}: ${s.count} Leads (${pct}%) - SAR ${valSAR}</title>
+                            <title>${s.label}: ${s.count} Leads (${pct}%)</title>
                         </path>
                     `;
                     startAngle = endAngle;
@@ -1701,14 +1701,14 @@
             svg.innerHTML = svgPaths;
         }
 
-        function handleDonutSliceHover(label, count, pct, valSAR, color) {
+        function handleDonutSliceHover(label, count, pct, color) {
             const numEl = document.getElementById('donutCenterNum');
             const subEl = document.getElementById('donutCenterSub');
             if (numEl && subEl) {
                 numEl.innerText = `${count} (${pct}%)`;
                 numEl.style.color = color;
                 numEl.style.fontSize = '22px';
-                subEl.innerText = `${label} • SAR ${valSAR}`;
+                subEl.innerText = `${label} Leads`;
             }
         }
 
@@ -1731,29 +1731,29 @@
             currentLeads.forEach(l => {
                 const ag = l.agent || 'Unassigned';
                 if (!agentsMap[ag]) {
-                    agentsMap[ag] = { total: 0, converted: 0, notInterested: 0, followup: 0 };
+                    agentsMap[ag] = { total: 0, converted: 0, notInterested: 0, followup: 0, linkSent: 0 };
                 }
                 agentsMap[ag].total++;
                 if (l.status === 'Converted') agentsMap[ag].converted++;
                 else if (l.status === 'Not Interested') agentsMap[ag].notInterested++;
                 else if (l.status === 'Follow-up') agentsMap[ag].followup++;
+                else if (l.status === 'Link Sent') agentsMap[ag].linkSent++;
             });
 
             let html = '';
             Object.keys(agentsMap).forEach(ag => {
                 const data = agentsMap[ag];
                 const initials = ag.substring(0, 2).toUpperCase();
-                const qualVal = (data.total - data.notInterested) * 699;
                 const convRate = data.total > 0 ? ((data.converted / data.total) * 100).toFixed(1) : '0.0';
 
                 html += `
                     <tr>
                         <td><span class="agent-icon">${initials}</span><strong>${ag}</strong></td>
                         <td>${data.total}</td>
-                        <td>SAR ${qualVal.toLocaleString()}</td>
+                        <td>${data.followup}</td>
+                        <td>${data.linkSent}</td>
                         <td><strong style="color: var(--color-converted);">${data.converted}</strong></td>
                         <td><span style="color: var(--color-not-interested);">${data.notInterested}</span></td>
-                        <td>${data.followup}</td>
                         <td><strong style="color: var(--color-converted);">${convRate}%</strong></td>
                     </tr>
                 `;
@@ -1812,7 +1812,6 @@
                     </div>
                     <div style="display: flex; align-items: center; gap: 12px;">
                         <span class="badge-pill">${item.status}</span>
-                        <div style="font-size: 13px; font-weight: 800;">SAR 699</div>
                     </div>
                 `;
 
@@ -1837,6 +1836,7 @@
             document.getElementById('detailContact').innerText = item.contact ? '+966 ' + item.contact : 'No Contact Provided';
             document.getElementById('detailLocation').innerText = item.location + ', Saudi Arabia';
             document.getElementById('detailDate').innerText = item.date || '16/07/2026';
+            document.getElementById('detailStatusSub').innerText = item.status;
             document.getElementById('detailComments').innerText = item.comments || item.notes || 'No specific internal notes logged for this lead.';
         }
 
@@ -1872,7 +1872,7 @@
             filterLeads();
         }
 
-        // 📈 Trend Chart with Subtle Google Sheet Status Dropdown Palette
+        // 📈 Trend Chart (Pure Operational Counts)
         function updateTrendChartData() {
             if (!currentLeads) return;
 
@@ -1901,7 +1901,6 @@
             const ctx = document.getElementById('mainTrendLineChart').getContext('2d');
             if (trendChartInstance) trendChartInstance.destroy();
 
-            // Subtle gradients
             const createGrad = (cHex) => {
                 const g = ctx.createLinearGradient(0, 0, 0, 300);
                 g.addColorStop(0, cHex + '33');

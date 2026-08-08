@@ -4,6 +4,7 @@
 # Whitelist CRM Dashboard files
 !index.html
 !crm_dashboard.html
+!crm_dashboard_executive.html
 !sync_sheet.py
 !leads_data.js
 !leads_data.json
