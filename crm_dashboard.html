@@ -1499,12 +1499,27 @@
 
         function parseLeadDate(dateStr) {
             if (!dateStr) return null;
-            const parts = dateStr.split('/');
+            const clean = dateStr.trim();
+            if (!clean) return null;
+            
+            const parts = clean.split(/[\/\-\.]/);
             if (parts.length === 3) {
-                let day = parseInt(parts[0], 10);
-                let month = parseInt(parts[1], 10) - 1;
-                let year = parseInt(parts[2], 10);
-                if (year < 100) year += 2000;
+                let p0 = parseInt(parts[0], 10);
+                let p1 = parseInt(parts[1], 10);
+                let p2 = parseInt(parts[2], 10);
+                if (isNaN(p0) || isNaN(p1) || isNaN(p2)) return null;
+
+                let day, month, year;
+                if (p0 > 1000) {
+                    year = p0;
+                    month = p1 - 1;
+                    day = p2;
+                } else {
+                    day = p0;
+                    month = p1 - 1;
+                    year = p2;
+                    if (year < 100) year += 2000;
+                }
                 return new Date(year, month, day);
             }
             return null;
@@ -1627,11 +1642,13 @@
 
             selectedPeriod = 'CALENDAR';
             const endDt = calEndDate ? new Date(calEndDate) : new Date(calStartDate);
-            endDt.setHours(23, 59, 59);
+            endDt.setHours(23, 59, 59, 999);
+            const startDt = new Date(calStartDate);
+            startDt.setHours(0, 0, 0, 0);
 
             currentLeads = rawLeads.filter(l => {
                 const dt = parseLeadDate(l.date);
-                return dt && dt >= calStartDate && dt <= endDt;
+                return dt && dt >= startDt && dt <= endDt;
             });
 
             document.getElementById('activePeriodLabel').innerText = calEndDate ? 
@@ -1650,35 +1667,43 @@
         function applyPeriodFilter() {
             if (!rawLeads || rawLeads.length === 0) return;
 
+            const today = new Date();
+            const tomorrowEnd = new Date(today.getFullYear(), today.getMonth(), today.getDate() + 2);
+
             let maxDate = null;
             rawLeads.forEach(l => {
                 const dt = parseLeadDate(l.date);
-                if (dt && (!maxDate || dt > maxDate)) maxDate = dt;
+                if (dt && dt <= tomorrowEnd) {
+                    if (!maxDate || dt > maxDate) maxDate = dt;
+                }
             });
-            if (!maxDate) maxDate = new Date();
+            if (!maxDate) maxDate = today;
 
             if (selectedPeriod === 'ALL') {
                 currentLeads = [...rawLeads];
             } else if (selectedPeriod === '1D') {
                 const cutoff = new Date(maxDate);
                 cutoff.setDate(cutoff.getDate() - 1);
+                cutoff.setHours(0, 0, 0, 0);
                 currentLeads = rawLeads.filter(l => {
                     const dt = parseLeadDate(l.date);
-                    return dt && dt >= cutoff;
+                    return dt && dt >= cutoff && dt <= tomorrowEnd;
                 });
             } else if (selectedPeriod === '7D') {
                 const cutoff = new Date(maxDate);
                 cutoff.setDate(cutoff.getDate() - 7);
+                cutoff.setHours(0, 0, 0, 0);
                 currentLeads = rawLeads.filter(l => {
                     const dt = parseLeadDate(l.date);
-                    return dt && dt >= cutoff;
+                    return dt && dt >= cutoff && dt <= tomorrowEnd;
                 });
             } else if (selectedPeriod === '30D') {
                 const cutoff = new Date(maxDate);
                 cutoff.setDate(cutoff.getDate() - 30);
+                cutoff.setHours(0, 0, 0, 0);
                 currentLeads = rawLeads.filter(l => {
                     const dt = parseLeadDate(l.date);
-                    return dt && dt >= cutoff;
+                    return dt && dt >= cutoff && dt <= tomorrowEnd;
                 });
             }
 
