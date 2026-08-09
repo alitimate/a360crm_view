@@ -1821,6 +1821,13 @@
             }, 2000);
         }
 
+        function isValidPhoneNumber(phoneStr) {
+            if (!phoneStr) return false;
+            const clean = phoneStr.trim();
+            if (!clean || clean === "-" || clean === "N/A" || clean === "null" || clean === "undefined") return false;
+            return /\d/.test(clean);
+        }
+
         async function fetchLiveGoogleSheetData() {
             try {
                 const response = await fetch(GOOGLE_SHEET_CSV_URL + "&t=" + new Date().getTime());
@@ -1840,7 +1847,9 @@
                     const parsedLeads = [];
                     for (let i = headerIdx + 1; i < lines.length; i++) {
                         const row = parseCSVRow(lines[i]);
-                        if (row.length > 0 && row[0].trim().match(/^\d+$/)) {
+                        const contactRaw = row[2] ? row[2].trim() : "";
+                        // Only count as lead if row has a valid phone number
+                        if (row.length > 0 && row[0].trim().match(/^\d+$/) && isValidPhoneNumber(contactRaw)) {
                             const statusRaw = row[5] ? row[5].trim() : "Unspecified";
                             let statusClean = "Other";
                             if (statusRaw.includes("Converted")) statusClean = "Converted";
@@ -1855,7 +1864,7 @@
                             parsedLeads.push({
                                 id: row[0].trim(),
                                 date: row[1] ? row[1].trim() : "",
-                                contact: row[2] ? row[2].trim() : "",
+                                contact: contactRaw,
                                 agent: row[4] && row[4].trim() ? row[4].trim() : "Unassigned",
                                 status: statusClean,
                                 location: locationClean,
@@ -1874,7 +1883,7 @@
             } catch (err) {
                 console.log("Using fallback dataset:", err);
                 if (typeof leadsData !== 'undefined' && leadsData.length > 0) {
-                    rawLeads = leadsData;
+                    rawLeads = leadsData.filter(l => isValidPhoneNumber(l.contact));
                     applyPeriodFilter();
                 }
             }
