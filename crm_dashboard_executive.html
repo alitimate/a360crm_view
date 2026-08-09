@@ -98,41 +98,74 @@
             100% { transform: translate(35px, 45px) scale(1.08); }
         }
 
-        /* Decorative Floating Glass Tiles from Reference Image */
-        .floating-tile {
+        /* 🎨 Dynamic Floating SVG Shapes from Shapes.Gallery */
+        .gallery-floating-shape {
             position: absolute;
-            background: rgba(255, 255, 255, 0.06);
+            background: rgba(255, 255, 255, 0.04);
             border: 1px solid rgba(255, 255, 255, 0.18);
-            backdrop-filter: blur(24px);
-            -webkit-backdrop-filter: blur(24px);
-            box-shadow: 0 24px 48px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.25);
+            backdrop-filter: blur(28px) saturate(180%);
+            -webkit-backdrop-filter: blur(28px) saturate(180%);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5), inset 0 1px 1px rgba(255, 255, 255, 0.25);
+            border-radius: 36px;
+            padding: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             pointer-events: none;
+            z-index: 1;
+            transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
         }
 
-        .floating-tile-1 {
-            width: 105px;
-            height: 105px;
-            border-radius: 26px;
-            top: 10%;
-            left: 24%;
-            transform: rotate(-10deg);
+        .gallery-shape-pos1 {
+            top: 8%;
+            left: 16%;
+            transform: rotate(-12deg);
+            animation: galleryFloat1 15s ease-in-out infinite alternate;
         }
 
-        .floating-tile-2 {
-            width: 120px;
-            height: 120px;
-            border-radius: 30px;
-            bottom: 12%;
-            left: 6%;
+        .gallery-shape-pos2 {
+            top: 14%;
+            right: 14%;
             transform: rotate(14deg);
+            animation: galleryFloat2 18s ease-in-out infinite alternate;
         }
 
-        .floating-tile-3 {
-            width: 130px;
-            height: 130px;
-            border-radius: 50%;
-            top: 22%;
+        .gallery-shape-pos3 {
+            bottom: 12%;
+            left: 8%;
+            transform: rotate(-18deg);
+            animation: galleryFloat3 16s ease-in-out infinite alternate;
+        }
+
+        .gallery-shape-pos4 {
+            bottom: 16%;
             right: 12%;
+            transform: rotate(10deg);
+            animation: galleryFloat4 20s ease-in-out infinite alternate;
+        }
+
+        @keyframes galleryFloat1 {
+            0% { transform: rotate(-12deg) translate(0, 0); }
+            50% { transform: rotate(-6deg) translate(25px, 35px); }
+            100% { transform: rotate(-15deg) translate(-15px, 20px); }
+        }
+
+        @keyframes galleryFloat2 {
+            0% { transform: rotate(14deg) translate(0, 0); }
+            50% { transform: rotate(8deg) translate(-30px, 40px); }
+            100% { transform: rotate(18deg) translate(20px, -20px); }
+        }
+
+        @keyframes galleryFloat3 {
+            0% { transform: rotate(-18deg) translate(0, 0); }
+            50% { transform: rotate(-10deg) translate(35px, -30px); }
+            100% { transform: rotate(-22deg) translate(15px, 25px); }
+        }
+
+        @keyframes galleryFloat4 {
+            0% { transform: rotate(10deg) translate(0, 0); }
+            50% { transform: rotate(16deg) translate(-25px, -35px); }
+            100% { transform: rotate(6deg) translate(30px, 15px); }
         }
 
         /* Main Central Glass Card */
@@ -1090,10 +1123,8 @@
         <div class="glass-blob glass-blob-2"></div>
         <div class="glass-blob glass-blob-3"></div>
 
-        <!-- Floating Glass Tiles -->
-        <div class="floating-tile floating-tile-1"></div>
-        <div class="floating-tile floating-tile-2"></div>
-        <div class="floating-tile floating-tile-3"></div>
+        <!-- 🎨 Dynamic Shapes.Gallery Vector Shapes Container -->
+        <div id="shapesGalleryContainer"></div>
 
         <!-- Central Glass Modal Card -->
         <div class="passcode-card">
@@ -1421,6 +1452,71 @@
 
     <!-- Script Engine with Glassmorphism Lock & Live Sync -->
     <script>
+        // 🎨 12 Curated Abstract Vector Shapes from Shapes.Gallery
+        const SHAPES_GALLERY = [
+            `<svg viewBox="0 0 100 100" width="85" height="85"><path d="M50 0 C50 30 70 50 100 50 C70 50 50 70 50 100 C50 70 30 50 0 50 C30 50 50 30 50 0 Z" fill="url(#shapeGradPink)" stroke="rgba(255,255,255,0.25)" stroke-width="2"/></svg>`,
+            `<svg viewBox="0 0 100 100" width="90" height="90"><path d="M50 5 C80 10 95 35 90 65 C85 95 60 98 35 90 C10 82 5 50 20 25 C35 0 20 0 50 5 Z" fill="url(#shapeGradCyan)" stroke="rgba(255,255,255,0.25)" stroke-width="2"/></svg>`,
+            `<svg viewBox="0 0 100 100" width="85" height="85"><path d="M50 15 C55 35 65 35 85 35 C70 45 70 55 85 65 C65 65 55 65 50 85 C45 65 35 65 15 65 C30 55 30 45 15 35 C35 35 45 35 50 15 Z" fill="url(#shapeGradPurple)" stroke="rgba(255,255,255,0.25)" stroke-width="2"/></svg>`,
+            `<svg viewBox="0 0 100 100" width="90" height="90"><path d="M50 10 A40 40 0 1 0 50 90 A40 40 0 1 0 50 10 Z M50 30 A20 20 0 1 1 50 70 A20 20 0 1 1 50 30 Z" fill="url(#shapeGradBlue)" stroke="rgba(255,255,255,0.25)" stroke-width="2"/></svg>`,
+            `<svg viewBox="0 0 100 100" width="80" height="80"><path d="M20 90 V35 A30 30 0 0 1 80 35 V90 H62 V35 A12 12 0 0 0 38 35 V90 Z" fill="url(#shapeGradLime)" stroke="rgba(255,255,255,0.25)" stroke-width="2"/></svg>`,
+            `<svg viewBox="0 0 100 100" width="85" height="85"><path d="M30 10 H70 C85 10 90 25 90 50 C90 75 85 90 70 90 H30 C15 90 10 75 10 50 C10 25 15 10 30 10 Z" fill="url(#shapeGradPink)" stroke="rgba(255,255,255,0.25)" stroke-width="2"/></svg>`,
+            `<svg viewBox="0 0 100 100" width="90" height="90"><path d="M50 50 C50 25 30 10 15 25 C0 40 25 50 50 50 C50 25 70 10 85 25 C100 40 75 50 50 50 C50 75 70 90 85 75 C100 60 75 50 50 50 C50 75 30 90 15 75 C0 60 25 50 50 50 Z" fill="url(#shapeGradPurple)" stroke="rgba(255,255,255,0.25)" stroke-width="2"/></svg>`,
+            `<svg viewBox="0 0 100 100" width="85" height="85"><path d="M50 5 C50 5 90 55 90 70 A40 40 0 0 1 10 70 C10 55 50 5 50 5 Z" fill="url(#shapeGradCyan)" stroke="rgba(255,255,255,0.25)" stroke-width="2"/></svg>`,
+            `<svg viewBox="0 0 100 100" width="85" height="85"><path d="M50 0 L64 36 L100 50 L64 64 L50 100 L36 64 L0 50 L36 36 Z" fill="url(#shapeGradLime)" stroke="rgba(255,255,255,0.25)" stroke-width="2"/></svg>`,
+            `<svg viewBox="0 0 100 100" width="88" height="88"><path d="M50 10 C75 10 90 25 90 50 C90 75 75 90 50 90 C30 90 15 75 25 50 C35 25 25 30 50 10 Z" fill="url(#shapeGradBlue)" stroke="rgba(255,255,255,0.25)" stroke-width="2"/></svg>`,
+            `<svg viewBox="0 0 100 100" width="85" height="85"><path d="M40 0 H60 V40 H100 V60 H60 V100 H40 V60 H0 V40 H40 Z" fill="url(#shapeGradPink)" stroke="rgba(255,255,255,0.25)" stroke-width="2"/></svg>`,
+            `<svg viewBox="0 0 100 100" width="85" height="85"><path d="M50 5 L90 28 L90 72 L50 95 L10 72 L10 28 Z M50 25 L70 38 L70 62 L50 75 L30 62 L30 38 Z" fill="url(#shapeGradPurple)" stroke="rgba(255,255,255,0.25)" stroke-width="2"/></svg>`
+        ];
+
+        const GRADIENTS_SVG_DEFS = `
+            <svg style="width:0;height:0;position:absolute;" aria-hidden="true" focusable="false">
+                <defs>
+                    <linearGradient id="shapeGradPink" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" stop-color="rgba(236, 72, 153, 0.45)" />
+                        <stop offset="100%" stop-color="rgba(255, 255, 255, 0.1)" />
+                    </linearGradient>
+                    <linearGradient id="shapeGradPurple" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" stop-color="rgba(168, 85, 247, 0.45)" />
+                        <stop offset="100%" stop-color="rgba(255, 255, 255, 0.1)" />
+                    </linearGradient>
+                    <linearGradient id="shapeGradCyan" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" stop-color="rgba(6, 182, 212, 0.45)" />
+                        <stop offset="100%" stop-color="rgba(255, 255, 255, 0.1)" />
+                    </linearGradient>
+                    <linearGradient id="shapeGradBlue" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" stop-color="rgba(59, 130, 246, 0.45)" />
+                        <stop offset="100%" stop-color="rgba(255, 255, 255, 0.1)" />
+                    </linearGradient>
+                    <linearGradient id="shapeGradLime" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" stop-color="rgba(149, 240, 41, 0.45)" />
+                        <stop offset="100%" stop-color="rgba(255, 255, 255, 0.1)" />
+                    </linearGradient>
+                </defs>
+            </svg>
+        `;
+
+        function loadRandomShapesGallery() {
+            const container = document.getElementById('shapesGalleryContainer');
+            if (!container) return;
+
+            const shuffled = [...SHAPES_GALLERY].sort(() => 0.5 - Math.random());
+            const selected = shuffled.slice(0, 4);
+            const positions = ['gallery-shape-pos1', 'gallery-shape-pos2', 'gallery-shape-pos3', 'gallery-shape-pos4'];
+
+            let html = GRADIENTS_SVG_DEFS;
+            selected.forEach((shapeSvg, idx) => {
+                html += `<div class="gallery-floating-shape ${positions[idx]}">${shapeSvg}</div>`;
+            });
+
+            container.innerHTML = html;
+        }
+
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', loadRandomShapesGallery);
+        } else {
+            loadRandomShapesGallery();
+        }
+
         const REQUIRED_PASSCODE = "sada";
 
         function checkPasscode() {
