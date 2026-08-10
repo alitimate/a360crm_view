@@ -1680,7 +1680,8 @@
     <script>
         const REQUIRED_PASSCODE = "sada";
         const PASSCODE_STORAGE_KEY = "crm_dashboard_passcode_unlocked";
-        const GOOGLE_SHEET_CSV_URL = "https://docs.google.com/spreadsheets/d/15n6wstZajaR98ZzD5ZnV5tH6B8quAoCYTRD5CiH7h-M/export?format=csv&gid=0";
+        const GOOGLE_SHEET_CSV_URL = "https://docs.google.com/spreadsheets/d/15n6wstZajaR98ZzD5ZnV5tH6B8quAoCYTRD5CiH7h-M/gviz/tq?tqx=out:csv&gid=0";
+        const GOOGLE_SHEET_EXPORT_FALLBACK = "https://docs.google.com/spreadsheets/d/15n6wstZajaR98ZzD5ZnV5tH6B8quAoCYTRD5CiH7h-M/export?format=csv&gid=0";
 
         if (typeof Chart !== 'undefined') {
             Chart.defaults.font.family = "'Inter', sans-serif";
@@ -2196,70 +2197,81 @@
         }
 
         async function fetchLiveGoogleSheetData() {
-            try {
-                const response = await fetch(GOOGLE_SHEET_CSV_URL + "&_cb=" + Date.now() + "_" + Math.random().toString(36).substring(2, 7), {
-                    cache: "no-store",
-                    headers: {
-                        "Cache-Control": "no-cache, no-store, must-revalidate",
-                        "Pragma": "no-cache",
-                        "Expires": "0"
-                    }
-                });
-                if (!response.ok) throw new Error("HTTP " + response.status);
-                const csvText = await response.text();
-                
-                const lines = csvText.split('\n');
-                let headerIdx = -1;
-                for (let i = 0; i < lines.length; i++) {
-                    if (lines[i].includes('S No.')) {
-                        headerIdx = i;
-                        break;
-                    }
-                }
+            const urls = [
+                GOOGLE_SHEET_CSV_URL + "&_cb=" + Date.now() + "_" + Math.random().toString(36).substring(2, 7),
+                GOOGLE_SHEET_EXPORT_FALLBACK + "&_cb=" + Date.now() + "_" + Math.random().toString(36).substring(2, 7)
+            ];
 
-                if (headerIdx !== -1) {
-                    const parsedLeads = [];
-                    for (let i = headerIdx + 1; i < lines.length; i++) {
-                        const row = parseCSVRow(lines[i]);
-                        const contactRaw = row[2] ? row[2].trim() : "";
-                        // Only count as lead if row has a valid phone number
-                        if (row.length > 0 && row[0].trim().match(/^\d+$/) && isValidPhoneNumber(contactRaw)) {
-                            const statusRaw = row[5] ? row[5].trim() : "Unspecified";
-                            let statusClean = "Other";
-                            if (statusRaw.includes("Converted")) statusClean = "Converted";
-                            else if (statusRaw.includes("Not intrested") || statusRaw.includes("Not interested")) statusClean = "Not Interested";
-                            else if (statusRaw.includes("Follow-up")) statusClean = "Follow-up";
-                            else if (statusRaw.includes("Link Sent")) statusClean = "Link Sent";
-                            else if (statusRaw.includes("Unanswered")) statusClean = "Unanswered";
+            for (const targetUrl of urls) {
+                try {
+                    const response = await fetch(targetUrl, {
+                        cache: "no-store",
+                        headers: {
+                            "Cache-Control": "no-cache, no-store, must-revalidate",
+                            "Pragma": "no-cache",
+                            "Expires": "0"
+                        }
+                    });
+                    if (!response.ok) continue;
+                    const csvText = await response.text();
+                    if (!csvText || csvText.length < 50) continue;
 
-                            const locRaw = row[6] ? row[6].trim() : "";
-                            const locationClean = (locRaw && locRaw !== "-" && locRaw !== "N/A") ? locRaw : "Unspecified";
-
-                            parsedLeads.push({
-                                id: row[0].trim(),
-                                date: row[1] ? row[1].trim() : "",
-                                contact: contactRaw,
-                                agent: row[4] && row[4].trim() ? row[4].trim() : "Unassigned",
-                                status: statusClean,
-                                location: locationClean,
-                                comments: row[11] ? row[11].trim() : "",
-                                notes: row[12] ? row[12].trim() : ""
-                            });
+                    const lines = csvText.split('\n');
+                    let headerIdx = -1;
+                    for (let i = 0; i < lines.length; i++) {
+                        if (lines[i].includes('S No.')) {
+                            headerIdx = i;
+                            break;
                         }
                     }
 
-                    if (parsedLeads.length > 0) {
-                        rawLeads = parsedLeads;
-                        applyPeriodFilter();
-                        return true;
+                    if (headerIdx !== -1) {
+                        const parsedLeads = [];
+                        for (let i = headerIdx + 1; i < lines.length; i++) {
+                            const row = parseCSVRow(lines[i]);
+                            const contactRaw = row[2] ? row[2].trim() : "";
+                            const idRaw = row[0] ? row[0].trim() : "";
+
+                            if (row.length > 0 && idRaw.match(/^\d+$/) && isValidPhoneNumber(contactRaw)) {
+                                const statusRaw = row[5] ? row[5].trim() : "Unspecified";
+                                let statusClean = "Other";
+                                if (statusRaw.includes("Converted")) statusClean = "Converted";
+                                else if (statusRaw.includes("Not intrested") || statusRaw.includes("Not interested")) statusClean = "Not Interested";
+                                else if (statusRaw.includes("Follow-up")) statusClean = "Follow-up";
+                                else if (statusRaw.includes("Link Sent")) statusClean = "Link Sent";
+                                else if (statusRaw.includes("Unanswered")) statusClean = "Unanswered";
+
+                                const locRaw = row[6] ? row[6].trim() : "";
+                                const locationClean = (locRaw && locRaw !== "-" && locRaw !== "N/A") ? locRaw : "Unspecified";
+
+                                parsedLeads.push({
+                                    id: idRaw,
+                                    date: row[1] ? row[1].trim() : "",
+                                    contact: contactRaw,
+                                    agent: row[4] && row[4].trim() ? row[4].trim() : "Unassigned",
+                                    status: statusClean,
+                                    location: locationClean,
+                                    comments: row[11] ? row[11].trim() : "",
+                                    notes: row[12] ? row[12].trim() : ""
+                                });
+                            }
+                        }
+
+                        if (parsedLeads.length > 0) {
+                            rawLeads = parsedLeads;
+                            applyPeriodFilter();
+                            return true;
+                        }
                     }
+                } catch (err) {
+                    console.log("Live fetch attempt failed:", targetUrl, err);
                 }
-            } catch (err) {
-                console.log("Using fallback dataset:", err);
-                if (typeof leadsData !== 'undefined' && leadsData.length > 0) {
-                    rawLeads = leadsData.filter(l => isValidPhoneNumber(l.contact));
-                    applyPeriodFilter();
-                }
+            }
+
+            // Fallback dataset
+            if (typeof leadsData !== 'undefined' && leadsData.length > 0) {
+                rawLeads = leadsData.filter(l => isValidPhoneNumber(l.contact));
+                applyPeriodFilter();
             }
             return false;
         }
@@ -2272,11 +2284,11 @@
                 const c = text[i];
                 if (c === '"') inQuotes = !inQuotes;
                 else if (c === ',' && !inQuotes) {
-                    result.push(cell);
+                    result.push(cell.replace(/^"|"$/g, '').replace(/""/g, '"').trim());
                     cell = '';
                 } else cell += c;
             }
-            result.push(cell);
+            result.push(cell.replace(/^"|"$/g, '').replace(/""/g, '"').trim());
             return result;
         }
 
