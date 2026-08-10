@@ -16,37 +16,42 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
 
-        /* 🔤 Inter font for all score text, KPI metrics, numbers, and card boxes */
-        .kpi-card,
-        .kpi-num,
-        .kpi-label,
-        .kpi-sub,
-        #donutCenterNum,
-        #donutCenterSub,
-        .overview-card,
-        .trend-card,
-        .agent-table-card,
-        .master-detail-card,
-        .agent-table td,
-        .agent-table th,
-        .detail-meta-grid,
-        .invoice-item,
-        .badge-pill,
-        .period-btn,
-        .calendar-day,
-        .passcode-card,
-        .passcode-input,
-        .search-pill input {
-            font-family: 'Inter', sans-serif !important;
-        }
-
+        /* 🔤 Space Grotesk strictly for ALL Titles and Section Headers */
         h1, h2, h3, h4, h5, h6,
         .brand-text, 
         .passcode-logo span, 
         .celebration-title, 
         .section-title, 
-        .card-title {
+        .card-title,
+        .overview-card h3,
+        .trend-card h3,
+        .agent-table-card h3,
+        .master-detail-card h3,
+        .kpi-card h3,
+        .kpi-label,
+        .cal-title,
+        header .brand span {
             font-family: 'Space Grotesk', sans-serif !important;
+            font-weight: 400 !important;
+        }
+
+        /* 🔢 Inter strictly for ALL numerical values, digits, metrics, prices, percentages, IDs */
+        .kpi-num,
+        .kpi-sub,
+        #donutCenterNum,
+        #donutCenterSub,
+        .agent-table td,
+        .detail-meta-grid,
+        #detailId,
+        .invoice-item,
+        .invoice-amount,
+        .badge-pill,
+        .period-btn,
+        .calendar-day,
+        .passcode-input,
+        .search-pill input,
+        .live-sync-time {
+            font-family: 'Inter', sans-serif !important;
         }
 
         :root {
