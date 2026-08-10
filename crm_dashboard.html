@@ -12,6 +12,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
     <script src="leads_data.js"></script>
     <style>
+        /* 🔤 Space Grotesk for all titles AND all numbers on the page */
         h1, h2, h3, h4, h5, h6,
         .brand-text, 
         .kpi-num, 
@@ -23,9 +24,17 @@
         .trend-card h3,
         .agent-table-card h3,
         .master-detail-card h3,
-        #donutCenterNum {
+        #donutCenterNum,
+        #donutCenterSub,
+        .agent-table td,
+        .detail-meta-grid,
+        .invoice-item,
+        .badge-pill,
+        .period-btn,
+        .calendar-day,
+        .passcode-input,
+        .search-pill input {
             font-family: 'Space Grotesk', sans-serif !important;
-            font-weight: 400 !important;
         }
 
         :root {
@@ -57,7 +66,7 @@
             --accent-lime: #059669;
             --accent-lime-light: #34d399;
             --accent-green-mid: #047857;
-            --accent-lime-dim: rgba(5, 150, 105, 0.12);
+            --accent-lime-dim: rgba(5, 150, 105, 0.1);
             --text-white: #0f172a;
             --text-muted: #64748b;
             --border-card: #e2e8f0;
@@ -129,19 +138,19 @@
         body.light-theme .calendar-popover {
             background: #ffffff;
             border-color: #cbd5e1;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.12);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
         }
 
         body.light-theme .cal-title {
             color: #0f172a;
         }
 
-        body.light-theme .cal-day {
+        body.light-theme .calendar-day {
             color: #334155;
         }
 
-        body.light-theme .cal-day:hover {
-            background: #e2e8f0;
+        body.light-theme .calendar-day:hover {
+            background: #f1f5f9;
         }
 
         body.light-theme .live-status-pill,
@@ -149,21 +158,22 @@
             background: #ffffff;
             border-color: #cbd5e1;
             color: #0f172a;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
         }
 
         .theme-toggle-btn {
-            background: var(--bg-card);
+            background: rgba(27, 30, 35, 0.8);
             border: 1px solid var(--border-card);
             color: var(--text-white);
-            padding: 8px 16px;
+            padding: 8px 14px;
             border-radius: 20px;
             font-size: 12px;
-            font-weight: 700;
+            font-weight: 600;
             cursor: pointer;
             display: flex;
             align-items: center;
-            gap: 8px;
-            transition: all 0.25s ease;
+            gap: 6px;
+            transition: all 0.3s ease;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
         }
 
@@ -177,11 +187,12 @@
             margin: 0;
             padding: 0;
             font-family: 'Manrope', sans-serif !important;
+            font-weight: 200;
         }
 
         body {
             font-family: 'Manrope', sans-serif !important;
-            font-weight: 300;
+            font-weight: 200 !important;
             background-color: var(--bg-body);
             color: var(--text-white);
             min-height: 100vh;
