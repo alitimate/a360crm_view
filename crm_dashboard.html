@@ -1561,46 +1561,31 @@
 
     <!-- Script Engine with Glassmorphism Lock & Live Sync -->
     <script>
-        const REQUIRED_PASSCODE_HASH = "b25d0fd93fbf5e6149c36b620b6da0f9a17b90fabd27c215a56311deecd6d7aa";
-
+        const REQUIRED_PASSCODE = "sada";
         const PASSCODE_STORAGE_KEY = "crm_dashboard_passcode_unlocked";
+        const GOOGLE_SHEET_CSV_URL = "https://docs.google.com/spreadsheets/d/15n6wstZajaR98ZzD5ZnV5tH6B8quAoCYTRD5CiH7h-M/export?format=csv&gid=0";
 
-        // Encrypted Google Sheet URL (AES-256-CBC) - Decrypts with passcode to fetch live data
-        let GOOGLE_SHEET_CSV_URL = "D8Vuw0Mj8TJnteoqAEWO4UireiBsWGSyNR2yR+SoMR7OGbnsJE2nHbSJCnQdAqSMhxlAmTRQWbVjKDJ8LFM8u9KMmerD6O60/MxlP/gj1IM5WD9wd5+o56i1YL+1bwzdtUu8s3vXt60NZmzO+6mJJ9+QlNcQPAg6VNH+25hD4eyPK4IIwSvr";
-
-        // Check if a passcode is already stored in localStorage and unlock the dashboard if valid
-        if (localStorage.getItem(PASSCODE_STORAGE_KEY)) {
-            const storedPasscode = localStorage.getItem(PASSCODE_STORAGE_KEY);
-            hashMessage(storedPasscode).then(hashed => {
-                if (hashed === REQUIRED_PASSCODE_HASH) {
-                    decrypt(GOOGLE_SHEET_CSV_URL, storedPasscode).then(decryptedUrl => {
-                        GOOGLE_SHEET_CSV_URL = decryptedUrl;
-                        unlockDashboard();
-                    }).catch(err => {
-                        console.error("Decryption failed:", err);
-                        localStorage.removeItem(PASSCODE_STORAGE_KEY);
-                    });
-                } else {
-                    localStorage.removeItem(PASSCODE_STORAGE_KEY);
-                }
+        // Auto unlock if valid passcode was previously stored
+        if (localStorage.getItem(PASSCODE_STORAGE_KEY) === "sada") {
+            window.addEventListener('DOMContentLoaded', () => {
+                unlockDashboard();
             });
         }
 
-        async function checkPasscode() {
-            const inputVal = document.getElementById('passcodeInput').value.trim();
+        function checkPasscode() {
+            const inputEl = document.getElementById('passcodeInput');
+            const inputVal = inputEl ? inputEl.value.trim() : '';
             const errorEl = document.getElementById('passcodeError');
-            const hashedInput = await hashMessage(inputVal);
             
-            if (hashedInput === REQUIRED_PASSCODE_HASH) {
-                localStorage.setItem(PASSCODE_STORAGE_KEY, inputVal);
-                
-                GOOGLE_SHEET_CSV_URL = await decrypt(GOOGLE_SHEET_CSV_URL, inputVal);
-
+            if (inputVal.toLowerCase() === REQUIRED_PASSCODE) {
+                localStorage.setItem(PASSCODE_STORAGE_KEY, REQUIRED_PASSCODE);
                 unlockDashboard();
             } else {
-                errorEl.style.display = 'block';
-                document.getElementById('passcodeInput').value = '';
-                document.getElementById('passcodeInput').focus();
+                if (errorEl) errorEl.style.display = 'block';
+                if (inputEl) {
+                    inputEl.value = '';
+                    inputEl.focus();
+                }
             }
         }      
 
@@ -1610,16 +1595,19 @@
             }
         }
 
-        async function unlockDashboard() {
-            document.getElementById('passcodeOverlay').style.display = 'none';
+        function unlockDashboard() {
+            const overlay = document.getElementById('passcodeOverlay');
+            if (overlay) overlay.style.display = 'none';
             const mainContent = document.getElementById('dashboardMainContent');
-            mainContent.classList.add('authorized');
+            if (mainContent) mainContent.classList.add('authorized');
             fetchLiveGoogleSheetData();
         }
 
         window.addEventListener('DOMContentLoaded', () => {
             const input = document.getElementById('passcodeInput');
-            if (input) input.focus();
+            if (input && document.getElementById('passcodeOverlay').style.display !== 'none') {
+                input.focus();
+            }
         });
 
         let currentTabStatus = 'ALL';

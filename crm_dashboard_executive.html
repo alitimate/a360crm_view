@@ -1560,16 +1560,29 @@
     <!-- Script Engine with Glassmorphism Lock & Live Sync -->
     <script>
         const REQUIRED_PASSCODE = "sada";
+        const PASSCODE_STORAGE_KEY = "crm_dashboard_passcode_unlocked";
+
+        // Auto unlock if valid passcode was previously stored
+        if (localStorage.getItem(PASSCODE_STORAGE_KEY) === "sada") {
+            window.addEventListener('DOMContentLoaded', () => {
+                unlockDashboard();
+            });
+        }
 
         function checkPasscode() {
-            const inputVal = document.getElementById('passcodeInput').value.trim();
+            const inputEl = document.getElementById('passcodeInput');
+            const inputVal = inputEl ? inputEl.value.trim() : '';
             const errorEl = document.getElementById('passcodeError');
-            if (inputVal === REQUIRED_PASSCODE) {
+            
+            if (inputVal.toLowerCase() === REQUIRED_PASSCODE) {
+                localStorage.setItem(PASSCODE_STORAGE_KEY, REQUIRED_PASSCODE);
                 unlockDashboard();
             } else {
-                errorEl.style.display = 'block';
-                document.getElementById('passcodeInput').value = '';
-                document.getElementById('passcodeInput').focus();
+                if (errorEl) errorEl.style.display = 'block';
+                if (inputEl) {
+                    inputEl.value = '';
+                    inputEl.focus();
+                }
             }
         }
 
@@ -1580,15 +1593,18 @@
         }
 
         function unlockDashboard() {
-            document.getElementById('passcodeOverlay').style.display = 'none';
+            const overlay = document.getElementById('passcodeOverlay');
+            if (overlay) overlay.style.display = 'none';
             const mainContent = document.getElementById('dashboardMainContent');
-            mainContent.classList.add('authorized');
+            if (mainContent) mainContent.classList.add('authorized');
             fetchLiveGoogleSheetData();
         }
 
         window.addEventListener('DOMContentLoaded', () => {
             const input = document.getElementById('passcodeInput');
-            if (input) input.focus();
+            if (input && document.getElementById('passcodeOverlay').style.display !== 'none') {
+                input.focus();
+            }
         });
 
         let currentTabStatus = 'ALL';
