@@ -6,6 +6,7 @@
     <title>a3sixty CRM Handler Dashboard</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <script src="leads_data.js"></script>
     <style>
@@ -1590,10 +1591,48 @@
 
         function unlockDashboard() {
             const overlay = document.getElementById('passcodeOverlay');
-            if (overlay) overlay.style.display = 'none';
             const mainContent = document.getElementById('dashboardMainContent');
             if (mainContent) mainContent.classList.add('authorized');
+
+            if (overlay && overlay.style.display !== 'none') {
+                if (typeof gsap !== 'undefined') {
+                    gsap.to(overlay, {
+                        opacity: 0,
+                        duration: 0.45,
+                        ease: 'power2.inOut',
+                        onComplete: () => {
+                            overlay.style.display = 'none';
+                            animateDashboardEntrance();
+                        }
+                    });
+                } else {
+                    overlay.style.display = 'none';
+                    animateDashboardEntrance();
+                }
+            } else {
+                animateDashboardEntrance();
+            }
+
             fetchLiveGoogleSheetData();
+        }
+
+        function animateDashboardEntrance() {
+            if (typeof gsap === 'undefined') return;
+
+            gsap.fromTo('.kpi-card', 
+                { y: 35, opacity: 0, scale: 0.95 },
+                { y: 0, opacity: 1, scale: 1, duration: 0.75, stagger: 0.08, ease: 'back.out(1.6)', clearProps: 'all' }
+            );
+
+            gsap.fromTo('.overview-card, .trend-card', 
+                { y: 45, opacity: 0, scale: 0.96 },
+                { y: 0, opacity: 1, scale: 1, duration: 0.85, delay: 0.15, stagger: 0.12, ease: 'back.out(1.4)', clearProps: 'all' }
+            );
+
+            gsap.fromTo('.agent-table-card, .master-detail-card', 
+                { y: 50, opacity: 0 },
+                { y: 0, opacity: 1, duration: 0.85, delay: 0.35, stagger: 0.15, ease: 'power3.out', clearProps: 'all' }
+            );
         }
 
         function autoCheckAuth() {
@@ -2235,6 +2274,12 @@
                     responsive: true,
                     maintainAspectRatio: false,
                     cutout: '74%',
+                    animation: {
+                        duration: 1600,
+                        easing: 'easeOutElastic',
+                        animateRotate: true,
+                        animateScale: true
+                    },
                     plugins: {
                         legend: { display: false },
                         tooltip: { enabled: false }
@@ -2520,6 +2565,10 @@
                 options: {
                     responsive: true,
                     maintainAspectRatio: false,
+                    animation: {
+                        duration: 1600,
+                        easing: 'easeInOutBack'
+                    },
                     plugins: {
                         legend: {
                             display: true,
