@@ -10,6 +10,12 @@
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <script src="leads_data.js"></script>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap');
+
+        h1, h2, h3, h4, .brand-text, .kpi-num, .passcode-logo span, .celebration-title, .section-title, .card-title {
+            font-family: 'Space Grotesk', sans-serif !important;
+        }
+
         :root {
             --bg-body: #0f1115;
             --bg-card: #1b1e23;
@@ -2348,10 +2354,10 @@
                     maintainAspectRatio: false,
                     cutout: '74%',
                     animation: {
-                        duration: 1600,
-                        easing: 'easeOutElastic',
+                        duration: 600,
+                        easing: 'linear',
                         animateRotate: true,
-                        animateScale: true
+                        animateScale: false
                     },
                     plugins: {
                         legend: { display: false },
@@ -2641,8 +2647,8 @@
                     responsive: true,
                     maintainAspectRatio: false,
                     animation: {
-                        duration: 1600,
-                        easing: 'easeInOutBack'
+                        duration: 600,
+                        easing: 'linear'
                     },
                     plugins: {
                         legend: {
