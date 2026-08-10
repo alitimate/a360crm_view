@@ -36,6 +36,7 @@
 
         /* 🔢 Inter strictly for ALL numerical values, score boxes, digits, metrics, prices, percentages, IDs */
         .score-val,
+        #pipelineBoxVal,
         .score-card,
         .score-trend,
         .score-label,
@@ -750,9 +751,10 @@
             margin-bottom: 8px;
         }
 
-        .score-val {
+        .score-val, #pipelineBoxVal {
+            font-family: 'Inter', sans-serif !important;
             font-size: 32px;
-            font-weight: 800;
+            font-weight: 400 !important;
             letter-spacing: -0.5px;
             margin-bottom: 8px;
         }
