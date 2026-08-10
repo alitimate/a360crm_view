@@ -12,7 +12,18 @@
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
     <script src="leads_data.js"></script>
     <style>
-        h1, h2, h3, h4, .brand-text, .kpi-num, .passcode-logo span, .celebration-title, .section-title, .card-title {
+        h1, h2, h3, h4, h5, h6,
+        .brand-text, 
+        .kpi-num, 
+        .passcode-logo span, 
+        .celebration-title, 
+        .section-title, 
+        .card-title,
+        .overview-card h3,
+        .trend-card h3,
+        .agent-table-card h3,
+        .master-detail-card h3,
+        #donutCenterNum {
             font-family: 'Space Grotesk', sans-serif !important;
             font-weight: 400 !important;
         }
@@ -161,10 +172,15 @@
             transform: translateY(-1px);
         }
 
-        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Manrope', sans-serif; }
+        *, *::before, *::after, button, input, select, textarea {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Manrope', sans-serif !important;
+        }
 
         body {
-            font-family: 'Manrope', sans-serif;
+            font-family: 'Manrope', sans-serif !important;
             font-weight: 300;
             background-color: var(--bg-body);
             color: var(--text-white);
@@ -1625,6 +1641,10 @@
         const REQUIRED_PASSCODE = "sada";
         const PASSCODE_STORAGE_KEY = "crm_dashboard_passcode_unlocked";
         const GOOGLE_SHEET_CSV_URL = "https://docs.google.com/spreadsheets/d/15n6wstZajaR98ZzD5ZnV5tH6B8quAoCYTRD5CiH7h-M/export?format=csv&gid=0";
+
+        if (typeof Chart !== 'undefined') {
+            Chart.defaults.font.family = "'Manrope', sans-serif";
+        }
 
         function checkPasscode() {
             const inputEl = document.getElementById('passcodeInput');
