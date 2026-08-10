@@ -1235,8 +1235,10 @@
                 <span>CRM</span>
             </div>
             <div class="passcode-subtitle">Enter security passcode to unlock dashboard</div>
-            <input type="password" class="passcode-input" id="passcodeInput" placeholder="••••••••" onkeyup="handlePasscodeKey(event)">
-            <button class="passcode-btn" onclick="checkPasscode()">Unlock Dashboard <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: -2px; margin-left: 6px;"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></button>
+            <form onsubmit="event.preventDefault(); checkPasscode();" style="width: 100%;">
+                <input type="password" class="passcode-input" id="passcodeInput" placeholder="••••••••" onkeyup="handlePasscodeKey(event)" autocomplete="current-password">
+                <button type="submit" class="passcode-btn">Unlock Dashboard <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: -2px; margin-left: 6px;"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></button>
+            </form>
             <div class="passcode-error" id="passcodeError">Incorrect passcode. Try again.</div>
         </div>
     </div>
@@ -1561,13 +1563,7 @@
     <script>
         const REQUIRED_PASSCODE = "sada";
         const PASSCODE_STORAGE_KEY = "crm_dashboard_passcode_unlocked";
-
-        // Auto unlock if valid passcode was previously stored
-        if (localStorage.getItem(PASSCODE_STORAGE_KEY) === "sada") {
-            window.addEventListener('DOMContentLoaded', () => {
-                unlockDashboard();
-            });
-        }
+        const GOOGLE_SHEET_CSV_URL = "https://docs.google.com/spreadsheets/d/15n6wstZajaR98ZzD5ZnV5tH6B8quAoCYTRD5CiH7h-M/export?format=csv&gid=0";
 
         function checkPasscode() {
             const inputEl = document.getElementById('passcodeInput');
@@ -1600,12 +1596,21 @@
             fetchLiveGoogleSheetData();
         }
 
-        window.addEventListener('DOMContentLoaded', () => {
-            const input = document.getElementById('passcodeInput');
-            if (input && document.getElementById('passcodeOverlay').style.display !== 'none') {
-                input.focus();
+        function autoCheckAuth() {
+            const stored = localStorage.getItem(PASSCODE_STORAGE_KEY);
+            if (stored === REQUIRED_PASSCODE || stored === "true") {
+                unlockDashboard();
+            } else {
+                const input = document.getElementById('passcodeInput');
+                if (input) input.focus();
             }
-        });
+        }
+
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', autoCheckAuth);
+        } else {
+            autoCheckAuth();
+        }
 
         let currentTabStatus = 'ALL';
         let rawLeads = [];
