@@ -1223,8 +1223,7 @@
                 <div class="overview-body">
                     <!-- Interactive Hoverable Donut Chart -->
                     <div class="donut-container" id="donutSvgContainer">
-                        <svg viewBox="0 0 200 200" width="200" height="200" id="donutSvgElement">
-                        </svg>
+                        <canvas id="statusDonutChart" width="210" height="210"></canvas>
                         <div class="donut-center-text" id="donutCenterBox">
                             <div class="num" id="donutCenterNum">...</div>
                             <div class="sub" id="donutCenterSub">Total Leads</div>
@@ -2022,74 +2021,107 @@
             renderDynamicSVGDonut(converted, followup, notInterested, linkSent, unanswered, total);
         }
 
-        // 📊 Operational SVG Donut Renderer (No Currency Values)
+        // 📊 Operational Doughnut Renderer with Crisp Separation & Hover Tooltips
+        let statusDonutChartInstance = null;
+
         function renderDynamicSVGDonut(c, f, ni, ls, u, total) {
-            const svg = document.getElementById('donutSvgElement');
-            if (!svg || total === 0) {
-                if (svg) svg.innerHTML = '';
+            const canvas = document.getElementById('statusDonutChart');
+            if (!canvas) return;
+
+            const numEl = document.getElementById('donutCenterNum');
+            const subEl = document.getElementById('donutCenterSub');
+
+            if (total === 0) {
+                if (statusDonutChartInstance) {
+                    statusDonutChartInstance.destroy();
+                    statusDonutChartInstance = null;
+                }
+                if (numEl) numEl.innerText = '0';
+                if (subEl) subEl.innerText = 'Total Leads';
                 return;
             }
 
-            const slices = [
-                { label: 'Converted', count: c, color: '#10b981' },
-                { label: 'Follow-up', count: f, color: '#f59e0b' },
-                { label: 'Not Interested', count: ni, color: '#ef4444' },
-                { label: 'Link Sent', count: ls, color: '#8b5cf6' },
-                { label: 'Unanswered', count: u, color: '#64748b' }
+            const labels = ['Converted', 'Follow-up', 'Not Interested', 'Link Sent', 'Unanswered'];
+            const dataValues = [c, f, ni, ls, u];
+            const backgroundColors = [
+                '#10b981', // Converted (Emerald Green)
+                '#f59e0b', // Follow-up (Warm Amber)
+                '#ef4444', // Not Interested (Coral Red)
+                '#8b5cf6', // Link Sent (Purple)
+                '#64748b'  // Unanswered (Slate Gray)
             ];
 
-            const cx = 100, cy = 100, r = 80;
-            let startAngle = -Math.PI / 2;
-            let svgPaths = '';
+            if (statusDonutChartInstance) {
+                statusDonutChartInstance.data.datasets[0].data = dataValues;
+                statusDonutChartInstance.update();
+                return;
+            }
 
-            slices.forEach(s => {
-                if (s.count > 0) {
-                    const fraction = s.count / total;
-                    const endAngle = startAngle + fraction * 2 * Math.PI;
-                    const pct = (fraction * 100).toFixed(1);
+            const ctx = canvas.getContext('2d');
+            statusDonutChartInstance = new Chart(ctx, {
+                type: 'doughnut',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        data: dataValues,
+                        backgroundColor: backgroundColors,
+                        borderColor: '#121420',
+                        borderWidth: 3,
+                        hoverBorderColor: '#ffffff',
+                        hoverBorderWidth: 2,
+                        hoverOffset: 6
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    cutout: '74%',
+                    plugins: {
+                        legend: { display: false },
+                        tooltip: {
+                            enabled: true,
+                            backgroundColor: 'rgba(18, 20, 32, 0.95)',
+                            titleColor: '#ffffff',
+                            bodyColor: '#e2e8f0',
+                            borderColor: 'rgba(255, 255, 255, 0.2)',
+                            borderWidth: 1,
+                            padding: 12,
+                            boxPadding: 6,
+                            usePointStyle: true,
+                            callbacks: {
+                                label: function(context) {
+                                    const val = context.raw || 0;
+                                    const pct = total > 0 ? ((val / total) * 100).toFixed(1) : '0.0';
+                                    return ` ${context.label}: ${val} Leads (${pct}%)`;
+                                }
+                            }
+                        }
+                    },
+                    onHover: (event, chartElements) => {
+                        if (chartElements.length > 0) {
+                            const idx = chartElements[0].index;
+                            const count = dataValues[idx];
+                            const label = labels[idx];
+                            const color = backgroundColors[idx];
+                            const pct = total > 0 ? ((count / total) * 100).toFixed(1) : '0.0';
 
-                    const x1 = (cx + r * Math.cos(startAngle)).toFixed(2);
-                    const y1 = (cy + r * Math.sin(startAngle)).toFixed(2);
-                    const x2 = (cx + r * Math.cos(endAngle)).toFixed(2);
-                    const y2 = (cy + r * Math.sin(endAngle)).toFixed(2);
-
-                    const largeArc = fraction > 0.5 ? 1 : 0;
-                    const d = `M ${x1} ${y1} A ${r} ${r} 0 ${largeArc} 1 ${x2} ${y2}`;
-
-                    svgPaths += `
-                        <path d="${d}" class="donut-slice" fill="none" stroke="${s.color}" stroke-width="26" stroke-linecap="round"
-                            onmouseover="handleDonutSliceHover('${s.label}', ${s.count}, '${pct}', '${s.color}')"
-                            onmouseleave="handleDonutSliceLeave()">
-                            <title>${s.label}: ${s.count} Leads (${pct}%)</title>
-                        </path>
-                    `;
-                    startAngle = endAngle;
+                            if (numEl) {
+                                numEl.innerText = `${count} (${pct}%)`;
+                                numEl.style.color = color;
+                                numEl.style.fontSize = '20px';
+                            }
+                            if (subEl) subEl.innerText = `${label} Leads`;
+                        } else {
+                            if (numEl) {
+                                numEl.innerText = defaultTotalLeadsCount;
+                                numEl.style.color = '#ffffff';
+                                numEl.style.fontSize = '28px';
+                            }
+                            if (subEl) subEl.innerText = 'Total Leads';
+                        }
+                    }
                 }
             });
-
-            svg.innerHTML = svgPaths;
-        }
-
-        function handleDonutSliceHover(label, count, pct, color) {
-            const numEl = document.getElementById('donutCenterNum');
-            const subEl = document.getElementById('donutCenterSub');
-            if (numEl && subEl) {
-                numEl.innerText = `${count} (${pct}%)`;
-                numEl.style.color = color;
-                numEl.style.fontSize = '22px';
-                subEl.innerText = `${label} Leads`;
-            }
-        }
-
-        function handleDonutSliceLeave() {
-            const numEl = document.getElementById('donutCenterNum');
-            const subEl = document.getElementById('donutCenterSub');
-            if (numEl && subEl) {
-                numEl.innerText = defaultTotalLeadsCount;
-                numEl.style.color = '#ffffff';
-                numEl.style.fontSize = '28px';
-                subEl.innerText = 'Total Leads';
-            }
         }
 
         function updateDynamicAgentTable() {
