@@ -621,21 +621,31 @@
             transform: translate(-50%, -50%);
             text-align: center;
             pointer-events: none;
-            transition: all 0.2s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 140px;
+            z-index: 10;
         }
 
         .donut-center-text .num {
-            font-size: 28px;
+            font-size: 30px;
             font-weight: 800;
             color: var(--text-white);
             line-height: 1;
+            transition: color 0.15s ease;
         }
 
         .donut-center-text .sub {
             font-size: 11px;
             color: var(--text-muted);
-            font-weight: 600;
-            margin-top: 4px;
+            font-weight: 700;
+            margin-top: 6px;
+            text-transform: uppercase;
+            letter-spacing: 0.4px;
+            white-space: nowrap;
+            transition: color 0.15s ease;
         }
 
         .overview-right-content {
@@ -2136,18 +2146,24 @@
                             const pct = total > 0 ? ((count / total) * 100).toFixed(1) : '0.0';
 
                             if (numEl) {
-                                numEl.innerText = `${count} (${pct}%)`;
+                                numEl.innerText = count;
                                 numEl.style.color = color;
-                                numEl.style.fontSize = '20px';
+                                numEl.style.fontSize = '30px';
                             }
-                            if (subEl) subEl.innerText = `${label} Leads`;
+                            if (subEl) {
+                                subEl.innerText = `${label} (${pct}%)`;
+                                subEl.style.color = color;
+                            }
                         } else {
                             if (numEl) {
                                 numEl.innerText = defaultTotalLeadsCount;
                                 numEl.style.color = '#ffffff';
-                                numEl.style.fontSize = '28px';
+                                numEl.style.fontSize = '30px';
                             }
-                            if (subEl) subEl.innerText = 'Total Leads';
+                            if (subEl) {
+                                subEl.innerText = 'Total Leads';
+                                subEl.style.color = 'var(--text-muted)';
+                            }
                         }
                     }
                 }
