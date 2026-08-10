@@ -7,33 +7,45 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+    <link rel="icon" href="https://a3sixty.com/img/fav_a360.png" type="image/png">
+    <link rel="apple-touch-icon" href="https://a3sixty.com/img/fav_a360.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Manrope:wght@200..800&family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
     <script src="leads_data.js"></script>
     <style>
-        /* 🔤 Space Grotesk for all titles AND all numbers on the page */
-        h1, h2, h3, h4, h5, h6,
-        .brand-text, 
-        .kpi-num, 
-        .passcode-logo span, 
-        .celebration-title, 
-        .section-title, 
-        .card-title,
-        .overview-card h3,
-        .trend-card h3,
-        .agent-table-card h3,
-        .master-detail-card h3,
+        @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+        /* 🔤 Inter font for all score text, KPI metrics, numbers, and card boxes */
+        .kpi-card,
+        .kpi-num,
+        .kpi-label,
+        .kpi-sub,
         #donutCenterNum,
         #donutCenterSub,
+        .overview-card,
+        .trend-card,
+        .agent-table-card,
+        .master-detail-card,
         .agent-table td,
+        .agent-table th,
         .detail-meta-grid,
         .invoice-item,
         .badge-pill,
         .period-btn,
         .calendar-day,
+        .passcode-card,
         .passcode-input,
         .search-pill input {
+            font-family: 'Inter', sans-serif !important;
+        }
+
+        h1, h2, h3, h4, h5, h6,
+        .brand-text, 
+        .passcode-logo span, 
+        .celebration-title, 
+        .section-title, 
+        .card-title {
             font-family: 'Space Grotesk', sans-serif !important;
         }
 
@@ -1651,7 +1663,7 @@
         const GOOGLE_SHEET_CSV_URL = "https://docs.google.com/spreadsheets/d/15n6wstZajaR98ZzD5ZnV5tH6B8quAoCYTRD5CiH7h-M/export?format=csv&gid=0";
 
         if (typeof Chart !== 'undefined') {
-            Chart.defaults.font.family = "'Manrope', sans-serif";
+            Chart.defaults.font.family = "'Inter', sans-serif";
         }
 
         function checkPasscode() {
