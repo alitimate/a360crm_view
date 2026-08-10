@@ -1449,10 +1449,9 @@
                 <div class="score-trend" style="color: var(--text-muted);">
                     Target: 5.0% Goal
                 </div>
-                <div class="gauge-box">
-                    <svg viewBox="0 0 100 50" width="100" height="50">
-                        <path d="M 10 50 A 40 40 0 0 1 90 50" fill="none" stroke="#262930" stroke-width="12" stroke-linecap="round"/>
-                        <path d="M 10 50 A 40 40 0 0 1 65 18" fill="none" stroke="#95f029" stroke-width="12" stroke-linecap="round"/>
+                <div class="gauge-box" style="display: flex; align-items: center; justify-content: center; overflow: visible;">
+                    <svg viewBox="0 0 120 62" width="110" height="58" id="convGaugeSvg">
+                        <!-- Dynamically populated radial segmented speedometer gauge -->
                     </svg>
                 </div>
             </div>
@@ -2302,6 +2301,9 @@
             document.getElementById('topConvertedRev').innerText = converted + " Leads";
             document.getElementById('topConvertedCount').innerText = converted + " Leads Booked";
 
+            // Render Segmented Speedometer Gauge (matching 2nd screenshot)
+            updateConversionRateGauge(convPct);
+
             document.getElementById('overviewTotalSub').innerText = total + " Leads Total";
             document.getElementById('donutCenterNum').innerText = total;
             document.getElementById('donutCenterNum').style.color = '#ffffff';
@@ -2371,6 +2373,41 @@
 
         // 📊 Operational Doughnut Renderer with Crisp Separation & Hover Tooltips
         let statusDonutChartInstance = null;
+
+        function updateConversionRateGauge(rateVal) {
+            const svgEl = document.getElementById('convGaugeSvg');
+            if (!svgEl) return;
+
+            const numRate = parseFloat(rateVal) || 0;
+            const cx = 60;
+            const cy = 54;
+            const rInner = 26;
+            const rOuter = 46;
+            const totalTicks = 22;
+            const maxScale = 7.5; // Gauge reaches full arc around 7.5%
+            const activeTicks = Math.min(totalTicks, Math.max(1, Math.round((numRate / maxScale) * totalTicks)));
+
+            let paths = '';
+            for (let i = 0; i < totalTicks; i++) {
+                // Sweep angle from PI (180deg - left) to 0 (0deg - right)
+                const angle = Math.PI - (i / (totalTicks - 1)) * Math.PI;
+                const cos = Math.cos(angle);
+                const sin = Math.sin(angle);
+
+                const x1 = (cx + rInner * cos).toFixed(2);
+                const y1 = (cy - rInner * sin).toFixed(2);
+                const x2 = (cx + rOuter * cos).toFixed(2);
+                const y2 = (cy - rOuter * sin).toFixed(2);
+
+                const isActive = i < activeTicks;
+                const color = isActive ? '#95f029' : 'rgba(255, 255, 255, 0.12)';
+                const opacity = isActive ? '1' : '0.4';
+
+                paths += `<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke="${color}" stroke-width="4.2" stroke-linecap="round" opacity="${opacity}" />`;
+            }
+
+            svgEl.innerHTML = paths;
+        }
 
         function renderDynamicSVGDonut(c, f, ni, ls, u, total) {
             const canvas = document.getElementById('statusDonutChart');
