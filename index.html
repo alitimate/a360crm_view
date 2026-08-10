@@ -1618,7 +1618,6 @@
         let selectedPeriod = 'ALL';
         let trendChartInstance = null;
         let defaultTotalLeadsCount = 0;
-        const GOOGLE_SHEET_CSV_URL = "https://docs.google.com/spreadsheets/d/15n6wstZajaR98ZzD5ZnV5tH6B8quAoCYTRD5CiH7h-M/export?format=csv&gid=0";
 
         // Calendar State
         let calYear = 2026;
@@ -2535,6 +2534,8 @@
                     }
                 }
             });
+        }
+
         // ☀️ Light / Dark Theme Engine
         function initTheme() {
             const savedTheme = localStorage.getItem('a360_theme_preference');
