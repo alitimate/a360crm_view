@@ -2168,22 +2168,22 @@
             const statusText = document.getElementById('syncStatusText');
             const dot = document.getElementById('syncDot');
 
-            btn.style.opacity = '0.7';
-            statusText.innerText = "FETCHING LIVE SHEET...";
-            dot.className = "live-dot spinner";
+            if (btn) btn.style.opacity = '0.7';
+            if (statusText) statusText.innerText = "FETCHING LIVE SHEET...";
+            if (dot) dot.className = "live-dot spinner";
 
-            const ok = await fetchLiveGoogleSheetData();
-            if (ok) {
-                statusText.innerText = "LIVE SHEET UPDATED!";
+            const count = await fetchLiveGoogleSheetData();
+            if (count > 0) {
+                if (statusText) statusText.innerText = `SYNCED ${count} LEADS!`;
             } else {
-                statusText.innerText = "SYNC COMPLETE";
+                if (statusText) statusText.innerText = "SYNC COMPLETE";
             }
 
             setTimeout(() => {
-                statusText.innerText = "LIVE SHEET SYNC";
-                btn.style.opacity = '1';
-                dot.className = "live-dot";
-            }, 2000);
+                if (statusText) statusText.innerText = "LIVE SHEET SYNC";
+                if (btn) btn.style.opacity = '1';
+                if (dot) dot.className = "live-dot";
+            }, 3000);
         }
 
         function isValidPhoneNumber(phoneStr) {
@@ -2215,22 +2215,47 @@
 
                     const lines = csvText.split('\n');
                     let headerIdx = -1;
+                    let headerRow = [];
                     for (let i = 0; i < lines.length; i++) {
-                        if (lines[i].includes('S No.')) {
+                        if (lines[i].includes('S No.') || lines[i].includes('Contact Number')) {
                             headerIdx = i;
+                            headerRow = parseCSVRow(lines[i]);
                             break;
                         }
                     }
 
                     if (headerIdx !== -1) {
+                        const colMap = {};
+                        headerRow.forEach((colName, idx) => {
+                            const name = colName.toLowerCase();
+                            if (name.includes("s no") || name === "sno" || name === "id") colMap.id = idx;
+                            else if (name.includes("date") && colMap.date === undefined) colMap.date = idx;
+                            else if (name.includes("contact") || name.includes("phone") || name.includes("mobile")) colMap.contact = idx;
+                            else if (name.includes("assigned") || name.includes("agent") || name.includes("handler")) colMap.agent = idx;
+                            else if (name.includes("status")) colMap.status = idx;
+                            else if (name.includes("riyadh") || name.includes("location") || name.includes("city")) colMap.location = idx;
+                            else if (name.includes("internal") || name.includes("comment")) colMap.comments = idx;
+                            else if (name.includes("note")) colMap.notes = idx;
+                        });
+
                         const parsedLeads = [];
                         for (let i = headerIdx + 1; i < lines.length; i++) {
                             const row = parseCSVRow(lines[i]);
-                            const contactRaw = row[2] ? row[2].trim() : "";
-                            const idRaw = row[0] ? row[0].trim() : "";
+                            if (!row || row.length === 0) continue;
 
-                            if (row.length > 0 && idRaw.match(/^\d+$/) && isValidPhoneNumber(contactRaw)) {
-                                const statusRaw = row[5] ? row[5].trim() : "Unspecified";
+                            const contactRaw = (colMap.contact !== undefined && row[colMap.contact]) ? row[colMap.contact].trim() : (row[2] ? row[2].trim() : "");
+                            const idRaw = (colMap.id !== undefined && row[colMap.id]) ? row[colMap.id].trim() : (row[0] ? row[0].trim() : String(i - headerIdx));
+                            let dateRaw = row[1] ? row[1].trim() : "";
+                            if (!dateRaw && colMap.date !== undefined && row[colMap.date]) {
+                                dateRaw = row[colMap.date].trim();
+                            }
+                            const agentRaw = (colMap.agent !== undefined && row[colMap.agent]) ? row[colMap.agent].trim() : (row[4] ? row[4].trim() : "Unassigned");
+                            const statusRaw = (colMap.status !== undefined && row[colMap.status]) ? row[colMap.status].trim() : (row[5] ? row[5].trim() : "Unspecified");
+                            const locRaw = (colMap.location !== undefined && row[colMap.location]) ? row[colMap.location].trim() : (row[6] ? row[6].trim() : "Unspecified");
+                            const commentsRaw = (colMap.comments !== undefined && row[colMap.comments]) ? row[colMap.comments].trim() : (row[11] ? row[11].trim() : "");
+                            const notesRaw = (colMap.notes !== undefined && row[colMap.notes]) ? row[colMap.notes].trim() : (row[12] ? row[12].trim() : "");
+
+                            if (isValidPhoneNumber(contactRaw)) {
                                 let statusClean = "Other";
                                 if (statusRaw.includes("Converted")) statusClean = "Converted";
                                 else if (statusRaw.includes("Not intrested") || statusRaw.includes("Not interested")) statusClean = "Not Interested";
@@ -2238,18 +2263,17 @@
                                 else if (statusRaw.includes("Link Sent")) statusClean = "Link Sent";
                                 else if (statusRaw.includes("Unanswered")) statusClean = "Unanswered";
 
-                                const locRaw = row[6] ? row[6].trim() : "";
                                 const locationClean = (locRaw && locRaw !== "-" && locRaw !== "N/A") ? locRaw : "Unspecified";
 
                                 parsedLeads.push({
-                                    id: idRaw,
-                                    date: row[1] ? row[1].trim() : "",
+                                    id: idRaw || String(parsedLeads.length + 1),
+                                    date: dateRaw,
                                     contact: contactRaw,
-                                    agent: row[4] && row[4].trim() ? row[4].trim() : "Unassigned",
+                                    agent: agentRaw || "Unassigned",
                                     status: statusClean,
                                     location: locationClean,
-                                    comments: row[11] ? row[11].trim() : "",
-                                    notes: row[12] ? row[12].trim() : ""
+                                    comments: commentsRaw,
+                                    notes: notesRaw
                                 });
                             }
                         }
@@ -2257,7 +2281,7 @@
                         if (parsedLeads.length > 0) {
                             rawLeads = parsedLeads;
                             applyPeriodFilter();
-                            return true;
+                            return parsedLeads.length;
                         }
                     }
                 } catch (err) {
@@ -2269,9 +2293,15 @@
             if (typeof leadsData !== 'undefined' && leadsData.length > 0) {
                 rawLeads = leadsData.filter(l => isValidPhoneNumber(l.contact));
                 applyPeriodFilter();
+                return rawLeads.length;
             }
-            return false;
+            return 0;
         }
+
+        // ⚡ Automatic Live Sheet Sync every 30 seconds
+        setInterval(() => {
+            fetchLiveGoogleSheetData();
+        }, 30000);
 
         function parseCSVRow(text) {
             const result = [];
