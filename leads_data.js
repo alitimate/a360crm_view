@@ -3634,7 +3634,7 @@ const leadsData = [
     "date": "6/8/2026",
     "contact": "053 407 8991",
     "agent": "Fateen",
-    "status": "Follow-up",
+    "status": "Not Interested",
     "location": "Unspecified",
     "comments": "6pm",
     "notes": ""
@@ -3714,7 +3714,7 @@ const leadsData = [
     "date": "8/8/2026",
     "contact": "050 823 1815",
     "agent": "Fateen",
-    "status": "Follow-up",
+    "status": "Not Interested",
     "location": "Unspecified",
     "comments": "",
     "notes": ""
@@ -3724,7 +3724,7 @@ const leadsData = [
     "date": "8/8/2026",
     "contact": "057 310 8739",
     "agent": "Fateen",
-    "status": "Follow-up",
+    "status": "Not Interested",
     "location": "Dammam",
     "comments": "",
     "notes": ""
@@ -3734,7 +3734,7 @@ const leadsData = [
     "date": "8/8/2026",
     "contact": "91 95445 91837",
     "agent": "Fateen",
-    "status": "Follow-up",
+    "status": "Not Interested",
     "location": "Dammam",
     "comments": "will get back if needed",
     "notes": ""
@@ -3774,7 +3774,7 @@ const leadsData = [
     "date": "8/8/2026",
     "contact": "053 520 3547",
     "agent": "Fateen",
-    "status": "Unanswered",
+    "status": "Not Interested",
     "location": "Unspecified",
     "comments": "messaged",
     "notes": ""
@@ -3784,7 +3784,7 @@ const leadsData = [
     "date": "8/8/2026",
     "contact": "050 707 1268",
     "agent": "Fateen",
-    "status": "Unanswered",
+    "status": "Not Interested",
     "location": "Unspecified",
     "comments": "messaged",
     "notes": ""
@@ -3794,7 +3794,7 @@ const leadsData = [
     "date": "8/8/2026",
     "contact": "055 2526 8569",
     "agent": "Fateen",
-    "status": "Unanswered",
+    "status": "Follow-up",
     "location": "Unspecified",
     "comments": "messaged",
     "notes": ""
@@ -3804,8 +3804,8 @@ const leadsData = [
     "date": "8/8/2026",
     "contact": "055 800 5856",
     "agent": "Fateen",
-    "status": "Follow-up",
-    "location": "Unspecified",
+    "status": "Converted",
+    "location": "Khobar",
     "comments": "cncrnd about purity,want to tst",
     "notes": ""
   },
@@ -3824,7 +3824,7 @@ const leadsData = [
     "date": "8/8/2026",
     "contact": "054 968 5555",
     "agent": "Fateen",
-    "status": "Unanswered",
+    "status": "Not Interested",
     "location": "Unspecified",
     "comments": "",
     "notes": ""
@@ -3834,7 +3834,7 @@ const leadsData = [
     "date": "8/8/2026",
     "contact": "0561536702",
     "agent": "Fateen",
-    "status": "Follow-up",
+    "status": "Not Interested",
     "location": "Khobar",
     "comments": "not leads(ashiq)",
     "notes": ""
@@ -3844,7 +3844,7 @@ const leadsData = [
     "date": "8/8/2026",
     "contact": "058 210 6892",
     "agent": "Fateen",
-    "status": "Other",
+    "status": "Not Interested",
     "location": "Unspecified",
     "comments": "",
     "notes": ""
@@ -3854,7 +3854,7 @@ const leadsData = [
     "date": "8/8/2026",
     "contact": "053 758 1343",
     "agent": "Fateen",
-    "status": "Follow-up",
+    "status": "Not Interested",
     "location": "Khobar",
     "comments": "not leads(ashiq)",
     "notes": ""
@@ -3864,7 +3864,7 @@ const leadsData = [
     "date": "9/8/2026",
     "contact": "058 014 0978",
     "agent": "Fateen",
-    "status": "Follow-up",
+    "status": "Not Interested",
     "location": "Unspecified",
     "comments": "messaged",
     "notes": ""
@@ -3954,7 +3954,7 @@ const leadsData = [
     "date": "9/8/2026",
     "contact": "056 097 9189",
     "agent": "Fateen",
-    "status": "Follow-up",
+    "status": "Not Interested",
     "location": "Unspecified",
     "comments": "will visit store",
     "notes": ""
@@ -3974,7 +3974,7 @@ const leadsData = [
     "date": "9/8/2026",
     "contact": "053 197 0328",
     "agent": "Fateen",
-    "status": "Unanswered",
+    "status": "Not Interested",
     "location": "Unspecified",
     "comments": "",
     "notes": ""
@@ -4004,7 +4004,7 @@ const leadsData = [
     "date": "9/8/2026",
     "contact": "91 891 986 6621",
     "agent": "Fateen",
-    "status": "Follow-up",
+    "status": "Not Interested",
     "location": "Unspecified",
     "comments": "messaged",
     "notes": ""
@@ -4124,7 +4124,7 @@ const leadsData = [
     "date": "10/8/2026",
     "contact": "059 379 4994",
     "agent": "Fateen",
-    "status": "Follow-up",
+    "status": "Not Interested",
     "location": "Unspecified",
     "comments": "messaged",
     "notes": ""
@@ -4154,7 +4154,7 @@ const leadsData = [
     "date": "10/8/2026",
     "contact": "053 345 6416",
     "agent": "Fateen",
-    "status": "Follow-up",
+    "status": "Not Interested",
     "location": "Riyadh",
     "comments": "",
     "notes": ""
@@ -4204,9 +4204,9 @@ const leadsData = [
     "date": "10/8/2026",
     "contact": "055 111 1346",
     "agent": "Fateen",
-    "status": "Other",
+    "status": "Not Interested",
     "location": "Unspecified",
-    "comments": "",
+    "comments": "2.30pm",
     "notes": ""
   },
   {
@@ -4214,7 +4214,7 @@ const leadsData = [
     "date": "10/8/2026",
     "contact": "053 907 2883",
     "agent": "Fateen",
-    "status": "Other",
+    "status": "Follow-up",
     "location": "Unspecified",
     "comments": "",
     "notes": ""
@@ -4224,9 +4224,9 @@ const leadsData = [
     "date": "10/8/2026",
     "contact": "056 169 6608",
     "agent": "Fateen",
-    "status": "Other",
+    "status": "Not Interested",
     "location": "Unspecified",
-    "comments": "",
+    "comments": "mistake",
     "notes": ""
   },
   {
@@ -4234,9 +4234,9 @@ const leadsData = [
     "date": "10/8/2026",
     "contact": "059 470 0247",
     "agent": "Fateen",
-    "status": "Other",
+    "status": "Unanswered",
     "location": "Unspecified",
-    "comments": "",
+    "comments": "messaged",
     "notes": ""
   },
   {
@@ -4244,7 +4244,7 @@ const leadsData = [
     "date": "10/8/2026",
     "contact": "880 1745-128353",
     "agent": "Fateen",
-    "status": "Other",
+    "status": "Follow-up",
     "location": "Unspecified",
     "comments": "messaged",
     "notes": ""
@@ -4254,9 +4254,9 @@ const leadsData = [
     "date": "10/8/2026",
     "contact": "055 695 0094",
     "agent": "Fateen",
-    "status": "Other",
+    "status": "Follow-up",
     "location": "Unspecified",
-    "comments": "",
+    "comments": "3.30pm",
     "notes": ""
   },
   {
@@ -4264,9 +4264,9 @@ const leadsData = [
     "date": "11/8/2026",
     "contact": "050 341 2373",
     "agent": "Fateen",
-    "status": "Other",
-    "location": "Unspecified",
-    "comments": "",
+    "status": "Follow-up",
+    "location": "Riyadh",
+    "comments": "budget issues",
     "notes": ""
   },
   {
@@ -4274,7 +4274,7 @@ const leadsData = [
     "date": "11/8/2026",
     "contact": "880 1919-865147",
     "agent": "Fateen",
-    "status": "Other",
+    "status": "Follow-up",
     "location": "Unspecified",
     "comments": "messaged",
     "notes": ""
@@ -4284,7 +4284,7 @@ const leadsData = [
     "date": "11/8/2026",
     "contact": "92 331 9142181",
     "agent": "Fateen",
-    "status": "Other",
+    "status": "Follow-up",
     "location": "Unspecified",
     "comments": "messaged",
     "notes": ""
@@ -4294,9 +4294,9 @@ const leadsData = [
     "date": "11/8/2026",
     "contact": "056 391 0054",
     "agent": "Fateen",
-    "status": "Other",
+    "status": "Follow-up",
     "location": "Unspecified",
-    "comments": "",
+    "comments": "5pm",
     "notes": ""
   },
   {
@@ -4304,9 +4304,9 @@ const leadsData = [
     "date": "11/8/2026",
     "contact": "050 149 6902",
     "agent": "Fateen",
-    "status": "Other",
+    "status": "Not Interested",
     "location": "Unspecified",
-    "comments": "",
+    "comments": "1pm",
     "notes": ""
   },
   {
@@ -4314,9 +4314,79 @@ const leadsData = [
     "date": "11/8/2026",
     "contact": "974 3336 8805",
     "agent": "Fateen",
-    "status": "Other",
+    "status": "Follow-up",
+    "location": "Unspecified",
+    "comments": "messaged",
+    "notes": ""
+  },
+  {
+    "id": "439",
+    "date": "11/8/2026",
+    "contact": "050 342 2798",
+    "agent": "Fateen",
+    "status": "Follow-up",
+    "location": "Unspecified",
+    "comments": "8pm",
+    "notes": ""
+  },
+  {
+    "id": "440",
+    "date": "11/8/2026",
+    "contact": "053 635 2262",
+    "agent": "Fateen",
+    "status": "Not Interested",
+    "location": "Riyadh",
+    "comments": "",
+    "notes": ""
+  },
+  {
+    "id": "441",
+    "date": "11/8/2026",
+    "contact": "91 95000 08367",
+    "agent": "Fateen",
+    "status": "Follow-up",
+    "location": "Unspecified",
+    "comments": "messaged",
+    "notes": ""
+  },
+  {
+    "id": "442",
+    "date": "11/8/2026",
+    "contact": "050 657 9270",
+    "agent": "Fateen",
+    "status": "Unanswered",
+    "location": "Unspecified",
+    "comments": "messaged",
+    "notes": ""
+  },
+  {
+    "id": "443",
+    "date": "11/8/2026",
+    "contact": "053 253 7840",
+    "agent": "Fateen",
+    "status": "Unanswered",
     "location": "Unspecified",
     "comments": "",
+    "notes": ""
+  },
+  {
+    "id": "444",
+    "date": "11/8/2026",
+    "contact": "050 678 5903",
+    "agent": "Fateen",
+    "status": "Follow-up",
+    "location": "Unspecified",
+    "comments": "10am (Arun)",
+    "notes": ""
+  },
+  {
+    "id": "445",
+    "date": "11/8/2026",
+    "contact": "050 867 0550",
+    "agent": "Fateen",
+    "status": "Other",
+    "location": "Unspecified",
+    "comments": "6pm",
     "notes": ""
   }
 ];

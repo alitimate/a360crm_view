@@ -1328,11 +1328,23 @@
         </div>
     </div>
 
-    <!-- ⏳ Page Preloader -->
-    <div class="app-preloader" id="appPreloader" style="display: none;">
-        <div class="spinner-ring"></div>
-        <div class="preloader-text">Loading CRM Data...</div>
+    <!-- 🔄 Glassmorphic SVG Live Sheet Loading Overlay -->
+    <div id="liveSheetLoaderOverlay" style="position: fixed; inset: 0; background: rgba(15, 17, 21, 0.92); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); z-index: 999999; display: flex; flex-direction: column; align-items: center; justify-content: center; opacity: 1; transition: opacity 0.4s ease, visibility 0.4s ease;">
+        <div style="position: relative; width: 68px; height: 68px; margin-bottom: 20px;">
+            <svg viewBox="0 0 50 50" style="width: 100%; height: 100%; animation: spinLiveLoader 1.0s linear infinite;">
+                <circle cx="25" cy="25" r="20" fill="none" stroke="rgba(255, 255, 255, 0.08)" stroke-width="4"></circle>
+                <circle cx="25" cy="25" r="20" fill="none" stroke="#95f029" stroke-width="4" stroke-linecap="round" stroke-dasharray="75 45"></circle>
+            </svg>
+        </div>
+        <div style="font-family: 'Space Grotesk', sans-serif; font-size: 16px; font-weight: 700; color: #ffffff; letter-spacing: 0.5px; margin-bottom: 6px;" id="loaderTitle">PULLING FRESH LIVE SHEET DATA...</div>
+        <div style="font-size: 12.5px; color: var(--text-muted);" id="loaderSubtitle">Connecting directly to Google Sheets API for real-time leads</div>
     </div>
+    <style>
+        @keyframes spinLiveLoader {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
 
     <!-- 🔒 Figma-Style Ultra-Premium Glassmorphism Passcode Overlay -->
     <div class="passcode-overlay" id="passcodeOverlay">
@@ -1734,7 +1746,7 @@
                 animateDashboardEntrance();
             }
 
-            fetchLiveGoogleSheetData();
+            fetchLiveGoogleSheetData(true);
         }
 
         function animateDashboardEntrance() {
@@ -2166,27 +2178,57 @@
             }
         }
 
+        function hideLiveSheetLoader() {
+            const overlay = document.getElementById('liveSheetLoaderOverlay');
+            if (overlay) {
+                overlay.style.opacity = '0';
+                setTimeout(() => {
+                    overlay.style.display = 'none';
+                }, 400);
+            }
+        }
+
+        function showLiveSheetLoader(title, subtitle) {
+            const overlay = document.getElementById('liveSheetLoaderOverlay');
+            if (overlay) {
+                const titleEl = document.getElementById('loaderTitle');
+                const subEl = document.getElementById('loaderSubtitle');
+                if (titleEl && title) titleEl.innerText = title;
+                if (subEl && subtitle) subEl.innerText = subtitle;
+                overlay.style.display = 'flex';
+                setTimeout(() => {
+                    overlay.style.opacity = '1';
+                }, 10);
+            }
+        }
+
         async function syncNow() {
             const btn = document.getElementById('syncBtn');
             const statusText = document.getElementById('syncStatusText');
             const dot = document.getElementById('syncDot');
 
             if (btn) btn.style.opacity = '0.7';
-            if (statusText) statusText.innerText = "FETCHING LIVE SHEET...";
+            if (statusText) statusText.innerText = "PULLING FRESH LIVE SHEET...";
             if (dot) dot.className = "live-dot spinner";
 
-            const count = await fetchLiveGoogleSheetData();
+            showLiveSheetLoader("FETCHING FRESH LIVE SHEET...", "Bypassing cache to pull 100% real-time data from Google Sheets");
+
+            const count = await fetchLiveGoogleSheetData(false);
+            const convertedCount = (rawLeads || []).filter(l => l.status === 'Converted').length;
+
             if (count > 0) {
-                if (statusText) statusText.innerText = `SYNCED ${count} LEADS!`;
+                if (statusText) statusText.innerText = `SYNCED ${count} LEADS (${convertedCount} CONVERTED!)`;
             } else {
                 if (statusText) statusText.innerText = "SYNC COMPLETE";
             }
+
+            hideLiveSheetLoader();
 
             setTimeout(() => {
                 if (statusText) statusText.innerText = "LIVE SHEET SYNC";
                 if (btn) btn.style.opacity = '1';
                 if (dot) dot.className = "live-dot";
-            }, 3000);
+            }, 3500);
         }
 
         function isValidPhoneNumber(phoneStr) {
@@ -2196,7 +2238,11 @@
             return /\d/.test(clean);
         }
 
-        async function fetchLiveGoogleSheetData() {
+        async function fetchLiveGoogleSheetData(isInitial = false) {
+            if (isInitial) {
+                showLiveSheetLoader("PULLING FRESH LIVE SHEET DATA...", "Connecting directly to Google Sheets API for real-time leads");
+            }
+
             const urls = [
                 GOOGLE_SHEET_CSV_URL + "&_cb=" + Date.now() + "_" + Math.random().toString(36).substring(2, 7),
                 GOOGLE_SHEET_EXPORT_FALLBACK + "&_cb=" + Date.now() + "_" + Math.random().toString(36).substring(2, 7)
@@ -2284,6 +2330,7 @@
                         if (parsedLeads.length > 0) {
                             rawLeads = parsedLeads;
                             applyPeriodFilter();
+                            hideLiveSheetLoader();
                             return parsedLeads.length;
                         }
                     }
@@ -2296,8 +2343,10 @@
             if (typeof leadsData !== 'undefined' && leadsData.length > 0) {
                 rawLeads = leadsData.filter(l => isValidPhoneNumber(l.contact));
                 applyPeriodFilter();
+                hideLiveSheetLoader();
                 return rawLeads.length;
             }
+            hideLiveSheetLoader();
             return 0;
         }
 
