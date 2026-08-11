@@ -1318,12 +1318,12 @@
 </head>
 <body>
 
-    <!-- 🎉 1 New Installation Celebration Banner -->
+    <!-- 🎉 New Lead Cracked Celebration Banner -->
     <div class="celebration-banner" id="celebrationBanner">
         <div class="celebration-card">
-            <div class="celebration-badge"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: -2px; margin-right: 4px;"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/></svg> 1 NEW INSTALLATION!</div>
-            <div class="celebration-title" id="celebrationAgentName">Congrats Fateen!</div>
-            <div class="celebration-sub">Lead successfully converted & booked</div>
+            <div class="celebration-badge"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: -2px; margin-right: 4px;"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/></svg> NEW LEAD CRACKED!</div>
+            <div class="celebration-title" id="celebrationHeader">Congratulations!!</div>
+            <div class="celebration-sub" id="celebrationAgentName">New Lead cracked by "Agent-Name".</div>
             <button class="celebration-close-btn" onclick="closeCelebrationBanner()">Awesome!</button>
         </div>
     </div>
@@ -2112,23 +2112,83 @@
             }
         }
 
+        let currentCheerAudio = null;
+        let currentCheerFadeInterval = null;
+
+        function playCrowdCheerSound() {
+            try {
+                if (currentCheerAudio) {
+                    currentCheerAudio.pause();
+                    currentCheerAudio.currentTime = 0;
+                }
+                if (currentCheerFadeInterval) {
+                    clearInterval(currentCheerFadeInterval);
+                }
+
+                // 🔊 High-quality Auditorium Crowd Cheer Sound Effect
+                const audioUrl = "https://assets.mixkit.co/active_storage/sfx/470/470-preview.mp3";
+                currentCheerAudio = new Audio(audioUrl);
+                currentCheerAudio.volume = 0.85;
+
+                const playPromise = currentCheerAudio.play();
+                if (playPromise !== undefined) {
+                    playPromise.then(() => {
+                        // ⏱️ Play for 8 seconds total: Fade volume out from 6.0s to 8.0s
+                        const startTime = Date.now();
+                        currentCheerFadeInterval = setInterval(() => {
+                            const elapsed = (Date.now() - startTime) / 1000;
+                            if (elapsed >= 6.0) {
+                                const remaining = 8.0 - elapsed;
+                                if (remaining <= 0) {
+                                    if (currentCheerAudio) {
+                                        currentCheerAudio.volume = 0;
+                                        currentCheerAudio.pause();
+                                        currentCheerAudio.currentTime = 0;
+                                    }
+                                    clearInterval(currentCheerFadeInterval);
+                                } else if (currentCheerAudio) {
+                                    currentCheerAudio.volume = Math.max(0, (remaining / 2.0) * 0.85);
+                                }
+                            }
+                        }, 50);
+                    }).catch(e => console.log("Audio autoplay notice:", e));
+                }
+
+                playWowClapSound();
+            } catch (e) {
+                console.log("Audio playback error:", e);
+            }
+        }
+
         // 🎯 Show Celebration Banner
         function triggerConversionCelebration(agentName) {
-            document.getElementById('celebrationAgentName').innerText = `Congrats ${agentName}!`;
+            const headerEl = document.getElementById('celebrationHeader');
+            const agentEl = document.getElementById('celebrationAgentName');
+            if (headerEl) headerEl.innerText = "Congratulations!!";
+            if (agentEl) agentEl.innerText = `New Lead cracked by "${agentName || 'Sales Rep'}".`;
+
             const banner = document.getElementById('celebrationBanner');
-            banner.classList.add('active');
+            if (banner) banner.classList.add('active');
 
             launchConfettiCelebration();
-            playWowClapSound();
+            playCrowdCheerSound();
 
             setTimeout(() => {
                 closeCelebrationBanner();
-            }, 7000);
+            }, 8000);
         }
 
         function closeCelebrationBanner() {
             const banner = document.getElementById('celebrationBanner');
             if (banner) banner.classList.remove('active');
+
+            if (currentCheerAudio) {
+                currentCheerAudio.pause();
+                currentCheerAudio.currentTime = 0;
+            }
+            if (currentCheerFadeInterval) {
+                clearInterval(currentCheerFadeInterval);
+            }
         }
 
         // 🔒 Persistence Tracking Logic (Only shows once per lead ID)
