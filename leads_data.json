@@ -1995,8 +1995,8 @@
     "contact": "59 300 8545",
     "agent": "Fateen",
     "status": "Follow-up",
-    "location": "Unspecified",
-    "comments": "after ten days",
+    "location": "Dammam",
+    "comments": "relocating to dammam",
     "notes": ""
   },
   {
@@ -2024,7 +2024,7 @@
     "date": "1/8/2026",
     "contact": "58 394 7870",
     "agent": "Mariyam",
-    "status": "Other",
+    "status": "New Lead",
     "location": "Unspecified",
     "comments": "arabic",
     "notes": ""
@@ -2214,7 +2214,7 @@
     "date": "1/8/2026",
     "contact": "59 866 1212",
     "agent": "Mariyam",
-    "status": "Other",
+    "status": "New Lead",
     "location": "Jeddah",
     "comments": "",
     "notes": ""
@@ -3644,7 +3644,7 @@
     "date": "1/8/2026",
     "contact": "53 221 5413",
     "agent": "Fateen",
-    "status": "Link Sent",
+    "status": "Not Interested",
     "location": "Dammam",
     "comments": "keep track",
     "notes": ""
@@ -3792,11 +3792,11 @@
   {
     "id": "384",
     "date": "8/8/2026",
-    "contact": "055 2526 8569",
+    "contact": "055 526 8569",
     "agent": "Fateen",
     "status": "Follow-up",
     "location": "Unspecified",
-    "comments": "messaged",
+    "comments": "remind at noon",
     "notes": ""
   },
   {
@@ -3904,9 +3904,9 @@
     "date": "9/8/2026",
     "contact": "053 852 5764",
     "agent": "Fateen",
-    "status": "Follow-up",
+    "status": "Not Interested",
     "location": "Riyadh",
-    "comments": "keep track",
+    "comments": "",
     "notes": ""
   },
   {
@@ -3986,7 +3986,7 @@
     "agent": "Fateen",
     "status": "Follow-up",
     "location": "Riyadh",
-    "comments": "messaged, will get back",
+    "comments": "1pm",
     "notes": ""
   },
   {
@@ -3994,7 +3994,7 @@
     "date": "9/8/2026",
     "contact": "057 169 7862",
     "agent": "Fateen",
-    "status": "Unanswered",
+    "status": "Not Interested",
     "location": "Unspecified",
     "comments": "",
     "notes": ""
@@ -4014,7 +4014,7 @@
     "date": "10/8/2026",
     "contact": "058 389 1821",
     "agent": "Fateen",
-    "status": "Follow-up",
+    "status": "Not Interested",
     "location": "Unspecified",
     "comments": "interested, msged",
     "notes": ""
@@ -4064,7 +4064,7 @@
     "date": "10/8/2026",
     "contact": "91 78698 02111",
     "agent": "Fateen",
-    "status": "Follow-up",
+    "status": "Not Interested",
     "location": "Unspecified",
     "comments": "messaged",
     "notes": ""
@@ -4076,7 +4076,7 @@
     "agent": "Fateen",
     "status": "Follow-up",
     "location": "Unspecified",
-    "comments": "",
+    "comments": "call at nooon",
     "notes": ""
   },
   {
@@ -4086,7 +4086,7 @@
     "agent": "Fateen",
     "status": "Follow-up",
     "location": "Khobar",
-    "comments": "after visiting store",
+    "comments": "after visiting, remind by msg",
     "notes": ""
   },
   {
@@ -4114,7 +4114,7 @@
     "date": "10/8/2026",
     "contact": "053 159 0440",
     "agent": "Fateen",
-    "status": "Follow-up",
+    "status": "Not Interested",
     "location": "Riyadh",
     "comments": "",
     "notes": ""
@@ -4134,7 +4134,7 @@
     "date": "10/8/2026",
     "contact": "053 481 5560",
     "agent": "Fateen",
-    "status": "Follow-up",
+    "status": "Not Interested",
     "location": "Unspecified",
     "comments": "7pm",
     "notes": ""
@@ -4174,7 +4174,7 @@
     "date": "10/8/2026",
     "contact": "91 90084 45511",
     "agent": "Fateen",
-    "status": "Follow-up",
+    "status": "Not Interested",
     "location": "Unspecified",
     "comments": "messaged",
     "notes": ""
@@ -4184,7 +4184,7 @@
     "date": "10/8/2026",
     "contact": "91 89240 90395",
     "agent": "Fateen",
-    "status": "Follow-up",
+    "status": "Not Interested",
     "location": "Unspecified",
     "comments": "messaged",
     "notes": ""
@@ -4215,7 +4215,7 @@
     "contact": "053 907 2883",
     "agent": "Fateen",
     "status": "Follow-up",
-    "location": "Unspecified",
+    "location": "Khobar",
     "comments": "",
     "notes": ""
   },
@@ -4384,9 +4384,209 @@
     "date": "11/8/2026",
     "contact": "050 867 0550",
     "agent": "Fateen",
-    "status": "Other",
+    "status": "Follow-up",
     "location": "Unspecified",
     "comments": "6pm",
+    "notes": ""
+  },
+  {
+    "id": "446",
+    "date": "11/8/2026",
+    "contact": "054 275 5533",
+    "agent": "Fateen",
+    "status": "New Lead",
+    "location": "Unspecified",
+    "comments": "",
+    "notes": ""
+  },
+  {
+    "id": "447",
+    "date": "11/8/2026",
+    "contact": "059 093 0325",
+    "agent": "Fateen",
+    "status": "New Lead",
+    "location": "Unspecified",
+    "comments": "",
+    "notes": ""
+  },
+  {
+    "id": "448",
+    "date": "11/8/2026",
+    "contact": "059 375 2087",
+    "agent": "Fateen",
+    "status": "New Lead",
+    "location": "Unspecified",
+    "comments": "",
+    "notes": ""
+  },
+  {
+    "id": "449",
+    "date": "11/8/2026",
+    "contact": "055 651 9041",
+    "agent": "Fateen",
+    "status": "New Lead",
+    "location": "Unspecified",
+    "comments": "",
+    "notes": ""
+  },
+  {
+    "id": "450",
+    "date": "11/8/2026",
+    "contact": "057 044 3326",
+    "agent": "Fateen",
+    "status": "New Lead",
+    "location": "Unspecified",
+    "comments": "",
+    "notes": ""
+  },
+  {
+    "id": "451",
+    "date": "11/8/2026",
+    "contact": "058 338 8937",
+    "agent": "Fateen",
+    "status": "New Lead",
+    "location": "Unspecified",
+    "comments": "",
+    "notes": ""
+  },
+  {
+    "id": "452",
+    "date": "11/8/2026",
+    "contact": "056 700 4088",
+    "agent": "Fateen",
+    "status": "New Lead",
+    "location": "Unspecified",
+    "comments": "",
+    "notes": ""
+  },
+  {
+    "id": "453",
+    "date": "11/8/2026",
+    "contact": "057 282 1126",
+    "agent": "Fateen",
+    "status": "New Lead",
+    "location": "Unspecified",
+    "comments": "",
+    "notes": ""
+  },
+  {
+    "id": "454",
+    "date": "11/8/2026",
+    "contact": "059 927 7816",
+    "agent": "Fateen",
+    "status": "New Lead",
+    "location": "Unspecified",
+    "comments": "",
+    "notes": ""
+  },
+  {
+    "id": "455",
+    "date": "12/8/2026",
+    "contact": "059 251 2037",
+    "agent": "Fateen",
+    "status": "New Lead",
+    "location": "Unspecified",
+    "comments": "",
+    "notes": ""
+  },
+  {
+    "id": "456",
+    "date": "12/8/2026",
+    "contact": "056 818 7917",
+    "agent": "Fateen",
+    "status": "New Lead",
+    "location": "Unspecified",
+    "comments": "",
+    "notes": ""
+  },
+  {
+    "id": "457",
+    "date": "12/8/2026",
+    "contact": "054 862 6865",
+    "agent": "Fateen",
+    "status": "New Lead",
+    "location": "Unspecified",
+    "comments": "",
+    "notes": ""
+  },
+  {
+    "id": "458",
+    "date": "12/8/2026",
+    "contact": "",
+    "agent": "Unassigned",
+    "status": "New Lead",
+    "location": "Unspecified",
+    "comments": "",
+    "notes": ""
+  },
+  {
+    "id": "459",
+    "date": "12/8/2026",
+    "contact": "",
+    "agent": "Unassigned",
+    "status": "New Lead",
+    "location": "Unspecified",
+    "comments": "",
+    "notes": ""
+  },
+  {
+    "id": "460",
+    "date": "12/8/2026",
+    "contact": "",
+    "agent": "Unassigned",
+    "status": "New Lead",
+    "location": "Unspecified",
+    "comments": "",
+    "notes": ""
+  },
+  {
+    "id": "461",
+    "date": "12/8/2026",
+    "contact": "",
+    "agent": "Unassigned",
+    "status": "New Lead",
+    "location": "Unspecified",
+    "comments": "",
+    "notes": ""
+  },
+  {
+    "id": "462",
+    "date": "12/8/2026",
+    "contact": "",
+    "agent": "Unassigned",
+    "status": "New Lead",
+    "location": "Unspecified",
+    "comments": "",
+    "notes": ""
+  },
+  {
+    "id": "463",
+    "date": "12/8/2026",
+    "contact": "",
+    "agent": "Unassigned",
+    "status": "New Lead",
+    "location": "Unspecified",
+    "comments": "",
+    "notes": ""
+  },
+  {
+    "id": "464",
+    "date": "12/8/2026",
+    "contact": "",
+    "agent": "Unassigned",
+    "status": "New Lead",
+    "location": "Unspecified",
+    "comments": "",
+    "notes": ""
+  },
+  {
+    "id": "465",
+    "date": "12/8/2026",
+    "contact": "",
+    "agent": "Unassigned",
+    "status": "New Lead",
+    "location": "Unspecified",
+    "comments": "",
     "notes": ""
   }
 ]
