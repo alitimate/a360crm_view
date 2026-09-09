@@ -34,7 +34,6 @@
         .meta-table td,
         .badge-pill,
         .period-btn,
-        .date-input-field,
         .search-pill input,
         .live-sync-time {
             font-family: "Inter", sans-serif !important;
@@ -109,7 +108,6 @@
         }
 
         body.light-theme .search-pill,
-        body.light-theme .date-input-field,
         body.light-theme .form-group input,
         body.light-theme .form-group select {
             background: #ffffff;
@@ -283,7 +281,7 @@
             background: var(--bg-card-darker);
             border: 1px solid var(--border-card);
             color: var(--text-muted);
-            padding: 7px 14px;
+            padding: 7px 16px;
             border-radius: 16px;
             font-size: 12px;
             font-weight: 600;
@@ -303,50 +301,14 @@
             font-weight: 700;
         }
 
-        .custom-date-controls {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            background: var(--bg-card-darker);
-            border: 1px solid var(--border-card);
-            padding: 4px 10px;
-            border-radius: 16px;
-        }
-
-        .date-input-field {
-            background: transparent;
-            border: none;
-            color: var(--text-white);
+        .period-date-display {
             font-size: 12px;
-            font-weight: 600;
-            outline: none;
-            padding: 4px;
-            cursor: pointer;
-        }
-
-        .date-input-field::-webkit-calendar-picker-indicator {
-            filter: invert(1);
-            cursor: pointer;
-        }
-
-        body.light-theme .date-input-field::-webkit-calendar-picker-indicator {
-            filter: none;
-        }
-
-        .date-apply-btn {
-            background: var(--accent-lime);
-            color: #000000;
-            border: none;
-            padding: 4px 10px;
-            border-radius: 12px;
-            font-size: 11px;
+            color: var(--accent-lime);
             font-weight: 700;
-            cursor: pointer;
-            transition: all 0.2s;
-        }
-
-        .date-apply-btn:hover {
-            background: var(--accent-lime-light);
+            background: var(--bg-card-darker);
+            padding: 6px 14px;
+            border-radius: 14px;
+            border: 1px solid var(--border-card);
         }
 
         .metrics-grid-5 {
@@ -411,6 +373,50 @@
 
         .score-trend.neutral { color: var(--text-muted); }
         .score-trend.warning { color: var(--red-alert); }
+
+        /* Quality Funnel Grid */
+        .quality-metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+
+        @media (max-width: 900px) {
+            .quality-metrics-grid { grid-template-columns: 1fr 1fr; }
+        }
+
+        .quality-card {
+            background: var(--bg-card-darker);
+            border: 1px solid var(--border-card);
+            border-radius: 18px;
+            padding: 16px;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .quality-title {
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .quality-num {
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--text-white);
+        }
+
+        .quality-sub {
+            font-size: 11px;
+            color: var(--text-muted);
+            font-weight: 500;
+        }
 
         .insights-banner-row {
             display: grid;
@@ -638,6 +644,52 @@
             border: 1px solid #f59e0b;
         }
 
+        /* Ad Content Inventory Cards */
+        .ad-inventory-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+            margin-top: 14px;
+        }
+        @media (max-width: 1024px) {
+            .ad-inventory-grid { grid-template-columns: 1fr 1fr; }
+        }
+        @media (max-width: 640px) {
+            .ad-inventory-grid { grid-template-columns: 1fr; }
+        }
+
+        .ad-inventory-card {
+            background: var(--bg-card-darker);
+            border: 1px solid var(--border-card);
+            border-radius: 16px;
+            padding: 16px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            gap: 10px;
+        }
+
+        .ad-inventory-card:hover {
+            border-color: rgba(149, 240, 41, 0.4);
+        }
+
+        .ad-inv-hook {
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--text-white);
+            line-height: 1.3;
+        }
+
+        .ad-inv-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 11px;
+            color: var(--text-muted);
+            border-top: 1px solid var(--border-card);
+            padding-top: 8px;
+        }
+
         .modal-overlay {
             display: none;
             position: fixed;
@@ -803,26 +855,24 @@
             </div>
         </header>
 
+        <!-- Clean Filter Bar (No Custom Date Inputs) -->
         <div class="period-bar">
             <div class="period-left">
                 <div class="period-label">
                     <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-                    Date Filter:
+                    Time Period Filter:
                 </div>
                 <div class="period-pills">
                     <button class="period-btn active" id="btnPeriodAll" onclick="setFilterPeriod('ALL', this)">All Time</button>
-                    <button class="period-btn" id="btnPeriodAug" onclick="setFilterPeriod('AUG_2026', this)">August 2026</button>
+                    <button class="period-btn" id="btnPeriodAug" onclick="setFilterPeriod('AUG_2026', this)">August 2026 (Active Ads)</button>
+                    <button class="period-btn" id="btnPeriodJuly" onclick="setFilterPeriod('JUL_2026', this)">July 2026</button>
                     <button class="period-btn" id="btnPeriod30" onclick="setFilterPeriod('30D', this)">Last 30 Days</button>
                     <button class="period-btn" id="btnPeriod7" onclick="setFilterPeriod('7D', this)">Last 7 Days</button>
                 </div>
             </div>
 
-            <div class="custom-date-controls">
-                <span style="font-size: 11px; color: var(--text-muted); font-weight: 700;">CUSTOM:</span>
-                <input type="date" class="date-input-field" id="startDateInput" value="2026-08-01">
-                <span style="color: var(--text-muted); font-size: 12px;">→</span>
-                <input type="date" class="date-input-field" id="endDateInput" value="2026-09-09">
-                <button class="date-apply-btn" onclick="applyCustomDateFilter()">Apply</button>
+            <div class="period-date-display" id="periodDateDisplay">
+                Showing: All Historical Ad & Lead Data
             </div>
         </div>
 
@@ -848,11 +898,11 @@
 
             <div class="score-card">
                 <div class="score-label">
-                    <span>WON DEALS ATTRIBUTED</span>
+                    <span>WON CUSTOMERS (COL F)</span>
                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg>
                 </div>
-                <div class="score-val" id="metaWonDeals" style="color: var(--color-converted);">16 Sales</div>
-                <div class="score-trend" id="metaConvRate">Conv Rate: 2.18%</div>
+                <div class="score-val" id="metaWonDeals" style="color: var(--color-converted);">57 Won</div>
+                <div class="score-trend" id="metaConvRate">Conv Rate: 7.76%</div>
             </div>
 
             <div class="score-card">
@@ -860,17 +910,68 @@
                     <span>CUSTOMER ACQUISITION COST</span>
                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M16 8h-6a2 2 0 1 0 0 4h4a2 2 0 1 1 0 4H8"/><line x1="12" y1="6" x2="12" y2="18"/></svg>
                 </div>
-                <div class="score-val" id="metaCAC">SAR 231.74</div>
-                <div class="score-trend" style="color: #10b981;">Per Closed Customer</div>
+                <div class="score-val" id="metaCAC">SAR 65.05</div>
+                <div class="score-trend" style="color: #10b981;">Per Paying Customer</div>
             </div>
 
             <div class="score-card">
                 <div class="score-label">
-                    <span>EST. REVENUE & ROAS (@ SAR 699/Unit)</span>
+                    <span>EST. REVENUE & ROAS (@ SAR 699)</span>
                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
                 </div>
-                <div class="score-val" id="metaEstRevenue">SAR 11,184</div>
-                <div class="score-trend" id="metaROAS" style="color: var(--accent-lime);">3.02x Return on Ad Spend</div>
+                <div class="score-val" id="metaEstRevenue">SAR 39,843</div>
+                <div class="score-trend" id="metaROAS" style="color: var(--accent-lime);">10.75x Return on Ad Spend</div>
+            </div>
+        </div>
+
+        <!-- Lead Quality & Multi-Stage Follow-up Section (F1, F2, F3) -->
+        <div class="meta-table-card" style="margin-bottom: 24px; border-left: 4px solid var(--accent-lime);">
+            <div class="table-header-controls" style="margin-bottom: 12px;">
+                <div class="table-title-group">
+                    <h3>🎯 Lead Quality Pipeline & Follow-up Depth (F1, F2, F3)</h3>
+                    <span class="brand-badge" style="background: rgba(16, 185, 129, 0.15); color: #10b981; border-color: #10b981;">Quality Factor</span>
+                </div>
+                <div style="font-size: 12px; color: var(--text-muted);">
+                    Lead engagement depth based on Google Sheet Follow-up progression
+                </div>
+            </div>
+
+            <div class="quality-metrics-grid">
+                <div class="quality-card">
+                    <div class="quality-title">
+                        <span>F1 (1st Follow-up)</span>
+                        <span style="color: var(--blue-accent);">48.4%</span>
+                    </div>
+                    <div class="quality-num" id="qF1Count" style="color: var(--blue-accent);">229 Leads</div>
+                    <div class="quality-sub">Initial engagement & brochure discussion</div>
+                </div>
+
+                <div class="quality-card">
+                    <div class="quality-title">
+                        <span>F2 (2nd Follow-up)</span>
+                        <span style="color: #f59e0b;">25.2%</span>
+                    </div>
+                    <div class="quality-num" id="qF2Count" style="color: #f59e0b;">119 Leads</div>
+                    <div class="quality-sub">High intent: price discussion / store visit / link sent</div>
+                </div>
+
+                <div class="quality-card">
+                    <div class="quality-title">
+                        <span>F3 (3rd Follow-up)</span>
+                        <span style="color: var(--purple-accent);">12.7%</span>
+                    </div>
+                    <div class="quality-num" id="qF3Count" style="color: var(--purple-accent);">60 Leads</div>
+                    <div class="quality-sub">Closing negotiation / final installation booking</div>
+                </div>
+
+                <div class="quality-card" style="border-color: rgba(16, 185, 129, 0.4);">
+                    <div class="quality-title">
+                        <span>Cost / Qualified Lead (CPQL)</span>
+                        <span style="color: var(--color-converted);">F1+ Nurtured</span>
+                    </div>
+                    <div class="quality-num" id="qCPQL" style="color: var(--color-converted);">SAR 16.19</div>
+                    <div class="quality-sub">Ad Spend per engaged prospective customer</div>
+                </div>
             </div>
         </div>
 
@@ -916,8 +1017,8 @@
         <div class="charts-row-2">
             <div class="trend-chart-card">
                 <div class="trend-chart-head">
-                    <span>Marketing to Sales Conversion Funnel</span>
-                    <span style="font-size: 11px; color: var(--text-muted);">Full Lifecycle Attribution</span>
+                    <span>Lead Quality & Conversion Funnel</span>
+                    <span style="font-size: 11px; color: var(--text-muted);">From Impression to F1, F2, F3 & Won Deal</span>
                 </div>
                 <div class="chart-container-box">
                     <canvas id="metaFunnelChart"></canvas>
@@ -927,7 +1028,7 @@
             <div class="trend-chart-card">
                 <div class="trend-chart-head">
                     <span>Attributed CRM Lead Status Breakdown</span>
-                    <span style="font-size: 11px; color: var(--text-muted);" id="donutLeadsCount">459 Leads</span>
+                    <span style="font-size: 11px; color: var(--text-muted);" id="donutLeadsCount">473 Leads</span>
                 </div>
                 <div class="chart-container-box">
                     <canvas id="metaOutcomeDonut"></canvas>
@@ -935,6 +1036,24 @@
             </div>
         </div>
 
+        <!-- Available Ad Content & Creative Inventory Section -->
+        <div class="meta-table-card">
+            <div class="table-header-controls">
+                <div class="table-title-group">
+                    <h3>📦 Input Ad Content & Creative Inventory</h3>
+                    <span class="brand-badge" id="adInvCountBadge">11 Ad Creatives</span>
+                </div>
+                <div style="font-size: 12px; color: var(--text-muted);">
+                    Complete record of all Meta Ads Manager creatives, copies, and formats input into this dashboard
+                </div>
+            </div>
+
+            <div class="ad-inventory-grid" id="adInventoryGrid">
+                <!-- Populated dynamically by JS -->
+            </div>
+        </div>
+
+        <!-- Campaign Performance Table -->
         <div class="meta-table-card">
             <div class="table-header-controls">
                 <div class="table-title-group">
@@ -1115,6 +1234,7 @@
             metaAds = getStoredMetaAds();
             crmLeads = (typeof leadsData !== "undefined") ? leadsData : [];
             setFilterPeriod("ALL", document.getElementById("btnPeriodAll"));
+            renderAdInventory();
             syncGoogleSheetLive();
         }
 
@@ -1138,34 +1258,28 @@
 
             let start = new Date("2026-07-01");
             let end = new Date("2026-09-09");
+            let displayTxt = "All Time (Full Overview)";
 
             if (period === "AUG_2026") {
                 start = new Date("2026-08-01");
                 end = new Date("2026-08-31");
+                displayTxt = "August 1 – 31, 2026 (Peak Active Ad Campaigns)";
+            } else if (period === "JUL_2026") {
+                start = new Date("2026-07-01");
+                end = new Date("2026-07-31");
+                displayTxt = "July 1 – 31, 2026 (Baseline Leads)";
             } else if (period === "30D") {
                 start = new Date("2026-08-10");
                 end = new Date("2026-09-09");
+                displayTxt = "Last 30 Days (Aug 10 – Sep 9, 2026)";
             } else if (period === "7D") {
                 start = new Date("2026-09-02");
                 end = new Date("2026-09-09");
-            } else if (period === "ALL") {
-                start = new Date("2026-07-01");
-                end = new Date("2026-09-09");
+                displayTxt = "Last 7 Days (Sep 2 – Sep 9, 2026)";
             }
 
-            document.getElementById("startDateInput").value = formatDateISO(start);
-            document.getElementById("endDateInput").value = formatDateISO(end);
-
+            document.getElementById("periodDateDisplay").textContent = `Showing: ${displayTxt}`;
             filterDataByDates(start, end);
-        }
-
-        function applyCustomDateFilter() {
-            const startVal = document.getElementById("startDateInput").value;
-            const endVal = document.getElementById("endDateInput").value;
-            if (!startVal || !endVal) return;
-
-            document.querySelectorAll(".period-btn").forEach(b => b.classList.remove("active"));
-            filterDataByDates(new Date(startVal), new Date(endVal));
         }
 
         function filterDataByDates(startDate, endDate) {
@@ -1239,7 +1353,7 @@
                 let year = parseInt(parts[2], 10);
                 if (isNaN(year)) year = 2026;
                 if (year < 100) year += 2000;
-                if (year === 2025) year = 2026; // Normalize typo
+                if (year === 2025) year = 2026;
                 return new Date(year, month, day);
             }
             return null;
@@ -1255,20 +1369,32 @@
             });
 
             const wonCount = filteredCrmLeads.filter(l => l.status === "Converted").length;
+            const f1Count = filteredCrmLeads.filter(l => l.f1).length;
+            const f2Count = filteredCrmLeads.filter(l => l.f2).length;
+            const f3Count = filteredCrmLeads.filter(l => l.f3).length;
+
             const avgCPR = totalResults > 0 ? (totalSpend / totalResults).toFixed(2) : "0.00";
             const cac = wonCount > 0 ? (totalSpend / wonCount).toFixed(2) : (totalSpend > 0 ? totalSpend.toFixed(2) : "0.00");
             const estRevenue = wonCount * AVG_DEAL_VALUE;
             const roas = totalSpend > 0 ? (estRevenue / totalSpend).toFixed(2) : "0.00";
-            const convRate = totalResults > 0 ? ((wonCount / totalResults) * 100).toFixed(2) : "0.00";
+            const convRate = totalResults > 0 ? ((wonCount / totalResults) * 100).toFixed(2) : (filteredCrmLeads.length > 0 ? ((wonCount / filteredCrmLeads.length)*100).toFixed(2) : "0.00");
+            const cpql = f1Count > 0 ? (totalSpend / f1Count).toFixed(2) : (totalSpend > 0 ? totalSpend.toFixed(2) : "0.00");
 
             document.getElementById("metaTotalSpend").textContent = `SAR ${totalSpend.toLocaleString("en-US", {minimumFractionDigits: 2, maximumFractionDigits: 2})}`;
             document.getElementById("metaTotalResults").textContent = `${totalResults} inquiries`;
             document.getElementById("metaAvgCPR").textContent = `CPR: SAR ${avgCPR} / msg`;
-            document.getElementById("metaWonDeals").textContent = `${wonCount} Sales`;
+            document.getElementById("metaWonDeals").textContent = `${wonCount} Won`;
             document.getElementById("metaConvRate").textContent = `Conv Rate: ${convRate}%`;
             document.getElementById("metaCAC").textContent = `SAR ${cac}`;
             document.getElementById("metaEstRevenue").textContent = `SAR ${estRevenue.toLocaleString("en-US")}`;
             document.getElementById("metaROAS").textContent = `${roas}x Return on Ad Spend`;
+
+            // Quality metrics
+            document.getElementById("qF1Count").textContent = `${f1Count} Leads`;
+            document.getElementById("qF2Count").textContent = `${f2Count} Leads`;
+            document.getElementById("qF3Count").textContent = `${f3Count} Leads`;
+            document.getElementById("qCPQL").textContent = `SAR ${cpql}`;
+            document.getElementById("donutLeadsCount").textContent = `${filteredCrmLeads.length} Leads`;
         }
 
         function renderCharts() {
@@ -1389,22 +1515,20 @@
             if (!ctx) return;
             if (funnelChart) funnelChart.destroy();
 
-            let impressions = 0, reach = 0, results = 0;
-            filteredMetaAds.forEach(a => {
-                impressions += a.periodImpressions || 0;
-                reach += a.periodReach || 0;
-                results += a.periodResults || 0;
-            });
+            let results = 0;
+            filteredMetaAds.forEach(a => { results += a.periodResults || 0; });
+            const f1Count = filteredCrmLeads.filter(l => l.f1).length;
+            const f2Count = filteredCrmLeads.filter(l => l.f2).length;
+            const f3Count = filteredCrmLeads.filter(l => l.f3).length;
             const won = filteredCrmLeads.filter(l => l.status === "Converted").length;
-            const followups = filteredCrmLeads.filter(l => l.status === "Follow-up").length;
 
             funnelChart = new Chart(ctx, {
                 type: "bar",
                 data: {
-                    labels: ["Views (Impressions)", "Unique Viewers", "Inquiries Started", "Follow-up Deals", "Won Customers"],
+                    labels: ["1. Raw Inquiries", "2. F1 (1st Follow-up)", "3. F2 (High Intent)", "4. F3 (Closing Stage)", "5. Won Customers (Col F)"],
                     datasets: [{
-                        data: [impressions, reach, results, followups, won],
-                        backgroundColor: ["#64748b", "#3b82f6", "#95f029", "#f59e0b", "#10b981"],
+                        data: [results || filteredCrmLeads.length, f1Count, f2Count, f3Count, won],
+                        backgroundColor: ["#3b82f6", "#0ea5e9", "#f59e0b", "#a855f7", "#10b981"],
                         borderRadius: 6
                     }]
                 },
@@ -1434,7 +1558,7 @@
             outcomeDonut = new Chart(ctx, {
                 type: "doughnut",
                 data: {
-                    labels: ["Won Sales", "In Follow-up", "Not Interested", "New / Other"],
+                    labels: ["Won Customers", "In Follow-up", "Not Interested", "New / Unanswered"],
                     datasets: [{
                         data: [won, follow, lost, other > 0 ? other : 0],
                         backgroundColor: ["#10b981", "#f59e0b", "#ef4444", "#8b5cf6"],
@@ -1450,6 +1574,51 @@
                     },
                     cutout: "70%"
                 }
+            });
+        }
+
+        function renderAdInventory() {
+            const grid = document.getElementById("adInventoryGrid");
+            if (!grid) return;
+            grid.innerHTML = "";
+
+            metaAds.forEach((ad, i) => {
+                let badgeClass = "badge-moderate";
+                let rating = "Moderate CPR";
+                if (ad.costPerResult && ad.costPerResult <= 3.80) {
+                    badgeClass = "badge-winner";
+                    rating = "🏆 Top Performer";
+                } else if (ad.results === 0) {
+                    badgeClass = "badge-warning";
+                    rating = "⛔ 0 Results";
+                } else if (ad.costPerResult > 12) {
+                    badgeClass = "badge-warning";
+                    rating = "🔴 High CPR";
+                }
+
+                const card = document.createElement("div");
+                card.className = "ad-inventory-card";
+                card.innerHTML = `
+                    <div>
+                        <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 8px;">
+                            <span class="ad-format-badge">${ad.format}</span>
+                            <span class="ad-format-badge ${badgeClass}">${rating}</span>
+                        </div>
+                        <div class="ad-inv-hook">${ad.creativeHook}</div>
+                        <div style="font-size: 11px; color: var(--text-muted); margin-top: 4px;"><strong>Ad:</strong> ${ad.name}</div>
+                    </div>
+                    <div>
+                        <div style="display: flex; justify-content: space-between; font-size: 12px; margin-bottom: 4px;">
+                            <span style="color: var(--text-muted);">Spend: <strong style="color: #fff;">SAR ${ad.spend.toFixed(2)}</strong></span>
+                            <span style="color: var(--accent-lime); font-weight: 700;">${ad.results} ${ad.resultType.includes("Lead") ? "Leads" : "Msgs"}</span>
+                        </div>
+                        <div class="ad-inv-meta">
+                            <span>CPR: <strong>${ad.costPerResult ? `SAR ${ad.costPerResult.toFixed(2)}` : "—"}</strong></span>
+                            <span>${(ad.impressions||0).toLocaleString()} views</span>
+                        </div>
+                    </div>
+                `;
+                grid.appendChild(card);
             });
         }
 
@@ -1596,7 +1765,8 @@
             metaAds.unshift(newAd);
             saveMetaAds(metaAds);
             closeUploadModal();
-            filterDataByDates(new Date(document.getElementById("startDateInput").value), new Date(document.getElementById("endDateInput").value));
+            renderAdInventory();
+            setFilterPeriod(currentPeriod, document.querySelector(`.period-btn.active`));
             alert("✅ Meta Ad Campaign added and linked into dashboard!");
         }
 
@@ -1631,7 +1801,8 @@
         function resetToBaselineData() {
             localStorage.removeItem("custom_meta_ads_data");
             metaAds = (typeof defaultMetaAdsData !== "undefined") ? defaultMetaAdsData : [];
-            filterDataByDates(new Date("2026-08-01"), new Date("2026-09-09"));
+            setFilterPeriod("ALL", document.getElementById("btnPeriodAll"));
+            renderAdInventory();
             alert("Baseline dataset restored.");
             closeUploadModal();
         }
@@ -1660,7 +1831,6 @@
                 });
         }
 
-        // Parse Column F directly as Converted / Customers
         function parseLiveSheetCsv(csvText) {
             if (!csvText || !csvText.includes(",")) return;
             const lines = csvText.split(/\r?\n/);
@@ -1677,7 +1847,6 @@
             for (let i = headerIdx + 1; i < lines.length; i++) {
                 const row = parseCsvRow(lines[i]);
                 if (row && row.length > 5 && /^\d+$/.test(row[0].trim())) {
-                    // Column F (Index 5): Status
                     const statusRaw = row[5] ? row[5].trim() : "";
                     let statusClean = "Other";
                     if (/converted/i.test(statusRaw)) statusClean = "Converted";
@@ -1686,6 +1855,10 @@
                     else if (/link/i.test(statusRaw)) statusClean = "Link Sent";
                     else if (/unanswer/i.test(statusRaw)) statusClean = "Unanswered";
 
+                    const f1Val = row[7] ? String(row[7]).trim().toUpperCase() : "";
+                    const f2Val = row[8] ? String(row[8]).trim().toUpperCase() : "";
+                    const f3Val = row[9] ? String(row[9]).trim().toUpperCase() : "";
+
                     newLeads.push({
                         id: row[0].trim(),
                         date: row[1] ? row[1].trim() : "",
@@ -1693,6 +1866,9 @@
                         agent: row[4] && row[4].trim() ? row[4].trim() : "Unassigned",
                         status: statusClean,
                         location: row[6] && row[6].trim() ? row[6].trim() : "Riyadh",
+                        f1: f1Val === "TRUE" || statusClean === "Converted" || statusClean === "Follow-up",
+                        f2: f2Val === "TRUE" || statusClean === "Converted",
+                        f3: f3Val === "TRUE" || statusClean === "Converted",
                         comments: row[11] ? row[11].trim() : "",
                         notes: row[12] ? row[12].trim() : ""
                     });
@@ -1701,11 +1877,7 @@
 
             if (newLeads.length > 0) {
                 crmLeads = newLeads;
-                const startVal = document.getElementById("startDateInput").value;
-                const endVal = document.getElementById("endDateInput").value;
-                if (startVal && endVal) {
-                    filterDataByDates(new Date(startVal), new Date(endVal));
-                }
+                setFilterPeriod(currentPeriod, document.querySelector(`.period-btn.active`));
             }
         }
 

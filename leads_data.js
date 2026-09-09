@@ -7,7 +7,10 @@ const leadsData = [
     "status": "Not Interested",
     "location": "Jeddah",
     "comments": "bought another",
-    "notes": ""
+    "notes": "",
+    "f1": false,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "2",
@@ -17,7 +20,10 @@ const leadsData = [
     "status": "Not Interested",
     "location": "Unspecified",
     "comments": "No",
-    "notes": ""
+    "notes": "",
+    "f1": false,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "3",
@@ -27,7 +33,10 @@ const leadsData = [
     "status": "Unanswered",
     "location": "Unspecified",
     "comments": "call after 6pm(28th)",
-    "notes": ""
+    "notes": "",
+    "f1": false,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "4",
@@ -37,7 +46,10 @@ const leadsData = [
     "status": "Follow-up",
     "location": "Unspecified",
     "comments": "Interested - might visit store",
-    "notes": ""
+    "notes": "",
+    "f1": true,
+    "f2": true,
+    "f3": false
   },
   {
     "id": "5",
@@ -47,7 +59,10 @@ const leadsData = [
     "status": "Not Interested",
     "location": "Dammam",
     "comments": "Not interested right now",
-    "notes": ""
+    "notes": "",
+    "f1": false,
+    "f2": true,
+    "f3": false
   },
   {
     "id": "6",
@@ -57,7 +72,10 @@ const leadsData = [
     "status": "Not Interested",
     "location": "Unspecified",
     "comments": "Company accomodation",
-    "notes": ""
+    "notes": "",
+    "f1": false,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "7",
@@ -67,7 +85,10 @@ const leadsData = [
     "status": "Not Interested",
     "location": "Unspecified",
     "comments": "",
-    "notes": ""
+    "notes": "",
+    "f1": false,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "8",
@@ -77,7 +98,10 @@ const leadsData = [
     "status": "Not Interested",
     "location": "Unspecified",
     "comments": "not intr",
-    "notes": ""
+    "notes": "",
+    "f1": false,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "9",
@@ -87,7 +111,10 @@ const leadsData = [
     "status": "Not Interested",
     "location": "Riyadh",
     "comments": "Not Interested",
-    "notes": ""
+    "notes": "",
+    "f1": false,
+    "f2": true,
+    "f3": false
   },
   {
     "id": "10",
@@ -97,7 +124,10 @@ const leadsData = [
     "status": "Not Interested",
     "location": "Unspecified",
     "comments": "Interested",
-    "notes": ""
+    "notes": "",
+    "f1": false,
+    "f2": true,
+    "f3": false
   },
   {
     "id": "11",
@@ -107,7 +137,10 @@ const leadsData = [
     "status": "Not Interested",
     "location": "Unspecified",
     "comments": "Jeddah",
-    "notes": "@5.30"
+    "notes": "@5.30",
+    "f1": false,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "12",
@@ -117,7 +150,10 @@ const leadsData = [
     "status": "Follow-up",
     "location": "Unspecified",
     "comments": "One month later",
-    "notes": ""
+    "notes": "",
+    "f1": true,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "13",
@@ -127,7 +163,10 @@ const leadsData = [
     "status": "Not Interested",
     "location": "Riyadh",
     "comments": "Jizan",
-    "notes": ""
+    "notes": "",
+    "f1": false,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "14",
@@ -137,7 +176,10 @@ const leadsData = [
     "status": "Follow-up",
     "location": "Unspecified",
     "comments": "Riyadh - maybe after vacation",
-    "notes": ""
+    "notes": "",
+    "f1": true,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "15",
@@ -147,7 +189,10 @@ const leadsData = [
     "status": "Not Interested",
     "location": "Unspecified",
     "comments": "Looking for new home",
-    "notes": ""
+    "notes": "",
+    "f1": false,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "16",
@@ -157,7 +202,10 @@ const leadsData = [
     "status": "Not Interested",
     "location": "Unspecified",
     "comments": "Jeddah",
-    "notes": ""
+    "notes": "",
+    "f1": false,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "17",
@@ -167,7 +215,10 @@ const leadsData = [
     "status": "Not Interested",
     "location": "Unspecified",
     "comments": "TODAY",
-    "notes": ""
+    "notes": "",
+    "f1": false,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "18",
@@ -177,7 +228,10 @@ const leadsData = [
     "status": "Not Interested",
     "location": "Unspecified",
     "comments": "Techie",
-    "notes": ""
+    "notes": "",
+    "f1": false,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "19",
@@ -187,7 +241,10 @@ const leadsData = [
     "status": "Follow-up",
     "location": "Unspecified",
     "comments": "",
-    "notes": ""
+    "notes": "",
+    "f1": true,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "20",
@@ -197,7 +254,10 @@ const leadsData = [
     "status": "Not Interested",
     "location": "Unspecified",
     "comments": "Techie",
-    "notes": ""
+    "notes": "",
+    "f1": false,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "21",
@@ -207,7 +267,10 @@ const leadsData = [
     "status": "Not Interested",
     "location": "Unspecified",
     "comments": "didn't pick",
-    "notes": ""
+    "notes": "",
+    "f1": false,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "22",
@@ -217,7 +280,10 @@ const leadsData = [
     "status": "Follow-up",
     "location": "Unspecified",
     "comments": "",
-    "notes": ""
+    "notes": "",
+    "f1": true,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "23",
@@ -227,7 +293,10 @@ const leadsData = [
     "status": "Follow-up",
     "location": "Unspecified",
     "comments": "",
-    "notes": ""
+    "notes": "",
+    "f1": true,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "24",
@@ -237,7 +306,10 @@ const leadsData = [
     "status": "Follow-up",
     "location": "Unspecified",
     "comments": "",
-    "notes": ""
+    "notes": "",
+    "f1": true,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "25",
@@ -247,7 +319,10 @@ const leadsData = [
     "status": "Not Interested",
     "location": "Unspecified",
     "comments": "Wife is interested, husband is not TODAY",
-    "notes": ""
+    "notes": "",
+    "f1": false,
+    "f2": true,
+    "f3": false
   },
   {
     "id": "26",
@@ -257,7 +332,10 @@ const leadsData = [
     "status": "Follow-up",
     "location": "Unspecified",
     "comments": "",
-    "notes": ""
+    "notes": "",
+    "f1": true,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "27",
@@ -267,7 +345,10 @@ const leadsData = [
     "status": "Converted",
     "location": "Riyadh",
     "comments": "",
-    "notes": ""
+    "notes": "",
+    "f1": true,
+    "f2": true,
+    "f3": true
   },
   {
     "id": "28",
@@ -277,7 +358,10 @@ const leadsData = [
     "status": "Follow-up",
     "location": "Unspecified",
     "comments": "Call August 3rd week",
-    "notes": ""
+    "notes": "",
+    "f1": true,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "29",
@@ -287,7 +371,10 @@ const leadsData = [
     "status": "Follow-up",
     "location": "Unspecified",
     "comments": "Interested",
-    "notes": ""
+    "notes": "",
+    "f1": true,
+    "f2": true,
+    "f3": false
   },
   {
     "id": "30",
@@ -297,7 +384,10 @@ const leadsData = [
     "status": "Follow-up",
     "location": "Jeddah",
     "comments": "Interested but in Jeddah (vac)",
-    "notes": ""
+    "notes": "",
+    "f1": true,
+    "f2": true,
+    "f3": false
   },
   {
     "id": "31",
@@ -307,7 +397,10 @@ const leadsData = [
     "status": "Not Interested",
     "location": "Unspecified",
     "comments": "-",
-    "notes": ""
+    "notes": "",
+    "f1": false,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "32",
@@ -317,7 +410,10 @@ const leadsData = [
     "status": "Unanswered",
     "location": "Unspecified",
     "comments": "not picking",
-    "notes": ""
+    "notes": "",
+    "f1": false,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "33",
@@ -327,7 +423,10 @@ const leadsData = [
     "status": "Follow-up",
     "location": "Unspecified",
     "comments": "comparing",
-    "notes": ""
+    "notes": "",
+    "f1": true,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "34",
@@ -337,7 +436,10 @@ const leadsData = [
     "status": "Follow-up",
     "location": "Unspecified",
     "comments": "very interested (comparing quality) today 1pm",
-    "notes": ""
+    "notes": "",
+    "f1": true,
+    "f2": true,
+    "f3": false
   },
   {
     "id": "35",
@@ -347,7 +449,10 @@ const leadsData = [
     "status": "Follow-up",
     "location": "Unspecified",
     "comments": "do not call",
-    "notes": ""
+    "notes": "",
+    "f1": true,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "36",
@@ -357,7 +462,10 @@ const leadsData = [
     "status": "Follow-up",
     "location": "Unspecified",
     "comments": "needs to test the tds level,riyadh",
-    "notes": ""
+    "notes": "",
+    "f1": true,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "37",
@@ -367,7 +475,10 @@ const leadsData = [
     "status": "Follow-up",
     "location": "Unspecified",
     "comments": "",
-    "notes": ""
+    "notes": "",
+    "f1": true,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "38",
@@ -377,7 +488,10 @@ const leadsData = [
     "status": "Follow-up",
     "location": "Unspecified",
     "comments": "",
-    "notes": ""
+    "notes": "",
+    "f1": true,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "39",
@@ -387,7 +501,10 @@ const leadsData = [
     "status": "Follow-up",
     "location": "Unspecified",
     "comments": "job",
-    "notes": ""
+    "notes": "",
+    "f1": true,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "40",
@@ -397,7 +514,10 @@ const leadsData = [
     "status": "Follow-up",
     "location": "Unspecified",
     "comments": "",
-    "notes": ""
+    "notes": "",
+    "f1": true,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "41",
@@ -407,7 +527,10 @@ const leadsData = [
     "status": "Not Interested",
     "location": "Unspecified",
     "comments": "interested - UV (msgd)",
-    "notes": ""
+    "notes": "",
+    "f1": false,
+    "f2": true,
+    "f3": false
   },
   {
     "id": "42",
@@ -417,7 +540,10 @@ const leadsData = [
     "status": "Follow-up",
     "location": "Unspecified",
     "comments": "",
-    "notes": ""
+    "notes": "",
+    "f1": true,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "43",
@@ -427,7 +553,10 @@ const leadsData = [
     "status": "Converted",
     "location": "Riyadh",
     "comments": "not int",
-    "notes": ""
+    "notes": "",
+    "f1": true,
+    "f2": true,
+    "f3": true
   },
   {
     "id": "44",
@@ -437,7 +566,10 @@ const leadsData = [
     "status": "Follow-up",
     "location": "Unspecified",
     "comments": "little interested - tabby/tamara",
-    "notes": ""
+    "notes": "",
+    "f1": true,
+    "f2": true,
+    "f3": false
   },
   {
     "id": "45",
@@ -447,7 +579,10 @@ const leadsData = [
     "status": "Follow-up",
     "location": "Unspecified",
     "comments": "didn't pick",
-    "notes": ""
+    "notes": "",
+    "f1": true,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "46",
@@ -457,7 +592,10 @@ const leadsData = [
     "status": "Follow-up",
     "location": "Unspecified",
     "comments": "-",
-    "notes": ""
+    "notes": "",
+    "f1": true,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "47",
@@ -467,7 +605,10 @@ const leadsData = [
     "status": "Follow-up",
     "location": "Unspecified",
     "comments": "Interested - after 2 weeks (aug)",
-    "notes": ""
+    "notes": "",
+    "f1": true,
+    "f2": true,
+    "f3": false
   },
   {
     "id": "48",
@@ -477,7 +618,10 @@ const leadsData = [
     "status": "Follow-up",
     "location": "Unspecified",
     "comments": "-",
-    "notes": ""
+    "notes": "",
+    "f1": true,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "49",
@@ -487,7 +631,10 @@ const leadsData = [
     "status": "Not Interested",
     "location": "Unspecified",
     "comments": "booking link sent",
-    "notes": "went with other(pure it)"
+    "notes": "went with other(pure it)",
+    "f1": false,
+    "f2": true,
+    "f3": false
   },
   {
     "id": "50",
@@ -497,7 +644,10 @@ const leadsData = [
     "status": "Follow-up",
     "location": "Unspecified",
     "comments": "ARAB",
-    "notes": ""
+    "notes": "",
+    "f1": true,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "51",
@@ -507,7 +657,10 @@ const leadsData = [
     "status": "Converted",
     "location": "Riyadh",
     "comments": "booked and paid/YES",
-    "notes": ""
+    "notes": "",
+    "f1": true,
+    "f2": true,
+    "f3": true
   },
   {
     "id": "52",
@@ -517,7 +670,10 @@ const leadsData = [
     "status": "Follow-up",
     "location": "Unspecified",
     "comments": "call on 30th July",
-    "notes": ""
+    "notes": "",
+    "f1": true,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "53",
@@ -527,7 +683,10 @@ const leadsData = [
     "status": "Follow-up",
     "location": "Unspecified",
     "comments": "",
-    "notes": ""
+    "notes": "",
+    "f1": true,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "54",
@@ -537,7 +696,10 @@ const leadsData = [
     "status": "Follow-up",
     "location": "Unspecified",
     "comments": "will contact us if needed",
-    "notes": ""
+    "notes": "",
+    "f1": true,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "55",
@@ -547,7 +709,10 @@ const leadsData = [
     "status": "Follow-up",
     "location": "Unspecified",
     "comments": "will call later",
-    "notes": ""
+    "notes": "",
+    "f1": true,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "56",
@@ -557,7 +722,10 @@ const leadsData = [
     "status": "Follow-up",
     "location": "Unspecified",
     "comments": "-",
-    "notes": ""
+    "notes": "",
+    "f1": true,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "57",
@@ -567,7 +735,10 @@ const leadsData = [
     "status": "Follow-up",
     "location": "Unspecified",
     "comments": "call after ZUHR (27th)",
-    "notes": ""
+    "notes": "",
+    "f1": true,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "58",
@@ -577,7 +748,10 @@ const leadsData = [
     "status": "Follow-up",
     "location": "Unspecified",
     "comments": "-",
-    "notes": ""
+    "notes": "",
+    "f1": true,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "59",
@@ -587,7 +761,10 @@ const leadsData = [
     "status": "Follow-up",
     "location": "Unspecified",
     "comments": "TODAY",
-    "notes": ""
+    "notes": "",
+    "f1": true,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "60",
@@ -597,7 +774,10 @@ const leadsData = [
     "status": "Follow-up",
     "location": "Unspecified",
     "comments": "Jeddah",
-    "notes": ""
+    "notes": "",
+    "f1": true,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "61",
@@ -607,7 +787,10 @@ const leadsData = [
     "status": "Follow-up",
     "location": "Unspecified",
     "comments": "-",
-    "notes": ""
+    "notes": "",
+    "f1": true,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "62",
@@ -617,7 +800,10 @@ const leadsData = [
     "status": "Follow-up",
     "location": "Unspecified",
     "comments": "F",
-    "notes": ""
+    "notes": "",
+    "f1": true,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "63",
@@ -627,7 +813,10 @@ const leadsData = [
     "status": "Follow-up",
     "location": "Unspecified",
     "comments": "-",
-    "notes": ""
+    "notes": "",
+    "f1": true,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "64",
@@ -637,7 +826,10 @@ const leadsData = [
     "status": "Follow-up",
     "location": "Unspecified",
     "comments": "-",
-    "notes": ""
+    "notes": "",
+    "f1": true,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "65",
@@ -647,7 +839,10 @@ const leadsData = [
     "status": "Follow-up",
     "location": "Unspecified",
     "comments": "-",
-    "notes": ""
+    "notes": "",
+    "f1": true,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "66",
@@ -657,7 +852,10 @@ const leadsData = [
     "status": "Follow-up",
     "location": "Unspecified",
     "comments": "Will visit shop",
-    "notes": ""
+    "notes": "",
+    "f1": true,
+    "f2": true,
+    "f3": false
   },
   {
     "id": "67",
@@ -667,7 +865,10 @@ const leadsData = [
     "status": "Follow-up",
     "location": "Unspecified",
     "comments": "Interested",
-    "notes": ""
+    "notes": "",
+    "f1": true,
+    "f2": true,
+    "f3": false
   },
   {
     "id": "68",
@@ -677,7 +878,10 @@ const leadsData = [
     "status": "Follow-up",
     "location": "Unspecified",
     "comments": "follow up, waiting for family(AIJAS)",
-    "notes": ""
+    "notes": "",
+    "f1": true,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "69",
@@ -687,7 +891,10 @@ const leadsData = [
     "status": "Follow-up",
     "location": "Unspecified",
     "comments": "-",
-    "notes": ""
+    "notes": "",
+    "f1": true,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "70",
@@ -697,7 +904,10 @@ const leadsData = [
     "status": "Follow-up",
     "location": "Unspecified",
     "comments": "didn't pick",
-    "notes": ""
+    "notes": "",
+    "f1": true,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "71",
@@ -707,7 +917,10 @@ const leadsData = [
     "status": "Follow-up",
     "location": "Unspecified",
     "comments": "Interested - Water mixed with borewell water",
-    "notes": ""
+    "notes": "",
+    "f1": true,
+    "f2": true,
+    "f3": false
   },
   {
     "id": "72",
@@ -717,7 +930,10 @@ const leadsData = [
     "status": "Follow-up",
     "location": "Unspecified",
     "comments": "Interested",
-    "notes": ""
+    "notes": "",
+    "f1": true,
+    "f2": true,
+    "f3": false
   },
   {
     "id": "73",
@@ -727,7 +943,10 @@ const leadsData = [
     "status": "Follow-up",
     "location": "Unspecified",
     "comments": "will visit the store",
-    "notes": ""
+    "notes": "",
+    "f1": true,
+    "f2": true,
+    "f3": false
   },
   {
     "id": "74",
@@ -737,7 +956,10 @@ const leadsData = [
     "status": "Follow-up",
     "location": "Unspecified",
     "comments": "unavailable",
-    "notes": ""
+    "notes": "",
+    "f1": true,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "75",
@@ -747,7 +969,10 @@ const leadsData = [
     "status": "Not Interested",
     "location": "Unspecified",
     "comments": "not interested",
-    "notes": ""
+    "notes": "",
+    "f1": false,
+    "f2": true,
+    "f3": false
   },
   {
     "id": "76",
@@ -757,7 +982,10 @@ const leadsData = [
     "status": "Follow-up",
     "location": "Unspecified",
     "comments": "Fixed another",
-    "notes": ""
+    "notes": "",
+    "f1": true,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "77",
@@ -767,7 +995,10 @@ const leadsData = [
     "status": "Follow-up",
     "location": "Unspecified",
     "comments": "-",
-    "notes": ""
+    "notes": "",
+    "f1": true,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "78",
@@ -777,7 +1008,10 @@ const leadsData = [
     "status": "Follow-up",
     "location": "Unspecified",
     "comments": "didn't pick",
-    "notes": ""
+    "notes": "",
+    "f1": true,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "79",
@@ -787,7 +1021,10 @@ const leadsData = [
     "status": "Follow-up",
     "location": "Unspecified",
     "comments": "ARAB (probably)",
-    "notes": ""
+    "notes": "",
+    "f1": true,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "80",
@@ -797,7 +1034,10 @@ const leadsData = [
     "status": "Follow-up",
     "location": "Unspecified",
     "comments": "-",
-    "notes": ""
+    "notes": "",
+    "f1": true,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "81",
@@ -807,7 +1047,10 @@ const leadsData = [
     "status": "Follow-up",
     "location": "Unspecified",
     "comments": "MADINA",
-    "notes": ""
+    "notes": "",
+    "f1": true,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "83",
@@ -817,7 +1060,10 @@ const leadsData = [
     "status": "Not Interested",
     "location": "Unspecified",
     "comments": "not interested",
-    "notes": ""
+    "notes": "",
+    "f1": false,
+    "f2": true,
+    "f3": false
   },
   {
     "id": "84",
@@ -827,7 +1073,10 @@ const leadsData = [
     "status": "Follow-up",
     "location": "Unspecified",
     "comments": "call after 2 weeks (11th aug)",
-    "notes": ""
+    "notes": "",
+    "f1": true,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "85",
@@ -837,7 +1086,10 @@ const leadsData = [
     "status": "Converted",
     "location": "Riyadh",
     "comments": "",
-    "notes": ""
+    "notes": "",
+    "f1": true,
+    "f2": true,
+    "f3": true
   },
   {
     "id": "86",
@@ -847,7 +1099,10 @@ const leadsData = [
     "status": "Converted",
     "location": "Unspecified",
     "comments": "",
-    "notes": ""
+    "notes": "",
+    "f1": true,
+    "f2": true,
+    "f3": true
   },
   {
     "id": "87",
@@ -857,7 +1112,10 @@ const leadsData = [
     "status": "Follow-up",
     "location": "Unspecified",
     "comments": "TODAY",
-    "notes": ""
+    "notes": "",
+    "f1": true,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "88",
@@ -867,7 +1125,10 @@ const leadsData = [
     "status": "Follow-up",
     "location": "Unspecified",
     "comments": "-",
-    "notes": ""
+    "notes": "",
+    "f1": true,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "89",
@@ -877,7 +1138,10 @@ const leadsData = [
     "status": "Follow-up",
     "location": "Unspecified",
     "comments": "Not picking",
-    "notes": ""
+    "notes": "",
+    "f1": true,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "90",
@@ -887,7 +1151,10 @@ const leadsData = [
     "status": "Follow-up",
     "location": "Unspecified",
     "comments": "Not picking",
-    "notes": ""
+    "notes": "",
+    "f1": true,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "91",
@@ -897,7 +1164,10 @@ const leadsData = [
     "status": "Follow-up",
     "location": "Unspecified",
     "comments": "Not picking",
-    "notes": ""
+    "notes": "",
+    "f1": true,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "92",
@@ -907,7 +1177,10 @@ const leadsData = [
     "status": "Follow-up",
     "location": "Unspecified",
     "comments": "Not picking",
-    "notes": ""
+    "notes": "",
+    "f1": true,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "93",
@@ -917,7 +1190,10 @@ const leadsData = [
     "status": "Follow-up",
     "location": "Unspecified",
     "comments": "Jeddah - interested - will wait for few weeks",
-    "notes": ""
+    "notes": "",
+    "f1": true,
+    "f2": true,
+    "f3": false
   },
   {
     "id": "94",
@@ -927,7 +1203,10 @@ const leadsData = [
     "status": "Not Interested",
     "location": "Khobar",
     "comments": "relocating, but some concerns",
-    "notes": ""
+    "notes": "",
+    "f1": false,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "95",
@@ -937,7 +1216,10 @@ const leadsData = [
     "status": "Not Interested",
     "location": "Unspecified",
     "comments": "-",
-    "notes": ""
+    "notes": "",
+    "f1": false,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "96",
@@ -947,7 +1229,10 @@ const leadsData = [
     "status": "Follow-up",
     "location": "Unspecified",
     "comments": "-",
-    "notes": ""
+    "notes": "",
+    "f1": true,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "97",
@@ -957,7 +1242,10 @@ const leadsData = [
     "status": "Follow-up",
     "location": "Unspecified",
     "comments": "will visit the store",
-    "notes": ""
+    "notes": "",
+    "f1": true,
+    "f2": true,
+    "f3": false
   },
   {
     "id": "98",
@@ -967,7 +1255,10 @@ const leadsData = [
     "status": "Follow-up",
     "location": "Unspecified",
     "comments": "-",
-    "notes": ""
+    "notes": "",
+    "f1": true,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "99",
@@ -977,7 +1268,10 @@ const leadsData = [
     "status": "Not Interested",
     "location": "Unspecified",
     "comments": "not intrested",
-    "notes": ""
+    "notes": "",
+    "f1": false,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "100",
@@ -987,7 +1281,10 @@ const leadsData = [
     "status": "Follow-up",
     "location": "Unspecified",
     "comments": "-",
-    "notes": ""
+    "notes": "",
+    "f1": true,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "101",
@@ -997,7 +1294,10 @@ const leadsData = [
     "status": "Not Interested",
     "location": "Unspecified",
     "comments": "bought another",
-    "notes": ""
+    "notes": "",
+    "f1": false,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "102",
@@ -1007,7 +1307,10 @@ const leadsData = [
     "status": "Follow-up",
     "location": "Unspecified",
     "comments": "sent brochure",
-    "notes": ""
+    "notes": "",
+    "f1": true,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "103",
@@ -1017,7 +1320,10 @@ const leadsData = [
     "status": "Follow-up",
     "location": "Unspecified",
     "comments": "didn't pick",
-    "notes": ""
+    "notes": "",
+    "f1": true,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "104",
@@ -1027,7 +1333,10 @@ const leadsData = [
     "status": "Follow-up",
     "location": "Unspecified",
     "comments": "-",
-    "notes": ""
+    "notes": "",
+    "f1": true,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "105",
@@ -1037,7 +1346,10 @@ const leadsData = [
     "status": "Not Interested",
     "location": "Unspecified",
     "comments": "bought another",
-    "notes": ""
+    "notes": "",
+    "f1": false,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "106",
@@ -1047,7 +1359,10 @@ const leadsData = [
     "status": "Not Interested",
     "location": "Unspecified",
     "comments": "not interested",
-    "notes": ""
+    "notes": "",
+    "f1": false,
+    "f2": true,
+    "f3": false
   },
   {
     "id": "107",
@@ -1057,7 +1372,10 @@ const leadsData = [
     "status": "Follow-up",
     "location": "Unspecified",
     "comments": "chose a different brand",
-    "notes": ""
+    "notes": "",
+    "f1": true,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "108",
@@ -1067,7 +1385,10 @@ const leadsData = [
     "status": "Not Interested",
     "location": "Unspecified",
     "comments": "not intrested",
-    "notes": ""
+    "notes": "",
+    "f1": false,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "109",
@@ -1077,7 +1398,10 @@ const leadsData = [
     "status": "Follow-up",
     "location": "Unspecified",
     "comments": "ARAB",
-    "notes": ""
+    "notes": "",
+    "f1": true,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "110",
@@ -1087,7 +1411,10 @@ const leadsData = [
     "status": "Follow-up",
     "location": "Unspecified",
     "comments": "Comparing options",
-    "notes": ""
+    "notes": "",
+    "f1": true,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "111",
@@ -1097,7 +1424,10 @@ const leadsData = [
     "status": "Converted",
     "location": "Riyadh",
     "comments": "",
-    "notes": ""
+    "notes": "",
+    "f1": true,
+    "f2": true,
+    "f3": true
   },
   {
     "id": "112",
@@ -1107,7 +1437,10 @@ const leadsData = [
     "status": "Converted",
     "location": "Unspecified",
     "comments": "",
-    "notes": ""
+    "notes": "",
+    "f1": true,
+    "f2": true,
+    "f3": true
   },
   {
     "id": "113",
@@ -1117,7 +1450,10 @@ const leadsData = [
     "status": "Follow-up",
     "location": "Unspecified",
     "comments": "ARAB",
-    "notes": ""
+    "notes": "",
+    "f1": true,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "114",
@@ -1127,7 +1463,10 @@ const leadsData = [
     "status": "Follow-up",
     "location": "Unspecified",
     "comments": "Very Interested-khobar",
-    "notes": ""
+    "notes": "",
+    "f1": true,
+    "f2": true,
+    "f3": false
   },
   {
     "id": "115",
@@ -1137,7 +1476,10 @@ const leadsData = [
     "status": "Follow-up",
     "location": "Unspecified",
     "comments": "Interested - mention free relocation",
-    "notes": ""
+    "notes": "",
+    "f1": true,
+    "f2": true,
+    "f3": false
   },
   {
     "id": "116",
@@ -1147,7 +1489,10 @@ const leadsData = [
     "status": "Follow-up",
     "location": "Unspecified",
     "comments": "Was interested",
-    "notes": ""
+    "notes": "",
+    "f1": true,
+    "f2": true,
+    "f3": false
   },
   {
     "id": "117",
@@ -1157,7 +1502,10 @@ const leadsData = [
     "status": "Follow-up",
     "location": "Unspecified",
     "comments": "TABUK",
-    "notes": ""
+    "notes": "",
+    "f1": true,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "118",
@@ -1167,7 +1515,10 @@ const leadsData = [
     "status": "Follow-up",
     "location": "Unspecified",
     "comments": "Very Interested",
-    "notes": ""
+    "notes": "",
+    "f1": true,
+    "f2": true,
+    "f3": false
   },
   {
     "id": "119",
@@ -1177,7 +1528,10 @@ const leadsData = [
     "status": "Follow-up",
     "location": "Unspecified",
     "comments": "-",
-    "notes": ""
+    "notes": "",
+    "f1": true,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "120",
@@ -1187,7 +1541,10 @@ const leadsData = [
     "status": "Follow-up",
     "location": "Unspecified",
     "comments": "Interested",
-    "notes": ""
+    "notes": "",
+    "f1": true,
+    "f2": true,
+    "f3": false
   },
   {
     "id": "121",
@@ -1197,7 +1554,10 @@ const leadsData = [
     "status": "Follow-up",
     "location": "Unspecified",
     "comments": "",
-    "notes": ""
+    "notes": "",
+    "f1": true,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "122",
@@ -1207,7 +1567,10 @@ const leadsData = [
     "status": "Follow-up",
     "location": "Unspecified",
     "comments": "will come to store",
-    "notes": ""
+    "notes": "",
+    "f1": true,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "123",
@@ -1217,7 +1580,10 @@ const leadsData = [
     "status": "Follow-up",
     "location": "Unspecified",
     "comments": "didn't pick",
-    "notes": ""
+    "notes": "",
+    "f1": true,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "124",
@@ -1227,7 +1593,10 @@ const leadsData = [
     "status": "Not Interested",
     "location": "Unspecified",
     "comments": "not intrested",
-    "notes": ""
+    "notes": "",
+    "f1": false,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "125",
@@ -1237,7 +1606,10 @@ const leadsData = [
     "status": "Not Interested",
     "location": "Unspecified",
     "comments": "Not interested",
-    "notes": ""
+    "notes": "",
+    "f1": false,
+    "f2": true,
+    "f3": false
   },
   {
     "id": "126",
@@ -1247,7 +1619,10 @@ const leadsData = [
     "status": "Not Interested",
     "location": "Unspecified",
     "comments": "Bought another unit",
-    "notes": ""
+    "notes": "",
+    "f1": false,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "127",
@@ -1257,7 +1632,10 @@ const leadsData = [
     "status": "Not Interested",
     "location": "Unspecified",
     "comments": "Not interested",
-    "notes": ""
+    "notes": "",
+    "f1": false,
+    "f2": true,
+    "f3": false
   },
   {
     "id": "128",
@@ -1267,7 +1645,10 @@ const leadsData = [
     "status": "Follow-up",
     "location": "Unspecified",
     "comments": "industrial",
-    "notes": ""
+    "notes": "",
+    "f1": true,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "129",
@@ -1277,7 +1658,10 @@ const leadsData = [
     "status": "Follow-up",
     "location": "Unspecified",
     "comments": "didn't pick",
-    "notes": ""
+    "notes": "",
+    "f1": true,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "130",
@@ -1287,7 +1671,10 @@ const leadsData = [
     "status": "Follow-up",
     "location": "Unspecified",
     "comments": "",
-    "notes": ""
+    "notes": "",
+    "f1": true,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "131",
@@ -1297,7 +1684,10 @@ const leadsData = [
     "status": "Follow-up",
     "location": "Unspecified",
     "comments": "interested - for sending to pak",
-    "notes": ""
+    "notes": "",
+    "f1": true,
+    "f2": true,
+    "f3": false
   },
   {
     "id": "132",
@@ -1307,7 +1697,10 @@ const leadsData = [
     "status": "Follow-up",
     "location": "Unspecified",
     "comments": "didn't pick",
-    "notes": ""
+    "notes": "",
+    "f1": true,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "133",
@@ -1317,7 +1710,10 @@ const leadsData = [
     "status": "Follow-up",
     "location": "Unspecified",
     "comments": "sent brochure",
-    "notes": ""
+    "notes": "",
+    "f1": true,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "134",
@@ -1327,7 +1723,10 @@ const leadsData = [
     "status": "Not Interested",
     "location": "Unspecified",
     "comments": "Not interested",
-    "notes": ""
+    "notes": "",
+    "f1": false,
+    "f2": true,
+    "f3": false
   },
   {
     "id": "135",
@@ -1337,7 +1736,10 @@ const leadsData = [
     "status": "Follow-up",
     "location": "Unspecified",
     "comments": "IMPORTANT",
-    "notes": ""
+    "notes": "",
+    "f1": true,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "136",
@@ -1347,7 +1749,10 @@ const leadsData = [
     "status": "Follow-up",
     "location": "Unspecified",
     "comments": "",
-    "notes": ""
+    "notes": "",
+    "f1": true,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "137",
@@ -1357,7 +1762,10 @@ const leadsData = [
     "status": "Follow-up",
     "location": "Unspecified",
     "comments": "TODAY",
-    "notes": ""
+    "notes": "",
+    "f1": true,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "138",
@@ -1367,7 +1775,10 @@ const leadsData = [
     "status": "Not Interested",
     "location": "Unspecified",
     "comments": "-",
-    "notes": ""
+    "notes": "",
+    "f1": false,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "139",
@@ -1377,7 +1788,10 @@ const leadsData = [
     "status": "Follow-up",
     "location": "Unspecified",
     "comments": "will get back, very int.",
-    "notes": "FC"
+    "notes": "FC",
+    "f1": true,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "140",
@@ -1387,7 +1801,10 @@ const leadsData = [
     "status": "Follow-up",
     "location": "Unspecified",
     "comments": "INTRESTED/will call back",
-    "notes": ""
+    "notes": "",
+    "f1": true,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "141",
@@ -1397,7 +1814,10 @@ const leadsData = [
     "status": "Follow-up",
     "location": "Unspecified",
     "comments": "-",
-    "notes": ""
+    "notes": "",
+    "f1": true,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "142",
@@ -1407,7 +1827,10 @@ const leadsData = [
     "status": "Converted",
     "location": "Dammam",
     "comments": "booked",
-    "notes": ""
+    "notes": "",
+    "f1": true,
+    "f2": true,
+    "f3": true
   },
   {
     "id": "143",
@@ -1417,7 +1840,10 @@ const leadsData = [
     "status": "Converted",
     "location": "Dammam",
     "comments": "booked",
-    "notes": ""
+    "notes": "",
+    "f1": true,
+    "f2": true,
+    "f3": true
   },
   {
     "id": "144",
@@ -1427,7 +1853,10 @@ const leadsData = [
     "status": "Follow-up",
     "location": "Unspecified",
     "comments": "",
-    "notes": ""
+    "notes": "",
+    "f1": true,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "145",
@@ -1437,7 +1866,10 @@ const leadsData = [
     "status": "Not Interested",
     "location": "Unspecified",
     "comments": "not intrested",
-    "notes": ""
+    "notes": "",
+    "f1": false,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "146",
@@ -1447,7 +1879,10 @@ const leadsData = [
     "status": "Follow-up",
     "location": "Unspecified",
     "comments": "-",
-    "notes": ""
+    "notes": "",
+    "f1": true,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "147",
@@ -1457,7 +1892,10 @@ const leadsData = [
     "status": "Follow-up",
     "location": "Unspecified",
     "comments": "",
-    "notes": ""
+    "notes": "",
+    "f1": true,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "148",
@@ -1467,7 +1905,10 @@ const leadsData = [
     "status": "Not Interested",
     "location": "Unspecified",
     "comments": "not interested",
-    "notes": ""
+    "notes": "",
+    "f1": false,
+    "f2": true,
+    "f3": false
   },
   {
     "id": "149",
@@ -1477,7 +1918,10 @@ const leadsData = [
     "status": "Follow-up",
     "location": "Unspecified",
     "comments": "interested (to send)",
-    "notes": ""
+    "notes": "",
+    "f1": true,
+    "f2": true,
+    "f3": false
   },
   {
     "id": "150",
@@ -1487,7 +1931,10 @@ const leadsData = [
     "status": "Follow-up",
     "location": "Unspecified",
     "comments": "interested (to send)",
-    "notes": ""
+    "notes": "",
+    "f1": true,
+    "f2": true,
+    "f3": false
   },
   {
     "id": "151",
@@ -1497,7 +1944,10 @@ const leadsData = [
     "status": "Not Interested",
     "location": "Unspecified",
     "comments": "not intrested",
-    "notes": ""
+    "notes": "",
+    "f1": false,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "152",
@@ -1507,7 +1957,10 @@ const leadsData = [
     "status": "Not Interested",
     "location": "Unspecified",
     "comments": "not intrested",
-    "notes": ""
+    "notes": "",
+    "f1": false,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "153",
@@ -1517,7 +1970,10 @@ const leadsData = [
     "status": "Not Interested",
     "location": "Unspecified",
     "comments": "SEND BOOKNG LINK",
-    "notes": ""
+    "notes": "",
+    "f1": false,
+    "f2": true,
+    "f3": false
   },
   {
     "id": "154",
@@ -1527,7 +1983,10 @@ const leadsData = [
     "status": "Follow-up",
     "location": "Unspecified",
     "comments": "VERY INTRESTED,will call back",
-    "notes": ""
+    "notes": "",
+    "f1": true,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "155",
@@ -1537,7 +1996,10 @@ const leadsData = [
     "status": "Follow-up",
     "location": "Unspecified",
     "comments": "shadab, interested but broke",
-    "notes": ""
+    "notes": "",
+    "f1": true,
+    "f2": true,
+    "f3": false
   },
   {
     "id": "156",
@@ -1547,7 +2009,10 @@ const leadsData = [
     "status": "Not Interested",
     "location": "Unspecified",
     "comments": "not intrested",
-    "notes": ""
+    "notes": "",
+    "f1": false,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "157",
@@ -1557,7 +2022,10 @@ const leadsData = [
     "status": "Not Interested",
     "location": "Unspecified",
     "comments": "currently in makkah, will visit store",
-    "notes": ""
+    "notes": "",
+    "f1": false,
+    "f2": true,
+    "f3": false
   },
   {
     "id": "158",
@@ -1567,7 +2035,10 @@ const leadsData = [
     "status": "Not Interested",
     "location": "Unspecified",
     "comments": "-",
-    "notes": ""
+    "notes": "",
+    "f1": false,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "159",
@@ -1577,7 +2048,10 @@ const leadsData = [
     "status": "Follow-up",
     "location": "Unspecified",
     "comments": "ARAB",
-    "notes": ""
+    "notes": "",
+    "f1": true,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "160",
@@ -1587,7 +2061,10 @@ const leadsData = [
     "status": "Follow-up",
     "location": "Unspecified",
     "comments": "-",
-    "notes": ""
+    "notes": "",
+    "f1": true,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "161",
@@ -1597,7 +2074,10 @@ const leadsData = [
     "status": "Follow-up",
     "location": "Unspecified",
     "comments": "",
-    "notes": ""
+    "notes": "",
+    "f1": true,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "162",
@@ -1607,7 +2087,10 @@ const leadsData = [
     "status": "Follow-up",
     "location": "Unspecified",
     "comments": "interested - waiting for fam 2 come",
-    "notes": ""
+    "notes": "",
+    "f1": true,
+    "f2": true,
+    "f3": false
   },
   {
     "id": "163",
@@ -1617,7 +2100,10 @@ const leadsData = [
     "status": "Not Interested",
     "location": "Unspecified",
     "comments": "not intrested",
-    "notes": ""
+    "notes": "",
+    "f1": false,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "164",
@@ -1627,7 +2113,10 @@ const leadsData = [
     "status": "Follow-up",
     "location": "Unspecified",
     "comments": "not in service",
-    "notes": ""
+    "notes": "",
+    "f1": true,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "165",
@@ -1637,7 +2126,10 @@ const leadsData = [
     "status": "Follow-up",
     "location": "Unspecified",
     "comments": "didn't pick",
-    "notes": ""
+    "notes": "",
+    "f1": true,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "166",
@@ -1647,7 +2139,10 @@ const leadsData = [
     "status": "Follow-up",
     "location": "Unspecified",
     "comments": "interested - broch. sent",
-    "notes": ""
+    "notes": "",
+    "f1": true,
+    "f2": true,
+    "f3": false
   },
   {
     "id": "167",
@@ -1657,7 +2152,10 @@ const leadsData = [
     "status": "Follow-up",
     "location": "Unspecified",
     "comments": "",
-    "notes": ""
+    "notes": "",
+    "f1": true,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "168",
@@ -1667,7 +2165,10 @@ const leadsData = [
     "status": "Follow-up",
     "location": "Unspecified",
     "comments": "Interested",
-    "notes": ""
+    "notes": "",
+    "f1": true,
+    "f2": true,
+    "f3": false
   },
   {
     "id": "169",
@@ -1677,7 +2178,10 @@ const leadsData = [
     "status": "Follow-up",
     "location": "Unspecified",
     "comments": "Interested/shifting",
-    "notes": ""
+    "notes": "",
+    "f1": true,
+    "f2": true,
+    "f3": false
   },
   {
     "id": "170",
@@ -1687,7 +2191,10 @@ const leadsData = [
     "status": "Follow-up",
     "location": "Unspecified",
     "comments": "-",
-    "notes": ""
+    "notes": "",
+    "f1": true,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "171",
@@ -1697,7 +2204,10 @@ const leadsData = [
     "status": "Follow-up",
     "location": "Unspecified",
     "comments": "Inetersted call after 3 days(1st aug)",
-    "notes": ""
+    "notes": "",
+    "f1": true,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "172",
@@ -1707,7 +2217,10 @@ const leadsData = [
     "status": "Not Interested",
     "location": "Unspecified",
     "comments": "not intrested",
-    "notes": ""
+    "notes": "",
+    "f1": false,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "173",
@@ -1717,7 +2230,10 @@ const leadsData = [
     "status": "Follow-up",
     "location": "Unspecified",
     "comments": "",
-    "notes": ""
+    "notes": "",
+    "f1": true,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "174",
@@ -1727,7 +2243,10 @@ const leadsData = [
     "status": "Follow-up",
     "location": "Unspecified",
     "comments": "MADINA",
-    "notes": ""
+    "notes": "",
+    "f1": true,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "175",
@@ -1737,7 +2256,10 @@ const leadsData = [
     "status": "Follow-up",
     "location": "Unspecified",
     "comments": "-",
-    "notes": ""
+    "notes": "",
+    "f1": true,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "176",
@@ -1747,7 +2269,10 @@ const leadsData = [
     "status": "Follow-up",
     "location": "Unspecified",
     "comments": "",
-    "notes": ""
+    "notes": "",
+    "f1": true,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "177",
@@ -1757,7 +2282,10 @@ const leadsData = [
     "status": "Follow-up",
     "location": "Unspecified",
     "comments": "",
-    "notes": ""
+    "notes": "",
+    "f1": true,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "178",
@@ -1767,7 +2295,10 @@ const leadsData = [
     "status": "Follow-up",
     "location": "Unspecified",
     "comments": "Interested/call or msg after 1-2 weeks (7th Aug)",
-    "notes": ""
+    "notes": "",
+    "f1": true,
+    "f2": true,
+    "f3": false
   },
   {
     "id": "179",
@@ -1777,7 +2308,10 @@ const leadsData = [
     "status": "Follow-up",
     "location": "Unspecified",
     "comments": "call tmmrw 28th",
-    "notes": ""
+    "notes": "",
+    "f1": true,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "180",
@@ -1787,7 +2321,10 @@ const leadsData = [
     "status": "Not Interested",
     "location": "Unspecified",
     "comments": "bought another",
-    "notes": ""
+    "notes": "",
+    "f1": false,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "181",
@@ -1797,7 +2334,10 @@ const leadsData = [
     "status": "Follow-up",
     "location": "Unspecified",
     "comments": "Interested - riyadh",
-    "notes": ""
+    "notes": "",
+    "f1": true,
+    "f2": true,
+    "f3": false
   },
   {
     "id": "182",
@@ -1807,7 +2347,10 @@ const leadsData = [
     "status": "Follow-up",
     "location": "Unspecified",
     "comments": "Call in the evening 28th",
-    "notes": ""
+    "notes": "",
+    "f1": true,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "183",
@@ -1817,7 +2360,10 @@ const leadsData = [
     "status": "Not Interested",
     "location": "Unspecified",
     "comments": "not intrested",
-    "notes": ""
+    "notes": "",
+    "f1": false,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "184",
@@ -1827,7 +2373,10 @@ const leadsData = [
     "status": "Not Interested",
     "location": "Unspecified",
     "comments": "not intrested",
-    "notes": ""
+    "notes": "",
+    "f1": false,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "185",
@@ -1837,7 +2386,10 @@ const leadsData = [
     "status": "Follow-up",
     "location": "Unspecified",
     "comments": "-",
-    "notes": ""
+    "notes": "",
+    "f1": true,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "186",
@@ -1847,7 +2399,10 @@ const leadsData = [
     "status": "Not Interested",
     "location": "Unspecified",
     "comments": "not intrested",
-    "notes": ""
+    "notes": "",
+    "f1": false,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "187",
@@ -1857,7 +2412,10 @@ const leadsData = [
     "status": "Not Interested",
     "location": "Unspecified",
     "comments": "not intrested",
-    "notes": ""
+    "notes": "",
+    "f1": false,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "188",
@@ -1867,7 +2425,10 @@ const leadsData = [
     "status": "Follow-up",
     "location": "Unspecified",
     "comments": "ARAB",
-    "notes": ""
+    "notes": "",
+    "f1": true,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "189",
@@ -1877,7 +2438,10 @@ const leadsData = [
     "status": "Follow-up",
     "location": "Unspecified",
     "comments": "LADY",
-    "notes": ""
+    "notes": "",
+    "f1": true,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "190",
@@ -1887,7 +2451,10 @@ const leadsData = [
     "status": "Follow-up",
     "location": "Unspecified",
     "comments": "31st july",
-    "notes": ""
+    "notes": "",
+    "f1": true,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "191",
@@ -1897,7 +2464,10 @@ const leadsData = [
     "status": "Follow-up",
     "location": "Unspecified",
     "comments": "will call back",
-    "notes": ""
+    "notes": "",
+    "f1": true,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "192",
@@ -1907,7 +2477,10 @@ const leadsData = [
     "status": "Follow-up",
     "location": "Unspecified",
     "comments": "-",
-    "notes": ""
+    "notes": "",
+    "f1": true,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "193",
@@ -1917,7 +2490,10 @@ const leadsData = [
     "status": "Follow-up",
     "location": "Unspecified",
     "comments": "didnt pick",
-    "notes": ""
+    "notes": "",
+    "f1": true,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "194",
@@ -1927,7 +2503,10 @@ const leadsData = [
     "status": "Follow-up",
     "location": "Unspecified",
     "comments": "Mal - Interested",
-    "notes": ""
+    "notes": "",
+    "f1": true,
+    "f2": true,
+    "f3": false
   },
   {
     "id": "195",
@@ -1937,7 +2516,10 @@ const leadsData = [
     "status": "Converted",
     "location": "Riyadh",
     "comments": "DILIP KUMAR",
-    "notes": ""
+    "notes": "",
+    "f1": true,
+    "f2": true,
+    "f3": true
   },
   {
     "id": "196",
@@ -1947,7 +2529,10 @@ const leadsData = [
     "status": "Converted",
     "location": "Riyadh",
     "comments": "DILIP KUMAR",
-    "notes": ""
+    "notes": "",
+    "f1": true,
+    "f2": true,
+    "f3": true
   },
   {
     "id": "197",
@@ -1957,7 +2542,10 @@ const leadsData = [
     "status": "Not Interested",
     "location": "Jeddah",
     "comments": "call after 7pm",
-    "notes": "will call back"
+    "notes": "will call back",
+    "f1": false,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "198",
@@ -1967,7 +2555,10 @@ const leadsData = [
     "status": "Not Interested",
     "location": "Unspecified",
     "comments": "joseph(dammam)",
-    "notes": ""
+    "notes": "",
+    "f1": false,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "199",
@@ -1977,7 +2568,10 @@ const leadsData = [
     "status": "Not Interested",
     "location": "Unspecified",
     "comments": "Brochure sent",
-    "notes": ""
+    "notes": "",
+    "f1": false,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "200",
@@ -1987,7 +2581,10 @@ const leadsData = [
     "status": "Not Interested",
     "location": "Unspecified",
     "comments": "didnt pick",
-    "notes": ""
+    "notes": "",
+    "f1": false,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "201",
@@ -1997,7 +2594,10 @@ const leadsData = [
     "status": "Follow-up",
     "location": "Dammam",
     "comments": "relocating to dammam",
-    "notes": ""
+    "notes": "",
+    "f1": true,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "202",
@@ -2007,7 +2607,10 @@ const leadsData = [
     "status": "Not Interested",
     "location": "Khobar",
     "comments": "wife intrstd/keep in touch",
-    "notes": ""
+    "notes": "",
+    "f1": false,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "203",
@@ -2017,7 +2620,10 @@ const leadsData = [
     "status": "Not Interested",
     "location": "Unspecified",
     "comments": "didnt pick",
-    "notes": "MC"
+    "notes": "MC",
+    "f1": false,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "204",
@@ -2027,7 +2633,10 @@ const leadsData = [
     "status": "New Lead",
     "location": "Unspecified",
     "comments": "arabic",
-    "notes": ""
+    "notes": "",
+    "f1": false,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "205",
@@ -2037,7 +2646,10 @@ const leadsData = [
     "status": "Not Interested",
     "location": "Unspecified",
     "comments": "Brochure sent",
-    "notes": ""
+    "notes": "",
+    "f1": false,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "206",
@@ -2047,7 +2659,10 @@ const leadsData = [
     "status": "Not Interested",
     "location": "Unspecified",
     "comments": "call after 5pm(2nd aug)",
-    "notes": "call on saturday"
+    "notes": "call on saturday",
+    "f1": false,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "207",
@@ -2057,7 +2672,10 @@ const leadsData = [
     "status": "Not Interested",
     "location": "Jeddah",
     "comments": "through whatsapp",
-    "notes": ""
+    "notes": "",
+    "f1": false,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "208",
@@ -2067,7 +2685,10 @@ const leadsData = [
     "status": "Not Interested",
     "location": "Jubail",
     "comments": "booking link sent",
-    "notes": "will get back if needed"
+    "notes": "will get back if needed",
+    "f1": false,
+    "f2": true,
+    "f3": false
   },
   {
     "id": "209",
@@ -2077,7 +2698,10 @@ const leadsData = [
     "status": "Not Interested",
     "location": "Unspecified",
     "comments": "call back after an hour",
-    "notes": ""
+    "notes": "",
+    "f1": false,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "210",
@@ -2087,7 +2711,10 @@ const leadsData = [
     "status": "Not Interested",
     "location": "Unspecified",
     "comments": "",
-    "notes": ""
+    "notes": "",
+    "f1": false,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "211",
@@ -2097,7 +2724,10 @@ const leadsData = [
     "status": "Not Interested",
     "location": "Unspecified",
     "comments": "asked for company profile and will call back",
-    "notes": ""
+    "notes": "",
+    "f1": false,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "212",
@@ -2107,7 +2737,10 @@ const leadsData = [
     "status": "Not Interested",
     "location": "Unspecified",
     "comments": "",
-    "notes": ""
+    "notes": "",
+    "f1": false,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "213",
@@ -2117,7 +2750,10 @@ const leadsData = [
     "status": "Not Interested",
     "location": "Unspecified",
     "comments": "tmmrw",
-    "notes": ""
+    "notes": "",
+    "f1": false,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "214",
@@ -2127,7 +2763,10 @@ const leadsData = [
     "status": "Not Interested",
     "location": "Unspecified",
     "comments": "didnt pick",
-    "notes": ""
+    "notes": "",
+    "f1": false,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "215",
@@ -2137,7 +2776,10 @@ const leadsData = [
     "status": "Not Interested",
     "location": "Unspecified",
     "comments": "didnt pick",
-    "notes": ""
+    "notes": "",
+    "f1": false,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "216",
@@ -2147,7 +2789,10 @@ const leadsData = [
     "status": "Not Interested",
     "location": "Unspecified",
     "comments": "",
-    "notes": ""
+    "notes": "",
+    "f1": false,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "217",
@@ -2157,7 +2802,10 @@ const leadsData = [
     "status": "Not Interested",
     "location": "Unspecified",
     "comments": "",
-    "notes": ""
+    "notes": "",
+    "f1": false,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "218",
@@ -2167,7 +2815,10 @@ const leadsData = [
     "status": "Unanswered",
     "location": "Unspecified",
     "comments": "didnt pick (straight to voicemail)",
-    "notes": ""
+    "notes": "",
+    "f1": false,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "219",
@@ -2177,7 +2828,10 @@ const leadsData = [
     "status": "Not Interested",
     "location": "Unspecified",
     "comments": "pending recieval of another no. to call /water from borwell",
-    "notes": ""
+    "notes": "",
+    "f1": false,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "220",
@@ -2187,7 +2841,10 @@ const leadsData = [
     "status": "Follow-up",
     "location": "Unspecified",
     "comments": "expecting a call back",
-    "notes": ""
+    "notes": "",
+    "f1": true,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "221",
@@ -2197,7 +2854,10 @@ const leadsData = [
     "status": "Converted",
     "location": "Riyadh",
     "comments": "",
-    "notes": ""
+    "notes": "",
+    "f1": true,
+    "f2": true,
+    "f3": true
   },
   {
     "id": "222",
@@ -2207,7 +2867,10 @@ const leadsData = [
     "status": "Converted",
     "location": "Unspecified",
     "comments": "",
-    "notes": ""
+    "notes": "",
+    "f1": true,
+    "f2": true,
+    "f3": true
   },
   {
     "id": "223",
@@ -2217,7 +2880,10 @@ const leadsData = [
     "status": "New Lead",
     "location": "Jeddah",
     "comments": "",
-    "notes": ""
+    "notes": "",
+    "f1": false,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "224",
@@ -2227,7 +2893,10 @@ const leadsData = [
     "status": "Not Interested",
     "location": "Unspecified",
     "comments": "",
-    "notes": ""
+    "notes": "",
+    "f1": false,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "225",
@@ -2237,7 +2906,10 @@ const leadsData = [
     "status": "Not Interested",
     "location": "Unspecified",
     "comments": "not int",
-    "notes": ""
+    "notes": "",
+    "f1": false,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "226",
@@ -2247,7 +2919,10 @@ const leadsData = [
     "status": "Not Interested",
     "location": "Jeddah",
     "comments": "bought another",
-    "notes": ""
+    "notes": "",
+    "f1": false,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "227",
@@ -2257,7 +2932,10 @@ const leadsData = [
     "status": "Not Interested",
     "location": "Unspecified",
     "comments": "",
-    "notes": ""
+    "notes": "",
+    "f1": false,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "228",
@@ -2267,7 +2945,10 @@ const leadsData = [
     "status": "Converted",
     "location": "Khobar",
     "comments": "Rizwan, keep in touch",
-    "notes": ""
+    "notes": "",
+    "f1": true,
+    "f2": true,
+    "f3": true
   },
   {
     "id": "229",
@@ -2277,7 +2958,10 @@ const leadsData = [
     "status": "Converted",
     "location": "Khobar",
     "comments": "Rizwan, keep in touch",
-    "notes": ""
+    "notes": "",
+    "f1": true,
+    "f2": true,
+    "f3": true
   },
   {
     "id": "230",
@@ -2287,7 +2971,10 @@ const leadsData = [
     "status": "Not Interested",
     "location": "Unspecified",
     "comments": "",
-    "notes": ""
+    "notes": "",
+    "f1": false,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "231",
@@ -2297,7 +2984,10 @@ const leadsData = [
     "status": "Not Interested",
     "location": "Unspecified",
     "comments": "",
-    "notes": ""
+    "notes": "",
+    "f1": false,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "232",
@@ -2307,7 +2997,10 @@ const leadsData = [
     "status": "Not Interested",
     "location": "Jeddah",
     "comments": "will call back",
-    "notes": ""
+    "notes": "",
+    "f1": false,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "234",
@@ -2317,7 +3010,10 @@ const leadsData = [
     "status": "Not Interested",
     "location": "Jubail",
     "comments": "concerned abt safety",
-    "notes": ""
+    "notes": "",
+    "f1": false,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "235",
@@ -2327,7 +3023,10 @@ const leadsData = [
     "status": "Not Interested",
     "location": "Unspecified",
     "comments": "",
-    "notes": ""
+    "notes": "",
+    "f1": false,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "236",
@@ -2337,7 +3036,10 @@ const leadsData = [
     "status": "Not Interested",
     "location": "Jubail",
     "comments": "suhail, wife's opinion",
-    "notes": ""
+    "notes": "",
+    "f1": false,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "237",
@@ -2347,7 +3049,10 @@ const leadsData = [
     "status": "Not Interested",
     "location": "Unspecified",
     "comments": "",
-    "notes": ""
+    "notes": "",
+    "f1": false,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "238",
@@ -2357,7 +3062,10 @@ const leadsData = [
     "status": "Follow-up",
     "location": "Unspecified",
     "comments": "RESTAURANT, one month",
-    "notes": ""
+    "notes": "",
+    "f1": true,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "239",
@@ -2367,7 +3075,10 @@ const leadsData = [
     "status": "Not Interested",
     "location": "Jubail",
     "comments": "",
-    "notes": ""
+    "notes": "",
+    "f1": false,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "240",
@@ -2377,7 +3088,10 @@ const leadsData = [
     "status": "Follow-up",
     "location": "Unspecified",
     "comments": "in bahrain, call tomrw, 4pm",
-    "notes": ""
+    "notes": "",
+    "f1": true,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "241",
@@ -2387,7 +3101,10 @@ const leadsData = [
     "status": "Not Interested",
     "location": "Khobar",
     "comments": "tonyt 9 or tmmrw",
-    "notes": ""
+    "notes": "",
+    "f1": false,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "242",
@@ -2397,7 +3114,10 @@ const leadsData = [
     "status": "Not Interested",
     "location": "Jubail",
     "comments": "",
-    "notes": ""
+    "notes": "",
+    "f1": false,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "243",
@@ -2407,7 +3127,10 @@ const leadsData = [
     "status": "Not Interested",
     "location": "Unspecified",
     "comments": "",
-    "notes": ""
+    "notes": "",
+    "f1": false,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "244",
@@ -2417,7 +3140,10 @@ const leadsData = [
     "status": "Not Interested",
     "location": "Unspecified",
     "comments": "will call back after sometime",
-    "notes": ""
+    "notes": "",
+    "f1": false,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "245",
@@ -2427,7 +3153,10 @@ const leadsData = [
     "status": "Not Interested",
     "location": "Khobar",
     "comments": "keep in touch",
-    "notes": ""
+    "notes": "",
+    "f1": false,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "246",
@@ -2437,7 +3166,10 @@ const leadsData = [
     "status": "Not Interested",
     "location": "Unspecified",
     "comments": "",
-    "notes": ""
+    "notes": "",
+    "f1": false,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "247",
@@ -2447,7 +3179,10 @@ const leadsData = [
     "status": "Not Interested",
     "location": "Khobar",
     "comments": "call Reji on coming friday 7th aug",
-    "notes": ""
+    "notes": "",
+    "f1": false,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "248",
@@ -2457,7 +3192,10 @@ const leadsData = [
     "status": "Not Interested",
     "location": "Unspecified",
     "comments": "",
-    "notes": ""
+    "notes": "",
+    "f1": false,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "249",
@@ -2467,7 +3205,10 @@ const leadsData = [
     "status": "Converted",
     "location": "Riyadh",
     "comments": "has sent the brochure",
-    "notes": ""
+    "notes": "",
+    "f1": true,
+    "f2": true,
+    "f3": true
   },
   {
     "id": "250",
@@ -2477,7 +3218,10 @@ const leadsData = [
     "status": "Not Interested",
     "location": "Unspecified",
     "comments": "",
-    "notes": ""
+    "notes": "",
+    "f1": false,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "251",
@@ -2487,7 +3231,10 @@ const leadsData = [
     "status": "Not Interested",
     "location": "Riyadh",
     "comments": "has sent the brochure",
-    "notes": ""
+    "notes": "",
+    "f1": false,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "252",
@@ -2497,7 +3244,10 @@ const leadsData = [
     "status": "Not Interested",
     "location": "Riyadh",
     "comments": "keep in touch",
-    "notes": ""
+    "notes": "",
+    "f1": false,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "253",
@@ -2507,7 +3257,10 @@ const leadsData = [
     "status": "Not Interested",
     "location": "Unspecified",
     "comments": "after 6pm, wife/brochure sent",
-    "notes": ""
+    "notes": "",
+    "f1": false,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "254",
@@ -2517,7 +3270,10 @@ const leadsData = [
     "status": "Converted",
     "location": "Khobar",
     "comments": "sent booking link(shuhaib)",
-    "notes": ""
+    "notes": "",
+    "f1": true,
+    "f2": true,
+    "f3": true
   },
   {
     "id": "255",
@@ -2527,7 +3283,10 @@ const leadsData = [
     "status": "Not Interested",
     "location": "Jeddah",
     "comments": "fahad, needs wife's approval",
-    "notes": ""
+    "notes": "",
+    "f1": false,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "256",
@@ -2537,7 +3296,10 @@ const leadsData = [
     "status": "Not Interested",
     "location": "Khobar",
     "comments": "sent booking link(shuhaib)",
-    "notes": ""
+    "notes": "",
+    "f1": false,
+    "f2": true,
+    "f3": false
   },
   {
     "id": "257",
@@ -2547,7 +3309,10 @@ const leadsData = [
     "status": "Not Interested",
     "location": "Dammam",
     "comments": "sent booking link",
-    "notes": ""
+    "notes": "",
+    "f1": false,
+    "f2": true,
+    "f3": false
   },
   {
     "id": "258",
@@ -2557,7 +3322,10 @@ const leadsData = [
     "status": "Not Interested",
     "location": "Unspecified",
     "comments": "didn't respond in WhatsApp",
-    "notes": ""
+    "notes": "",
+    "f1": false,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "259",
@@ -2567,7 +3335,10 @@ const leadsData = [
     "status": "Follow-up",
     "location": "Unspecified",
     "comments": "on vacation(end of aug)",
-    "notes": ""
+    "notes": "",
+    "f1": true,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "260",
@@ -2577,7 +3348,10 @@ const leadsData = [
     "status": "Not Interested",
     "location": "Unspecified",
     "comments": "LADY",
-    "notes": ""
+    "notes": "",
+    "f1": false,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "261",
@@ -2587,7 +3361,10 @@ const leadsData = [
     "status": "Not Interested",
     "location": "Unspecified",
     "comments": "didn't pick 2x",
-    "notes": ""
+    "notes": "",
+    "f1": false,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "262",
@@ -2597,7 +3374,10 @@ const leadsData = [
     "status": "Not Interested",
     "location": "Riyadh",
     "comments": "asked to message in WhatsApp",
-    "notes": ""
+    "notes": "",
+    "f1": false,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "263",
@@ -2607,7 +3387,10 @@ const leadsData = [
     "status": "Not Interested",
     "location": "Riyadh",
     "comments": "will consider and get back",
-    "notes": ""
+    "notes": "",
+    "f1": false,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "264",
@@ -2617,7 +3400,10 @@ const leadsData = [
     "status": "Not Interested",
     "location": "Unspecified",
     "comments": "hasn't responded in WhatsApp",
-    "notes": ""
+    "notes": "",
+    "f1": false,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "265",
@@ -2627,7 +3413,10 @@ const leadsData = [
     "status": "Follow-up",
     "location": "Unspecified",
     "comments": "sent brochure and product details",
-    "notes": ""
+    "notes": "",
+    "f1": true,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "266",
@@ -2637,7 +3426,10 @@ const leadsData = [
     "status": "Not Interested",
     "location": "Unspecified",
     "comments": "Bought another",
-    "notes": ""
+    "notes": "",
+    "f1": false,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "267",
@@ -2647,7 +3439,10 @@ const leadsData = [
     "status": "Not Interested",
     "location": "Unspecified",
     "comments": "didn't pick 2x",
-    "notes": ""
+    "notes": "",
+    "f1": false,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "268",
@@ -2657,7 +3452,10 @@ const leadsData = [
     "status": "Converted",
     "location": "Riyadh",
     "comments": "lady",
-    "notes": ""
+    "notes": "",
+    "f1": true,
+    "f2": true,
+    "f3": true
   },
   {
     "id": "269",
@@ -2667,7 +3465,10 @@ const leadsData = [
     "status": "Not Interested",
     "location": "Unspecified",
     "comments": "messaged",
-    "notes": ""
+    "notes": "",
+    "f1": false,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "270",
@@ -2677,7 +3478,10 @@ const leadsData = [
     "status": "Converted",
     "location": "Riyadh",
     "comments": "lady",
-    "notes": ""
+    "notes": "",
+    "f1": true,
+    "f2": true,
+    "f3": true
   },
   {
     "id": "271",
@@ -2687,7 +3491,10 @@ const leadsData = [
     "status": "Not Interested",
     "location": "Unspecified",
     "comments": "",
-    "notes": ""
+    "notes": "",
+    "f1": false,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "272",
@@ -2697,7 +3504,10 @@ const leadsData = [
     "status": "Not Interested",
     "location": "Jeddah",
     "comments": "srprsd, no space for this:(",
-    "notes": ""
+    "notes": "",
+    "f1": false,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "273",
@@ -2707,7 +3517,10 @@ const leadsData = [
     "status": "Converted",
     "location": "Dammam",
     "comments": "sent booking link",
-    "notes": ""
+    "notes": "",
+    "f1": true,
+    "f2": true,
+    "f3": true
   },
   {
     "id": "274",
@@ -2717,7 +3530,10 @@ const leadsData = [
     "status": "Not Interested",
     "location": "Unspecified",
     "comments": "",
-    "notes": ""
+    "notes": "",
+    "f1": false,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "275",
@@ -2727,7 +3543,10 @@ const leadsData = [
     "status": "Converted",
     "location": "Dammam",
     "comments": "sent booking link",
-    "notes": ""
+    "notes": "",
+    "f1": true,
+    "f2": true,
+    "f3": true
   },
   {
     "id": "276",
@@ -2737,7 +3556,10 @@ const leadsData = [
     "status": "Follow-up",
     "location": "Unspecified",
     "comments": "",
-    "notes": ""
+    "notes": "",
+    "f1": true,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "279",
@@ -2747,7 +3569,10 @@ const leadsData = [
     "status": "Follow-up",
     "location": "Khobar",
     "comments": "",
-    "notes": ""
+    "notes": "",
+    "f1": true,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "280",
@@ -2757,7 +3582,10 @@ const leadsData = [
     "status": "Not Interested",
     "location": "Unspecified",
     "comments": "",
-    "notes": ""
+    "notes": "",
+    "f1": false,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "281",
@@ -2767,7 +3595,10 @@ const leadsData = [
     "status": "Converted",
     "location": "Riyadh",
     "comments": "sent booking link",
-    "notes": ""
+    "notes": "",
+    "f1": true,
+    "f2": true,
+    "f3": true
   },
   {
     "id": "282",
@@ -2777,7 +3608,10 @@ const leadsData = [
     "status": "Not Interested",
     "location": "Unspecified",
     "comments": "will call back, bsy",
-    "notes": ""
+    "notes": "",
+    "f1": false,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "283",
@@ -2787,7 +3621,10 @@ const leadsData = [
     "status": "Converted",
     "location": "Riyadh",
     "comments": "sent booking link",
-    "notes": ""
+    "notes": "",
+    "f1": true,
+    "f2": true,
+    "f3": true
   },
   {
     "id": "284",
@@ -2797,7 +3634,10 @@ const leadsData = [
     "status": "Not Interested",
     "location": "Unspecified",
     "comments": "call again",
-    "notes": ""
+    "notes": "",
+    "f1": false,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "285",
@@ -2807,7 +3647,10 @@ const leadsData = [
     "status": "Not Interested",
     "location": "Unspecified",
     "comments": "will call back in the evening",
-    "notes": ""
+    "notes": "",
+    "f1": false,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "286",
@@ -2817,7 +3660,10 @@ const leadsData = [
     "status": "Not Interested",
     "location": "Dammam",
     "comments": "keep in touch, family opinion",
-    "notes": ""
+    "notes": "",
+    "f1": false,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "287",
@@ -2827,7 +3673,10 @@ const leadsData = [
     "status": "Not Interested",
     "location": "Unspecified",
     "comments": "",
-    "notes": ""
+    "notes": "",
+    "f1": false,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "288",
@@ -2837,7 +3686,10 @@ const leadsData = [
     "status": "Not Interested",
     "location": "Unspecified",
     "comments": "call @7pm",
-    "notes": ""
+    "notes": "",
+    "f1": false,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "289",
@@ -2847,7 +3699,10 @@ const leadsData = [
     "status": "Not Interested",
     "location": "Jeddah",
     "comments": "concerned about money",
-    "notes": ""
+    "notes": "",
+    "f1": false,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "290",
@@ -2857,7 +3712,10 @@ const leadsData = [
     "status": "Not Interested",
     "location": "Unspecified",
     "comments": "sent booking link",
-    "notes": "went with other unit!"
+    "notes": "went with other unit!",
+    "f1": false,
+    "f2": true,
+    "f3": false
   },
   {
     "id": "291",
@@ -2867,7 +3725,10 @@ const leadsData = [
     "status": "Not Interested",
     "location": "Unspecified",
     "comments": "",
-    "notes": ""
+    "notes": "",
+    "f1": false,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "292",
@@ -2877,7 +3738,10 @@ const leadsData = [
     "status": "Not Interested",
     "location": "Jubail",
     "comments": "fam confirmation",
-    "notes": ""
+    "notes": "",
+    "f1": false,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "293",
@@ -2887,7 +3751,10 @@ const leadsData = [
     "status": "Not Interested",
     "location": "Jeddah",
     "comments": "family",
-    "notes": ""
+    "notes": "",
+    "f1": false,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "294",
@@ -2897,7 +3764,10 @@ const leadsData = [
     "status": "Not Interested",
     "location": "Dammam",
     "comments": "for brother",
-    "notes": ""
+    "notes": "",
+    "f1": false,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "295",
@@ -2907,7 +3777,10 @@ const leadsData = [
     "status": "Not Interested",
     "location": "Unspecified",
     "comments": "",
-    "notes": ""
+    "notes": "",
+    "f1": false,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "296",
@@ -2917,7 +3790,10 @@ const leadsData = [
     "status": "Not Interested",
     "location": "Khobar",
     "comments": "",
-    "notes": ""
+    "notes": "",
+    "f1": false,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "297",
@@ -2927,7 +3803,10 @@ const leadsData = [
     "status": "Not Interested",
     "location": "Jeddah",
     "comments": "needs fathers opinion",
-    "notes": ""
+    "notes": "",
+    "f1": false,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "298",
@@ -2937,7 +3816,10 @@ const leadsData = [
     "status": "Not Interested",
     "location": "Dammam",
     "comments": "booking link sent",
-    "notes": ""
+    "notes": "",
+    "f1": false,
+    "f2": true,
+    "f3": false
   },
   {
     "id": "299",
@@ -2947,7 +3829,10 @@ const leadsData = [
     "status": "Converted",
     "location": "Riyadh",
     "comments": "will call back",
-    "notes": ""
+    "notes": "",
+    "f1": true,
+    "f2": true,
+    "f3": true
   },
   {
     "id": "300",
@@ -2957,7 +3842,10 @@ const leadsData = [
     "status": "Not Interested",
     "location": "Unspecified",
     "comments": "",
-    "notes": ""
+    "notes": "",
+    "f1": false,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "302",
@@ -2967,7 +3855,10 @@ const leadsData = [
     "status": "Not Interested",
     "location": "Unspecified",
     "comments": "will call back",
-    "notes": ""
+    "notes": "",
+    "f1": false,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "303",
@@ -2977,7 +3868,10 @@ const leadsData = [
     "status": "Not Interested",
     "location": "Unspecified",
     "comments": "didn't pick",
-    "notes": "didn't pick"
+    "notes": "didn't pick",
+    "f1": false,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "304",
@@ -2987,7 +3881,10 @@ const leadsData = [
     "status": "Not Interested",
     "location": "Unspecified",
     "comments": "",
-    "notes": "no longer interested"
+    "notes": "no longer interested",
+    "f1": false,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "305",
@@ -2997,7 +3894,10 @@ const leadsData = [
     "status": "Not Interested",
     "location": "Unspecified",
     "comments": "concerned about costs",
-    "notes": ""
+    "notes": "",
+    "f1": false,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "306",
@@ -3007,7 +3907,10 @@ const leadsData = [
     "status": "Not Interested",
     "location": "Unspecified",
     "comments": "",
-    "notes": "got from another company"
+    "notes": "got from another company",
+    "f1": false,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "307",
@@ -3017,7 +3920,10 @@ const leadsData = [
     "status": "Not Interested",
     "location": "Riyadh",
     "comments": "interested",
-    "notes": ""
+    "notes": "",
+    "f1": false,
+    "f2": true,
+    "f3": false
   },
   {
     "id": "308",
@@ -3027,7 +3933,10 @@ const leadsData = [
     "status": "Not Interested",
     "location": "Unspecified",
     "comments": "line can't be reached",
-    "notes": "line can't be reached"
+    "notes": "line can't be reached",
+    "f1": false,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "309",
@@ -3037,7 +3946,10 @@ const leadsData = [
     "status": "Not Interested",
     "location": "Riyadh",
     "comments": "very interested but 190km from riyadh",
-    "notes": ""
+    "notes": "",
+    "f1": false,
+    "f2": true,
+    "f3": false
   },
   {
     "id": "310",
@@ -3047,7 +3959,10 @@ const leadsData = [
     "status": "Not Interested",
     "location": "Unspecified",
     "comments": "",
-    "notes": ""
+    "notes": "",
+    "f1": false,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "311",
@@ -3057,7 +3972,10 @@ const leadsData = [
     "status": "Not Interested",
     "location": "Unspecified",
     "comments": "10 mint",
-    "notes": ""
+    "notes": "",
+    "f1": false,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "312",
@@ -3067,7 +3985,10 @@ const leadsData = [
     "status": "Not Interested",
     "location": "Unspecified",
     "comments": "@4pm",
-    "notes": ""
+    "notes": "",
+    "f1": false,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "313",
@@ -3077,7 +3998,10 @@ const leadsData = [
     "status": "Follow-up",
     "location": "Unspecified",
     "comments": "lady- call back",
-    "notes": "didn't pick"
+    "notes": "didn't pick",
+    "f1": true,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "314",
@@ -3087,7 +4011,10 @@ const leadsData = [
     "status": "Not Interested",
     "location": "Unspecified",
     "comments": "call back",
-    "notes": "didn't pick"
+    "notes": "didn't pick",
+    "f1": false,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "315",
@@ -3097,7 +4024,10 @@ const leadsData = [
     "status": "Follow-up",
     "location": "Unspecified",
     "comments": "call back",
-    "notes": "didn't pick"
+    "notes": "didn't pick",
+    "f1": true,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "316",
@@ -3107,7 +4037,10 @@ const leadsData = [
     "status": "Follow-up",
     "location": "Unspecified",
     "comments": "will get back",
-    "notes": ""
+    "notes": "",
+    "f1": true,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "317",
@@ -3117,7 +4050,10 @@ const leadsData = [
     "status": "Not Interested",
     "location": "Unspecified",
     "comments": "didn't pick",
-    "notes": "didn't pick"
+    "notes": "didn't pick",
+    "f1": false,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "318",
@@ -3127,7 +4063,10 @@ const leadsData = [
     "status": "Not Interested",
     "location": "Unspecified",
     "comments": "",
-    "notes": ""
+    "notes": "",
+    "f1": false,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "319",
@@ -3137,7 +4076,10 @@ const leadsData = [
     "status": "Not Interested",
     "location": "Unspecified",
     "comments": "",
-    "notes": ""
+    "notes": "",
+    "f1": false,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "320",
@@ -3147,7 +4089,10 @@ const leadsData = [
     "status": "Follow-up",
     "location": "Jeddah",
     "comments": "after 15 days(toufeeq)",
-    "notes": ""
+    "notes": "",
+    "f1": true,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "321",
@@ -3157,7 +4102,10 @@ const leadsData = [
     "status": "Not Interested",
     "location": "Unspecified",
     "comments": "hasn't responded in WhatsApp",
-    "notes": ""
+    "notes": "",
+    "f1": false,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "322",
@@ -3167,7 +4115,10 @@ const leadsData = [
     "status": "Not Interested",
     "location": "Unspecified",
     "comments": "hasn't responded in WhatsApp",
-    "notes": ""
+    "notes": "",
+    "f1": false,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "323",
@@ -3177,7 +4128,10 @@ const leadsData = [
     "status": "Not Interested",
     "location": "Unspecified",
     "comments": "didn't pick",
-    "notes": "call after some time"
+    "notes": "call after some time",
+    "f1": false,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "324",
@@ -3187,7 +4141,10 @@ const leadsData = [
     "status": "Not Interested",
     "location": "Unspecified",
     "comments": "4:00 PM",
-    "notes": ""
+    "notes": "",
+    "f1": false,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "325",
@@ -3197,7 +4154,10 @@ const leadsData = [
     "status": "Not Interested",
     "location": "Unspecified",
     "comments": "sent brochure, no reply",
-    "notes": ""
+    "notes": "",
+    "f1": false,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "326",
@@ -3207,7 +4167,10 @@ const leadsData = [
     "status": "Not Interested",
     "location": "Unspecified",
     "comments": "@3pm, not picking",
-    "notes": ""
+    "notes": "",
+    "f1": false,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "327",
@@ -3217,7 +4180,10 @@ const leadsData = [
     "status": "Not Interested",
     "location": "Unspecified",
     "comments": "",
-    "notes": ""
+    "notes": "",
+    "f1": false,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "328",
@@ -3227,7 +4193,10 @@ const leadsData = [
     "status": "Not Interested",
     "location": "Unspecified",
     "comments": "laxmon, keep track",
-    "notes": ""
+    "notes": "",
+    "f1": false,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "329",
@@ -3237,7 +4206,10 @@ const leadsData = [
     "status": "Converted",
     "location": "Jeddah",
     "comments": "messaged",
-    "notes": ""
+    "notes": "",
+    "f1": true,
+    "f2": true,
+    "f3": true
   },
   {
     "id": "330",
@@ -3247,7 +4219,10 @@ const leadsData = [
     "status": "Not Interested",
     "location": "Unspecified",
     "comments": "very interested, relocating,Ali",
-    "notes": ""
+    "notes": "",
+    "f1": false,
+    "f2": true,
+    "f3": false
   },
   {
     "id": "331",
@@ -3257,7 +4232,10 @@ const leadsData = [
     "status": "Not Interested",
     "location": "Riyadh",
     "comments": "interested, walton",
-    "notes": ""
+    "notes": "",
+    "f1": false,
+    "f2": true,
+    "f3": false
   },
   {
     "id": "332",
@@ -3267,7 +4245,10 @@ const leadsData = [
     "status": "Not Interested",
     "location": "Unspecified",
     "comments": "messaged",
-    "notes": ""
+    "notes": "",
+    "f1": false,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "335",
@@ -3277,7 +4258,10 @@ const leadsData = [
     "status": "Not Interested",
     "location": "Jeddah",
     "comments": "interested(bundle offer)",
-    "notes": ""
+    "notes": "",
+    "f1": false,
+    "f2": true,
+    "f3": false
   },
   {
     "id": "336",
@@ -3287,7 +4271,10 @@ const leadsData = [
     "status": "Follow-up",
     "location": "Riyadh",
     "comments": "sure after one month",
-    "notes": ""
+    "notes": "",
+    "f1": true,
+    "f2": false,
+    "f3": true
   },
   {
     "id": "337",
@@ -3297,7 +4284,10 @@ const leadsData = [
     "status": "Not Interested",
     "location": "Unspecified",
     "comments": "",
-    "notes": ""
+    "notes": "",
+    "f1": false,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "338",
@@ -3307,7 +4297,10 @@ const leadsData = [
     "status": "Follow-up",
     "location": "Unspecified",
     "comments": "just remind by msg",
-    "notes": ""
+    "notes": "",
+    "f1": true,
+    "f2": true,
+    "f3": false
   },
   {
     "id": "339",
@@ -3317,7 +4310,10 @@ const leadsData = [
     "status": "Not Interested",
     "location": "Unspecified",
     "comments": "not interested/ hung up",
-    "notes": ""
+    "notes": "",
+    "f1": false,
+    "f2": true,
+    "f3": false
   },
   {
     "id": "340",
@@ -3327,7 +4323,10 @@ const leadsData = [
     "status": "Not Interested",
     "location": "Unspecified",
     "comments": "expecting call back from wife",
-    "notes": ""
+    "notes": "",
+    "f1": false,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "341",
@@ -3337,7 +4336,10 @@ const leadsData = [
     "status": "Follow-up",
     "location": "Dammam",
     "comments": "expat",
-    "notes": ""
+    "notes": "",
+    "f1": true,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "342",
@@ -3347,7 +4349,10 @@ const leadsData = [
     "status": "Not Interested",
     "location": "Unspecified",
     "comments": "call back/ 6:30",
-    "notes": ""
+    "notes": "",
+    "f1": false,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "343",
@@ -3357,7 +4362,10 @@ const leadsData = [
     "status": "Follow-up",
     "location": "Khobar",
     "comments": "didn't pick",
-    "notes": ""
+    "notes": "",
+    "f1": true,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "344",
@@ -3367,7 +4375,10 @@ const leadsData = [
     "status": "Not Interested",
     "location": "Unspecified",
     "comments": "cannot be reached/ call back",
-    "notes": ""
+    "notes": "",
+    "f1": false,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "345",
@@ -3377,7 +4388,10 @@ const leadsData = [
     "status": "Not Interested",
     "location": "Unspecified",
     "comments": "didn't pick",
-    "notes": ""
+    "notes": "",
+    "f1": false,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "346",
@@ -3387,7 +4401,10 @@ const leadsData = [
     "status": "Not Interested",
     "location": "Unspecified",
     "comments": "msged in whats as voice unclear",
-    "notes": ""
+    "notes": "",
+    "f1": false,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "347",
@@ -3397,7 +4414,10 @@ const leadsData = [
     "status": "Not Interested",
     "location": "Khobar",
     "comments": "msged in whats",
-    "notes": ""
+    "notes": "",
+    "f1": false,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "348",
@@ -3407,7 +4427,10 @@ const leadsData = [
     "status": "Follow-up",
     "location": "Unspecified",
     "comments": "call once family gets back",
-    "notes": ""
+    "notes": "",
+    "f1": true,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "349",
@@ -3417,7 +4440,10 @@ const leadsData = [
     "status": "Converted",
     "location": "Jubail",
     "comments": "messaged",
-    "notes": ""
+    "notes": "",
+    "f1": true,
+    "f2": true,
+    "f3": true
   },
   {
     "id": "351",
@@ -3427,7 +4453,10 @@ const leadsData = [
     "status": "Not Interested",
     "location": "Unspecified",
     "comments": "",
-    "notes": ""
+    "notes": "",
+    "f1": false,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "352",
@@ -3437,7 +4466,10 @@ const leadsData = [
     "status": "Converted",
     "location": "Khobar",
     "comments": "uv",
-    "notes": ""
+    "notes": "",
+    "f1": true,
+    "f2": true,
+    "f3": true
   },
   {
     "id": "353",
@@ -3447,7 +4479,10 @@ const leadsData = [
     "status": "Not Interested",
     "location": "Unspecified",
     "comments": "LADY",
-    "notes": ""
+    "notes": "",
+    "f1": false,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "354",
@@ -3457,7 +4492,10 @@ const leadsData = [
     "status": "Not Interested",
     "location": "Unspecified",
     "comments": "not reachable, messaged",
-    "notes": ""
+    "notes": "",
+    "f1": false,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "355",
@@ -3467,7 +4505,10 @@ const leadsData = [
     "status": "Converted",
     "location": "Jubail",
     "comments": "messaged",
-    "notes": ""
+    "notes": "",
+    "f1": true,
+    "f2": true,
+    "f3": true
   },
   {
     "id": "356",
@@ -3477,7 +4518,10 @@ const leadsData = [
     "status": "Not Interested",
     "location": "Unspecified",
     "comments": "",
-    "notes": ""
+    "notes": "",
+    "f1": false,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "357",
@@ -3487,7 +4531,10 @@ const leadsData = [
     "status": "Not Interested",
     "location": "Unspecified",
     "comments": "will call back",
-    "notes": ""
+    "notes": "",
+    "f1": false,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "358",
@@ -3497,7 +4544,10 @@ const leadsData = [
     "status": "Converted",
     "location": "Khobar",
     "comments": "uv",
-    "notes": ""
+    "notes": "",
+    "f1": true,
+    "f2": true,
+    "f3": true
   },
   {
     "id": "359",
@@ -3507,7 +4557,10 @@ const leadsData = [
     "status": "Not Interested",
     "location": "Unspecified",
     "comments": "interested, will get back",
-    "notes": ""
+    "notes": "",
+    "f1": false,
+    "f2": true,
+    "f3": false
   },
   {
     "id": "360",
@@ -3517,7 +4570,10 @@ const leadsData = [
     "status": "Not Interested",
     "location": "Khobar",
     "comments": "needs to visit",
-    "notes": ""
+    "notes": "",
+    "f1": false,
+    "f2": true,
+    "f3": false
   },
   {
     "id": "361",
@@ -3527,7 +4583,10 @@ const leadsData = [
     "status": "Converted",
     "location": "Dammam",
     "comments": "WIFEEEE",
-    "notes": ""
+    "notes": "",
+    "f1": true,
+    "f2": true,
+    "f3": true
   },
   {
     "id": "362",
@@ -3537,7 +4596,10 @@ const leadsData = [
     "status": "Not Interested",
     "location": "Unspecified",
     "comments": "",
-    "notes": ""
+    "notes": "",
+    "f1": false,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "363",
@@ -3547,7 +4609,10 @@ const leadsData = [
     "status": "Not Interested",
     "location": "Unspecified",
     "comments": "",
-    "notes": ""
+    "notes": "",
+    "f1": false,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "366",
@@ -3557,7 +4622,10 @@ const leadsData = [
     "status": "Not Interested",
     "location": "Unspecified",
     "comments": "",
-    "notes": ""
+    "notes": "",
+    "f1": false,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "367",
@@ -3567,7 +4635,10 @@ const leadsData = [
     "status": "Unanswered",
     "location": "Unspecified",
     "comments": "",
-    "notes": ""
+    "notes": "",
+    "f1": false,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "368",
@@ -3577,7 +4648,10 @@ const leadsData = [
     "status": "Not Interested",
     "location": "Unspecified",
     "comments": "6pm",
-    "notes": ""
+    "notes": "",
+    "f1": false,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "369",
@@ -3587,7 +4661,10 @@ const leadsData = [
     "status": "Not Interested",
     "location": "Dammam",
     "comments": "keep track",
-    "notes": ""
+    "notes": "",
+    "f1": false,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "370",
@@ -3597,7 +4674,10 @@ const leadsData = [
     "status": "Not Interested",
     "location": "Riyadh",
     "comments": "WIFEEEE",
-    "notes": ""
+    "notes": "",
+    "f1": false,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "371",
@@ -3607,7 +4687,10 @@ const leadsData = [
     "status": "Converted",
     "location": "Dammam",
     "comments": "",
-    "notes": ""
+    "notes": "",
+    "f1": true,
+    "f2": true,
+    "f3": true
   },
   {
     "id": "372",
@@ -3617,7 +4700,10 @@ const leadsData = [
     "status": "Not Interested",
     "location": "Unspecified",
     "comments": "",
-    "notes": ""
+    "notes": "",
+    "f1": false,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "373",
@@ -3627,7 +4713,10 @@ const leadsData = [
     "status": "Not Interested",
     "location": "Unspecified",
     "comments": "",
-    "notes": ""
+    "notes": "",
+    "f1": false,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "374",
@@ -3637,7 +4726,10 @@ const leadsData = [
     "status": "Not Interested",
     "location": "Unspecified",
     "comments": "",
-    "notes": ""
+    "notes": "",
+    "f1": false,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "375",
@@ -3647,7 +4739,10 @@ const leadsData = [
     "status": "Not Interested",
     "location": "Unspecified",
     "comments": "",
-    "notes": ""
+    "notes": "",
+    "f1": false,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "376",
@@ -3657,7 +4752,10 @@ const leadsData = [
     "status": "Converted",
     "location": "Khobar",
     "comments": "cncrnd about purity,want to tst",
-    "notes": ""
+    "notes": "",
+    "f1": true,
+    "f2": true,
+    "f3": true
   },
   {
     "id": "377",
@@ -3667,7 +4765,10 @@ const leadsData = [
     "status": "Not Interested",
     "location": "Dammam",
     "comments": "",
-    "notes": ""
+    "notes": "",
+    "f1": false,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "378",
@@ -3677,7 +4778,10 @@ const leadsData = [
     "status": "Not Interested",
     "location": "Dammam",
     "comments": "will get back if needed",
-    "notes": ""
+    "notes": "",
+    "f1": false,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "379",
@@ -3687,7 +4791,10 @@ const leadsData = [
     "status": "Not Interested",
     "location": "Unspecified",
     "comments": "",
-    "notes": ""
+    "notes": "",
+    "f1": false,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "380",
@@ -3697,7 +4804,10 @@ const leadsData = [
     "status": "Converted",
     "location": "Dammam",
     "comments": "",
-    "notes": ""
+    "notes": "",
+    "f1": true,
+    "f2": true,
+    "f3": true
   },
   {
     "id": "381",
@@ -3707,7 +4817,10 @@ const leadsData = [
     "status": "Converted",
     "location": "Khobar",
     "comments": "not leads(ashiq)",
-    "notes": ""
+    "notes": "",
+    "f1": true,
+    "f2": true,
+    "f3": true
   },
   {
     "id": "382",
@@ -3717,7 +4830,10 @@ const leadsData = [
     "status": "Not Interested",
     "location": "Unspecified",
     "comments": "messaged",
-    "notes": ""
+    "notes": "",
+    "f1": false,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "383",
@@ -3727,7 +4843,10 @@ const leadsData = [
     "status": "Not Interested",
     "location": "Unspecified",
     "comments": "messaged",
-    "notes": ""
+    "notes": "",
+    "f1": false,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "384",
@@ -3737,7 +4856,10 @@ const leadsData = [
     "status": "Follow-up",
     "location": "Unspecified",
     "comments": "remind at noon",
-    "notes": ""
+    "notes": "",
+    "f1": true,
+    "f2": true,
+    "f3": false
   },
   {
     "id": "385",
@@ -3747,7 +4869,10 @@ const leadsData = [
     "status": "Converted",
     "location": "Dammam",
     "comments": "sure after vacation(abdurauf)",
-    "notes": ""
+    "notes": "",
+    "f1": true,
+    "f2": true,
+    "f3": true
   },
   {
     "id": "386",
@@ -3757,7 +4882,10 @@ const leadsData = [
     "status": "Follow-up",
     "location": "Unspecified",
     "comments": "sure after vacation(omar)",
-    "notes": ""
+    "notes": "",
+    "f1": true,
+    "f2": false,
+    "f3": true
   },
   {
     "id": "387",
@@ -3767,7 +4895,10 @@ const leadsData = [
     "status": "Not Interested",
     "location": "Unspecified",
     "comments": "",
-    "notes": ""
+    "notes": "",
+    "f1": false,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "388",
@@ -3777,7 +4908,10 @@ const leadsData = [
     "status": "Not Interested",
     "location": "Khobar",
     "comments": "not leads(ashiq)",
-    "notes": ""
+    "notes": "",
+    "f1": false,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "389",
@@ -3787,7 +4921,10 @@ const leadsData = [
     "status": "Not Interested",
     "location": "Unspecified",
     "comments": "",
-    "notes": ""
+    "notes": "",
+    "f1": false,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "390",
@@ -3797,7 +4934,10 @@ const leadsData = [
     "status": "Not Interested",
     "location": "Khobar",
     "comments": "not leads(ashiq)",
-    "notes": ""
+    "notes": "",
+    "f1": false,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "391",
@@ -3807,7 +4947,10 @@ const leadsData = [
     "status": "Not Interested",
     "location": "Unspecified",
     "comments": "messaged",
-    "notes": ""
+    "notes": "",
+    "f1": false,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "392",
@@ -3817,7 +4960,10 @@ const leadsData = [
     "status": "Not Interested",
     "location": "Unspecified",
     "comments": "",
-    "notes": ""
+    "notes": "",
+    "f1": false,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "393",
@@ -3827,7 +4973,10 @@ const leadsData = [
     "status": "Follow-up",
     "location": "Unspecified",
     "comments": "will get back if needed",
-    "notes": ""
+    "notes": "",
+    "f1": true,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "394",
@@ -3837,7 +4986,10 @@ const leadsData = [
     "status": "Follow-up",
     "location": "Dammam",
     "comments": "sure after vacation(abdurauf)",
-    "notes": ""
+    "notes": "",
+    "f1": true,
+    "f2": false,
+    "f3": true
   },
   {
     "id": "395",
@@ -3847,7 +4999,10 @@ const leadsData = [
     "status": "Not Interested",
     "location": "Riyadh",
     "comments": "",
-    "notes": ""
+    "notes": "",
+    "f1": false,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "397",
@@ -3857,7 +5012,10 @@ const leadsData = [
     "status": "Not Interested",
     "location": "Unspecified",
     "comments": "Artawiyah(Loong)",
-    "notes": ""
+    "notes": "",
+    "f1": false,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "399",
@@ -3867,7 +5025,10 @@ const leadsData = [
     "status": "Not Interested",
     "location": "Unspecified",
     "comments": "messaged, no response",
-    "notes": ""
+    "notes": "",
+    "f1": false,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "400",
@@ -3877,7 +5038,10 @@ const leadsData = [
     "status": "Not Interested",
     "location": "Unspecified",
     "comments": "",
-    "notes": ""
+    "notes": "",
+    "f1": false,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "401",
@@ -3887,7 +5051,10 @@ const leadsData = [
     "status": "Not Interested",
     "location": "Unspecified",
     "comments": "",
-    "notes": ""
+    "notes": "",
+    "f1": false,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "402",
@@ -3897,7 +5064,10 @@ const leadsData = [
     "status": "Not Interested",
     "location": "Unspecified",
     "comments": "will visit store",
-    "notes": ""
+    "notes": "",
+    "f1": false,
+    "f2": true,
+    "f3": false
   },
   {
     "id": "403",
@@ -3907,7 +5077,10 @@ const leadsData = [
     "status": "Not Interested",
     "location": "Riyadh",
     "comments": "As there is no store in Riyadh",
-    "notes": ""
+    "notes": "",
+    "f1": false,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "404",
@@ -3917,7 +5090,10 @@ const leadsData = [
     "status": "Not Interested",
     "location": "Unspecified",
     "comments": "",
-    "notes": ""
+    "notes": "",
+    "f1": false,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "405",
@@ -3927,7 +5103,10 @@ const leadsData = [
     "status": "Follow-up",
     "location": "Riyadh",
     "comments": "1pm",
-    "notes": ""
+    "notes": "",
+    "f1": true,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "406",
@@ -3937,7 +5116,10 @@ const leadsData = [
     "status": "Not Interested",
     "location": "Unspecified",
     "comments": "",
-    "notes": ""
+    "notes": "",
+    "f1": false,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "407",
@@ -3947,7 +5129,10 @@ const leadsData = [
     "status": "Not Interested",
     "location": "Unspecified",
     "comments": "messaged",
-    "notes": ""
+    "notes": "",
+    "f1": false,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "408",
@@ -3957,7 +5142,10 @@ const leadsData = [
     "status": "Not Interested",
     "location": "Unspecified",
     "comments": "interested, msged",
-    "notes": ""
+    "notes": "",
+    "f1": false,
+    "f2": true,
+    "f3": false
   },
   {
     "id": "409",
@@ -3967,7 +5155,10 @@ const leadsData = [
     "status": "Not Interested",
     "location": "Unspecified",
     "comments": "MC",
-    "notes": ""
+    "notes": "",
+    "f1": false,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "410",
@@ -3977,7 +5168,10 @@ const leadsData = [
     "status": "Follow-up",
     "location": "Riyadh",
     "comments": "fam on vac.",
-    "notes": ""
+    "notes": "",
+    "f1": true,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "411",
@@ -3987,7 +5181,10 @@ const leadsData = [
     "status": "Converted",
     "location": "Khobar",
     "comments": "",
-    "notes": ""
+    "notes": "",
+    "f1": true,
+    "f2": true,
+    "f3": true
   },
   {
     "id": "412",
@@ -3997,7 +5194,10 @@ const leadsData = [
     "status": "Not Interested",
     "location": "Unspecified",
     "comments": "",
-    "notes": ""
+    "notes": "",
+    "f1": false,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "413",
@@ -4007,7 +5207,10 @@ const leadsData = [
     "status": "Not Interested",
     "location": "Unspecified",
     "comments": "messaged",
-    "notes": ""
+    "notes": "",
+    "f1": false,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "414",
@@ -4017,7 +5220,10 @@ const leadsData = [
     "status": "Follow-up",
     "location": "Unspecified",
     "comments": "call at nooon",
-    "notes": ""
+    "notes": "",
+    "f1": true,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "415",
@@ -4027,7 +5233,10 @@ const leadsData = [
     "status": "Follow-up",
     "location": "Khobar",
     "comments": "after visiting, remind by msg",
-    "notes": ""
+    "notes": "",
+    "f1": true,
+    "f2": true,
+    "f3": false
   },
   {
     "id": "416",
@@ -4037,7 +5246,10 @@ const leadsData = [
     "status": "Follow-up",
     "location": "Riyadh",
     "comments": "will get back if needed",
-    "notes": ""
+    "notes": "",
+    "f1": true,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "417",
@@ -4047,7 +5259,10 @@ const leadsData = [
     "status": "Not Interested",
     "location": "Unspecified",
     "comments": "",
-    "notes": ""
+    "notes": "",
+    "f1": false,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "418",
@@ -4057,7 +5272,10 @@ const leadsData = [
     "status": "Not Interested",
     "location": "Riyadh",
     "comments": "",
-    "notes": ""
+    "notes": "",
+    "f1": false,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "419",
@@ -4067,7 +5285,10 @@ const leadsData = [
     "status": "Not Interested",
     "location": "Unspecified",
     "comments": "messaged",
-    "notes": ""
+    "notes": "",
+    "f1": false,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "420",
@@ -4077,7 +5298,10 @@ const leadsData = [
     "status": "Not Interested",
     "location": "Unspecified",
     "comments": "7pm",
-    "notes": ""
+    "notes": "",
+    "f1": false,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "421",
@@ -4087,7 +5311,10 @@ const leadsData = [
     "status": "Follow-up",
     "location": "Riyadh",
     "comments": "5pm",
-    "notes": ""
+    "notes": "",
+    "f1": true,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "422",
@@ -4097,7 +5324,10 @@ const leadsData = [
     "status": "Not Interested",
     "location": "Riyadh",
     "comments": "",
-    "notes": ""
+    "notes": "",
+    "f1": false,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "423",
@@ -4107,7 +5337,10 @@ const leadsData = [
     "status": "Converted",
     "location": "Khobar",
     "comments": "",
-    "notes": ""
+    "notes": "",
+    "f1": true,
+    "f2": true,
+    "f3": true
   },
   {
     "id": "424",
@@ -4117,7 +5350,10 @@ const leadsData = [
     "status": "Not Interested",
     "location": "Unspecified",
     "comments": "messaged",
-    "notes": ""
+    "notes": "",
+    "f1": false,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "425",
@@ -4127,7 +5363,10 @@ const leadsData = [
     "status": "Not Interested",
     "location": "Unspecified",
     "comments": "messaged",
-    "notes": ""
+    "notes": "",
+    "f1": false,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "426",
@@ -4137,7 +5376,10 @@ const leadsData = [
     "status": "Follow-up",
     "location": "Unspecified",
     "comments": "For bathroom",
-    "notes": ""
+    "notes": "",
+    "f1": true,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "427",
@@ -4147,7 +5389,10 @@ const leadsData = [
     "status": "Not Interested",
     "location": "Unspecified",
     "comments": "2.30pm",
-    "notes": ""
+    "notes": "",
+    "f1": false,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "428",
@@ -4157,7 +5402,10 @@ const leadsData = [
     "status": "Follow-up",
     "location": "Khobar",
     "comments": "",
-    "notes": ""
+    "notes": "",
+    "f1": true,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "429",
@@ -4167,7 +5415,10 @@ const leadsData = [
     "status": "Not Interested",
     "location": "Unspecified",
     "comments": "mistake",
-    "notes": ""
+    "notes": "",
+    "f1": false,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "430",
@@ -4177,7 +5428,10 @@ const leadsData = [
     "status": "Unanswered",
     "location": "Unspecified",
     "comments": "messaged",
-    "notes": ""
+    "notes": "",
+    "f1": false,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "431",
@@ -4187,7 +5441,10 @@ const leadsData = [
     "status": "Follow-up",
     "location": "Unspecified",
     "comments": "messaged",
-    "notes": ""
+    "notes": "",
+    "f1": true,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "432",
@@ -4197,7 +5454,10 @@ const leadsData = [
     "status": "Follow-up",
     "location": "Unspecified",
     "comments": "3.30pm",
-    "notes": ""
+    "notes": "",
+    "f1": true,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "433",
@@ -4207,7 +5467,10 @@ const leadsData = [
     "status": "Follow-up",
     "location": "Riyadh",
     "comments": "budget issues",
-    "notes": ""
+    "notes": "",
+    "f1": true,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "434",
@@ -4217,7 +5480,10 @@ const leadsData = [
     "status": "Follow-up",
     "location": "Unspecified",
     "comments": "messaged",
-    "notes": ""
+    "notes": "",
+    "f1": true,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "435",
@@ -4227,7 +5493,10 @@ const leadsData = [
     "status": "Follow-up",
     "location": "Unspecified",
     "comments": "messaged",
-    "notes": ""
+    "notes": "",
+    "f1": true,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "436",
@@ -4237,7 +5506,10 @@ const leadsData = [
     "status": "Follow-up",
     "location": "Unspecified",
     "comments": "5pm",
-    "notes": ""
+    "notes": "",
+    "f1": true,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "437",
@@ -4247,7 +5519,10 @@ const leadsData = [
     "status": "Not Interested",
     "location": "Unspecified",
     "comments": "1pm",
-    "notes": ""
+    "notes": "",
+    "f1": false,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "438",
@@ -4257,7 +5532,10 @@ const leadsData = [
     "status": "Follow-up",
     "location": "Unspecified",
     "comments": "messaged",
-    "notes": ""
+    "notes": "",
+    "f1": true,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "439",
@@ -4267,7 +5545,10 @@ const leadsData = [
     "status": "Follow-up",
     "location": "Unspecified",
     "comments": "8pm",
-    "notes": ""
+    "notes": "",
+    "f1": true,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "440",
@@ -4277,7 +5558,10 @@ const leadsData = [
     "status": "Not Interested",
     "location": "Riyadh",
     "comments": "",
-    "notes": ""
+    "notes": "",
+    "f1": false,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "441",
@@ -4287,7 +5571,10 @@ const leadsData = [
     "status": "Follow-up",
     "location": "Unspecified",
     "comments": "messaged",
-    "notes": ""
+    "notes": "",
+    "f1": true,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "442",
@@ -4297,7 +5584,10 @@ const leadsData = [
     "status": "Unanswered",
     "location": "Unspecified",
     "comments": "messaged",
-    "notes": ""
+    "notes": "",
+    "f1": false,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "443",
@@ -4307,7 +5597,10 @@ const leadsData = [
     "status": "Unanswered",
     "location": "Unspecified",
     "comments": "",
-    "notes": ""
+    "notes": "",
+    "f1": false,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "444",
@@ -4317,7 +5610,10 @@ const leadsData = [
     "status": "Follow-up",
     "location": "Unspecified",
     "comments": "10am (Arun)",
-    "notes": ""
+    "notes": "",
+    "f1": true,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "445",
@@ -4327,7 +5623,10 @@ const leadsData = [
     "status": "Follow-up",
     "location": "Unspecified",
     "comments": "6pm",
-    "notes": ""
+    "notes": "",
+    "f1": true,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "446",
@@ -4337,7 +5636,10 @@ const leadsData = [
     "status": "New Lead",
     "location": "Unspecified",
     "comments": "",
-    "notes": ""
+    "notes": "",
+    "f1": false,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "447",
@@ -4347,7 +5649,10 @@ const leadsData = [
     "status": "New Lead",
     "location": "Unspecified",
     "comments": "",
-    "notes": ""
+    "notes": "",
+    "f1": false,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "448",
@@ -4357,7 +5662,10 @@ const leadsData = [
     "status": "New Lead",
     "location": "Unspecified",
     "comments": "",
-    "notes": ""
+    "notes": "",
+    "f1": false,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "449",
@@ -4367,7 +5675,10 @@ const leadsData = [
     "status": "New Lead",
     "location": "Unspecified",
     "comments": "",
-    "notes": ""
+    "notes": "",
+    "f1": false,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "450",
@@ -4377,7 +5688,10 @@ const leadsData = [
     "status": "New Lead",
     "location": "Unspecified",
     "comments": "",
-    "notes": ""
+    "notes": "",
+    "f1": false,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "451",
@@ -4387,7 +5701,10 @@ const leadsData = [
     "status": "New Lead",
     "location": "Unspecified",
     "comments": "",
-    "notes": ""
+    "notes": "",
+    "f1": false,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "452",
@@ -4397,7 +5714,10 @@ const leadsData = [
     "status": "New Lead",
     "location": "Unspecified",
     "comments": "",
-    "notes": ""
+    "notes": "",
+    "f1": false,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "453",
@@ -4407,7 +5727,10 @@ const leadsData = [
     "status": "New Lead",
     "location": "Unspecified",
     "comments": "",
-    "notes": ""
+    "notes": "",
+    "f1": false,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "454",
@@ -4417,7 +5740,10 @@ const leadsData = [
     "status": "New Lead",
     "location": "Unspecified",
     "comments": "",
-    "notes": ""
+    "notes": "",
+    "f1": false,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "455",
@@ -4427,7 +5753,10 @@ const leadsData = [
     "status": "New Lead",
     "location": "Unspecified",
     "comments": "",
-    "notes": ""
+    "notes": "",
+    "f1": false,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "456",
@@ -4437,7 +5766,10 @@ const leadsData = [
     "status": "New Lead",
     "location": "Unspecified",
     "comments": "",
-    "notes": ""
+    "notes": "",
+    "f1": false,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "457",
@@ -4447,7 +5779,10 @@ const leadsData = [
     "status": "New Lead",
     "location": "Unspecified",
     "comments": "",
-    "notes": ""
+    "notes": "",
+    "f1": false,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "458",
@@ -4457,7 +5792,10 @@ const leadsData = [
     "status": "New Lead",
     "location": "Unspecified",
     "comments": "",
-    "notes": ""
+    "notes": "",
+    "f1": false,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "459",
@@ -4467,7 +5805,10 @@ const leadsData = [
     "status": "New Lead",
     "location": "Unspecified",
     "comments": "",
-    "notes": ""
+    "notes": "",
+    "f1": false,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "460",
@@ -4477,7 +5818,10 @@ const leadsData = [
     "status": "New Lead",
     "location": "Unspecified",
     "comments": "",
-    "notes": ""
+    "notes": "",
+    "f1": false,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "461",
@@ -4487,7 +5831,10 @@ const leadsData = [
     "status": "New Lead",
     "location": "Unspecified",
     "comments": "",
-    "notes": ""
+    "notes": "",
+    "f1": false,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "462",
@@ -4497,7 +5844,10 @@ const leadsData = [
     "status": "New Lead",
     "location": "Unspecified",
     "comments": "",
-    "notes": ""
+    "notes": "",
+    "f1": false,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "463",
@@ -4507,7 +5857,10 @@ const leadsData = [
     "status": "New Lead",
     "location": "Unspecified",
     "comments": "",
-    "notes": ""
+    "notes": "",
+    "f1": false,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "464",
@@ -4517,7 +5870,10 @@ const leadsData = [
     "status": "New Lead",
     "location": "Unspecified",
     "comments": "",
-    "notes": ""
+    "notes": "",
+    "f1": false,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "465",
@@ -4527,7 +5883,10 @@ const leadsData = [
     "status": "New Lead",
     "location": "Unspecified",
     "comments": "",
-    "notes": ""
+    "notes": "",
+    "f1": false,
+    "f2": false,
+    "f3": false
   },
   {
     "id": "470",
@@ -4537,7 +5896,10 @@ const leadsData = [
     "status": "Converted",
     "location": "Dammam",
     "comments": "Filter replacement.",
-    "notes": ""
+    "notes": "",
+    "f1": true,
+    "f2": true,
+    "f3": true
   },
   {
     "id": "510",
@@ -4547,7 +5909,10 @@ const leadsData = [
     "status": "Converted",
     "location": "Khobar",
     "comments": "will visit today",
-    "notes": ""
+    "notes": "",
+    "f1": true,
+    "f2": true,
+    "f3": true
   },
   {
     "id": "521",
@@ -4557,7 +5922,10 @@ const leadsData = [
     "status": "Converted",
     "location": "Jubail",
     "comments": "",
-    "notes": ""
+    "notes": "",
+    "f1": true,
+    "f2": true,
+    "f3": true
   },
   {
     "id": "529",
@@ -4567,7 +5935,10 @@ const leadsData = [
     "status": "Converted",
     "location": "Riyadh",
     "comments": "",
-    "notes": ""
+    "notes": "",
+    "f1": true,
+    "f2": true,
+    "f3": true
   },
   {
     "id": "554",
@@ -4577,7 +5948,10 @@ const leadsData = [
     "status": "Converted",
     "location": "Khobar",
     "comments": "will visit store, remind by msg",
-    "notes": ""
+    "notes": "",
+    "f1": true,
+    "f2": true,
+    "f3": true
   },
   {
     "id": "566",
@@ -4587,7 +5961,10 @@ const leadsData = [
     "status": "Converted",
     "location": "Dammam",
     "comments": "remind today evening",
-    "notes": ""
+    "notes": "",
+    "f1": true,
+    "f2": true,
+    "f3": true
   },
   {
     "id": "567",
@@ -4597,7 +5974,10 @@ const leadsData = [
     "status": "Converted",
     "location": "Dammam",
     "comments": "tly, mallu, sawad",
-    "notes": ""
+    "notes": "",
+    "f1": true,
+    "f2": true,
+    "f3": true
   },
   {
     "id": "575",
@@ -4607,7 +5987,10 @@ const leadsData = [
     "status": "Converted",
     "location": "Dammam",
     "comments": "",
-    "notes": ""
+    "notes": "",
+    "f1": true,
+    "f2": true,
+    "f3": true
   },
   {
     "id": "576",
@@ -4617,7 +6000,10 @@ const leadsData = [
     "status": "Converted",
     "location": "Jubail",
     "comments": "",
-    "notes": ""
+    "notes": "",
+    "f1": true,
+    "f2": true,
+    "f3": true
   },
   {
     "id": "579",
@@ -4627,7 +6013,10 @@ const leadsData = [
     "status": "Converted",
     "location": "Jeddah",
     "comments": "makkah, shakkib, let him at first after the unit reaches",
-    "notes": ""
+    "notes": "",
+    "f1": true,
+    "f2": true,
+    "f3": true
   },
   {
     "id": "582",
@@ -4637,7 +6026,10 @@ const leadsData = [
     "status": "Converted",
     "location": "Khobar",
     "comments": "Noushad Ali",
-    "notes": ""
+    "notes": "",
+    "f1": true,
+    "f2": true,
+    "f3": true
   },
   {
     "id": "641",
@@ -4647,7 +6039,10 @@ const leadsData = [
     "status": "Converted",
     "location": "Khobar",
     "comments": "althaf",
-    "notes": ""
+    "notes": "",
+    "f1": true,
+    "f2": true,
+    "f3": true
   },
   {
     "id": "646",
@@ -4657,7 +6052,10 @@ const leadsData = [
     "status": "Converted",
     "location": "Khobar",
     "comments": "1pm",
-    "notes": ""
+    "notes": "",
+    "f1": true,
+    "f2": true,
+    "f3": true
   },
   {
     "id": "653",
@@ -4667,7 +6065,10 @@ const leadsData = [
     "status": "Converted",
     "location": "Khobar",
     "comments": "",
-    "notes": ""
+    "notes": "",
+    "f1": true,
+    "f2": true,
+    "f3": true
   },
   {
     "id": "709",
@@ -4677,7 +6078,10 @@ const leadsData = [
     "status": "Converted",
     "location": "Dammam",
     "comments": "",
-    "notes": ""
+    "notes": "",
+    "f1": true,
+    "f2": true,
+    "f3": true
   },
   {
     "id": "739",
@@ -4687,7 +6091,10 @@ const leadsData = [
     "status": "Converted",
     "location": "Jubail",
     "comments": "",
-    "notes": ""
+    "notes": "",
+    "f1": true,
+    "f2": true,
+    "f3": true
   },
   {
     "id": "740",
@@ -4697,7 +6104,10 @@ const leadsData = [
     "status": "Converted",
     "location": "Khobar",
     "comments": "remind",
-    "notes": ""
+    "notes": "",
+    "f1": true,
+    "f2": true,
+    "f3": true
   },
   {
     "id": "778",
@@ -4707,7 +6117,10 @@ const leadsData = [
     "status": "Converted",
     "location": "Khobar",
     "comments": "Direct call.",
-    "notes": ""
+    "notes": "",
+    "f1": true,
+    "f2": true,
+    "f3": true
   },
   {
     "id": "863",
@@ -4717,7 +6130,10 @@ const leadsData = [
     "status": "Converted",
     "location": "Dammam",
     "comments": "",
-    "notes": ""
+    "notes": "",
+    "f1": true,
+    "f2": true,
+    "f3": true
   },
   {
     "id": "900",
@@ -4727,6 +6143,9 @@ const leadsData = [
     "status": "Converted",
     "location": "Dammam",
     "comments": "",
-    "notes": ""
+    "notes": "",
+    "f1": true,
+    "f2": true,
+    "f3": true
   }
 ];
