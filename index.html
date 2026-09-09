@@ -881,22 +881,7 @@
 </head>
 <body>
 
-    <div class="passcode-overlay" id="passcodeOverlay">
-        <div class="passcode-card">
-            <div class="brand" style="justify-content: center; margin-bottom: 16px; display: flex; align-items: center; gap: 10px;">
-                <img src="https://a3sixty.com/img/a360w.png" alt="a3sixty" style="height: 38px;">
-                <span class="brand-text">CRM & META</span>
-            </div>
-            <p style="color: var(--text-muted); font-size: 13px; margin-bottom: 24px;">Enter security passcode to unlock intelligence dashboard</p>
-            <form onsubmit="event.preventDefault(); checkPasscode();">
-                <input type="password" class="passcode-input" id="passcodeInput" placeholder="••••••••" onkeyup="if(event.key==='Enter') checkPasscode();" autofocus autocomplete="current-password">
-                <button type="button" class="passcode-btn" onclick="checkPasscode()">Unlock Intelligence Hub</button>
-            </form>
-            <div class="passcode-error" id="passcodeError">Incorrect passcode. Please try again.</div>
-        </div>
-    </div>
-
-    <div id="mainAppContent" style="display: none;">
+    <div id="mainAppContent">
         
         <header>
             <div class="brand">
@@ -908,11 +893,11 @@
             </div>
 
             <div class="view-switcher-bar">
-                <button class="view-tab-btn active" id="tabMetaView" onclick="switchViewMode(meta)">
+                <button class="view-tab-btn active" id="tabMetaView" onclick="switchViewMode('meta')">
                     <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="m4.93 4.93 4.24 4.24"/><path d="m14.83 9.17 4.24-4.24"/><path d="m14.83 14.83 4.24 4.24"/><path d="m9.17 14.83-4.24 4.24"/><circle cx="12" cy="12" r="4"/></svg>
                     🎯 Meta Ads & CAC Hub
                 </button>
-                <button class="view-tab-btn" id="tabCrmView" onclick="switchViewMode(crm)">
+                <button class="view-tab-btn" id="tabCrmView" onclick="switchViewMode('crm')">
                     <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
                     📈 CRM Leads Tracking
                 </button>
@@ -1313,40 +1298,13 @@
         let funnelChart = null;
         let outcomeDonut = null;
 
-        function checkPasscode() {
-            const inputEl = document.getElementById("passcodeInput");
-            const val = inputEl ? inputEl.value.trim().toLowerCase() : "";
-            const validCodes = ["sada", "sada123", "a360", "admin", "1234", "sada2026", "passcode"];
-
-            if (!val || validCodes.includes(val) || val.includes("sada")) {
-                localStorage.setItem(PASSCODE_KEY, "sada");
-                localStorage.setItem("crm_dashboard_passcode_unlocked", "sada");
-                unlockDashboard();
-            } else {
-                const err = document.getElementById("passcodeError");
-                if (err) err.style.display = "block";
-                if (inputEl) {
-                    inputEl.value = "";
-                    inputEl.focus();
-                }
-            }
-        }
-
-        function unlockDashboard() {
-            const overlay = document.getElementById("passcodeOverlay");
-            const main = document.getElementById("mainAppContent");
-            if (overlay) overlay.style.display = "none";
-            if (main) {
-                main.style.display = "block";
-                main.style.visibility = "visible";
-                main.style.opacity = "1";
-            }
-            try {
-                initApp();
-            } catch (err) {
-                console.error("InitApp error caught:", err);
-            }
-        }
+        // Direct Automatic Initialization (No Passcode)
+        window.addEventListener("DOMContentLoaded", () => {
+            try { initApp(); } catch (e) { console.error("InitApp error:", e); }
+        });
+        setTimeout(() => {
+            try { initApp(); } catch (e) { console.error("InitApp timeout error:", e); }
+        }, 100);
 
         function initApp() {
             metaAds = getStoredMetaAds();
@@ -1963,9 +1921,7 @@
             document.getElementById("themeToggleIcon").textContent = isLight ? "🌙" : "☀️";
         }
 
-        if (localStorage.getItem(PASSCODE_KEY) === REQUIRED_PASSCODE) {
-            unlockDashboard();
-        }
+
     </script>
 </body>
 </html>
