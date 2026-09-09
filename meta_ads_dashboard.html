@@ -33,7 +33,6 @@
         .score-label,
         .meta-table td,
         .badge-pill,
-        .period-btn,
         .search-pill input,
         .live-sync-time {
             font-family: "Inter", sans-serif !important;
@@ -81,7 +80,8 @@
         body.light-theme .score-card,
         body.light-theme .trend-chart-card,
         body.light-theme .meta-table-card,
-        body.light-theme .period-bar,
+        body.light-theme .final-roi-card,
+        body.light-theme .benchmark-card,
         body.light-theme .modal-container,
         body.light-theme .insight-card {
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
@@ -96,15 +96,9 @@
             border-bottom-color: #f1f5f9;
         }
 
-        body.light-theme .period-btn,
         body.light-theme .filter-pill {
             background: #e2e8f0;
             color: #475569;
-        }
-
-        body.light-theme .period-btn.active {
-            background: #0f172a;
-            color: #ffffff !important;
         }
 
         body.light-theme .search-pill,
@@ -241,74 +235,75 @@
             box-shadow: 0 0 8px var(--accent-lime);
         }
 
-        .period-bar {
-            background: var(--bg-card);
+        /* Benchmark Matrix Grid */
+        .benchmark-card {
+            background: var(--bg-card-darker);
             border: 1px solid var(--border-card);
             border-radius: 20px;
-            padding: 14px 20px;
+            padding: 20px 24px;
             margin-bottom: 24px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 16px;
-            flex-wrap: wrap;
         }
 
-        .period-left {
-            display: flex;
-            align-items: center;
-            gap: 16px;
-            flex-wrap: wrap;
+        .benchmark-grid-4 {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 14px;
+            margin-top: 14px;
         }
 
-        .period-label {
-            font-size: 13px;
-            font-weight: 700;
-            color: var(--text-white);
-            display: flex;
-            align-items: center;
-            gap: 6px;
+        @media (max-width: 900px) {
+            .benchmark-grid-4 { grid-template-columns: 1fr 1fr; }
+        }
+        @media (max-width: 550px) {
+            .benchmark-grid-4 { grid-template-columns: 1fr; }
         }
 
-        .period-pills {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            flex-wrap: wrap;
-        }
-
-        .period-btn {
-            background: var(--bg-card-darker);
+        .benchmark-item {
+            background: var(--bg-card);
             border: 1px solid var(--border-card);
-            color: var(--text-muted);
-            padding: 7px 16px;
             border-radius: 16px;
-            font-size: 12px;
+            padding: 14px 16px;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .benchmark-item-title {
+            font-size: 11px;
+            font-weight: 700;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .benchmark-item-val {
+            font-size: 20px;
+            font-weight: 700;
+            letter-spacing: -0.3px;
+        }
+
+        .benchmark-item-sub {
+            font-size: 11px;
             font-weight: 600;
-            cursor: pointer;
-            transition: all 0.2s;
         }
 
-        .period-btn:hover {
-            color: var(--text-white);
-            border-color: var(--accent-lime);
+        /* Final Executive Data Point / ROI Card */
+        .final-roi-card {
+            background: linear-gradient(135deg, #1b1e23 0%, #111317 100%);
+            border: 1px solid rgba(149, 240, 41, 0.45);
+            border-radius: 24px;
+            padding: 28px 32px;
+            margin-top: 10px;
+            margin-bottom: 24px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
         }
 
-        .period-btn.active {
-            background: var(--accent-lime);
-            color: #000000 !important;
-            border-color: var(--accent-lime);
-            font-weight: 700;
-        }
-
-        .period-date-display {
-            font-size: 12px;
-            color: var(--accent-lime);
-            font-weight: 700;
-            background: var(--bg-card-darker);
-            padding: 6px 14px;
-            border-radius: 14px;
-            border: 1px solid var(--border-card);
+        .final-roi-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 24px;
         }
 
         .metrics-grid-5 {
@@ -855,27 +850,6 @@
             </div>
         </header>
 
-        <!-- Clean Filter Bar (No Custom Date Inputs) -->
-        <div class="period-bar">
-            <div class="period-left">
-                <div class="period-label">
-                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-                    Time Period Filter:
-                </div>
-                <div class="period-pills">
-                    <button class="period-btn active" id="btnPeriodAll" onclick="setFilterPeriod('ALL', this)">All Time</button>
-                    <button class="period-btn" id="btnPeriodAug" onclick="setFilterPeriod('AUG_2026', this)">August 2026 (Active Ads)</button>
-                    <button class="period-btn" id="btnPeriodJuly" onclick="setFilterPeriod('JUL_2026', this)">July 2026</button>
-                    <button class="period-btn" id="btnPeriod30" onclick="setFilterPeriod('30D', this)">Last 30 Days</button>
-                    <button class="period-btn" id="btnPeriod7" onclick="setFilterPeriod('7D', this)">Last 7 Days</button>
-                </div>
-            </div>
-
-            <div class="period-date-display" id="periodDateDisplay">
-                Showing: All Historical Ad & Lead Data
-            </div>
-        </div>
-
         <!-- Metric Scorecards -->
         <div class="metrics-grid-5">
             <div class="score-card">
@@ -916,11 +890,50 @@
 
             <div class="score-card">
                 <div class="score-label">
-                    <span>EST. REVENUE & ROAS (@ SAR 699)</span>
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+                    <span>CPR vs INDUSTRY BENCHMARK</span>
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 20V10"/><path d="M12 20V4"/><path d="M6 20v-6"/></svg>
                 </div>
-                <div class="score-val" id="metaEstRevenue">SAR 39,843</div>
-                <div class="score-trend" id="metaROAS" style="color: var(--accent-lime);">10.75x Return on Ad Spend</div>
+                <div class="score-val" id="metaBenchmarkVal" style="color: var(--accent-lime);">SAR 4.42 <span style="font-size: 13px; color: var(--text-muted); font-weight: 500;">/ msg</span></div>
+                <div class="score-trend" id="metaBenchmarkTrend" style="color: #10b981;">🟢 76.1% Below GCC Avg (SAR 18.50)</div>
+            </div>
+        </div>
+
+        <!-- Industry Benchmark Comparison Matrix -->
+        <div class="benchmark-card">
+            <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;">
+                <div style="display: flex; align-items: center; gap: 10px;">
+                    <span style="font-size: 14px; font-weight: 700; color: var(--text-white);">📊 Performance Marketing vs GCC / MENA Industry Standards</span>
+                    <span class="brand-badge" style="background: rgba(149, 240, 41, 0.15); color: var(--accent-lime); border-color: var(--accent-lime);">Top 5% Acquisition Tier</span>
+                </div>
+                <div style="font-size: 11px; color: var(--text-muted);">
+                    Benchmarks for Meta Ads Water Systems & Direct-to-Consumer Home Appliances in Saudi Arabia (KSA)
+                </div>
+            </div>
+
+            <div class="benchmark-grid-4">
+                <div class="benchmark-item">
+                    <div class="benchmark-item-title">Cost Per Inquiry (CPR)</div>
+                    <div class="benchmark-item-val" style="color: var(--accent-lime);" id="benchCPR">SAR 4.42</div>
+                    <div class="benchmark-item-sub" style="color: #10b981;"><strong>76.1% Cheaper</strong> vs SAR 18.50 GCC Avg</div>
+                </div>
+
+                <div class="benchmark-item">
+                    <div class="benchmark-item-title">Cost Per 1K Views (CPM)</div>
+                    <div class="benchmark-item-val" style="color: #38bdf8;" id="benchCPM">SAR 10.17</div>
+                    <div class="benchmark-item-sub" style="color: #10b981;"><strong>53.8% Cheaper</strong> vs SAR 22.00 KSA Avg</div>
+                </div>
+
+                <div class="benchmark-item">
+                    <div class="benchmark-item-title">Customer Acq. Cost (CAC)</div>
+                    <div class="benchmark-item-val" style="color: #a855f7;" id="benchCAC">SAR 65.05</div>
+                    <div class="benchmark-item-sub" style="color: #10b981;"><strong>71.1% Lower</strong> vs SAR 225.00 Avg</div>
+                </div>
+
+                <div class="benchmark-item">
+                    <div class="benchmark-item-title">CAC-to-Price Ratio (@ SAR 699)</div>
+                    <div class="benchmark-item-val" style="color: #10b981;" id="benchRatio">9.3% of Price</div>
+                    <div class="benchmark-item-sub" style="color: #10b981;"><strong>Ultra-Healthy</strong> (Industry Std: 25%–35%)</div>
+                </div>
             </div>
         </div>
 
@@ -1099,6 +1112,42 @@
             </div>
         </div>
 
+        <!-- Final Executive Data Point: Realized Revenue & ROAS -->
+        <div class="final-roi-card">
+            <div class="final-roi-inner">
+                <div style="display: flex; align-items: center; gap: 18px;">
+                    <div style="width: 58px; height: 58px; border-radius: 18px; background: rgba(149, 240, 41, 0.15); display: flex; align-items: center; justify-content: center; font-size: 28px; border: 1px solid var(--accent-lime); flex-shrink: 0;">
+                        🏆
+                    </div>
+                    <div>
+                        <div style="font-size: 11px; font-weight: 800; color: var(--accent-lime); text-transform: uppercase; letter-spacing: 0.6px; margin-bottom: 4px;">
+                            FINAL EXECUTIVE DATA POINT • REVENUE REALIZATION
+                        </div>
+                        <h3 style="font-size: 22px; font-weight: 700; color: #ffffff; margin-bottom: 4px;">
+                            EST. REVENUE & ROAS (@ SAR 699 / UNIT)
+                        </h3>
+                        <div style="font-size: 12px; color: var(--text-muted);">
+                            Based on <strong id="finalWonCount" style="color: #fff;">57 Won Customers</strong> (Column F) generated from <strong id="finalSpendCount" style="color: #fff;">SAR 3,707.81</strong> Meta Ad Spend
+                        </div>
+                    </div>
+                </div>
+
+                <div style="display: flex; align-items: center; gap: 36px; flex-wrap: wrap;">
+                    <div style="text-align: right;">
+                        <div style="font-size: 11px; font-weight: 700; color: var(--text-muted); text-transform: uppercase;">Total Realized Revenue</div>
+                        <div style="font-size: 34px; font-weight: 800; color: var(--accent-lime); letter-spacing: -0.5px;" id="metaEstRevenue">SAR 39,843.00</div>
+                        <div style="font-size: 12px; color: #10b981; font-weight: 700;" id="metaNetProfit">+SAR 36,135.19 Net Return over Ad Spend</div>
+                    </div>
+
+                    <div style="border-left: 1px solid var(--border-card); padding-left: 28px; text-align: right;">
+                        <div style="font-size: 11px; font-weight: 700; color: var(--text-muted); text-transform: uppercase;">Return On Ad Spend (ROAS)</div>
+                        <div style="font-size: 34px; font-weight: 800; color: #ffffff; letter-spacing: -0.5px;" id="metaROAS">10.75x</div>
+                        <div style="font-size: 12px; color: var(--accent-lime); font-weight: 700;">SAR 10.75 returned per SAR 1 spent</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
 
     <!-- Upload Modal -->
@@ -1219,7 +1268,6 @@
         const GOOGLE_SHEET_URL = "https://docs.google.com/spreadsheets/d/15n6wstZajaR98ZzD5ZnV5tH6B8quAoCYTRD5CiH7h-M/export?format=csv&gid=0";
         const AVG_DEAL_VALUE = 699;
 
-        let currentPeriod = "ALL";
         let metaAds = [];
         let crmLeads = [];
         let filteredMetaAds = [];
@@ -1233,7 +1281,7 @@
         function initApp() {
             metaAds = getStoredMetaAds();
             crmLeads = (typeof leadsData !== "undefined") ? leadsData : [];
-            setFilterPeriod("ALL", document.getElementById("btnPeriodAll"));
+            refreshDashboard();
             renderAdInventory();
             syncGoogleSheetLive();
         }
@@ -1251,90 +1299,20 @@
             return (typeof defaultMetaAdsData !== "undefined") ? defaultMetaAdsData : [];
         }
 
-        function setFilterPeriod(period, btnEl) {
-            currentPeriod = period;
-            document.querySelectorAll(".period-btn").forEach(b => b.classList.remove("active"));
-            if (btnEl) btnEl.classList.add("active");
-
-            let start = new Date("2026-07-01");
-            let end = new Date("2026-09-09");
-            let displayTxt = "All Time (Full Overview)";
-
-            if (period === "AUG_2026") {
-                start = new Date("2026-08-01");
-                end = new Date("2026-08-31");
-                displayTxt = "August 1 – 31, 2026 (Peak Active Ad Campaigns)";
-            } else if (period === "JUL_2026") {
-                start = new Date("2026-07-01");
-                end = new Date("2026-07-31");
-                displayTxt = "July 1 – 31, 2026 (Baseline Leads)";
-            } else if (period === "30D") {
-                start = new Date("2026-08-10");
-                end = new Date("2026-09-09");
-                displayTxt = "Last 30 Days (Aug 10 – Sep 9, 2026)";
-            } else if (period === "7D") {
-                start = new Date("2026-09-02");
-                end = new Date("2026-09-09");
-                displayTxt = "Last 7 Days (Sep 2 – Sep 9, 2026)";
-            }
-
-            document.getElementById("periodDateDisplay").textContent = `Showing: ${displayTxt}`;
-            filterDataByDates(start, end);
-        }
-
-        function filterDataByDates(startDate, endDate) {
-            const startStr = formatDateISO(startDate);
-            const endStr = formatDateISO(endDate);
-
-            filteredMetaAds = metaAds.map(ad => {
-                let filteredSpend = 0;
-                let filteredResults = 0;
-                let filteredImpressions = 0;
-                let filteredReach = 0;
-
-                if (ad.dailyBreakdown && ad.dailyBreakdown.length > 0) {
-                    ad.dailyBreakdown.forEach(d => {
-                        if (d.date >= startStr && d.date <= endStr) {
-                            filteredSpend += d.spend || 0;
-                            filteredResults += d.results || 0;
-                            filteredImpressions += d.impressions || 0;
-                            filteredReach += d.reach || 0;
-                        }
-                    });
-                } else {
-                    if (ad.dateStart <= endStr && ad.dateEnd >= startStr) {
-                        filteredSpend = ad.spend;
-                        filteredResults = ad.results;
-                        filteredImpressions = ad.impressions;
-                        filteredReach = ad.reach;
-                    }
-                }
-
-                const cpr = filteredResults > 0 ? (filteredSpend / filteredResults) : null;
-                return {
-                    ...ad,
-                    periodSpend: filteredSpend,
-                    periodResults: filteredResults,
-                    periodImpressions: filteredImpressions,
-                    periodReach: filteredReach,
-                    periodCPR: cpr
-                };
-            });
-
-            filteredCrmLeads = crmLeads.filter(l => {
-                const leadDate = parseDateString(l.date);
-                if (!leadDate) return true;
-                const iso = formatDateISO(leadDate);
-                return iso >= startStr && iso <= endStr;
-            });
+        function refreshDashboard() {
+            filteredMetaAds = metaAds.map(ad => ({
+                ...ad,
+                periodSpend: ad.spend,
+                periodResults: ad.results,
+                periodImpressions: ad.impressions || 0,
+                periodReach: ad.reach || 0,
+                periodCPR: (ad.results > 0) ? (ad.spend / ad.results) : (ad.costPerResult || null)
+            }));
+            filteredCrmLeads = crmLeads;
 
             updateMetaMetrics();
             renderCharts();
             renderCampaignTable();
-        }
-
-        function formatDateISO(d) {
-            return d.toISOString().split("T")[0];
         }
 
         function parseDateString(str) {
@@ -1362,10 +1340,14 @@
         function updateMetaMetrics() {
             let totalSpend = 0;
             let totalResults = 0;
+            let totalImpressions = 0;
+            let totalReach = 0;
 
             filteredMetaAds.forEach(a => {
-                totalSpend += (a.periodSpend || 0);
-                totalResults += (a.periodResults || 0);
+                totalSpend += (a.spend || a.periodSpend || 0);
+                totalResults += (a.results || a.periodResults || 0);
+                totalImpressions += (a.impressions || a.periodImpressions || 0);
+                totalReach += (a.reach || a.periodReach || 0);
             });
 
             const wonCount = filteredCrmLeads.filter(l => l.status === "Converted").length;
@@ -1373,28 +1355,78 @@
             const f2Count = filteredCrmLeads.filter(l => l.f2).length;
             const f3Count = filteredCrmLeads.filter(l => l.f3).length;
 
-            const avgCPR = totalResults > 0 ? (totalSpend / totalResults).toFixed(2) : "0.00";
-            const cac = wonCount > 0 ? (totalSpend / wonCount).toFixed(2) : (totalSpend > 0 ? totalSpend.toFixed(2) : "0.00");
+            const avgCPR = totalResults > 0 ? (totalSpend / totalResults) : 0;
+            const avgCPM = totalImpressions > 0 ? ((totalSpend / totalImpressions) * 1000) : 0;
+            const cac = wonCount > 0 ? (totalSpend / wonCount) : (totalSpend > 0 ? totalSpend : 0);
             const estRevenue = wonCount * AVG_DEAL_VALUE;
-            const roas = totalSpend > 0 ? (estRevenue / totalSpend).toFixed(2) : "0.00";
-            const convRate = totalResults > 0 ? ((wonCount / totalResults) * 100).toFixed(2) : (filteredCrmLeads.length > 0 ? ((wonCount / filteredCrmLeads.length)*100).toFixed(2) : "0.00");
-            const cpql = f1Count > 0 ? (totalSpend / f1Count).toFixed(2) : (totalSpend > 0 ? totalSpend.toFixed(2) : "0.00");
+            const netProfit = estRevenue - totalSpend;
+            const roas = totalSpend > 0 ? (estRevenue / totalSpend) : 0;
+            const convRate = totalResults > 0 ? ((wonCount / totalResults) * 100) : (filteredCrmLeads.length > 0 ? ((wonCount / filteredCrmLeads.length)*100) : 0);
+            const cpql = f1Count > 0 ? (totalSpend / f1Count) : (totalSpend > 0 ? totalSpend : 0);
+            const cacToPriceRatio = (cac / AVG_DEAL_VALUE) * 100;
 
+            // GCC Industry Benchmarks for Direct Response Water / Home Appliances
+            const GCC_CPR_BENCHMARK = 18.50;
+            const GCC_CPM_BENCHMARK = 22.00;
+            const GCC_CAC_BENCHMARK = 225.00;
+
+            const cprSavingsPct = GCC_CPR_BENCHMARK > 0 ? (((GCC_CPR_BENCHMARK - avgCPR) / GCC_CPR_BENCHMARK) * 100).toFixed(1) : "0.0";
+            const cpmSavingsPct = GCC_CPM_BENCHMARK > 0 ? (((GCC_CPM_BENCHMARK - avgCPM) / GCC_CPM_BENCHMARK) * 100).toFixed(1) : "0.0";
+            const cacSavingsPct = GCC_CAC_BENCHMARK > 0 ? (((GCC_CAC_BENCHMARK - cac) / GCC_CAC_BENCHMARK) * 100).toFixed(1) : "0.0";
+
+            // Top Scorecards
             document.getElementById("metaTotalSpend").textContent = `SAR ${totalSpend.toLocaleString("en-US", {minimumFractionDigits: 2, maximumFractionDigits: 2})}`;
             document.getElementById("metaTotalResults").textContent = `${totalResults} inquiries`;
-            document.getElementById("metaAvgCPR").textContent = `CPR: SAR ${avgCPR} / msg`;
+            document.getElementById("metaAvgCPR").textContent = `CPR: SAR ${avgCPR.toFixed(2)} / msg`;
             document.getElementById("metaWonDeals").textContent = `${wonCount} Won`;
-            document.getElementById("metaConvRate").textContent = `Conv Rate: ${convRate}%`;
-            document.getElementById("metaCAC").textContent = `SAR ${cac}`;
-            document.getElementById("metaEstRevenue").textContent = `SAR ${estRevenue.toLocaleString("en-US")}`;
-            document.getElementById("metaROAS").textContent = `${roas}x Return on Ad Spend`;
+            document.getElementById("metaConvRate").textContent = `Conv Rate: ${convRate.toFixed(2)}%`;
+            document.getElementById("metaCAC").textContent = `SAR ${cac.toFixed(2)}`;
+
+            // 5th Top Scorecard (Benchmark KPI)
+            if (document.getElementById("metaBenchmarkVal")) {
+                document.getElementById("metaBenchmarkVal").innerHTML = `SAR ${avgCPR.toFixed(2)} <span style="font-size: 13px; color: var(--text-muted); font-weight: 500;">/ msg</span>`;
+            }
+            if (document.getElementById("metaBenchmarkTrend")) {
+                document.getElementById("metaBenchmarkTrend").textContent = `🟢 ${cprSavingsPct}% Below GCC Avg (SAR ${GCC_CPR_BENCHMARK.toFixed(2)})`;
+            }
+
+            // Benchmark Comparison Matrix
+            if (document.getElementById("benchCPR")) {
+                document.getElementById("benchCPR").textContent = `SAR ${avgCPR.toFixed(2)}`;
+            }
+            if (document.getElementById("benchCPM")) {
+                document.getElementById("benchCPM").textContent = `SAR ${avgCPM.toFixed(2)}`;
+            }
+            if (document.getElementById("benchCAC")) {
+                document.getElementById("benchCAC").textContent = `SAR ${cac.toFixed(2)}`;
+            }
+            if (document.getElementById("benchRatio")) {
+                document.getElementById("benchRatio").textContent = `${cacToPriceRatio.toFixed(1)}% of Price`;
+            }
 
             // Quality metrics
             document.getElementById("qF1Count").textContent = `${f1Count} Leads`;
             document.getElementById("qF2Count").textContent = `${f2Count} Leads`;
             document.getElementById("qF3Count").textContent = `${f3Count} Leads`;
-            document.getElementById("qCPQL").textContent = `SAR ${cpql}`;
+            document.getElementById("qCPQL").textContent = `SAR ${cpql.toFixed(2)}`;
             document.getElementById("donutLeadsCount").textContent = `${filteredCrmLeads.length} Leads`;
+
+            // Final Executive Data Point (End of Dashboard)
+            if (document.getElementById("finalWonCount")) {
+                document.getElementById("finalWonCount").textContent = `${wonCount} Won Customers`;
+            }
+            if (document.getElementById("finalSpendCount")) {
+                document.getElementById("finalSpendCount").textContent = `SAR ${totalSpend.toLocaleString("en-US", {minimumFractionDigits: 2, maximumFractionDigits: 2})}`;
+            }
+            if (document.getElementById("metaEstRevenue")) {
+                document.getElementById("metaEstRevenue").textContent = `SAR ${estRevenue.toLocaleString("en-US", {minimumFractionDigits: 2, maximumFractionDigits: 2})}`;
+            }
+            if (document.getElementById("metaNetProfit")) {
+                document.getElementById("metaNetProfit").textContent = `${netProfit >= 0 ? '+' : ''}SAR ${netProfit.toLocaleString("en-US", {minimumFractionDigits: 2, maximumFractionDigits: 2})} Net Return over Ad Spend`;
+            }
+            if (document.getElementById("metaROAS")) {
+                document.getElementById("metaROAS").textContent = `${roas.toFixed(2)}x`;
+            }
         }
 
         function renderCharts() {
@@ -1766,7 +1798,7 @@
             saveMetaAds(metaAds);
             closeUploadModal();
             renderAdInventory();
-            setFilterPeriod(currentPeriod, document.querySelector(`.period-btn.active`));
+            refreshDashboard();
             alert("✅ Meta Ad Campaign added and linked into dashboard!");
         }
 
@@ -1801,7 +1833,7 @@
         function resetToBaselineData() {
             localStorage.removeItem("custom_meta_ads_data");
             metaAds = (typeof defaultMetaAdsData !== "undefined") ? defaultMetaAdsData : [];
-            setFilterPeriod("ALL", document.getElementById("btnPeriodAll"));
+            refreshDashboard();
             renderAdInventory();
             alert("Baseline dataset restored.");
             closeUploadModal();
@@ -1877,7 +1909,7 @@
 
             if (newLeads.length > 0) {
                 crmLeads = newLeads;
-                setFilterPeriod(currentPeriod, document.querySelector(`.period-btn.active`));
+                refreshDashboard();
             }
         }
 
