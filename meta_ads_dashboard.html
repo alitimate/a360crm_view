@@ -1225,12 +1225,21 @@
 
         function parseDateString(str) {
             if (!str) return null;
-            const parts = str.split(/[\/\-\.]/);
+            const months = { jan: 0, feb: 1, mar: 2, apr: 3, may: 4, jun: 5, jul: 6, aug: 7, sep: 8, oct: 9, nov: 10, dec: 11 };
+            const parts = str.trim().split(/[\/\-\.]/);
             if (parts.length === 3) {
                 const day = parseInt(parts[0], 10);
-                const month = parseInt(parts[1], 10) - 1;
+                let month = 0;
+                if (isNaN(parts[1])) {
+                    const mKey = parts[1].toLowerCase().slice(0, 3);
+                    month = (months[mKey] !== undefined) ? months[mKey] : 0;
+                } else {
+                    month = parseInt(parts[1], 10) - 1;
+                }
                 let year = parseInt(parts[2], 10);
+                if (isNaN(year)) year = 2026;
                 if (year < 100) year += 2000;
+                if (year === 2025) year = 2026; // Normalize typo
                 return new Date(year, month, day);
             }
             return null;

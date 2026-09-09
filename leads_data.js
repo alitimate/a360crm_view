@@ -102,12 +102,12 @@ const leadsData = [
   {
     "id": "11",
     "date": "16/07/2026",
-    "contact": "54 519 1153",
+    "contact": "054 519 1153",
     "agent": "Nahan",
     "status": "Not Interested",
     "location": "Unspecified",
     "comments": "Jeddah",
-    "notes": ""
+    "notes": "@5.30"
   },
   {
     "id": "12",
@@ -261,11 +261,11 @@ const leadsData = [
   },
   {
     "id": "27",
-    "date": "16/07/2026",
+    "date": "16-Jul-2026",
     "contact": "54 511 2629",
     "agent": "Nahan",
     "status": "Converted",
-    "location": "Unspecified",
+    "location": "Riyadh",
     "comments": "",
     "notes": ""
   },
@@ -421,11 +421,11 @@ const leadsData = [
   },
   {
     "id": "43",
-    "date": "17/07/26",
+    "date": "17-Jul-2026",
     "contact": "57 155 7989",
-    "agent": "Nahan",
-    "status": "Not Interested",
-    "location": "Unspecified",
+    "agent": "Fateen",
+    "status": "Converted",
+    "location": "Riyadh",
     "comments": "not int",
     "notes": ""
   },
@@ -501,11 +501,11 @@ const leadsData = [
   },
   {
     "id": "51",
-    "date": "18/07/26",
+    "date": "18-Jul-2026",
     "contact": "55 624 0687",
     "agent": "Nahan",
     "status": "Converted",
-    "location": "Unspecified",
+    "location": "Riyadh",
     "comments": "booked and paid/YES",
     "notes": ""
   },
@@ -672,11 +672,11 @@ const leadsData = [
   {
     "id": "68",
     "date": "18/07/26",
-    "contact": "50 215 7238",
-    "agent": "Nahan",
+    "contact": "050 215 7238",
+    "agent": "Fateen",
     "status": "Follow-up",
     "location": "Unspecified",
-    "comments": "TODAY",
+    "comments": "follow up, waiting for family(AIJAS)",
     "notes": ""
   },
   {
@@ -831,12 +831,12 @@ const leadsData = [
   },
   {
     "id": "85",
-    "date": "19/07/26",
-    "contact": "54 657 4307",
+    "date": "19-Jul-2026",
+    "contact": "59 769 2048",
     "agent": "Nahan",
-    "status": "Follow-up",
-    "location": "Unspecified",
-    "comments": "planning to relocate",
+    "status": "Converted",
+    "location": "Riyadh",
+    "comments": "",
     "notes": ""
   },
   {
@@ -921,13 +921,13 @@ const leadsData = [
   },
   {
     "id": "94",
-    "date": "19/07/26",
+    "date": "3/8/2026",
     "contact": "58 097 2103",
     "agent": "Fateen",
     "status": "Not Interested",
     "location": "Khobar",
-    "comments": "next year.",
-    "notes": "purchased tokens"
+    "comments": "relocating, but some concerns",
+    "notes": ""
   },
   {
     "id": "95",
@@ -1091,11 +1091,11 @@ const leadsData = [
   },
   {
     "id": "111",
-    "date": "20/07/26",
-    "contact": "96187 86046",
+    "date": "20-Jul-2026",
+    "contact": "56 020 7775",
     "agent": "Nahan",
-    "status": "Follow-up",
-    "location": "Unspecified",
+    "status": "Converted",
+    "location": "Riyadh",
     "comments": "",
     "notes": ""
   },
@@ -1372,12 +1372,12 @@ const leadsData = [
   {
     "id": "139",
     "date": "21/07/26",
-    "contact": "56 570 9025",
+    "contact": "056 570 9025",
     "agent": "Nahan",
     "status": "Follow-up",
     "location": "Unspecified",
-    "comments": "very interested /don't follow up before 5 Aug",
-    "notes": ""
+    "comments": "will get back, very int.",
+    "notes": "FC"
   },
   {
     "id": "140",
@@ -1401,12 +1401,12 @@ const leadsData = [
   },
   {
     "id": "142",
-    "date": "21/07/26",
-    "contact": "57 485 6411",
-    "agent": "Nahan",
-    "status": "Not Interested",
-    "location": "Unspecified",
-    "comments": "not intrsted",
+    "date": "21-Jul-2026",
+    "contact": "59 487 7432",
+    "agent": "Fateen",
+    "status": "Converted",
+    "location": "Dammam",
+    "comments": "booked",
     "notes": ""
   },
   {
@@ -1931,12 +1931,12 @@ const leadsData = [
   },
   {
     "id": "195",
-    "date": "24/07/26",
-    "contact": "53 247 1530",
-    "agent": "Nahan",
-    "status": "Follow-up",
-    "location": "Unspecified",
-    "comments": "",
+    "date": "1-Aug-2026",
+    "contact": "546348235",
+    "agent": "Fateen",
+    "status": "Converted",
+    "location": "Riyadh",
+    "comments": "DILIP KUMAR",
     "notes": ""
   },
   {
@@ -2042,12 +2042,12 @@ const leadsData = [
   {
     "id": "206",
     "date": "1/8/2026",
-    "contact": "53 043 6006",
+    "contact": "053 043 6006",
     "agent": "Fateen",
     "status": "Not Interested",
     "location": "Unspecified",
     "comments": "call after 5pm(2nd aug)",
-    "notes": "call"
+    "notes": "call on saturday"
   },
   {
     "id": "207",
@@ -2191,12 +2191,12 @@ const leadsData = [
   },
   {
     "id": "221",
-    "date": "1/8/2026",
-    "contact": "55 794 8210",
-    "agent": "Mariyam",
-    "status": "Not Interested",
-    "location": "Unspecified",
-    "comments": "expecting a call back",
+    "date": "1-Aug-2026",
+    "contact": "59 177 3040",
+    "agent": "Nahan",
+    "status": "Converted",
+    "location": "Riyadh",
+    "comments": "",
     "notes": ""
   },
   {
@@ -2261,12 +2261,12 @@ const leadsData = [
   },
   {
     "id": "228",
-    "date": "1/8/2026",
-    "contact": "92 345 5099405",
+    "date": "1-Aug-2026",
+    "contact": "53 438 4018",
     "agent": "Fateen",
-    "status": "Not Interested",
-    "location": "Unspecified",
-    "comments": "",
+    "status": "Converted",
+    "location": "Khobar",
+    "comments": "Rizwan, keep in touch",
     "notes": ""
   },
   {
@@ -2461,12 +2461,12 @@ const leadsData = [
   },
   {
     "id": "249",
-    "date": "2/8/2026",
-    "contact": "53 221 5413",
+    "date": "2-Aug-2025",
+    "contact": "57 961 1869",
     "agent": "Fateen",
-    "status": "Not Interested",
-    "location": "Unspecified",
-    "comments": "for office",
+    "status": "Converted",
+    "location": "Riyadh",
+    "comments": "has sent the brochure",
     "notes": ""
   },
   {
@@ -2511,12 +2511,12 @@ const leadsData = [
   },
   {
     "id": "254",
-    "date": "2/8/2026",
-    "contact": "53 614 3423",
+    "date": "2-Aug-2025",
+    "contact": "53 155 4037",
     "agent": "Fateen",
-    "status": "Not Interested",
-    "location": "Jeddah",
-    "comments": "ahmed",
+    "status": "Converted",
+    "location": "Khobar",
+    "comments": "sent booking link(shuhaib)",
     "notes": ""
   },
   {
@@ -2541,12 +2541,12 @@ const leadsData = [
   },
   {
     "id": "257",
-    "date": "2/8/2026",
+    "date": "3/8/2026",
     "contact": "56 637 9011",
     "agent": "Fateen",
     "status": "Not Interested",
-    "location": "Unspecified",
-    "comments": "call today 3rd aug",
+    "location": "Dammam",
+    "comments": "sent booking link",
     "notes": ""
   },
   {
@@ -2651,12 +2651,12 @@ const leadsData = [
   },
   {
     "id": "268",
-    "date": "3/8/2026",
-    "contact": "055 650 1902",
-    "agent": "Mariyam",
-    "status": "Follow-up",
-    "location": "Jeddah",
-    "comments": "very interested but located 150 km from jeddah",
+    "date": "3-Aug-2025",
+    "contact": "053 874 1847",
+    "agent": "Fateen",
+    "status": "Converted",
+    "location": "Riyadh",
+    "comments": "lady",
     "notes": ""
   },
   {
@@ -2701,12 +2701,12 @@ const leadsData = [
   },
   {
     "id": "273",
-    "date": "3/8/2026",
-    "contact": "54 235 6660",
-    "agent": "Mariyam",
-    "status": "Follow-up",
-    "location": "Unspecified",
-    "comments": "",
+    "date": "3-Aug-2025",
+    "contact": "535888604",
+    "agent": "Fateen",
+    "status": "Converted",
+    "location": "Dammam",
+    "comments": "sent booking link",
     "notes": ""
   },
   {
@@ -2740,26 +2740,6 @@ const leadsData = [
     "notes": ""
   },
   {
-    "id": "94",
-    "date": "3/8/2026",
-    "contact": "58 097 2103",
-    "agent": "Fateen",
-    "status": "Not Interested",
-    "location": "Khobar",
-    "comments": "relocating, but some concerns",
-    "notes": ""
-  },
-  {
-    "id": "257",
-    "date": "3/8/2026",
-    "contact": "56 637 9011",
-    "agent": "Fateen",
-    "status": "Not Interested",
-    "location": "Dammam",
-    "comments": "sent booking link",
-    "notes": ""
-  },
-  {
     "id": "279",
     "date": "3/8/2026",
     "contact": "54 095 6466",
@@ -2781,12 +2761,12 @@ const leadsData = [
   },
   {
     "id": "281",
-    "date": "3/8/2026",
-    "contact": "050 684 2978",
+    "date": "4-Aug-2025",
+    "contact": "056 489 8682",
     "agent": "Fateen",
-    "status": "Not Interested",
+    "status": "Converted",
     "location": "Riyadh",
-    "comments": "sent the booking link",
+    "comments": "sent booking link",
     "notes": ""
   },
   {
@@ -2961,12 +2941,12 @@ const leadsData = [
   },
   {
     "id": "299",
-    "date": "4/8/2026",
-    "contact": "053 113 2891",
-    "agent": "Fateen",
-    "status": "Not Interested",
+    "date": "4-Aug-2025",
+    "contact": "055 671 8947",
+    "agent": "Nahan",
+    "status": "Converted",
     "location": "Riyadh",
-    "comments": "ihjaz",
+    "comments": "will call back",
     "notes": ""
   },
   {
@@ -2977,16 +2957,6 @@ const leadsData = [
     "status": "Not Interested",
     "location": "Unspecified",
     "comments": "",
-    "notes": ""
-  },
-  {
-    "id": "68",
-    "date": "18/07/26",
-    "contact": "050 215 7238",
-    "agent": "Fateen",
-    "status": "Follow-up",
-    "location": "Unspecified",
-    "comments": "follow up, waiting for family(AIJAS)",
     "notes": ""
   },
   {
@@ -3240,16 +3210,6 @@ const leadsData = [
     "notes": ""
   },
   {
-    "id": "11",
-    "date": "16/07/2026",
-    "contact": "054 519 1153",
-    "agent": "Nahan",
-    "status": "Not Interested",
-    "location": "Unspecified",
-    "comments": "Jeddah",
-    "notes": "@5.30"
-  },
-  {
     "id": "327",
     "date": "5/8/2026",
     "contact": "91 85940 52679",
@@ -3271,12 +3231,12 @@ const leadsData = [
   },
   {
     "id": "329",
-    "date": "5/8/2026",
-    "contact": "055 212 7093",
+    "date": "5-Aug-2026",
+    "contact": "056 532 0850",
     "agent": "Fateen",
-    "status": "Follow-up",
-    "location": "Unspecified",
-    "comments": "might go with 2 units",
+    "status": "Converted",
+    "location": "Jeddah",
+    "comments": "messaged",
     "notes": ""
   },
   {
@@ -3308,16 +3268,6 @@ const leadsData = [
     "location": "Unspecified",
     "comments": "messaged",
     "notes": ""
-  },
-  {
-    "id": "206",
-    "date": "1/8/2026",
-    "contact": "053 043 6006",
-    "agent": "Fateen",
-    "status": "Not Interested",
-    "location": "Unspecified",
-    "comments": "call after 5pm(2nd aug)",
-    "notes": "call on saturday"
   },
   {
     "id": "335",
@@ -3461,12 +3411,12 @@ const leadsData = [
   },
   {
     "id": "349",
-    "date": "6/8/2026",
-    "contact": "056 497 4357",
+    "date": "6-Aug-2026",
+    "contact": "058 233 0015",
     "agent": "Fateen",
-    "status": "Not Interested",
-    "location": "Dammam",
-    "comments": "1:00 PM",
+    "status": "Converted",
+    "location": "Jubail",
+    "comments": "messaged",
     "notes": ""
   },
   {
@@ -3481,12 +3431,12 @@ const leadsData = [
   },
   {
     "id": "352",
-    "date": "6/8/2026",
-    "contact": "059 182 5389",
+    "date": "6-Aug-2026",
+    "contact": "054 387 8891",
     "agent": "Fateen",
-    "status": "Follow-up",
-    "location": "Unspecified",
-    "comments": "interested",
+    "status": "Converted",
+    "location": "Khobar",
+    "comments": "uv",
     "notes": ""
   },
   {
@@ -3560,16 +3510,6 @@ const leadsData = [
     "notes": ""
   },
   {
-    "id": "139",
-    "date": "21/07/26",
-    "contact": "056 570 9025",
-    "agent": "Nahan",
-    "status": "Follow-up",
-    "location": "Unspecified",
-    "comments": "will get back, very int.",
-    "notes": "FC"
-  },
-  {
     "id": "360",
     "date": "6/8/2026",
     "contact": "050 898 1560",
@@ -3581,12 +3521,12 @@ const leadsData = [
   },
   {
     "id": "361",
-    "date": "6/8/2026",
-    "contact": "053 713 8876",
+    "date": "8-Aug-2026",
+    "contact": "050 563 5743",
     "agent": "Fateen",
-    "status": "Not Interested",
-    "location": "Khobar",
-    "comments": "needs to visit",
+    "status": "Converted",
+    "location": "Dammam",
+    "comments": "WIFEEEE",
     "notes": ""
   },
   {
@@ -3661,11 +3601,11 @@ const leadsData = [
   },
   {
     "id": "371",
-    "date": "8/8/2026",
-    "contact": "057 353 8725",
+    "date": "8-Aug-2026",
+    "contact": "053 254 0394",
     "agent": "Fateen",
-    "status": "Not Interested",
-    "location": "Unspecified",
+    "status": "Converted",
+    "location": "Dammam",
     "comments": "",
     "notes": ""
   },
@@ -3711,12 +3651,12 @@ const leadsData = [
   },
   {
     "id": "376",
-    "date": "8/8/2026",
-    "contact": "050 823 1815",
+    "date": "8-Aug-2026",
+    "contact": "055 800 5856",
     "agent": "Fateen",
-    "status": "Not Interested",
-    "location": "Unspecified",
-    "comments": "",
+    "status": "Converted",
+    "location": "Khobar",
+    "comments": "cncrnd about purity,want to tst",
     "notes": ""
   },
   {
@@ -3761,12 +3701,12 @@ const leadsData = [
   },
   {
     "id": "381",
-    "date": "8/8/2026",
-    "contact": "058 359 1805",
+    "date": "8-Aug-2026",
+    "contact": "053 758 1343/0560972253",
     "agent": "Fateen",
-    "status": "Follow-up",
+    "status": "Converted",
     "location": "Khobar",
-    "comments": "next week after srgry, stone",
+    "comments": "not leads(ashiq)",
     "notes": ""
   },
   {
@@ -3801,12 +3741,12 @@ const leadsData = [
   },
   {
     "id": "385",
-    "date": "8/8/2026",
-    "contact": "055 800 5856",
+    "date": "9-Aug-2026",
+    "contact": "055 632 2172",
     "agent": "Fateen",
     "status": "Converted",
-    "location": "Khobar",
-    "comments": "cncrnd about purity,want to tst",
+    "location": "Dammam",
+    "comments": "sure after vacation(abdurauf)",
     "notes": ""
   },
   {
@@ -4041,13 +3981,13 @@ const leadsData = [
   },
   {
     "id": "411",
-    "date": "9/8/2026",
-    "contact": "050 882 1940",
+    "date": "10-Aug-2026",
+    "contact": "053 169 4377",
     "agent": "Fateen",
-    "status": "Not Interested",
-    "location": "Unspecified",
+    "status": "Converted",
+    "location": "Khobar",
     "comments": "",
-    "notes": "Just enquiry"
+    "notes": ""
   },
   {
     "id": "412",
@@ -4586,6 +4526,206 @@ const leadsData = [
     "agent": "Unassigned",
     "status": "New Lead",
     "location": "Unspecified",
+    "comments": "",
+    "notes": ""
+  },
+  {
+    "id": "470",
+    "date": "13-Aug-2026",
+    "contact": "054 645 6754",
+    "agent": "Fateen",
+    "status": "Converted",
+    "location": "Dammam",
+    "comments": "Filter replacement.",
+    "notes": ""
+  },
+  {
+    "id": "510",
+    "date": "15-Aug-2026",
+    "contact": "056 156 7966",
+    "agent": "Fateen",
+    "status": "Converted",
+    "location": "Khobar",
+    "comments": "will visit today",
+    "notes": ""
+  },
+  {
+    "id": "521",
+    "date": "15-Aug-2026",
+    "contact": "057 021 1821/056 911 6340",
+    "agent": "Fateen",
+    "status": "Converted",
+    "location": "Jubail",
+    "comments": "",
+    "notes": ""
+  },
+  {
+    "id": "529",
+    "date": "16-Aug-2026",
+    "contact": "050 969 4275",
+    "agent": "Fateen",
+    "status": "Converted",
+    "location": "Riyadh",
+    "comments": "",
+    "notes": ""
+  },
+  {
+    "id": "554",
+    "date": "17-Aug-2026",
+    "contact": "058 044 7688/ 0562810017",
+    "agent": "Fateen",
+    "status": "Converted",
+    "location": "Khobar",
+    "comments": "will visit store, remind by msg",
+    "notes": ""
+  },
+  {
+    "id": "566",
+    "date": "18-Aug-2026",
+    "contact": "053 089 3424",
+    "agent": "Fateen",
+    "status": "Converted",
+    "location": "Dammam",
+    "comments": "remind today evening",
+    "notes": ""
+  },
+  {
+    "id": "567",
+    "date": "18-Aug-2026",
+    "contact": "050 540 0584",
+    "agent": "Fateen",
+    "status": "Converted",
+    "location": "Dammam",
+    "comments": "tly, mallu, sawad",
+    "notes": ""
+  },
+  {
+    "id": "575",
+    "date": "18-Aug-2026",
+    "contact": "054 902 9595",
+    "agent": "Fateen",
+    "status": "Converted",
+    "location": "Dammam",
+    "comments": "",
+    "notes": ""
+  },
+  {
+    "id": "576",
+    "date": "18-Aug-2026",
+    "contact": "053 298 8490",
+    "agent": "Fateen",
+    "status": "Converted",
+    "location": "Jubail",
+    "comments": "",
+    "notes": ""
+  },
+  {
+    "id": "579",
+    "date": "19-Aug-2026",
+    "contact": "58 131 4495",
+    "agent": "Fateen",
+    "status": "Converted",
+    "location": "Jeddah",
+    "comments": "makkah, shakkib, let him at first after the unit reaches",
+    "notes": ""
+  },
+  {
+    "id": "582",
+    "date": "19-Aug-2026",
+    "contact": "053 212 3086",
+    "agent": "Fateen",
+    "status": "Converted",
+    "location": "Khobar",
+    "comments": "Noushad Ali",
+    "notes": ""
+  },
+  {
+    "id": "641",
+    "date": "25-Aug-2026",
+    "contact": "053 589 9330",
+    "agent": "Fateen",
+    "status": "Converted",
+    "location": "Khobar",
+    "comments": "althaf",
+    "notes": ""
+  },
+  {
+    "id": "646",
+    "date": "25-Aug-2026",
+    "contact": "053 304 6956",
+    "agent": "Fateen",
+    "status": "Converted",
+    "location": "Khobar",
+    "comments": "1pm",
+    "notes": ""
+  },
+  {
+    "id": "653",
+    "date": "26-Aug-2026",
+    "contact": "055 299 5658",
+    "agent": "Fateen",
+    "status": "Converted",
+    "location": "Khobar",
+    "comments": "",
+    "notes": ""
+  },
+  {
+    "id": "709",
+    "date": "27-Aug-2026",
+    "contact": "057 964 2296",
+    "agent": "Fateen",
+    "status": "Converted",
+    "location": "Dammam",
+    "comments": "",
+    "notes": ""
+  },
+  {
+    "id": "739",
+    "date": "28-Aug-2026",
+    "contact": "056 138 2557",
+    "agent": "Fateen",
+    "status": "Converted",
+    "location": "Jubail",
+    "comments": "",
+    "notes": ""
+  },
+  {
+    "id": "740",
+    "date": "28-Aug-2026",
+    "contact": "054 722 9996",
+    "agent": "Fateen",
+    "status": "Converted",
+    "location": "Khobar",
+    "comments": "remind",
+    "notes": ""
+  },
+  {
+    "id": "778",
+    "date": "29-Aug-2026",
+    "contact": "053 890 0486",
+    "agent": "Fateen",
+    "status": "Converted",
+    "location": "Khobar",
+    "comments": "Direct call.",
+    "notes": ""
+  },
+  {
+    "id": "863",
+    "date": "30-Aug-2026",
+    "contact": "055 734 0481",
+    "agent": "Fateen",
+    "status": "Converted",
+    "location": "Dammam",
+    "comments": "",
+    "notes": ""
+  },
+  {
+    "id": "900",
+    "date": "5-Sep-2026",
+    "contact": "050 686 8923",
+    "agent": "Fateen",
+    "status": "Converted",
+    "location": "Dammam",
     "comments": "",
     "notes": ""
   }
