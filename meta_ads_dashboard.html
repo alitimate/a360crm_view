@@ -1640,13 +1640,83 @@
             fetch(GOOGLE_SHEET_URL)
                 .then(res => res.text())
                 .then(csv => {
+                    parseLiveSheetCsv(csv);
                     if (dot) dot.style.background = "#10b981";
                     if (txt) txt.textContent = "LIVE SYNCED";
                 })
                 .catch(e => {
+                    console.warn("Live fetch fallback to static dataset:", e);
                     if (dot) dot.style.background = "#10b981";
                     if (txt) txt.textContent = "SYNCED (CACHE)";
                 });
+        }
+
+        // Parse Column F directly as Converted / Customers
+        function parseLiveSheetCsv(csvText) {
+            if (!csvText || !csvText.includes(",")) return;
+            const lines = csvText.split(/\r?\n/);
+            let headerIdx = -1;
+            for (let i = 0; i < lines.length; i++) {
+                if (lines[i].includes("S No.") || lines[i].includes("Lead ID") || lines[i].includes("Contact")) {
+                    headerIdx = i;
+                    break;
+                }
+            }
+            if (headerIdx === -1) return;
+
+            const newLeads = [];
+            for (let i = headerIdx + 1; i < lines.length; i++) {
+                const row = parseCsvRow(lines[i]);
+                if (row && row.length > 5 && /^\d+$/.test(row[0].trim())) {
+                    // Column F (Index 5): Status
+                    const statusRaw = row[5] ? row[5].trim() : "";
+                    let statusClean = "Other";
+                    if (/converted/i.test(statusRaw)) statusClean = "Converted";
+                    else if (/not\s*inter/i.test(statusRaw)) statusClean = "Not Interested";
+                    else if (/follow/i.test(statusRaw)) statusClean = "Follow-up";
+                    else if (/link/i.test(statusRaw)) statusClean = "Link Sent";
+                    else if (/unanswer/i.test(statusRaw)) statusClean = "Unanswered";
+
+                    newLeads.push({
+                        id: row[0].trim(),
+                        date: row[1] ? row[1].trim() : "",
+                        contact: row[2] ? row[2].trim() : "",
+                        agent: row[4] && row[4].trim() ? row[4].trim() : "Unassigned",
+                        status: statusClean,
+                        location: row[6] && row[6].trim() ? row[6].trim() : "Riyadh",
+                        comments: row[11] ? row[11].trim() : "",
+                        notes: row[12] ? row[12].trim() : ""
+                    });
+                }
+            }
+
+            if (newLeads.length > 0) {
+                crmLeads = newLeads;
+                const startVal = document.getElementById("startDateInput").value;
+                const endVal = document.getElementById("endDateInput").value;
+                if (startVal && endVal) {
+                    filterDataByDates(new Date(startVal), new Date(endVal));
+                }
+            }
+        }
+
+        function parseCsvRow(rowStr) {
+            const arr = [];
+            let inQuotes = false;
+            let curr = "";
+            for (let i = 0; i < rowStr.length; i++) {
+                const char = rowStr[i];
+                if (char === '"') {
+                    inQuotes = !inQuotes;
+                } else if (char === ',' && !inQuotes) {
+                    arr.push(curr);
+                    curr = "";
+                } else {
+                    curr += char;
+                }
+            }
+            arr.push(curr);
+            return arr;
         }
 
         function toggleTheme() {
