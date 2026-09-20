@@ -12,7 +12,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Manrope:wght@200..800&family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
     <script src="leads_data.js?v=202608102354"></script>
-    <script src="meta_ads_data.js?v=2026090901"></script>
+    <script src="meta_ads_data.js?v=2026092002"></script>
     <style>
         @import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Manrope:wght@200..800&family=Space+Grotesk:wght@300..700&display=swap");
 
@@ -1267,6 +1267,8 @@
         let funnelChart = null;
         let outcomeDonut = null;
 
+        const CURRENT_DATASET_VERSION = "20260920_nd_v2";
+
         function initApp() {
             metaAds = getStoredMetaAds();
             crmLeads = (typeof leadsData !== "undefined") ? leadsData : [];
@@ -1277,10 +1279,13 @@
 
         function getStoredMetaAds() {
             try {
-                const stored = localStorage.getItem("custom_meta_ads_data");
-                if (stored) {
-                    const parsed = JSON.parse(stored);
-                    if (Array.isArray(parsed) && parsed.length > 0) return parsed;
+                const storedVer = localStorage.getItem("custom_meta_ads_ver");
+                if (storedVer === CURRENT_DATASET_VERSION) {
+                    const stored = localStorage.getItem("custom_meta_ads_data");
+                    if (stored) {
+                        const parsed = JSON.parse(stored);
+                        if (Array.isArray(parsed) && parsed.length > 0) return parsed;
+                    }
                 }
             } catch (e) {
                 console.warn("Stored meta ads parsing fallback:", e);
@@ -1430,6 +1435,7 @@
             if (!ctx) return;
             if (timelineChart) timelineChart.destroy();
 
+            // Aggregate spend and results by date
             const dayMap = {};
             filteredMetaAds.forEach(ad => {
                 if (ad.dailyBreakdown) {
@@ -1441,22 +1447,54 @@
                 }
             });
 
-            const labels = Object.keys(dayMap).sort();
-            const spendData = labels.map(l => dayMap[l].spend);
-            const resultsData = labels.map(l => dayMap[l].results);
+            // Start date: earliest date in dataset (e.g. 2026-08-01)
+            let start = new Date("2026-08-01");
+            const adDates = Object.keys(dayMap).sort();
+            if (adDates.length > 0) {
+                const firstDate = new Date(adDates[0]);
+                if (firstDate < start) start = firstDate;
+            }
+
+            // End date: Present Day (covers up through today)
+            const now = new Date();
+            let end = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+            const minEnd = new Date("2026-09-20");
+            if (end < minEnd) end = minEnd;
+
+            // Generate continuous daily timeline from start through end
+            const labels = [];
+            const spendData = [];
+            const resultsData = [];
+
+            let curr = new Date(start);
+            while (curr <= end) {
+                const y = curr.getFullYear();
+                const m = String(curr.getMonth() + 1).padStart(2, "0");
+                const d = String(curr.getDate()).padStart(2, "0");
+                const isoStr = `${y}-${m}-${d}`;
+
+                const monthName = curr.toLocaleString("en-US", { month: "short" });
+                labels.push(`${monthName} ${curr.getDate()}`);
+
+                const dayEntry = dayMap[isoStr] || { spend: 0, results: 0 };
+                spendData.push(parseFloat((dayEntry.spend || 0).toFixed(2)));
+                resultsData.push(dayEntry.results || 0);
+
+                curr.setDate(curr.getDate() + 1);
+            }
 
             timelineChart = new Chart(ctx, {
                 type: "bar",
                 data: {
-                    labels: labels.map(d => d.slice(5)),
+                    labels: labels,
                     datasets: [
                         {
                             label: "Ad Spend (SAR)",
                             data: spendData,
-                            backgroundColor: "rgba(149, 240, 41, 0.4)",
+                            backgroundColor: "rgba(149, 240, 41, 0.45)",
                             borderColor: "#95f029",
                             borderWidth: 1.5,
-                            borderRadius: 6,
+                            borderRadius: 4,
                             yAxisID: "y"
                         },
                         {
@@ -1466,8 +1504,9 @@
                             borderColor: "#38bdf8",
                             backgroundColor: "#38bdf8",
                             borderWidth: 2.5,
-                            tension: 0.3,
-                            pointRadius: 4,
+                            tension: 0.25,
+                            pointRadius: 3.5,
+                            pointHoverRadius: 6,
                             yAxisID: "y1"
                         }
                     ]
@@ -1475,23 +1514,47 @@
                 options: {
                     responsive: true,
                     maintainAspectRatio: false,
+                    interaction: {
+                        mode: "index",
+                        intersect: false
+                    },
                     scales: {
-                        x: { grid: { color: "rgba(255, 255, 255, 0.05)" } },
+                        x: {
+                            grid: { color: "rgba(255, 255, 255, 0.05)" },
+                            ticks: {
+                                color: "#8f96a3",
+                                maxRotation: 45,
+                                autoSkip: true,
+                                maxTicksLimit: 26
+                            }
+                        },
                         y: {
                             type: "linear",
                             position: "left",
                             grid: { color: "rgba(255, 255, 255, 0.05)" },
-                            title: { display: true, text: "Spend (SAR)", color: "#8f96a3" }
+                            title: { display: true, text: "Spend (SAR)", color: "#8f96a3" },
+                            ticks: { color: "#8f96a3" }
                         },
                         y1: {
                             type: "linear",
                             position: "right",
                             grid: { drawOnChartArea: false },
-                            title: { display: true, text: "Inquiries", color: "#38bdf8" }
+                            title: { display: true, text: "Inquiries", color: "#38bdf8" },
+                            ticks: { color: "#38bdf8" }
                         }
                     },
                     plugins: {
-                        legend: { position: "top", labels: { color: "#ffffff", boxWidth: 12 } }
+                        legend: { position: "top", labels: { color: "#ffffff", boxWidth: 12 } },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    if (context.dataset.label.includes("Spend")) {
+                                        return ` Spend: SAR ${context.raw.toFixed(2)}`;
+                                    }
+                                    return ` Inquiries: ${context.raw} msgs`;
+                                }
+                            }
+                        }
                     }
                 }
             });
@@ -1603,12 +1666,19 @@
             if (!grid) return;
             grid.innerHTML = "";
 
+            if (document.getElementById("adInvCountBadge")) {
+                document.getElementById("adInvCountBadge").textContent = `${metaAds.length} Ad Creatives`;
+            }
+
             metaAds.forEach((ad, i) => {
                 let badgeClass = "badge-moderate";
                 let rating = "Moderate CPR";
                 if (ad.costPerResult && ad.costPerResult <= 3.80) {
                     badgeClass = "badge-winner";
                     rating = "🏆 Top Performer";
+                } else if (ad.costPerResult && ad.costPerResult <= 6.00) {
+                    badgeClass = "badge-winner";
+                    rating = "🟢 Strong ROI";
                 } else if (ad.results === 0) {
                     badgeClass = "badge-warning";
                     rating = "⛔ 0 Results";
@@ -1647,6 +1717,10 @@
             const tbody = document.getElementById("campaignTableBody");
             if (!tbody) return;
             tbody.innerHTML = "";
+
+            if (document.getElementById("campaignCountBadge")) {
+                document.getElementById("campaignCountBadge").textContent = `${filteredMetaAds.length} Campaigns`;
+            }
 
             const totalWon = filteredCrmLeads.filter(l => l.status === "Converted").length;
 
@@ -1814,6 +1888,7 @@
         function saveMetaAds(arr) {
             try {
                 localStorage.setItem("custom_meta_ads_data", JSON.stringify(arr));
+                localStorage.setItem("custom_meta_ads_ver", CURRENT_DATASET_VERSION);
             } catch (e) {
                 console.error(e);
             }
@@ -1821,6 +1896,7 @@
 
         function resetToBaselineData() {
             localStorage.removeItem("custom_meta_ads_data");
+            localStorage.removeItem("custom_meta_ads_ver");
             metaAds = (typeof defaultMetaAdsData !== "undefined") ? defaultMetaAdsData : [];
             refreshDashboard();
             renderAdInventory();

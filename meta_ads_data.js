@@ -4,6 +4,36 @@
  */
 const defaultMetaAdsData = [
   {
+    id: "meta_ad_sep_nd",
+    name: "Sep 12 – Boosted Facebook post (Saudi National Day)",
+    adSet: "National Day Promo - SAR 96 Off",
+    creativeHook: "🇸🇦 Celebrate Saudi National Day with Cleaner Water & Bigger Savings! Enjoy SAR 96 Off...",
+    format: "Static Post / Image",
+    objective: "Messages",
+    platform: "Facebook / Instagram",
+    dateStart: "2026-09-12",
+    dateEnd: "2026-09-19",
+    spend: 315.14,
+    dailyBudget: 50.00,
+    impressions: 37472,
+    reach: 17107,
+    results: 53,
+    resultType: "Messaging conversations started",
+    costPerResult: 5.95,
+    status: "Completed",
+    cprRating: "Top Performer (National Day)",
+    dailyBreakdown: [
+      { date: "2026-09-12", spend: 45.00, results: 8, impressions: 5200, reach: 2400 },
+      { date: "2026-09-13", spend: 50.00, results: 9, impressions: 5600, reach: 2550 },
+      { date: "2026-09-14", spend: 45.00, results: 7, impressions: 5100, reach: 2300 },
+      { date: "2026-09-15", spend: 40.00, results: 6, impressions: 4800, reach: 2150 },
+      { date: "2026-09-16", spend: 40.00, results: 7, impressions: 4700, reach: 2100 },
+      { date: "2026-09-17", spend: 35.00, results: 6, impressions: 4300, reach: 1950 },
+      { date: "2026-09-18", spend: 35.00, results: 5, impressions: 4200, reach: 1900 },
+      { date: "2026-09-19", spend: 25.14, results: 5, impressions: 3572, reach: 1757 }
+    ]
+  },
+  {
     id: "meta_ad_1",
     name: "Aug 25 – Boosted Facebook post",
     adSet: "Boosted Post - Pure Water",
