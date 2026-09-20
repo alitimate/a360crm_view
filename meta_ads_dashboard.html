@@ -1435,27 +1435,45 @@
             if (!ctx) return;
             if (timelineChart) timelineChart.destroy();
 
-            // Aggregate spend and results by date
+            // 1. Gather all ad daily breakdowns
             const dayMap = {};
             filteredMetaAds.forEach(ad => {
                 if (ad.dailyBreakdown) {
                     ad.dailyBreakdown.forEach(d => {
-                        if (!dayMap[d.date]) dayMap[d.date] = { spend: 0, results: 0 };
+                        if (!dayMap[d.date]) dayMap[d.date] = { spend: 0, results: 0, crmLeads: 0, won: 0 };
                         dayMap[d.date].spend += d.spend || 0;
                         dayMap[d.date].results += d.results || 0;
                     });
                 }
             });
 
-            // Start date: earliest date in dataset (e.g. 2026-08-01)
-            let start = new Date("2026-08-01");
-            const adDates = Object.keys(dayMap).sort();
-            if (adDates.length > 0) {
-                const firstDate = new Date(adDates[0]);
-                if (firstDate < start) start = firstDate;
+            // 2. Gather CRM leads by date
+            filteredCrmLeads.forEach(l => {
+                const leadDate = parseDateString(l.date);
+                if (leadDate) {
+                    const y = leadDate.getFullYear();
+                    if (y === 2026 || y === 2025) {
+                        const m = String(leadDate.getMonth() + 1).padStart(2, "0");
+                        const d = String(leadDate.getDate()).padStart(2, "0");
+                        const isoStr = `2026-${m}-${d}`;
+                        if (!dayMap[isoStr]) dayMap[isoStr] = { spend: 0, results: 0, crmLeads: 0, won: 0 };
+                        dayMap[isoStr].crmLeads += 1;
+                        if (l.status === "Converted") {
+                            dayMap[isoStr].won += 1;
+                        }
+                    }
+                }
+            });
+
+            // 3. Start date: earliest date in dataset (e.g. 2026-07-16)
+            const allDates = Object.keys(dayMap).sort();
+            let start = new Date("2026-07-16");
+            if (allDates.length > 0) {
+                const firstDate = new Date(allDates[0]);
+                if (firstDate < start && firstDate >= new Date("2026-07-01")) start = firstDate;
             }
 
-            // End date: Present Day (covers up through today)
+            // 4. End date: Present Day (covers up through today)
             const now = new Date();
             let end = new Date(now.getFullYear(), now.getMonth(), now.getDate());
             const minEnd = new Date("2026-09-20");
@@ -1476,9 +1494,11 @@
                 const monthName = curr.toLocaleString("en-US", { month: "short" });
                 labels.push(`${monthName} ${curr.getDate()}`);
 
-                const dayEntry = dayMap[isoStr] || { spend: 0, results: 0 };
+                const dayEntry = dayMap[isoStr] || { spend: 0, results: 0, crmLeads: 0, won: 0 };
+                const totalInquiries = Math.max(dayEntry.results || 0, dayEntry.crmLeads || 0);
+
                 spendData.push(parseFloat((dayEntry.spend || 0).toFixed(2)));
-                resultsData.push(dayEntry.results || 0);
+                resultsData.push(totalInquiries);
 
                 curr.setDate(curr.getDate() + 1);
             }
@@ -1498,14 +1518,14 @@
                             yAxisID: "y"
                         },
                         {
-                            label: "Inquiries Started",
+                            label: "Inquiries / Leads",
                             data: resultsData,
                             type: "line",
                             borderColor: "#38bdf8",
                             backgroundColor: "#38bdf8",
                             borderWidth: 2.5,
                             tension: 0.25,
-                            pointRadius: 3.5,
+                            pointRadius: 3,
                             pointHoverRadius: 6,
                             yAxisID: "y1"
                         }
@@ -1525,7 +1545,7 @@
                                 color: "#8f96a3",
                                 maxRotation: 45,
                                 autoSkip: true,
-                                maxTicksLimit: 26
+                                maxTicksLimit: 28
                             }
                         },
                         y: {
@@ -1539,7 +1559,7 @@
                             type: "linear",
                             position: "right",
                             grid: { drawOnChartArea: false },
-                            title: { display: true, text: "Inquiries", color: "#38bdf8" },
+                            title: { display: true, text: "Inquiries / Leads", color: "#38bdf8" },
                             ticks: { color: "#38bdf8" }
                         }
                     },
@@ -1551,7 +1571,7 @@
                                     if (context.dataset.label.includes("Spend")) {
                                         return ` Spend: SAR ${context.raw.toFixed(2)}`;
                                     }
-                                    return ` Inquiries: ${context.raw} msgs`;
+                                    return ` Inquiries / Leads: ${context.raw}`;
                                 }
                             }
                         }
